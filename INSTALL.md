@@ -18,7 +18,7 @@ Getting started
 ---------------
 
 Make sure you retreived Git submodules when cloning yAronet source code. To do
-son enter `git submodule update --init` if you're using command line Git or any
+so, enter `git submodule update --init` if you're using command line Git or any
 other equivalent if you're using a GUI.
 
 You can get a working yAronet instance by either using provided
@@ -174,7 +174,7 @@ Sample file `/src/static/.creep.env`:
 
 * When deploying to production you should pre-compile LESS files to CSS
   * From `/` directory, run `npm install` then `npm run build`
-	* Make sure option "engine.text.display.use-less" is `false` in `/src/config.php`
+  * Make sure option "engine.text.display.use-less" is `false` in `/src/config.php`
 * However pre-compiling LESS files is not mandatory (although strongly suggested for better performance)
   * To deploy without pre-compiling LESS files, make sure option "engine.text.display.use-less" is `true` in `/src/config.php`
 * Copy all files from `/src/` directory (including newly generated ones) to remote server
