@@ -1,0 +1,4 @@
+{{ extend base.deval }}
+{{ block body }}
+	{{ $ json (["items": map (forums, (forum) => forum.name)]) }}
+{{ end }}

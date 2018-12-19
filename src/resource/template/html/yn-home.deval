@@ -1,0 +1,121 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = ["description": tra ("yn.home.description")],
+		_path = [],
+		_redirect = null,
+		_static = cat (
+			captcha.js () && [captcha.js ()] || [], [
+			cat (static.layout, "yn-home.js"),
+			cat (static.theme, "yn-home.less")
+		]),
+		_title = null
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="home">
+				<div class="index panel panel-decorate">
+					<div class="panel-header">{{ $ tra ("yn.home.type") }}</div>
+					<div class="panel-body">
+						{{ if user.id == null }}
+							<h2>{{ $ tra ("yn.home.guest") }}</h2>
+							{{ unwrap }}
+								<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.home.guest.help"))) }}</p>
+							{{ end }}
+						{{ end }}
+						{{ for block in [
+							[
+								tra ("yn.home.personal"),
+								personal,
+								cat ([
+									["trendy", url ("board.bookmark.list"), tra ("yn.home.link.trendy")]], user.id != null && [
+									["favorite", url ("board.favorite.edit"), tra ("yn.home.link.favorite")],
+									["forum", url ("board.forum.new"), tra ("yn.home.link.forum")]
+								] || [])
+							],
+							[
+								tra ("yn.home.popular"),
+								popular,
+								[
+									["forums", url ("board.forum.list"), tra ("yn.home.link.forums")],
+									["profiles", url ("board.profile.list"), tra ("yn.home.link.profiles")]
+								]
+							],
+							[
+								tra ("yn.home.random"),
+								random
+							]
+						] }}
+							{{ let
+								title = block[0],
+								forums = block[1],
+								links = block[2]
+							}}
+								<h2>{{ $ title }}</h2>
+								<ul class="forums">
+								{{ for forum in forums }}
+									<li>
+										<div class="forum">
+											<img width="32" height="32" alt="icon" src="{{ $ forum.is_illustrated && url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) || cat (static.layout, "glyph/forum.png") }}" />
+											<a href="{{ $ url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]) }}">{{ $ forum.name }}</a>
+											<span>{{ $ forum.description }}</span>
+										</div>
+									</li>
+								{{ end }}
+								</ul>
+								{{ if links != null }}
+									<div class="links glyph10">
+										{{ for link in links }}
+											<a class="label {{ $ link[0] }}" href="{{ $ link[1] }}">{{ $ link[2] }}</a>
+										{{ end }}
+									</div>
+								{{ end }}
+							{{ end }}
+						{{ end }}
+					</div>
+				</div>
+				<div class="flashchat panel">
+					<div class="panel-header">{{ $ tra ("yn.home.chat") }}</div>
+					<div class="panel-body">
+						<ul>
+							{{ for shout in shouts }}
+								<li>
+									{{ if user.is_admin }}
+										<a href="{{ $ url ("chat.shout.delete", ["shout": shout.id]) }}">
+									{{ end }}
+									<em class="time">{{ $ tra ("yn.home.chat.time", ["time": shout.time]) }}</em>
+									{{ if user.is_admin }}
+										</a>
+									{{ end }}
+									{{ $ " " }}
+									<strong class="author {{ $ shout.is_guest && "guest" || "user" }}">{{ $ shout.nick }}</strong>
+									<span class="text">
+										{{ unwrap }}
+											{{ $ shout.render_text ("html", router, logger) }}
+										{{ end }}
+									</span>
+								</li>
+							{{ end }}
+						</ul>
+						<form class="form-cascade form-thick" action="{{ $ url ("chat.shout.new") }}" method="POST">
+							{{ let
+								_alerts = null,
+								_fields = [
+									"nick":		["text", false, ["length": 50, "visible": user.id == null]],
+									"captcha":	["captcha", null, ["visible": address.is_public () && user.id == null]],
+									"text":		["text", null, ["length": 200, "placeholder": true]]
+								],
+								_prefix = "yn.home.chat.form."
+							}}
+								{{ include ../fragment/control-form.deval }}
+							{{ end }}
+							<div class="control glyph10">
+								<input class="button send" type="submit" value="{{ $ tra ("yn.home.chat.form.submit") }}" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

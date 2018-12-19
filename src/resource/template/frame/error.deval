@@ -1,0 +1,20 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			<div class="error">
+				<h1>&lt;!\ {{ $ tra ("error", ["code": code]) }} /!&gt;</h1>
+				<p>
+					{{ $ tra ("error.message", ["code": code]) }}
+				</p>
+				{{ if code != 401 && code != 403 }}
+					<p>
+						<a href="{{ $ url ("board.section.view", ["section": 77]) }}">{{ $ tra ("error.support") }}</a>
+					</p>
+				{{ end }}
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

@@ -1,0 +1,111 @@
+<?php
+
+defined('YARONET') or die;
+isset($config) and die;
+
+$config = array(
+    // Log lines format, can use {time}, {url}, {address}, {context}, {title} and {message} macros
+    //'engine.diagnostic.logger.format' => '[{time}][{url}][{address}][{context}] {title}: {message}',
+
+    // Minimum log severity level that should be displayed to screen, from 0 (debug) to 4 (nothing).
+    //'engine.diagnostic.logger.level' => 4,
+
+    // Path to log files, can use {label}, {date} and {level} macros
+    //'engine.diagnostic.logger.path' => './storage/log/{label}_{date}_{level}.log',
+
+    // Path to binary files, must be a write-enabled directory
+    //'engine.media.binary.store' => './storage/media/binary',
+
+    // Connection timeout for outgoing HTTP request
+    //'engine.network.http.connect-timeout' => 5000,
+
+    // If enabled, sensitive pages (e.g. authentication) won't force HTTPs connection
+    //'engine.network.http.insecure' => false,
+
+    // HTTP proxy for outgoing HTTP requests using cURL format or "null" for direct connection
+    //'engine.network.http.proxy' => null,
+
+    // Maximum amount of data received from outgoing HTTP requests
+    //'engine.network.http.size-max' => 2 * 1024 * 1024,
+
+    // Communication timeout for outgoing HTTP requests
+    //'engine.network.http.timeout' => 15000,
+
+    // User agent used for outgoing HTTP requests
+    //'engine.network.http.user-agent' => 'Mozilla/5.0 (compatible; yAronet; +http://www.yaronet.com/)',
+
+    // Path to pre-compiled routes cache, must be a write-enabled directory or "null" to recompile on every request (slow)
+    //'engine.network.route.cache' => './storage/cache/route',
+
+    // Absolute base path to page used to build and parse URLs, must begin with a "/" character
+    //'engine.network.route.page' => '/',
+
+    // Base URL for HTTP requests to static resources, can be an absolute or relative URL
+    //'engine.network.route.static' => '/static',
+
+    // Sender address for outgoing e-mails
+    //'engine.network.smtp.from' => 'no-reply@my.domain.com',
+
+    // SQL connection string, must use "scheme://user:pass@host/name?options" format
+    //'engine.network.sql.connection' => 'mysqli://yaronet@localhost/yaronet?charset=utf8mb4',
+
+    // Site key for ReCaptcha web service or "null" to disable ReCaptcha integration
+    //'engine.service.recaptcha.site-key' => null,
+
+    // Secret key for ReCaptcha web service or "null" to disable ReCaptcha integration
+    //'engine.service.recaptcha.site-secret' => null,
+
+    // Consumer API key for Twitter web service or "null" to disable Twitter integration
+    //'engine.service.twitter.consumer-key' => null,
+
+    // Consumer API key scret for Twitter web service or "null" to disable Twitter integration
+    //'engine.service.twitter.consumer-secret' => null,
+
+    // Public token key for Twitter web service or "null" to disable Twitter integration
+    //'engine.service.twitter.token-key' => null,
+
+    // Private token key for Twitter web service or "null" to disable Twitter integration
+    //'engine.service.twitter.token-secret' => null,
+
+    // Website charset used for display and internal text processing
+    //'engine.system.encoding.charset' => 'utf-8',
+
+    // Path to static HTML files displayed as "website is experiencing an issue" notice in case of internal failure or "null" to display exceptions (use as debug only)
+    //'engine.system.failure.source' => './resource/failure.html',
+
+    // System locale used for language-dependant functions (e.g. iconv)
+    //'engine.system.locale.name' => 'en_US.utf8',
+
+    // Comma-separated list of IP addresses allowed to bypass website lock (see option "engine.text.system.lock")
+    //'engine.system.lock.bypass' => '',
+
+    // Path to static HTML file to be displayed as "website is locked" notice to every user or "null" to leave site unlocked
+    //'engine.system.lock.source' => null,
+
+    // Path to pre-compiled templates cache, must be a write-enabled directory or "null" to recompile on every request (slow)
+    //'engine.text.display.cache' => './storage/cache/template',
+
+    // HTML code to be displayed as default page logo when no header is defined in current forum
+    //'engine.text.display.logo' => '<h1 style="margin: 0; padding: 8px 16px;">My Website Name</h1>',
+
+    // Input directory for template files
+    //'engine.text.display.source' => './resource/template',
+
+    // Default website template
+    //'engine.text.display.template' => 'html.kyanite',
+
+    // True to serve LESS files and process them on-the-fly, false to use generated CSS files
+    //'engine.text.display.use-less' => false,
+
+    // Path to pre-compiled locale strings, must be a write-enabled directory or "null" to recompile on every request (slow)
+    //'engine.text.i18n.cache' => './storage/cache/language',
+
+    // Default website language
+    //'engine.text.i18n.language' => 'en',
+
+    // Input directory for locale strings
+    //'engine.text.i18n.source' => './resource/language',
+
+    // Configuration file version
+    //'version' => 1
+);

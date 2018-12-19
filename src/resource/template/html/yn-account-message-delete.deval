@@ -1,0 +1,23 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("account.message.list"): tra ("yn.account.message.list")
+		],
+		_redirect = length (alerts) == 0 && url ("account.message.list") || null,
+		_static = [],
+		_title = tra ("yn.account.message.delete")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.account.message.delete.type") }}</div>
+				<div class="panel-body">
+					{{ include ../fragment/yn-account-message-delete.deval }}
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

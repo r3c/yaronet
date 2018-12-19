@@ -1,0 +1,29 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = ["canonical": url ("help.page.view", ["label": page.label, "language": page.language])],
+		_path = [url ("home"): tra ("yn.home")],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-help-page.less")
+		],
+		_title = tra ("yn.help.page.view", ["page": page])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="page panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.help.page.view.type") }}</div>
+				<div class="markup panel-body">
+					{{ unwrap }}
+						{{ $ page.render_text ("html", router, logger) }}
+					{{ end }}
+				</div>
+				{{ if user.is_admin }}
+					<div class="panel-footer glyph10">
+						<a class="label edit" href="{{ $ url ("help.page.edit", ["label": page.label, "language": page.language]) }}">{{ $ tra ("yn.help.page.view.edit") }}</a>
+					</div>
+				{{ end }}
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

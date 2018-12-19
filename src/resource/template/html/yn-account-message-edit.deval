@@ -1,0 +1,20 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [url ("home"): tra ("yn.home")],
+		_redirect = length (alerts) == 0 && new && url ("account.message.list") || null,
+		_static = [],
+		_title = tra ("yn.account.message.edit")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.account.message.edit.type") }}</div>
+				<div class="panel-body">
+					{{ include ../fragment/yn-account-message-edit.deval }}
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

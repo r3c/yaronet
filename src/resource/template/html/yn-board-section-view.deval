@@ -1,0 +1,115 @@
+{{ wrap html }}
+	{{ let
+		forum_id = forum.id != section.forum_id && forum.id || null,
+		page_last = php ("yN\\Entity\\Board\\Section::get_page") (section.topics),
+		_forum = forum,
+		_meta = [
+			"canonical":	url ("board.section.view", ["section": section.id, "section_hint": section.hint, "page": page]),
+			"description":	tra ("yn.board.section.view.description", ["section": section]),
+			"next":			page < page_last && url ("board.section.view", ["section": section.id, "section_hint": section.hint, "page": page + 1]) || null,
+			"prev":			page > 1 && url ("board.section.view", ["section": section.id, "section_hint": section.hint, "page": page - 1]) || null,
+			"rss":			url ("board.section.view", ["forum": forum.id, "section": section.id, "section_hint": section.hint, "_template": "rss"])
+		],
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum])
+		],
+		_redirect = null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.layout, "yn-board-section.js"),
+			cat (static.theme, "library/markitup/skin.less"),
+			cat (static.theme, "yn-board-section.less")
+		],
+		_title = tra ("yn.board.section.view", ["section": section, "page": page])
+	}}
+		{{ extend page.deval }}
+		{{ block goto }}
+			<ul class="goto right symbol">
+				{{ let
+					page_build = (p) => url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint, "page": p]),
+					page_current = page
+				}}
+					{{ include ../fragment/control-page.deval }}
+				{{ end }}
+			</ul>
+		{{ block main }}
+			<div class="panel panel-decorate section">
+				<div class="panel-header">{{ $ tra ("yn.board.section.view.type") }}</div>
+				<div class="panel-body">
+					{{ if forum.is_illustrated }}
+					<div class="panel-icon">
+						<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
+					</div>
+					{{ end }}
+					<h2 class="glyph16 symbol">
+						{{ if forum_id != null }}
+							<a href="{{ $ url ("board.forum.view", ["forum": section.forum_id, "forum_alias": section.forum.alias]) }}">{{ $ section.forum.name }}</a>
+						{{ end }}
+						<span class="head tail">{{ $ section.name }}</span>
+						{{ if section.allow_publish (access) }}
+							<a class="label new" href="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}">{{ $ tra ("yn.board.section.view.form") }}</a>
+						{{ end }}
+					</h2>
+					<div>{{ $ section.description }}</div>
+				</div>
+				{{ let header = section.render_header ("html", router, logger) }}
+					{{ if header != null }}
+						<div class="markup panel-body">
+							{{ unwrap }}
+								{{ $ header }}
+							{{ end }}
+						</div>
+					{{ end }}
+				{{ end }}
+				{{ include ../fragment/yn-board-section-view.deval }}
+				<div class="panel-footer glyph10">
+					{{ if user.id != null }}
+						{{ if section.subscription != null }}
+							<a class="bind-tooltip label subscription-off" href="{{ $ url ("board.subscription.clear", ["section": section.id]) }}" title="{{ $ tra ("yn.board.section.view.subscription.clear.hint") }}">{{ $ tra ("yn.board.section.view.subscription.clear") }}</a>
+						{{ else }}
+							<a class="bind-tooltip label subscription-on" href="{{ $ url ("board.subscription.set", ["section": section.id]) }}" title="{{ $ tra ("yn.board.section.view.subscription.set.hint") }}">{{ $ tra ("yn.board.section.view.subscription.set") }}</a>
+						{{ end }}
+					{{ end }}
+					<a class="label active" href="{{ $ url ("board.forum.active", ["forum": forum.id]) }}">{{ $ tra ("yn.board.section.view.active") }}</a>
+					<a class="label rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.section.view.rss") }}</a>
+					{{ if section.allow_edit (access) }}
+						<a class="label edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.edit") }}</a>
+						<a class="label permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.permission") }}</a>
+						<a class="label merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.merge") }}</a>
+					{{ end }}
+				</div>
+			</div>
+		{{ block tail }}
+			{{ if section.allow_publish (access) }}
+				<div class="page-block">
+					<div class="panel panel-decorate bind-topic-new">
+						<div class="panel-header">{{ $ tra ("yn.board.section.view.form", ["section": section]) }}</div>
+						<div class="panel-body">
+							<form class="form-cascade form-thick bind-raw" action="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}" method="POST">
+								{{ let
+									_alerts = null,
+									_fields = [
+										"name":	["text", true, ["length": 500]],
+										"text":	["textarea", null, ["draft": cat ("board.section.", section.id, ".text"), "markup": "bbcode", "rows": 16]]
+									],
+									_prefix = "yn.board.section.view.form."
+								}}
+									{{ include ../fragment/control-form.deval }}
+								{{ end }}
+								<div class="control glyph10">
+									<input class="button send" type="submit" value="{{ $ tra ("yn.board.section.view.form.submit") }}" />
+									{{ $ " " }}
+									{{ $ tra ("yn.board.section.view.form.disclaimer") }}
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}

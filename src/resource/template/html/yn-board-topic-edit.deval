@@ -1,0 +1,56 @@
+{{ wrap html }}
+	{{ let
+		forum_id = forum.id != section.forum_id && forum.id || null,
+		board_topic_view_url = topic.id != null && url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint]) || null,
+		_forum = forum,
+		_meta = null,
+		_path = cat ([
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint]): tra ("yn.board.section.view", ["section": section])
+		], board_topic_view_url && [
+			board_topic_view_url: tra ("yn.board.topic.view", ["topic": topic, "topic_name": topic.render_name ("text", router, logger)])
+		] || []),
+		_redirect = length (alerts) == 0 && new && url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint]) || null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.theme, "library/markitup/skin.less")
+		],
+		_title = tra ("yn.board.topic.edit", ["source": source, "topic": topic])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.topic.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ topic.id != null && url ("board.topic.edit", ["topic": topic.id]) || (source != null && url ("board.topic.drift", ["source": source.id]) || url ("board.topic.new", ["section": section.id])) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"section":		["complete", true, ["callback": url ("board.section.list", ["_template": "json"]), "placeholder": true]],
+								"positions":	["text", true, ["placeholder": true, "visible": source != null]],
+								"name":			["text", true, ["length": 500]],
+								"weight":		["number", true, ["visible": topic.allow_edit (access)]],
+								"flags":		["flags", false, ["items": ["closed"], "visible": topic.allow_edit (access)]],
+								"text":			["textarea", null, ["length": 30000, "markup": "bbcode", "rows": 16, "visible": source == null && topic.id == null]]
+							],
+							_prefix = "yn.board.topic.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button send" type="submit" value="{{ $ tra ("yn.board.topic.edit.form.submit") }}" />
+							{{ if board_topic_view_url }}
+								{{ $ " " }}
+								<a class="label back" href="{{ $ board_topic_view_url }}">{{ $ tra ("yn.board.topic.edit.back") }}</a>
+							{{ end }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

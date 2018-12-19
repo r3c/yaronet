@@ -1,0 +1,49 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [url ("home"): tra ("yn.home")],
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.board.forum.list")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="page panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.forum.list.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("board.forum.list") }}" method="GET" autocomplete="off">
+						{{ let
+							_alerts = null,
+							_fields = [
+								"query":	["complete", true, ["callback": url ("board.forum.list", ["_template": "json"]), "focus": true, "length": 50]]
+							],
+							_prefix = "yn.board.forum.list.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button search" type="submit" value="{{ $ tra ("yn.board.forum.list.form.submit") }}" />
+						</div>
+					</form>
+					<div class="grid">
+						<div class="head s1"></div>
+						<div class="head s4">{{ $ tra ("yn.board.forum.list.name") }}</div>
+						<div class="head s1">{{ $ tra ("yn.board.forum.list.alias") }}</div>
+						<div class="head s6">{{ $ tra ("yn.board.forum.list.description") }}</div>
+						{{ for forum in forums }}
+							<div class="cell s1">
+								<div class="panel-icon">
+									<img alt="logo" src="{{ $ forum.is_illustrated && url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) || cat (static.layout, "glyph/forum.png") }}" height="32" width="32" />
+								</div>
+							</div>
+							<div class="cell s4" data-title="{{ $ tra ("yn.board.forum.list.name") }}"><a href="{{ $ url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]) }}">{{ $ tra ("yn.board.forum.list.name.value", ["forum": forum]) }}</a></div>
+							<div class="cell s1" data-title="{{ $ tra ("yn.board.forum.list.alias") }}">{{ $ tra ("yn.board.forum.list.alias.value", ["forum": forum]) }}</div>
+							<div class="cell s6" data-title="{{ $ tra ("yn.board.forum.list.description") }}">{{ $ tra ("yn.board.forum.list.description.value", ["forum": forum]) }}</div>
+						{{ end }}
+					</div>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

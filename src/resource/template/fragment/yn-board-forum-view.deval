@@ -1,0 +1,73 @@
+{{ $ "" /* FIXME [html-table] */ }}
+<table class="blocks">
+	{{ let
+		ranks = map (blocks, (block) => block.rank),
+		rank_bottom = max (ranks),
+		rank_top = min (ranks)
+	}}
+		{{ for index, block in blocks }}
+			{{ let section = block.section }}
+				<tr id="block-{{ $ block.rank }}">
+					{{ if section != null }}
+						<td class="blank"></td>
+						<td class="status">
+							<div class="{{ $ section.allow_view (access.localize (section)) && "public" || "private" }} {{ $ block.section.read && "stale" || "fresh" }}"></div>
+						</td>
+						<td class="link">
+							<a class="name{{ $ section.subscription != null && " right subscription" }}" href="{{ $ url ("board.section.view", ["forum": forum.id != section.forum_id && forum.id || null, "section": section.id, "section_hint": section.hint]) }}">{{ $ section.name }}</a>
+							{{ if (+)edit }}
+								<span class="glyph10">
+									<a class="label edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.edit") }}</a>
+									<a class="label permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.permission") }}</a>
+									<a class="label merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.merge") }}</a>
+								</span>
+							{{ else }}
+								<div>
+									{{ $ section.description }}
+								</div>
+							{{ end }}
+					{{ else }}
+						<td class="split" colspan="{{ $ (+)edit && 3 || 5 }}">
+							{{ unwrap }}
+								{{ $ block.render_text ("html", router, logger) }}
+							{{ end }}
+					{{ end }}
+					{{ if (+)edit }}
+						<div class="control glyph10">
+							{{ for way, move in ["up": default (blocks[index - 1].rank, rank_top), "down": default (blocks[index + 1].rank, rank_bottom), "top": rank_top, "bottom": rank_bottom] }}
+								{{ if block.rank != move }}
+									<form class="form-link glyph10" action="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}" method="POST">
+										<input name="move" type="hidden" value="{{ $ move }}" />
+										<input class="label {{ $ way }}" type="submit" value="{{ $ tra (cat ("yn.board.forum.view.block.move-", way)) }}" />
+									</form>
+								{{ end }}
+							{{ end }}
+							<a class="label edit" href="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.edit") }}</a>
+							<a class="label remove" href="{{ $ url ("board.block.delete", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.delete") }}</a>
+						</div>
+					{{ end }}
+					</td>
+					{{ if section != null && !(+)edit }}
+						<td class="info">
+							{{ $ tra ("yn.board.forum.view.section.info", ["section": section]) }}
+						</td>
+						<td class="last symbol">
+							<span class="begin">{{ $ tra ("yn.board.forum.view.section.last_time", ["time": default (section.last_topic.last_time, 0)]) }}</span>
+							<strong class="next">{{ $ tra ("yn.board.forum.view.section.last_profile", ["profile": section.last_topic.last_profile]) }}</strong>
+						</td>
+					{{ end }}
+				</tr>
+			{{ end }}
+		{{ empty }}
+			{{ if (+)!edit && forum.allow_edit (access) }}
+				<tr>
+					<td class="link" colspan="{{ $ (+)edit && 4 || 5 }}">
+						{{ unwrap }}
+							{{ $ php ("nl2br") (html (tra ("yn.board.forum.view.empty"))) }}
+						{{ end }}
+					</td>
+				</tr>
+			{{ end }}
+		{{ end }}
+	{{ end }}
+</table>

@@ -1,0 +1,71 @@
+{{ $ header ("Content-Type", cat ("text/html; charset=", encoding)) }}
+{{ $ header ("Cache-Control", "no-cache, no-store, must-revalidate") }}
+{{ $ header ("Expires", "0") }}
+{{ $ header ("Pragma", "no-cache") }}
+{{ if _redirect != null }}
+	{{ $ header ("Location", url_absolute (_redirect)) }}
+{{ else }}
+	<!DOCTYPE html>
+	<html class="{{ $ user.get_option ("html.native") && "light" }}" lang="{{ $ language }}" itemscope itemtype="http://schema.org/WebSite">
+		<head>
+			<meta charset="{{ $ encoding }}" />
+			<title>{{ $ tra ("base", ["title": _title]) }}</title>
+			<link href="{{ $ cat (static.layout, "glyph/favicon.ico") }}" rel="icon" />
+			<meta name="robots" content="noodp" />
+			<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+			<meta itemprop="name" content="{{ $ tra ("base.name") }}" />
+			<script type="text/javascript" src="{{ $ cat (static.global, "library/jquery/jquery-3.1.1.js") }}"></script>
+			{{ let _static = cat ([
+				cat (static.global, "library/fancybox/jquery.fancybox.css"),
+				cat (static.global, "library/fancybox/jquery.fancybox.js"),
+				cat (static.global, "library/highlight/highlight.pack.js"),
+				cat (static.global, "library/highlight/styles/", (template == "html.obsidian" || template == "html.tifr") && "zenburn" || "github" ,".css"),
+				cat (static.global, "library/jquery.cookie/jquery.cookie.js"),
+				cat (static.global, "library/jquery-ui/jquery-ui.css"),
+				cat (static.global, "library/jquery-ui/jquery-ui.js"),
+
+				cat (static.layout, "markup.js"),
+
+				cat (static.theme, "base.less"),
+				cat (static.theme, "markup.less")
+			], _static) }}
+				{{ for path in _static }}
+					{{ let type = php ("pathinfo") (path, 4) }}
+						{{ if type == "css" }}
+							<link rel="stylesheet" type="text/css" href="{{ $ path }}" />
+						{{ elseif type == "less" && !use_less }}
+							<link rel="stylesheet" type="text/css" href="{{ $ php ("preg_replace") ("/\\.less(\\?|$)/", ".css$1", path) }}" />
+						{{ elseif type == "less" }}
+							<link rel="stylesheet/less" type="text/css" href="{{ $ path }}" />
+						{{ elseif type == "js" }}
+							<script type="text/javascript" src="{{ $ path }}" defer></script>
+						{{ else }}
+							{{ $ crash }}
+						{{ end }}
+					{{ end }}
+				{{ end }}
+			{{ end }}
+			{{ if use_less }}
+				<script src="{{ $ cat (static.global, "library/less/less.min.js") }}" type="text/javascript" data-env="development" data-log-level="1"></script>
+			{{ end }}
+			{{ if _meta.canonical }}
+				<link rel="canonical" href="{{ $ url_absolute (_meta.canonical) }}" />
+			{{ end }}
+			{{ if _meta.next }}
+				<link rel="next" href="{{ $ url_absolute (_meta.next) }}" />
+			{{ end }}
+			{{ if _meta.prev }}
+				<link rel="prev" href="{{ $ url_absolute (_meta.prev) }}" />
+			{{ end }}
+			{{ if _meta.rss }}
+				<link rel="alternate" href="{{ $ url_absolute (_meta.rss) }}" type="application/rss+xml" title="RSS" />
+			{{ end }}
+			{{ if _meta.description }}
+				<meta name="description" content="{{ $ _meta.description }}" />
+			{{ end }}
+		</head>
+		<body>
+			{{ label body }}
+		</body>
+	</html>
+{{ end }}

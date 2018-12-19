@@ -1,0 +1,111 @@
+
+.glyph10 {
+	.active,
+	.active-first {
+		background-image:	url('glyph/10/bull-navy.png');
+	}
+
+	.active-other,
+	.active-self {
+		background-image:	url('glyph/10/bull-blue.png');
+	}
+
+	.fresh,
+	.fresh-other {
+		background-image:	url('glyph/10/bull-yellow.png');
+	}
+
+	.fresh-first {
+		background-image:	url('glyph/10/bull-gold.png');
+	}
+
+	.fresh-self {
+		background-image:	url('glyph/10/bull-orange.png');
+	}
+
+	.less {
+		background-image:	url('glyph/10/minus.png');
+	}
+
+	.more {
+		background-image:	url('glyph/10/plus.png');
+	}
+
+	.new,
+	.new-first {
+		background-image:	url('glyph/10/bull-green.png');
+	}
+
+	.new-other,
+	.new-self {
+		background-image:	url('glyph/10/bull-lime.png');
+	}
+
+	.peek-drop {
+		background-image:	url('glyph/10/cross.png');
+	}
+
+	.peek-mark {
+		background-image:	url('glyph/10/star.png');
+	}
+
+	.peek-quote {
+		background-image:	url('glyph/10/bubble-yellow.png');
+	}
+
+	.peek-read {
+		background-image:	url('glyph/10/tick.png');
+	}
+
+	.peek-reply {
+		background-image:	url('glyph/10/bubble.png');
+	}
+
+	.stale,
+	.stale-other {
+		background-image:	url('glyph/10/bull-grey.png');
+	}
+
+	.stale-self {
+		background-image:	url('glyph/10/bull-black.png');
+	}
+
+	.update {
+		background-image:	url('glyph/10/arrow-rotate.png');
+	}
+}
+
+div.bookmarks {
+	div.refresh {
+		opacity:	0.25;
+	}
+
+	div.sources {
+		display:	flex;
+		flex-flow:	row wrap;
+
+		div.source {
+			flex:		1 0;
+			overflow:	hidden;
+			min-width:	300px;
+
+			ul.topics {
+				padding:	0 4px;
+				margin:		8px 0;
+				list-style:	none;
+
+				div.topic {
+					display:		flex;
+					align-items:	center;
+					line-height:	200%;
+					white-space:	nowrap;
+
+					a.label {
+						overflow:		hidden;
+						text-overflow:	ellipsis;
+					}
+				}
+			}
+		}
+	}
+}

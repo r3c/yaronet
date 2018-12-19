@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.board.topic.">
+		<string key="delete">Supprimer</string>
+		<section prefix="delete.">
+			<string key="form.alert">Sujet supprimé.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.disclaimer" alias="yn.board.profile.delete.form.disclaimer" />
+			<string key="form.submit">Confirmer</string>
+			<string key="type">Confirmation de suppression de sujet</string>
+			<string key="warning">Veuillez confirmer la suppression du sujet "{name}" ; cette opération va entrainer la suppression de tous les messages qu'il contient.</string>
+		</section>
+
+		<string key="edit">{if:{topic.id},Modifier un,Poster un nouveau} sujet{if:{source.id}, (dérivé)}</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="drift">{user.login} a souhaité poursuivre une discussion dérivée dans un nouveau sujet. La discussion initiale a eu lieu dans le sujet {source} tandis que la discussion dérivée continue dans le sujet {topic} où les messages en rapport ont été copiés.</string>
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.name-length">Votre titre est trop court ou trop long, il doit contenir entre 1 et 200 caractères.</string>
+			<string key="form.alert.positions-empty">Vous n'avez saisi aucun message à copier, merci d'en choisir au minimum un.</string>
+			<string key="form.alert.positions-incomplete">Certains des messages que vous avez saisi n'existent pas dans le sujet d'origine.</string>
+			<string key="form.alert.positions-invalid">La liste des messages à copier est invalide, veuillez vérifier que la syntaxe est correcte et que le nombre de messages ne dépasse pas 30.</string>
+			<string key="form.alert.post-caution-length" alias="yn.board.post.edit.form.alert.caution-length" />
+			<string key="form.alert.post-cost" alias="base.alert.cost" />
+			<string key="form.alert.post-create-profile-null" alias="base.alert.default" />
+			<string key="form.alert.post-sql" alias="base.alert.sql" />
+			<string key="form.alert.post-state-invalid" alias="yn.board.post.edit.form.alert.state-invalid" />
+			<string key="form.alert.post-text-length" alias="yn.board.post.edit.form.alert.text-length" />
+			<string key="form.alert.reference-cost" alias="base.alert.cost" />
+			<string key="form.alert.reference-post-null" alias="base.alert.default" />
+			<string key="form.alert.reference-sql" alias="base.alert.sql" />
+			<string key="form.alert.reference-topic-null" alias="base.alert.default" />
+			<string key="form.alert.section-access">Vous devez avoir la permission de créer des sujets dans la nouvelle section parente pour y déplacer un sujet.</string>
+			<string key="form.alert.section-null" alias="base.alert.default" />
+			<string key="form.alert.section-unknown">La section est inconnue, vérifiez que son nom et celui du forum auquel elle appartient sont bien orthographiés.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.user-active">Votre compte n'est pas encore activé, vous ne pouvez pas créer de sujet.</string>
+			<string key="form.alert.weight-invalid" alias="base.alert.default" />
+			<string key="form.field.flags">Options :</string>
+			<string key="form.field.flags.item.closed">Sujet clos</string>
+			<string key="form.field.name">Titre du sujet* :</string>
+			<string key="form.field.name.hint">Vous pouvez mettre votre titre en **gras** ou en //italique//.</string>
+			<string key="form.field.positions">Messages à reprendre* :</string>
+			<string key="form.field.positions.hint">Messages à copier du sujet d'origine (30 maximum).</string>
+			<string key="form.field.positions.placeholder">Indices des messages séparés par des virgules ou intervalle séparé par un tiret ; exemples : 3,5,7 ou 3-8</string>
+			<string key="form.field.section">Section parente* :</string>
+			<string key="form.field.section.hint">Section à laquelle ce sujet appartient.</string>
+			<string key="form.field.section.placeholder">Noms du forum et de la section séparés par une virgule ; exemple : mon forum, ma section</string>
+			<string key="form.field.weight">Ordre d'affichage :</string>
+			<string key="form.field.weight.hint">Les sujets avec une grande valeur sont placés en tête de liste.</string>
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="redirect">Sujet envoyé, cliquez ici pour continuer.</string>
+			<string key="type">Formulaire d'édition de sujet</string>
+		</section>
+
+		<string key="view">{topic_name}{ifset:{page}, - Page {page}}</string>
+		<section prefix="view.">
+			<string key="cross">Il reste au moins un message non lu dans ce sujet. Cliquez à nouveau pour poster, ou lisez le prochain message :</string>
+			<string key="cross.peek">message non lu</string>
+			<string key="bookmark.clear">Ne plus suivre ce sujet</string>
+			<string key="bookmark.clear.hint">Cesser de suivre les nouveaux messages de ce sujet</string>
+			<string key="bookmark.set">Suivre ce sujet</string>
+			<string key="bookmark.set.hint">Suivre les nouveaux messages de ce sujet dans la page "mes sujets"</string>
+			<string key="delete">Supprimer</string>
+			<string key="delete.hint">Supprimer ce sujet et ses messages</string>
+			<string key="description">{topic_name} - {topic.section.name}</string>
+			<string key="drift">Dériver</string>
+			<string key="drift.hint">Continuer une discussion parallèle dans un nouveau sujet</string>
+			<string key="edit">Modifier</string>
+			<string key="edit.hint">Renommer, déplacer ou modifier ce sujet</string>
+			<string key="form">Répondre à ce sujet</string>
+			<string key="form.disclaimer" alias="yn.board.post.edit.form.disclaimer" />
+			<string key="form.field.text.placeholder">Avant de répondre, veuillez noter que vous n'êtes pas sur la dernière page de ce sujet.</string>
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="post.copy">Copier</string>
+			<string key="post.copy.hint">Copier le texte sélectionné pour l'insérer dans une citation</string>
+			<string key="post.copy.success">Texte copié ! Utilisez la fonction "insérer" de l'éditeur de message pour le coller.</string>
+			<string key="post.created">{case:{lag:86400,{time}},0,Aujourd'hui,1,Hier,Le {date:{time},d/m/Y}} à {date:{time},H:i}</string>
+			<string key="post.edit">Editer</string>
+			<string key="post.edit.accept">Valider</string>
+			<string key="post.edit.cancel">Annuler</string>
+			<string key="post.edit.hint">Modifier ce message</string>
+			<string key="post.edited">Edité par {profile.user.login} {case:{lag:86400,{time}},0,aujourd'hui,1,hier,le {date:{time},d/m/Y}} à {date:{time},H:i}</string>
+			<string key="post.ignore">Ignorer</string>
+			<string key="post.ignore.confirm">Êtes-vous sûr de vouloir ignorer ce membre et masquer ses messages ? Vous pouvez annuler ce choix à tout moment.</string>
+			<string key="post.ignore.hint">Ignorer l'auteur de ce message</string>
+			<string key="post.mark" alias="yn.board.bookmark.list.mark" />
+			<string key="post.mark.hint" alias="yn.board.bookmark.list.mark.hint" />
+			<string key="post.message" alias="yn.account.message.list.message" />
+			<string key="post.message.hint" alias="yn.account.message.list.message.hint" />
+			<string key="post.peek">Voir</string>
+			<string key="post.peek.hint">Voir le contenu de ce message</string>
+			<string key="post.position">Position</string>
+			<string key="post.position.hint">Clic droit "copier l'adresse du lien" pour pointer ici</string>
+			<string key="post.profile" alias="yn.account.message.list.profile" />
+			<string key="post.profile.hint" alias="yn.account.message.list.profile.hint" />
+			<string key="post.quote">Citer</string>
+			<string key="post.quote.hint">Répondre en citant ce message</string>
+			<string key="post.report">Signaler</string>
+			<string key="post.report.hint">Alerter un modérateur à propos de ce message</string>
+			<string key="post.unignore">Ne plus ignorer</string>
+			<string key="post.unignore.hint">Ne plus ignorer l'auteur de ce message</string>
+			<string key="reply">Répondre</string>
+			<string key="reply.hint">Ajouter une nouvelle réponse à ce sujet</string>
+			<string key="report.accept">Signaler</string>
+			<string key="report.notice">Si ce message ne vous semble pas respecter la charte du forum, vous pouvez le signaler aux modérateurs en saisissant une justification puis en cliquant sur "Signaler". Attention : tout abus sera sanctionné.</string>
+			<string key="report.placeholder">Veuillez indiquer la raison de cette alerte.</string>
+			<string key="type">Sujet</string>
+		</section>
+	</section>
+</locale>

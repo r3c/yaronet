@@ -1,0 +1,40 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.profile.list"): tra ("yn.board.profile.list")
+		],
+		_redirect = length (alerts) == 0 && (target || url ("home")) || null,
+		_static = [],
+		_title = tra ("yn.account.user.signin")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.account.user.signin.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("account.user.signin") }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"login":	["text", false, ["focus": true]],
+								"password":	["password", false],
+								"expire":	["radio", false, ["items": [8640000, 86400, "session"]]]
+							],
+							_prefix = "yn.account.user.signin.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<input name="target" type="hidden" value="{{ $ default (request.target, target) }}" />
+						<div class="control glyph10">
+							<input class="button send" type="submit" value="{{ $ tra ("yn.account.user.signin.form.submit") }}" />
+							<a class="label back" href="{{ $ url ("home") }}">{{ $ tra ("yn.account.user.signin.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

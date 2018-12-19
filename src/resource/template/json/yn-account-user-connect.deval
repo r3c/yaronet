@@ -1,0 +1,4 @@
+{{ extend base.deval }}
+{{ block body }}
+	{{ $ json (["alerts": alerts]) }}
+{{ end }}

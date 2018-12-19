@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.media.language.">
+		<section prefix="list.">
+			<string key="form.field.language">Language for syntax highlighting*:</string>
+			<string key="form.field.language.item.apache">Apache</string>
+			<string key="form.field.language.item.bash">Bash</string>
+			<string key="form.field.language.item.cs">C#</string>
+			<string key="form.field.language.item.cpp">C++</string>
+			<string key="form.field.language.item.css">CSS</string>
+			<string key="form.field.language.item.coffeescript">CoffeeScript</string>
+			<string key="form.field.language.item.diff">Diff</string>
+			<string key="form.field.language.item.html">HTML</string>
+			<string key="form.field.language.item.http">HTTP</string>
+			<string key="form.field.language.item.ini">Ini</string>
+			<string key="form.field.language.item.json">JSON</string>
+			<string key="form.field.language.item.java">Java</string>
+			<string key="form.field.language.item.javascript">JavaScript</string>
+			<string key="form.field.language.item.makefile">Makefile</string>
+			<string key="form.field.language.item.markdown">Markdown</string>
+			<string key="form.field.language.item.nginx">Nginx</string>
+			<string key="form.field.language.item.objectivec">Objective C</string>
+			<string key="form.field.language.item.php">PHP</string>
+			<string key="form.field.language.item.perl">Perl</string>
+			<string key="form.field.language.item.python">Python</string>
+			<string key="form.field.language.item.ruby">Ruby</string>
+			<string key="form.field.language.item.sql">SQL</string>
+			<string key="form.field.language.item.xml">XML</string>
+			<string key="form.field.source.placeholder">Your source code</string>
+			<string key="form.submit">Insert</string>
+		</section>
+	</section>
+</locale>

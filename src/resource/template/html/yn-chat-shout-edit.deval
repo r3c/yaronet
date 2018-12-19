@@ -1,0 +1,36 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [url ("home"): tra ("yn.home")],
+		_redirect = length (alerts) == 0 && url ("home") || null,
+		_static = captcha.js () && [captcha.js ()] || [],
+		_title = tra ("yn.chat.shout.edit", ["shout": shout])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.chat.shout.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("chat.shout.new") }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"nick":		["text", false, ["length": 50, "visible": user.id == null]],
+								"captcha":	["captcha", null, ["visible": address.is_public () && user.id == null]],
+								"text":		["text", null, ["length": 200, "placeholder": true]]
+							],
+							_prefix = "yn.chat.shout.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button send" type="submit" value="{{ $ tra ("yn.chat.shout.edit.form.submit") }}" />
+							<a class="label back" href="{{ $ url ("home") }}">{{ $ tra ("yn.chat.shout.edit.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

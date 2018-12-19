@@ -1,0 +1,111 @@
+{{ let id = php ("uniqid") () }}
+	<div class="container" id="{{ $ id }}">
+		{{ if length (_alerts) > 0 }}
+			<div class="notice notice-fail">
+				<ul>
+					{{ for alert in alerts }}
+						<li>{{ $ tra (cat (_prefix, "alert.", alert)) }}</li>
+					{{ end }}
+				</ul>
+			</div>
+		{{ elseif _alerts != null }}
+			<div class="notice notice-ok">
+				{{ $ tra (cat (_prefix, "alert")) }}
+			</div>
+		{{ end }}
+		{{ for name, field in _fields }}
+			{{ let
+				label = length (field) < 2 && true || field[1],
+				options = field[2],
+				type = default (field[0], "text"),
+				value = request[name]
+			}}
+				{{ if default (options.visible, true) }}
+					{{ if type == "group" }}
+						<div class="group">
+							<h2>{{ $ tra (cat ((-)_prefix, "group.", name)) }}</h2>
+							{{ if label }}
+								<p>{{ $ tra (cat ((-)_prefix, "group.", name, ".hint")) }}</p>
+							{{ end }}
+						</div>
+					{{ else }}
+						<div class="field{{ $ options.large && " large" }}">
+							{{ if label != null }}
+								<div class="caption">
+									<label>{{ $ tra (cat ((-)_prefix, "field.", name)) }}</label>
+									{{ if label }}
+										<span>{{ $ tra (cat ((-)_prefix, "field.", name, ".hint")) }}</span>
+									{{ end }}
+								</div>
+							{{ end }}
+
+							<div class="value">
+								{{ if type == "captcha" }}
+									{{ unwrap }}
+										{{ $ captcha.input () }}
+									{{ end }}
+								{{ elseif type == "complete" }}
+									<input name="{{ $ name }}" type="text" value="{{ $ value }}" data-complete="1"{{ include control-form-extra.deval }} />
+								{{ elseif type == "custom" }}
+									{{ unwrap }}
+										{{ $ php ("str_replace") (["{{NAME}}"], [html (name)], options.contents) }}
+									{{ end }}
+								{{ elseif type == "date" }}
+									<input name="{{ $ name }}" type="date" value="{{ $ value }}"{{ include control-form-extra.deval }} />
+								{{ elseif type == "flags" }}
+									{{ for item in options.items }}<input name="{{ $ name }}[{{ $ item }}]" type="checkbox"{{ $ value[item] && " checked=\"checked\"" }} value="1" /> {{ $ tra (cat (_prefix, "field.", name, ".item.", item)) }} {{ end }}
+									<input name="{{ $ name }}[]" type="hidden" value="0" />
+								{{ elseif type == "image" }}
+									{{ $ tra ("control-form.image.url") }}
+									<input name="{{ $ name }}-url" type="text" value="{{ $ request[cat (name, "-url")] }}"{{ include control-form-extra.deval }} />
+									{{ $ tra ("control-form.image.file") }}
+									<input name="{{ $ name }}-file" type="file" />
+									{{ if options.items != null }}
+										{{ $ tra ("control-form.image.else") }}
+										{{ for item in options.items }}
+											{{ $ " " }}
+											<input name="{{ $ name }}" type="radio" value="{{ $ item }}" /> {{ $ tra (cat (_prefix, "field.", name, ".else.item.", item)) }}
+										{{ end }}
+										{{ $ " " }}
+										<input name="{{ $ name }}" type="radio" value="" checked="checked" /> {{ $ tra ("control-form.image.else.keep") }}
+									{{ end }}
+								{{ elseif type == "number" }}
+									<input name="{{ $ name }}" type="number" value="{{ $ value }}"{{ include control-form-extra.deval }} />
+								{{ elseif type == "password" }}
+									<input name="{{ $ name }}" type="password"{{ include control-form-extra.deval }} />
+								{{ elseif type == "radio" }}
+									{{ for item in options.items }}<input name="{{ $ name }}" type="radio" value="{{ $ item }}"{{ $ str (item) == str (value) && " checked=\"checked\"" }} /> {{ $ tra (cat (_prefix, "field.", name, ".item.", item)) }} {{ end }}
+								{{ elseif type == "select" }}
+									<select name="{{ $ name }}">
+										{{ for item in options.items }}
+											<option value="{{ $ item }}"{{ $ str (item) == str (value) && " selected=\"selected\"" }}>{{ $ tra (cat (_prefix, "field.", name, ".item.", item)) }}</option>
+										{{ end }}
+									</select>
+								{{ elseif type == "text" }}
+									<input name="{{ $ name }}" type="text" value="{{ $ value }}"{{ include control-form-extra.deval }} />
+								{{ elseif type == "textarea" }}
+									<textarea name="{{ $ name }}" rows="{{ $ default (options.rows, 2) }}"{{ include control-form-extra.deval }}>{{ $ value }}</textarea>
+								{{ end }}
+							</div>
+						</div>
+					{{ end }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
+		<script type="text/javascript">
+			{{ unwrap }}
+				$(function () {
+					var parent = $('#{{ $ jstr (id) }}');
+
+					if ($.markItUp !== undefined)
+						parent.find('[data-markup]').markItUp({{ include control-form-markup-bbcode.deval }});
+
+					parent.find('[data-focus]').focus();
+
+					yn.controlFormComplete(parent.find('[data-complete]'));
+					yn.controlFormDraftAttach(parent.find('[data-draft]'));
+				});
+			{{ end }}
+		</script>
+	</div>
+{{ end }}

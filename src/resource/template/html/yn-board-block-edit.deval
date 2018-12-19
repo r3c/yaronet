@@ -1,0 +1,67 @@
+{{ wrap html }}
+	{{ let
+		board_forum_organize_url = url ("board.forum.organize", ["forum": forum.id]),
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			board_forum_organize_url: tra ("yn.board.forum.organize", ["forum": forum])
+		],
+		_redirect = length (alerts) == 0 && board_forum_organize_url || null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.theme, "library/markitup/skin.less")
+		],
+		_title = tra ("yn.board.block.edit", ["block": block])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.block.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ block.rank != null && url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) || url ("board.block.new", ["forum": block.forum_id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"section":	["complete", true, ["callback": url ("board.section.list", ["_template": "json"]), "placeholder": true, "visible": request.section != null]],
+								"text":		["textarea", true, ["length": 30000, "markup": "bbcode", "rows": 4, "visible": request.section == null]],
+								"move":		["number", true, ["visible": block.rank != null]]
+							],
+							_prefix = "yn.board.block.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.custom") }}" />
+							<a class="label back" href="{{ $ board_forum_organize_url }}">{{ $ tra ("yn.board.block.edit.back") }}</a>
+						</div>
+					</form>
+					{{ if request.text == null && block.rank == null && length (sections) > 0 }}
+						<form class="form-cascade form-thick" action="{{ $ url ("board.block.new", ["forum": block.forum_id]) }}" method="POST">
+							<div class="field">
+								<div class="caption">
+									<label for="section">{{ $ tra ("yn.board.block.edit.form.field.restore") }}</label>
+									<span>{{ $ tra ("yn.board.block.edit.form.field.restore.hint") }}</span>
+								</div>
+								<div class="value">
+									<select name="section">
+										{{ for section in sections }}
+											<option value="{{ $ section.get_unique () }}">{{ $ section.name }}</option>
+										{{ end }}
+									</select>
+								</div>
+							</div>
+							<div class="control glyph10">
+								<input class="button send" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.restore") }}" />
+							</div>
+						</form>
+					{{ end }}
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

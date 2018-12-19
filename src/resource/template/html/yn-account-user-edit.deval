@@ -1,0 +1,75 @@
+{{ wrap html }}
+	{{ let
+		profile_url = edit.id != null && url ("board.profile.view", ["profile": edit.id]) || null,
+		_forum = null,
+		_meta = null,
+		_path = cat ([
+			url ("home"): tra ("yn.home"),
+			url ("board.profile.list"): tra ("yn.board.profile.list")
+		], profile_url && [
+			profile_url: tra ("yn.board.profile.view", ["user": edit])
+		] || []),
+		_redirect = null,
+		_static = cat (
+			captcha.js () && [captcha.js ()] || [], [
+			cat (static.layout, "yn-account-user.js"),
+			cat (static.layout, "yn-account-user.less")
+		]),
+		_title = tra ("yn.account.user.edit", ["user": edit])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.account.user.edit.type") }}</div>
+				<div class="panel-body">
+					{{ if edit.id == null }}
+						<h2>{{ $ tra ("yn.account.user.edit.create") }}</h2>
+						{{ unwrap }}
+							<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.account.user.edit.create.help"))) }}</p>
+						{{ end }}
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ edit.id != null && url ("account.user.edit", ["user": edit.id]) || url ("account.user.signup", ["forum": forum_id]) }}" method="POST" autocomplete="off">
+						{{ let
+							languages = php ("yN\\Engine\\Text\\Internationalization::$languages"),
+							templates = php ("yN\\Engine\\Text\\Display::$options"),
+							_alerts = alerts,
+							_fields = [
+								"identity":		["group", true],
+								"login":		["text", true, ["length": 50]],
+								"email":		["text", true, ["length": 100]],
+								"captcha":		["captcha", true, ["visible": address.is_public () && edit.id == null]],
+								"admin":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],
+								"disabled":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],
+								"active":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],
+								"authenticate": ["group", true],
+								"password": 	["password", true, ["visible": edit.id != null]],
+								"password-1":	["password", true],
+								"password-2":	["password", true],
+								"render":		["group", true, ["visible": edit.id != null]],
+								"language":		["select", false, ["items": languages, "visible": edit.id != null]],
+								"template":		["select", false, ["items": templates, "visible": edit.id != null]],
+								"flags":		["flags", false, ["items": ["uniform"], "visible": edit.id != null]],
+								"custom":		["group", true, ["visible": edit.id != null]],
+								"options":		["flags", false, ["visible": edit.id != null, "items": [
+									"html.native",
+									"html.nohead",
+									"html.nosign"
+								]]]
+							],
+							_prefix = "yn.account.user.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.account.user.edit.form.submit") }}" />
+							{{ if profile_url }}
+								{{ $ " " }}
+								<a class="label back" href="{{ $ profile_url }}">{{ $ tra ("yn.account.user.edit.back") }}</a>
+							{{ end }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

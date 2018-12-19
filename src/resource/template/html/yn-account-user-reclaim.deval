@@ -1,0 +1,40 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.profile.list"): tra ("yn.board.profile.list"),
+			url ("board.profile.view", ["profile": reclaim.id]): tra ("yn.board.profile.view", ["user": reclaim])
+		],
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.account.user.reclaim", ["user": reclaim])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.account.user.reclaim.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("account.user.reclaim", ["user": reclaim.id]) }}" method="POST" autocomplete="off">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"reclaim":		["group", true],
+								"code":			["text", true, ["focus": true]],
+								"password-1":	["password", true],
+								"password-2":	["password", true]
+							],
+							_prefix = "yn.account.user.reclaim.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button send" type="submit" value="{{ $ tra ("yn.account.user.reclaim.form.submit") }}" />
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

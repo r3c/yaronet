@@ -1,0 +1,49 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			<form class="form-cascade form-thick bind-language">
+				{{ let
+					languages = [
+						"apache",
+						"bash",
+						"cs",
+						"cpp",
+						"css",
+						"coffeescript",
+						"diff",
+						"html",
+						"http",
+						"ini",
+						"json",
+						"java",
+						"javascript",
+						"makefile",
+						"markdown",
+						"nginx",
+						"objectivec",
+						"php",
+						"perl",
+						"python",
+						"ruby",
+						"sql",
+						"xml"
+					],
+					_alerts = null,
+					_fields = [
+						"language":	["select", false, ["items": languages]],
+						"source":	["textarea", null, ["ignorespell": true, "large": true, "length": 30000, "placeholder": true, "rows": 4]]
+					],
+					_prefix = "yn.media.language.list.form."
+				}}
+					{{ include ../fragment/control-form.deval }}
+				{{ end }}
+				<div class="control glyph10 bind-control">
+					<input class="button edit" type="submit" value="{{ $ tra ("yn.media.language.list.form.submit") }}" />
+				</div>
+			</form>
+		{{ end }}
+	{{ end }}
+{{ end }}

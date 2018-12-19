@@ -1,0 +1,160 @@
+
+@post-back:			mix(@frame-back, @input-back, 40%);
+@post-border:		@input-border;
+@post-text:			mix(@main-text, @post-back, 60%);
+
+@post-recall-back:	@frame-back;
+@post-recall-text:	mix(@main-text, @post-recall-back, 60%);
+
+.clear () {
+	&:after {
+		content:	'';
+		display:	block;
+		clear:		both;
+	}
+}
+
+.glyph10 {
+	.accept {
+		background-image:	url('../../glyph/10/tick.png');
+	}
+
+	.bookmark-off {
+		background-image:	url('../../glyph/10/star.png');
+	}
+
+	.bookmark-on {
+		background-image:	url('../../glyph/10/star-empty.png');
+	}
+
+	.cancel {
+		background-image:	url('../../glyph/10/cross.png');
+	}
+
+	.copy {
+		background-image:	url('../../glyph/10/clipboard.png');
+	}
+
+	.delete {
+		background-image:	url('../../glyph/10/delete.png');
+	}
+
+	.drift {
+		background-image:	url('../../glyph/10/fork.png');
+	}
+
+	.gender0 {
+		background-image:	url('../../glyph/10/gender0.png');
+	}
+
+	.gender1 {
+		background-image:	url('../../glyph/10/gender1.png');
+	}
+
+	.gender2 {
+		background-image:	url('../../glyph/10/gender2.png');
+	}
+
+	.ignore {
+		background-image:	url('../../glyph/10/medal.png');
+	}
+
+	.quote {
+		background-image:	url('../../glyph/10/bubble-yellow.png');
+	}
+
+	.reply {
+		background-image:	url('../../glyph/10/bubble.png');
+	}
+
+	.report {
+		background-image:	url('../../glyph/10/flag-yellow.png');
+	}
+}
+
+.cross {
+	color:			@accent-text;
+	font-weight:	bold;
+}
+
+div.posts {
+	div.post {
+		margin-bottom:	16px;
+
+		div.content {
+			padding:			0 6px 0 14px;
+			margin-right:		28px;
+			background-color:	@post-back;
+			background-image:	linear-gradient(to right, @tertiary 0%, @frame-back 90%, @frame-border 100%);
+			background-repeat:	repeat-y;
+			background-size:	8px auto;
+			border-color:		@post-border;
+			border-style:		none solid none none;
+			border-width:		1px;
+
+			@media screen and (max-width: 600px) {
+				margin-right:		0;
+				border-right-style:	none;
+			}
+
+			div.action {
+				padding:	0 0 4px 0;
+			}
+
+			div.bottom {
+				.clear ();
+
+				padding:		4px 0;
+				border-color:	@post-border;
+				border-style:	solid none none none;
+				border-width:	1px;
+				color:			@post-text;
+
+				a {
+					color:	darken(@post-text, 5%);
+				}
+
+				img.avatar {
+					float:	left;
+					width:	50px;
+					margin:	0 8px 2px 0;
+				}
+			}
+
+			div.origin {
+				padding:		4px 0;
+				border-color:	@post-border;
+				border-style:	none none solid none;
+				border-width:	1px;
+				color:			@post-text;
+
+				.time {
+					float:	right;
+				}
+			}
+
+			div.text {
+				padding:	12px 0;
+				font-size:	110%;
+			}
+		}
+
+		div.panel-header a.position::before {
+			content:	'./';
+		}
+
+		span.admin {
+			float:	right;
+		}
+	}
+
+	div.recall div.content {
+		background-color:	@post-recall-back;
+		color:				@post-recall-text;
+	}
+
+	div.state1 div.content {
+		background-color:	@accent-back;
+		color:				@accent-text;
+	}
+}

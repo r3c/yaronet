@@ -1,0 +1,13 @@
+{{ let
+	link = url ("account.message.list", ["_template": null]),
+	title = tra ("yn.account.message.list"),
+	description = tra ("yn.account.message.list.type"),
+	items = map (messages, (pair) => [
+		link,
+		pair[0].sender.login,
+		pair[0].render_text ("text", router, logger),
+		pair[0].time
+	])
+}}
+	{{ include base.deval }}
+{{ end }}

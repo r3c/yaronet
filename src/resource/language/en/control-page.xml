@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="control.page.">
+		<string key="next">Next</string>
+		<string key="previous">Previous</string>
+	</section>
+</locale>

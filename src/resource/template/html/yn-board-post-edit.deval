@@ -1,0 +1,57 @@
+{{ wrap html }}
+	{{ let
+		position = default (reference.position, 1),
+		section = topic.section,
+		forum_id = forum.id != section.forum_id && forum.id || null,
+		board_topic_view_url = url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": php ("yN\\Entity\\Board\\Topic::get_page") (position)], reference.position != null && cat ("post-", reference.position) || null),
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint]): tra ("yn.board.section.view", ["section": section]),
+			board_topic_view_url: tra ("yn.board.topic.view", ["topic": topic, "topic_name": topic.render_name ("text", router, logger)])
+		],
+		_redirect = length (alerts) == 0 && new && board_topic_view_url || null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.theme, "library/markitup/skin.less")
+		],
+		_title = tra ("yn.board.post.edit", ["post": post])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.post.edit.type", ["topic": topic]) }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ reference.position != null && url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position]) || url ("board.post.new", ["forum": forum_id, "topic": topic.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"caution":	["text", false, ["length": 200, "visible": topic.allow_moderate (access)]],
+								"state":	["radio", false, ["visible": topic.allow_moderate (access), "items": [
+									php ("yN\\Entity\\Board\\Post::#STATE_DEFAULT"),
+									php ("yN\\Entity\\Board\\Post::#STATE_EMPHASIZED"),
+									php ("yN\\Entity\\Board\\Post::#STATE_HIDDEN")
+								]]],
+								"text":		["textarea", null, ["length": 30000, "markup": "bbcode", "rows": 16]]
+							],
+							_prefix = "yn.board.post.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<input name="posts" type="hidden" value="{{ $ default (request.posts, topic.posts) }}" />
+						<div class="control glyph10">
+							<input class="button send" type="submit" value="{{ $ tra ("yn.board.post.edit.form.submit") }}" />
+							{{ $ " " }}
+							{{ $ tra ("yn.board.post.edit.form.disclaimer") }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

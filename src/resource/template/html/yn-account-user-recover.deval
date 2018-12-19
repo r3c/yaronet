@@ -1,0 +1,38 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.profile.list"): tra ("yn.board.profile.list")
+		],
+		_redirect = null,
+		_static = captcha.js () && [captcha.js ()] || [],
+		_title = tra ("yn.account.user.recover")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.account.user.recover.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("account.user.recover") }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"recover":	["group", true],
+								"email":	["text", true, ["focus": true]],
+								"captcha":	["captcha", true, ["visible": address.is_public ()]]
+							],
+							_prefix = "yn.account.user.recover.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button send" type="submit" value="{{ $ tra ("yn.account.user.recover.form.submit") }}" />
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

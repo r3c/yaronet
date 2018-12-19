@@ -1,0 +1,18 @@
+{{ if alerts == null }}
+	<div class="notice notice-info">
+		{{ $ tra ("yn.account.message.delete.warning", ["message": message]) }}
+	</div>
+{{ end }}
+<form class="form-cascade form-thick screen" action="{{ $ url ("account.message.delete", ["message": message.id]) }}" method="POST">
+	{{ let
+		_alerts = alerts,
+		_fields = [],
+		_prefix = "yn.account.message.delete.form."
+	}}
+		{{ include control-form.deval }}
+	{{ end }}
+	<div class="control glyph10">
+		<input class="button delete" type="submit" value="{{ $ tra ("yn.account.message.delete.form.submit") }}" />
+		<a class="label back" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.delete.back") }}</a>
+	</div>
+</form>

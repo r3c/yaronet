@@ -1,0 +1,8 @@
+{{ $ header ("Content-Type", cat ("text/xml; charset=", encoding)) }}
+{{ $ header ("Cache-Control", "no-cache, no-store, must-revalidate") }}
+{{ $ header ("Expires", "0") }}
+{{ $ header ("Pragma", "no-cache") }}
+{{ $ xml ("error", [
+	"message":	tra ("error.message", ["code": code]),
+	"title":	tra ("error", ["code": code])
+]) }}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.account.user.">
+		<string key="active">Activer un compte utilisateur</string>
+		<section prefix="active.">
+			<string key="form.alert">Votre compte utilisateur est activé, vous pouvez participer aux forums !</string>
+			<string key="form.alert.code-expire">Impossible d'effectuer la demande de changement sur votre compte, votre code de sécurité a probablement expiré. Pour réessayer, déconnectez-vous du site et utilisez le lien "Mot de passe oublié" pour recevoir un nouveau code.</string>
+			<string key="form.alert.code-invalid">Le code d'activation saisi est incorrect. Assurez-vous d'avoir recopié exactement le code reçu par e-mail.</string>
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.field.code">Code de sécurité* :</string>
+			<string key="form.field.code.hint">Saisissez le code reçu par e-mail s'il est pas déjà pré-rempli.</string>
+			<string key="form.group.active">Activer un compte</string>
+			<string key="form.group.active.hint">Saisissez ci-dessous le code de sécurité que vous avez reçu par e-mail. Si vous n'avez rien reçu n'oubliez pas de vérifiez votre dossier "courrier indésirable", ou bien déconnectez-vous du site et utilisez le lien "Mot de passe oublié" pour recevoir un nouvel e-mail.</string>
+			<string key="form.submit">Activer</string>
+			<string key="type">Activation de compte</string>
+		</section>
+
+		<string key="edit">{if:{user.id},Modifier,Créer} un compte utilisateur</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="create">Un nouveau membre sur yAronet !</string>
+			<string key="create.help">Complétez le formulaire ci-dessous pour créer votre compte et rejoindre la communauté yAronet !&#xA;&#xA;En vous inscrivant vous confirmez avoir pris connaissance de la charte du site (lien en bas de la page) et acceptez de la respecter.</string>
+			<string key="email">{if:{new},Bienvenue sur yAronet.cOm !,Changement d'adresse e-mail sur yAronet.cOm}</string>
+			<string key="email.body">Bonjour {user.login},&#xA;&#xA;Vous venez de {if:{new},créer un compte utilisateur,changer votre adresse e-mail} sur yAronet.cOm, il ne vous reste plus qu'à l'activer ! Cliquez sur le lien ci-dessous, ou bien connectez-vous avec vos identifiant et mot de passe et utilisez ce code de sécurité quand il vous sera demandé : {recover}.&#xA;&#xA;{url}&#xA;&#xA;À bientôt sur le site !</string>
+			<string key="form.alert">Compte utilisateur enregistré ! Si vous venez de créer votre compte ou que vous avez changé d'adresse e-mail vous allez recevoir un e-mail contenant un nouveau code pour activer votre compte.</string>
+			<string key="form.alert.captcha-invalid" alias="yn.chat.shout.edit.form.alert.captcha-invalid" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.email-conflict">L'adresse e-mail que vous avez saisie est déjà utilisée par un autre membre du site, veuillez en choisir une autre.</string>
+			<string key="form.alert.email-format">L'adresse e-mail que vous avez saisie est vide ou invalide.</string>
+			<string key="form.alert.email-length">Votre adresse e-mail est trop courte ou trop longue, elle doit contenir entre 1 et 100 caractères.</string>
+			<string key="form.alert.login-conflict">L'identifiant que vous avez saisi est déjà utilisé par un autre membre du site, veuillez en choisir un autre.</string>
+			<string key="form.alert.login-format">Votre identifiant ne peut contenir que des caractères alphanumériques et au maximum un seul caractère spécial parmi ceux-ci : espace, tiret (-), tiret bas (_), accent circonflexe (^) ou barre verticale (|).</string>
+			<string key="form.alert.login-length">Votre identifiant est trop court ou trop long, il doit contenir entre 2 et 50 caractères.</string>
+			<string key="form.alert.password-empty">Vous n'avez saisi aucun mot de passe pour sécuriser votre compte.</string>
+			<string key="form.alert.password-invalid">Mot de passe incorrect, vous devez saisir votre mot de passe actuel si vous souhaitez en changer.</string>
+			<string key="form.alert.password-match">Les deux mots de passes saisis ne correspondent pas, vous devez entrer deux fois le mot de passe de votre choix pour en changer.</string>
+			<string key="form.alert.profile-avatar-invalid" alias="yn.board.profile.edit.form.alert.avatar-invalid" />
+			<string key="form.alert.profile-gender-invalid" alias="yn.board.profile.edit.form.alert.gender-invalid" />
+			<string key="form.alert.profile-signature-length" alias="yn.board.profile.edit.form.alert.signature-length" />
+			<string key="form.alert.profile-sql" alias="yn.board.profile.edit.form.alert.sql" />
+			<string key="form.alert.profile-user-null" alias="yn.board.profile.edit.form.alert.user-null" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.field.active">Compte activé* :</string>
+			<string key="form.field.active.item.0">Non</string>
+			<string key="form.field.active.item.1">Oui</string>
+			<string key="form.field.admin">Type de compte* :</string>
+			<string key="form.field.admin.item.0">Utilisateur</string>
+			<string key="form.field.admin.item.1">Administrateur</string>
+			<string key="form.field.captcha" alias="yn.chat.shout.edit.form.field.captcha" />
+			<string key="form.field.captcha.hint" alias="yn.chat.shout.edit.form.field.captcha.hint" />
+			<string key="form.field.disabled">Utilisateur banni* :</string>
+			<string key="form.field.disabled.item.0">Non</string>
+			<string key="form.field.disabled.item.1">Oui</string>
+			<string key="form.field.email">Adresse e-mail* :</string>
+			<string key="form.field.email.hint">Saisissez une adresse valide : un e-mail de validation y sera envoyée.</string>
+			<string key="form.field.flags">Options :</string>
+			<string key="form.field.flags.item.uniform">Ignorer les thèmes des forums</string>
+			<string key="form.field.language">Langue de l'interface :</string>
+			<string key="form.field.language.item.en">Anglais</string>
+			<string key="form.field.language.item.fr">Français</string>
+			<string key="form.field.login">Identifiant* :</string>
+			<string key="form.field.login.hint">Votre nom ou pseudonyme, également utilisé pour vous connecter au site.</string>
+			<string key="form.field.options">Préférences :</string>
+			<string key="form.field.options.item.html.native">Utiliser une police native</string>
+			<string key="form.field.options.item.html.nohead">Masquer l'en-tête et le logo du site</string>
+			<string key="form.field.options.item.html.nosign">Masquer les signatures et avatars</string>
+			<string key="form.field.password">Mot de passe actuel :</string>
+			<string key="form.field.password.hint">Mot de passe que vous utilisiez précédemment pour vous connecter.</string>
+			<string key="form.field.password-1">Choisir un mot de passe :</string>
+			<string key="form.field.password-1.hint">Aucune contrainte n'est imposée sur la longueur ou les caractères utilisés.</string>
+			<string key="form.field.password-2">Saisissez une seconde fois :</string>
+			<string key="form.field.password-2.hint">Saisissez votre mot de passe une seconde fois par sécurité.</string>
+			<string key="form.field.template">Thème visuel* :</string>
+			<string key="form.field.template.item.html.amethyst">Améthyste (bleu sur mauve)</string>
+			<string key="form.field.template.item.html.azurite">Azurite (gris sur bleu foncé)</string>
+			<string key="form.field.template.item.html.chlorite">Chlorite (blanc sur vert)</string>
+			<string key="form.field.template.item.html.citrine">Citrine (orange sur noir)</string>
+			<string key="form.field.template.item.html.kyanite">Kyanite (gris sur bleu clair)</string>
+			<string key="form.field.template.item.html.magnetite">Magnétite (gris sur blanc)</string>
+			<string key="form.field.template.item.html.obsidian">Obsidienne (gris sur noir)</string>
+			<string key="form.field.template.item.html.pvg">Pocket Videogame (bleu sur jaune)</string>
+			<string key="form.field.template.item.html.rgc">Retro-gaming Connexion (beige sur brun)</string>
+			<string key="form.field.template.item.html.tifr">Ti-Fr (jaune sur gris)</string>
+			<string key="form.field.template.item.test">Test</string>
+			<string key="form.group.authenticate">Mot de passe</string>
+			<string key="form.group.authenticate.hint">Lors de votre inscription ou si vous souhaitez changer de mot de passe, veuillez saisir deux fois le nouveau mot de passe de votre choix. En cas d'oubli vous pouvez accéder à la fonction "mot de passe oublié" en vous déconnectant du site.</string>
+			<string key="form.group.custom">Préférences du thème</string>
+			<string key="form.group.custom.hint">Les préférences ci-dessous sont liées au thème visuel actuellement sélectionné et pourraient ne pas avoir d'effet si vous en changez.</string>
+			<string key="form.group.identity">Identité du compte</string>
+			<string key="form.group.identity.hint">Vous pouvez changer d'identifiant ou d'adresse e-mail quand vous le souhaitez, cependant tout changement entrainera l'envoi d'un e-mail afin de réactiver votre compte par mesure de sécurité.</string>
+			<string key="form.group.render">Apparence du site</string>
+			<string key="form.group.render.hint">Choisissez la langue et l'aspect visuel du site qui vous convient. Certains forums peuvent configurer leur propre thème mais vous pouvez choisir de l'ignorer et toujours utiliser le vôtre à la place.</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="type">Modification de compte</string>
+		</section>
+
+		<string key="reclaim">Choisir un nouveau mot de passe</string>
+		<section prefix="reclaim.">
+			<string key="form.alert">Votre mot de passe a été changé avec succès, vous pouvez maintenant l'utiliser pour vous connecter au site.</string>
+			<string key="form.alert.code-expire" alias="yn.account.user.active.form.alert.code-expire" />
+			<string key="form.alert.code-invalid" alias="yn.account.user.active.form.alert.code-invalid" />
+			<string key="form.alert.password-empty" alias="yn.account.user.edit.form.alert.password-empty" />
+			<string key="form.alert.password-match" alias="yn.account.user.edit.form.alert.password-match" />
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.field.code" alias="yn.account.user.active.form.field.code" />
+			<string key="form.field.code.hint" alias="yn.account.user.active.form.field.code.hint" />
+			<string key="form.field.password-1" alias="yn.account.user.edit.form.field.password-1" />
+			<string key="form.field.password-1.hint" alias="yn.account.user.edit.form.field.password-1.hint" />
+			<string key="form.field.password-2" alias="yn.account.user.edit.form.field.password-2" />
+			<string key="form.field.password-2.hint" alias="yn.account.user.edit.form.field.password-2.hint" />
+			<string key="form.group.reclaim">Nouveau mot de passe</string>
+			<string key="form.group.reclaim.hint">Vous avez demandé à changer le mot de passe de votre compte suite à un oubli. Veuillez saisir ci-dessous le code de sécurité reçu par e-mail ainsi que le nouveau mot de passe de votre choix.</string>
+			<string key="form.submit">Enregistrer</string>
+			<string key="type">Changement de mot de passe</string>
+		</section>
+
+		<string key="recover">Changer un mot de passe oublié</string>
+		<section prefix="recover.">
+			<string key="email">Mot de passe oublié sur yAronet.cOm</string>
+			<string key="email.body">Bonjour {user.login},&#xA;&#xA;Cet e-mail permet de choisir un nouveau mot de passe sur yAronet. Vous aurez besoin pour continuer du code de sécurité suivant : {recover}. Cliquez ensuite sur le lien ci-dessous ou copiez le dans la barre d'adresse de votre navigateur :&#xA;&#xA;{url_reclaim}&#xA;&#xA;Si vous n'êtes pas à l'origine de cette demande, suivez le lien ci-dessous pour l'annuler et conserver votre mot de passe actuel :&#xA;&#xA;{url_active}&#xA;&#xA;À bientôt sur le site !</string>
+			<string key="form.alert">Demande validée ! Vous allez recevoir dans les prochaines minutes un e-mail contenant les instructions pour choisir un nouveau mot de passe, n'oubliez pas de vérifier votre dossier "courrier indésirable" si vous ne le voyez pas.</string>
+			<string key="form.alert.captcha-invalid" alias="yn.chat.shout.edit.form.alert.captcha-invalid" />
+			<string key="form.alert.email-unknown">L'adresse e-mail saisie ne correspond à aucun utilisateur connu.</string>
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.field.captcha" alias="yn.account.user.edit.form.field.captcha" />
+			<string key="form.field.captcha.hint" alias="yn.account.user.edit.form.field.captcha.hint" />
+			<string key="form.field.email">Adresse e-mail* :</string>
+			<string key="form.field.email.hint">Adresse avec laquelle vous avez créé votre compte sur le site.</string>
+			<string key="form.group.recover">Mot de passe oublié</string>
+			<string key="form.group.recover.hint">Vous avez perdu votre mot de passe ? Entrez votre adresse e-mail dans le formulaire ci-dessous, passez la vérification anti-robot et validez pour recevoir un code de sécurité par e-mail. Ce code vous permettra de choisir un nouveau mot de passe et ainsi récupérer l'accès à votre compte.</string>
+			<string key="form.submit">Envoyer</string>
+			<string key="type">Oubli de mot de passe</string>
+		</section>
+
+		<string key="signin">Se connecter au site</string>
+		<section prefix="signin.">
+			<string key="back">Continuer sans s'identifier</string>
+			<string key="form.alert">Identification validée, vous pouvez parcourir le site !</string>
+			<string key="form.alert.fail">Impossible de vous identifier, veuillez vérifier que votre identifant et votre mot de passe sont corrects.</string>
+			<string key="form.field.expire">Expiration* :</string>
+			<string key="form.field.expire.item.86400">Dans 24 heures</string>
+			<string key="form.field.expire.item.8640000">Dans 100 jours</string>
+			<string key="form.field.expire.item.session">À la fermeture du navigateur</string>
+			<string key="form.field.login">Identifiant* :</string>
+			<string key="form.field.password">Mot de passe* :</string>
+			<string key="form.submit">Se connecter</string>
+			<string key="type">Connexion au site</string>
+		</section>
+	</section>
+</locale>

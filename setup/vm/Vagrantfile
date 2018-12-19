@@ -1,0 +1,127 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+	httpd_port = 8080
+	phpmyadmin_path = "/opt/phpmyadmin"
+	yaronet_path = "/opt/yaronet"
+
+	config.vm.box = "ubuntu/xenial64"
+
+	# Configure guest environment
+	config.vm.network :forwarded_port, host: httpd_port, guest: 80
+	config.vm.synced_folder "../../", yaronet_path
+
+	# For the following statement to have an effect when running under Windows
+	# you'll need to execute "secpol.msc" and open the following panel:
+	# Local Policies > User Rights Assignment > Create symbolic links
+	# Then add your Windows user account to users list, log off and log on.
+	# Details here: https://www.virtualbox.org/ticket/10085#comment:32
+	config.vm.provider "virtualbox" do |v|
+		v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/opt_yaronet", "1"]
+	end
+
+	# Install and configure required packages
+	config.vm.provision "shell", inline: <<-SHELL
+		apt-get -qq update
+
+		# Install apt packages
+		for package in \
+			apache2 \
+			libapache2-mod-php7.0 \
+			mariadb-server-10.0 \
+			nodejs-legacy \
+			npm \
+			php7.0-curl \
+			php7.0-gd \
+			php7.0-mbstring \
+			php7.0-mcrypt \
+			php7.0-mysql \
+			php7.0-xml; do
+			apt-get -qq install -y "$package"
+		done
+
+		# Install nodejs modules
+		for module in \
+			imagemin \
+			imagemin-cli \
+			less \
+			less-plugin-clean-css \
+			uglify-js; do
+			npm install -gq "$module"
+		done
+
+		# Install phpMyAdmin
+		mkdir -p "#{phpmyadmin_path}"
+		curl -s https://files.phpmyadmin.net/phpMyAdmin/4.7.4/phpMyAdmin-4.7.4-all-languages.tar.gz |
+		tar xz -C "#{phpmyadmin_path}" --strip-components=1
+
+		sed -r "
+			s/^(\\\\\\$cfg\\\\['Servers'\\\\]\\\\[\\\\\\$i\\\\])(\\\\['auth_type'\\\\])[[:blank:]]*=.*/\\1\\2 = 'config';\\n\\1['user'] = 'yaronet';/;
+			s/^(\\\\\\$cfg\\\\['Servers'\\\\]\\\\[\\\\\\$i\\\\]\\\\['AllowNoPassword'\\\\])[[:blank:]]*=.*/\\1 = true;/
+		" "#{phpmyadmin_path}/config.sample.inc.php" > "#{phpmyadmin_path}/config.inc.php"
+
+		# Configure Apache sites
+		cat << EOF > /etc/apache2/sites-available/phpmyadmin.conf
+Alias "/phpmyadmin" "#{phpmyadmin_path}"
+
+<Directory "#{phpmyadmin_path}">
+	Options FollowSymLinks Indexes
+	AllowOverride All
+	Order allow,deny
+	Allow from all
+	Require all granted
+</Directory>
+EOF
+
+		cat << EOF > /etc/apache2/sites-available/yaronet.conf
+Alias "/yaronet" "#{yaronet_path}"
+
+<Directory "#{yaronet_path}">
+	Options FollowSymLinks Indexes
+	AllowOverride All
+	Order allow,deny
+	Allow from all
+	Require all granted
+</Directory>
+EOF
+
+		a2enmod -q rewrite
+		a2ensite -q phpmyadmin
+		a2ensite -q yaronet
+
+		# Configure PHP
+		sed -ri 's/^(display_errors)[[:blank:]]*=.*/\1 = On/' /etc/php/7.0/apache2/php.ini
+		sed -ri 's/^(zend\.assertions)[[:blank:]]*=.*/\1 = 1/' /etc/php/7.0/apache2/php.ini
+
+		# Configure MySQL
+		cat << EOF | mysql
+CREATE DATABASE yaronet;
+CREATE USER 'yaronet'@'localhost';
+GRANT ALL PRIVILEGES ON yaronet.* TO 'yaronet'@'localhost';
+FLUSH PRIVILEGES;
+EOF
+
+		# Generate default locale
+		sudo locale-gen en_US.utf8
+
+		# Reload services
+		service apache2 reload
+	SHELL
+
+	# Setup developer account
+	config.vm.provision "shell", privileged: false, inline: <<-SHELL
+		sh #{yaronet_path}/setup/configure.sh
+
+		mysql -u yaronet yaronet < "#{yaronet_path}/setup/database/schema.sql"
+	SHELL
+
+	# Display help message
+	config.vm.post_up_message = """\
+yAronet dev host ready! You can now open one of the following URLs:
+- http://localhost:#{httpd_port}/yaronet/src/install.php to configure website
+- http://localhost:#{httpd_port}/yaronet/src/ to open website (after configuration is done)
+- http://localhost:#{httpd_port}/yaronet/test/ to run tests (after configuration is done)
+- http://localhost:#{httpd_port}/phpmyadmin/ to browse database
+"""
+end

@@ -1,0 +1,15 @@
+/node_modules/
+/setup/schedule/.token
+/setup/vm/.vagrant
+/setup/vm/*.log
+/src/library/*
+!/src/library/.creep.def
+/src/config.php
+/src/config.php.*
+!/src/config.php.dist
+/src/static/**/*.css
+/src/static/.htaccess
+/src/.htaccess
+/package-lock.json
+/package.json
+.creep.env

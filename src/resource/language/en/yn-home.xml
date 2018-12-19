@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<string key="yn.home">Home</string>
+	<section prefix="yn.home.">
+		<string key="chat">FlashChat</string>
+		<string key="chat.form.alert" alias="yn.chat.shout.edit.form.alert" />
+		<string key="chat.form.field.nick" alias="yn.chat.shout.edit.form.field.nick" />
+		<string key="chat.form.field.text.placeholder" alias="yn.chat.shout.edit.form.field.text.placeholder" />
+		<string key="chat.form.submit" alias="yn.chat.shout.edit.form.submit" />
+		<string key="chat.time" alias="page.time" />
+		<string key="description">Create your free bulletin or join an already active one! News, video games, comics, movies, programming, studies... just come and chat :)</string>
+		<string key="guest">Welcome on yAronet!</string>
+		<string key="guest.help">yAronet is a set of open discussion forums organized by theme. Have a quick look, join communities you like or gather yours by creating your own forum!&#xA;&#xA;New joiners are highly encourated to sign up and visit forum "Le site" if there is need for any assistance. Have a nice tour!</string>
+		<string key="link.favorite">Change favorites</string>
+		<string key="link.forum">Create your forum</string>
+		<string key="link.forums">Search forum by name</string>
+		<string key="link.profiles">Users list</string>
+		<string key="link.trendy">Active topics</string>
+		<string key="personal">Your favorite forums</string>
+		<string key="popular">Popular forums</string>
+		<string key="random">Random forums</string>
+		<string key="type">Home page</string>
+	</section>
+</locale>

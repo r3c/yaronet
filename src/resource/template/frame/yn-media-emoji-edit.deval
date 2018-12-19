@@ -1,0 +1,28 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			<form class="form-cascade form-thick bind-emoji" action="{{ $ url ("media.emoji.new") }}" enctype="multipart/form-data" method="POST">
+				{{ let
+					_alerts = alerts,
+					_fields = [
+						"emoji":	["image", true, ["placeholder": true, "visible": length (alerts) != 0]],
+						"insert":	["text", null, ["visible": length (alerts) == 0]]
+					],
+					_prefix = "yn.media.emoji.edit.form."
+				}}
+					{{ include ../fragment/control-form.deval }}
+				{{ end }}
+				<div class="control glyph10">
+					{{ if length (alerts) != 0 }}
+						<input class="button send" type="submit" value="{{ $ tra ("yn.media.emoji.edit.form.submit") }}" />
+					{{ end }}
+					{{ $ " " }}
+					<a class="label back" href="{{ $ url ("media.emoji.list", ["type": "custom"]) }}">{{ $ tra ("yn.media.emoji.edit.back") }}</a>
+				</div>
+			</form>
+		{{ end }}
+	{{ end }}
+{{ end }}

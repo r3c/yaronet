@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="control-form.">
+		<string key="image.else">or:</string>
+		<string key="image.else.keep">Keep current choice</string>
+		<string key="image.file">or send an image from your device:</string>
+		<string key="image.url">Use image from online source:</string>
+	</section>
+</locale>

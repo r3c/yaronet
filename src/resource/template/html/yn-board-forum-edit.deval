@@ -1,0 +1,64 @@
+{{ wrap html }}
+	{{ let
+		board_forum_view_url = forum.id != null && url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]) || null,
+		_forum = forum,
+		_meta = null,
+		_path = cat ([
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list")
+		], board_forum_view_url && [
+			board_forum_view_url: tra ("yn.board.forum.view", ["forum": forum])
+		] || []),
+		_redirect = length (alerts) == 0 && new && url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]) || null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.theme, "library/markitup/skin.less")
+		],
+		_title = tra ("yn.board.forum.edit", ["forum": forum])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.forum.edit.type") }}</div>
+				<div class="panel-body">
+					{{ if forum.id == null }}
+						<h2>{{ $ tra ("yn.board.forum.edit.create") }}</h2>
+						{{ unwrap }}
+							<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.board.forum.edit.create.help"))) }}</p>
+						{{ end }}
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ forum.id != null && url ("board.forum.edit", ["forum": forum.id]) || url ("board.forum.new") }}" enctype="multipart/form-data" method="POST">
+						{{ let
+							templates = php ("yN\\Engine\\Text\\Display::$options"),
+							_alerts = alerts,
+							_fields = [
+								"identity":		["group", true],
+								"name":			["text", true, ["length": 100]],
+								"description":	["text", true, ["length": 200]],
+								"alias":		["text", true, ["length": 20]],
+								"flags":		["flags", false, ["items": ["hidden"]]],
+								"visual":		["group", true],
+								"icon":			["image", true, ["items": ["void"], "placeholder": true]],
+								"template":		["select", true, ["items": cat (["void"], templates)]],
+								"header":		["textarea", true, ["length": 30000, "markup": "bbcode"]],
+								"preface":		["textarea", true, ["length": 30000, "markup": "bbcode"]]
+							],
+							_prefix = "yn.board.forum.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.forum.edit.form.submit") }}" />
+							{{ if board_forum_view_url }}
+								{{ $ " " }}
+								<a class="label back" href="{{ $ board_forum_view_url }}">{{ $ tra ("yn.board.forum.edit.back") }}</a>
+							{{ end }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

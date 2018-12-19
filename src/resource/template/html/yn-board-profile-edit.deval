@@ -1,0 +1,51 @@
+{{ wrap html }}
+	{{ let
+		board_profile_view_url = profile.user_id != null && url ("board.profile.view", ["profile": profile.user_id]) || null,
+		_forum = null,
+		_meta = null,
+		_path = cat ([
+			url ("home"): tra ("yn.home"),
+			url ("board.profile.list"): tra ("yn.board.profile.list")
+		], board_profile_view_url && [
+			board_profile_view_url: tra ("yn.board.profile.view", ["user": profile.user])
+		] || []),
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.board.profile.edit")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.profile.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("board.profile.edit", ["profile": profile.user_id]) }}" enctype="multipart/form-data" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"profile":		["group", false],
+								"avatar":		["image", true, ["items": ["gravatar", "void"], "placeholder": true]],
+								"gender":		["select", true, ["items": [
+									php ("yN\\Entity\\Board\\Profile::#GENDER_FEMALE"),
+									php ("yN\\Entity\\Board\\Profile::#GENDER_MALE"),
+									php ("yN\\Entity\\Board\\Profile::#GENDER_NONE")]]],
+								"signature":	["textarea", true, ["length": 600, "rows": 4]],
+								"membership":	["group", false],
+								"forum":		["complete", true, ["callback": url ("board.forum.list", ["_template": "json"])]]
+							],
+							_prefix = "yn.board.profile.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.profile.edit.form.submit") }}" />
+							{{ if board_profile_view_url }}
+								{{ $ " " }}
+								<a class="label back" href="{{ $ board_profile_view_url }}">{{ $ tra ("yn.board.profile.edit.back") }}</a>
+							{{ end }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

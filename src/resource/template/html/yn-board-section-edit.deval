@@ -1,0 +1,66 @@
+{{ wrap html }}
+	{{ let
+		forum_id = forum.id != section.forum_id && forum.id || null,
+		board_section_view_url = section.id != null && url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint]) || null,
+		_forum = forum,
+		_meta = null,
+		_path = cat ([
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum])
+		], board_section_view_url && [
+			board_section_view_url: tra ("yn.board.section.view", ["section": section])
+		] || []),
+		_redirect = length (alerts) == 0 && new && board_section_view_url || null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.theme, "library/markitup/skin.less")
+		],
+		_title = tra ("yn.board.section.edit", ["section": section])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.section.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ section.id != null && url ("board.section.edit", ["section": section.id]) || url ("board.section.new", ["forum": forum.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"identity":		["group", true],
+								"name":			["text", true, ["length": 100]],
+								"description":	["text", true, ["length": 200]],
+								"visual":		["group", true],
+								"header":		["textarea", true, ["length": 30000, "markup": "bbcode"]],
+								"permission":	["group", true],
+								"access":		["radio", true, ["items": [
+									php ("yN\\Entity\\Board\\Section::#ACCESS_OPEN"),
+									php ("yN\\Entity\\Board\\Section::#ACCESS_PUBLIC"),
+									php ("yN\\Entity\\Board\\Section::#ACCESS_PRIVATE")
+								]]],
+								"reach":		["radio", true, ["items": [
+									php ("yN\\Entity\\Board\\Section::#REACH_GLOBAL"),
+									php ("yN\\Entity\\Board\\Section::#REACH_LOCAL"),
+									php ("yN\\Entity\\Board\\Section::#REACH_NONE")
+								]]],
+								"flags":		["flags", false, ["items": ["delegated"]]]
+							],
+							_prefix = "yn.board.section.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.section.edit.form.submit") }}" />
+							{{ if board_section_view_url }}
+								{{ $ " " }}
+								<a class="label back" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.edit.back") }}</a>
+							{{ end }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

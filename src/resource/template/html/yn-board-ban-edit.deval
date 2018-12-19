@@ -1,0 +1,43 @@
+{{ wrap html }}
+	{{ let
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum])
+		],
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.board.ban.edit", ["forum": forum])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.ban.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("board.ban.edit", ["forum": forum.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"ban":	["group", true],
+								"addresses":	["complete", true, [
+									"limit":		php ("yN\\Entity\\Board\\Ban::#COUNT_MAX"),
+									"placeholder":	true,
+									"selectable":	true
+								]]
+							],
+							_prefix = "yn.board.ban.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.ban.edit.form.submit") }}" />
+							<a class="label back" href="{{ $ url ("home") }}">{{ $ tra ("yn.board.ban.edit.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

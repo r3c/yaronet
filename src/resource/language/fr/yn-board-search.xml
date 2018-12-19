@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.board.search.">
+		<string key="edit">Rechercher des messages</string>
+		<section prefix="edit.">
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.login-unknown" alias="yn.board.log.list.form.alert.login-unknown" />
+			<string key="form.alert.query-length">Veuillez saisir au minimum 4 caractères pour démarrer la recherche.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.group.criteria">Critères de recherche</string>
+			<string key="form.group.criteria.hint">Pour rechercher des messages sur le forum, veuillez entrer le ou les mot(s) à rechercher ainsi que les autres filtres optionels ci-dessous.</string>
+			<string key="form.field.login">Identifiant de l'auteur :</string>
+			<string key="form.field.login.hint">Filtrer par identifiant de l'auteur du message.</string>
+			<string key="form.field.query">Mots à rechercher* :</string>
+			<string key="form.field.query.hint">Saisissez au minimum 4 caractères.</string>
+			<string key="form.submit">Rechercher</string>
+			<string key="type">Recherche de messages</string>
+		</section>
+
+		<string key="view">Recherche de "{search.query}"</string>
+		<section prefix="view.">
+			<string key="empty">Aucun résultat ne correspond à votre recherche.</string>
+			<string key="from.next">Résultats suivants</string>
+			<string key="from.previous">Résultats précédents</string>
+			<string key="post.copy.success" alias="yn.board.topic.view.post.copy.success" />
+			<string key="post.created" alias="yn.board.topic.view.post.created" />
+			<string key="post.edited" alias="yn.board.topic.view.post.edited" />
+			<string key="post.ignore.confirm" alias="yn.board.topic.view.post.ignore.confirm" />
+			<string key="post.ignore.hint" alias="yn.board.topic.view.post.ignore.hint" />
+			<string key="post.message.hint" alias="yn.board.topic.view.post.message.hint" />
+			<string key="post.position.hint" alias="yn.board.topic.view.post.position.hint" />
+			<string key="post.profile" alias="yn.board.topic.view.post.profile" />
+			<string key="post.profile.hint" alias="yn.board.topic.view.post.profile.hint" />
+			<string key="post.topic">Sujet d'origine : {name} ({section.name})</string>
+			<string key="post.unignore" alias="yn.board.topic.view.post.unignore" />
+			<string key="post.unignore.hint" alias="yn.board.topic.view.post.unignore.hint" />
+			<string key="type">Résultats de recherche</string>
+		</section>
+	</section>
+</locale>

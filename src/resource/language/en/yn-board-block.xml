@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.block.">
+		<string key="delete">Delete</string>
+		<section prefix="delete.">
+			<string key="form.alert">Block deleted.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.disclaimer" alias="yn.board.profile.delete.form.disclaimer" />
+			<string key="form.submit">Confirm</string>
+			<string key="type">Block deletion confirm</string>
+			<string key="warning">Please confirm you want to delete {if:{block.section_id},link to section "{block.section.name}",{if:{block.text},text block "{block.text}",split bar}}.</string>
+		</section>
+
+		<string key="edit">{if:{block.rank},Edit,Create new} block</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.forum-null" alias="base.alert.default" />
+			<string key="form.alert.section-unknown" alias="yn.board.topic.edit.form.alert.section-unknown" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Your text is either too short or too long, it must contain between 1 and 30000 characters.</string>
+			<string key="form.field.move">Display order*:</string>
+			<string key="form.field.move.hint">Blocs are displayed top to bottom by ascending display order.</string>
+			<string key="form.field.restore">Restore section:</string>
+			<string key="form.field.restore.hint">Select a section that no longer appears in your forum to add it back.</string>
+			<string key="form.field.section">Link to section:</string>
+			<string key="form.field.section.hint">Display a link to any section that belongs to your forum or an external one.</string>
+			<string key="form.field.section.placeholder" alias="yn.board.topic.edit.form.field.section.placeholder" />
+			<string key="form.field.text">Block text:</string>
+			<string key="form.field.text.hint">Display a split bar in your forum with optional text contents.</string>
+			<string key="form.submit.custom" alias="base.submit.save" />
+			<string key="form.submit.restore">Restore</string>
+			<string key="type">Block configuration form</string>
+		</section>
+	</section>
+</locale>

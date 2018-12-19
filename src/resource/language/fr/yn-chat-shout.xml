@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.chat.shout.">
+		<string key="delete">Message</string>
+		<section prefix="delete.">
+			<string key="form.alert">Message supprimé.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.disclaimer" alias="yn.board.profile.delete.form.disclaimer" />
+			<string key="form.submit">Confirmer</string>
+			<string key="type">Supprimer un message</string>
+			<string key="warning">Veuillez confirmer la suppression du message de "{shout.nick}".</string>
+		</section>
+
+		<string key="edit">Message</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="command.seen.duration">{login} {ge:{elapsed},60,n'a pas été vu(e) depuis {ge:{elapsed},86400,{div:{elapsed},86400} jour{ge:{div:{elapsed},86400},2,s},{ge:{elapsed},3600,{div:{elapsed},3600} heure{ge:{div:{elapsed},3600},2,s},{div:{elapsed},60} minute{ge:{div:{elapsed},60},2,s}}}.,est quelque part sur le site...}</string>
+			<string key="command.seen.self">Alors là je vois pas trop...</string>
+			<string key="command.seen.unknown">Je connais pas cette personne :(</string>
+			<string key="form.alert">Message posté !</string>
+			<string key="form.alert.captcha-invalid">Vous n'avez pas passé la vérification anti-robot, merci de cliquer sur la case ci-dessous.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.nick-length">Votre nom est trop court ou trop long, il doit contenir entre 1 et 50 caractères.</string>
+			<string key="form.alert.nick-user">Ce nom est déjà utilisé par un membre enregistré sur le site, veuillez en choisir un autre.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Votre message est trop court ou trop long, il doit contenir entre 1 et 200 caractères.</string>
+			<string key="form.field.captcha">Captcha* :</string>
+			<string key="form.field.captcha.hint">Merci de cliquer sur la case pour confirmer que vous n'êtes pas un robot.</string>
+			<string key="form.field.nick">Nom* :</string>
+			<string key="form.field.nick.hint">Votre nom ou pseudo.</string>
+			<string key="form.field.text.placeholder">Message</string>
+			<string key="form.submit">Poster</string>
+			<string key="type">Poster un message</string>
+		</section>
+	</section>
+</locale>

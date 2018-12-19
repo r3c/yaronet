@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.log.">
+		<string key="list">Log</string>
+		<section prefix="list.">
+			<string key="address">IP address</string>
+			<string key="address.value">{log.address}</string>
+			<string key="data">Action type</string>
+			<string key="data.block.delete">Deleted block in forum #{log.data.forum}, rank {log.data.rank}</string>
+			<string key="data.block.edit">{if:{log.data.new},Created,Updated} block in forum #{log.data.forum}, rank {log.data.rank}{ifset:{log.data.section},\, section #{log.data.section},{ifset:{log.data.text},\, with text}}</string>
+			<string key="data.forum.edit">{if:{log.data.new},Created,Updated} forum #{log.data.id}{ifset:{log.data.name},\, name "{log.data.name}"}{ifset:{log.data.description},\, description "{log.data.description}"}{ifset:{log.data.alias},\, alias "{log.data.alias}"}{ifset:{log.data.header},\, with header}{ifset:{log.data.preface},\, with preface}{ifset:{log.data.template},\, skin "{log.data.template}"}{ifset:{log.data.is_hidden},\, {if:{log.data.is_hidden},hidden,visible}}{ifset:{log.data.is_illustrated},\, {if:{log.data.is_illustrated},icon,no icon}}</string>
+			<string key="data.post.edit">{if:{log.data.new},Created,Updated} post in topic #{log.data.topic}, position ./{log.data.position}{ifset:{log.data.text},\, with text}{ifset:{log.data.state},\, {case:{log.data.state},1,emphasized,2,hidden,normal} state}{ifset:{log.data.caution},\, caution "{log.data.caution}"}</string>
+			<string key="data.section.edit">{if:{log.data.new},Created,Updated} section #{log.data.id}{ifset:{log.data.forum},\, forum #{log.data.forum}}{ifset:{log.data.name},\, name "{log.data.name}"}{ifset:{log.data.description},\, description "{log.data.description}"}{ifset:{log.data.access},\, access "{log.data.access}"}{ifset:{log.data.reach},\, reach "{log.data.reach}"}{ifset:{log.data.is_delegated},\, {if:{log.data.is_delegated},delegated,not delegated}}</string>
+			<string key="data.section.merge">Section #{log.data.id} merged into section #{log.data.into}</string>
+			<string key="data.topic.delete">Topic #{log.data.id} deleted</string>
+			<string key="data.topic.edit">{if:{log.data.new},Created,Updated} topic #{log.data.id}{ifset:{log.data.section},\, section #{log.data.section}}{ifset:{log.data.name},\, title "{log.data.name}"}{ifset:{log.data.weight},\, order {log.data.weight}}{ifset:{log.data.is_closed},\, {if:{log.data.is_closed},closed,opened}}</string>
+			<string key="form.alert">Filters successfully applied.</string>
+			<string key="form.alert.date-format">Invalid format for action day filter.</string>
+			<string key="form.alert.login-unknown">Unknown login for user filter.</string>
+			<string key="form.field.address">User IP address:</string>
+			<string key="form.field.address.hint">Filter on action owner's IP address.</string>
+			<string key="form.field.date">Action day*:</string>
+			<string key="form.field.date.hint">Filter on action day, using YYYY-MM-DD format.</string>
+			<string key="form.field.login">User login:</string>
+			<string key="form.field.login.hint">Filter on action owner's login.</string>
+			<string key="form.submit">Filter</string>
+			<string key="profile">User</string>
+			<string key="profile.value">{log.profile.user.login}</string>
+			<string key="table">Actions performed on this forum since the {date:{expire},Y-m-d \\a\\t h:ia} until today can be viewed using the form below.</string>
+			<string key="time">Date and time</string>
+			<string key="time.value" alias="base.type.datetime.relative"><var name="time">{log.time}</var></string>
+			<string key="type">Last actions on this forum</string>
+		</section>
+	</section>
+</locale>

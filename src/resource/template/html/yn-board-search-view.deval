@@ -1,0 +1,65 @@
+{{ wrap html }}
+	{{ let
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			url ("board.search.new", ["forum": forum.id]): tra ("yn.board.search.edit")
+		],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-board-topic.js"),
+			cat (static.theme, "yn-board-topic.less")
+		],
+		_title = tra ("yn.board.search.view", ["search": search])
+	}}
+		{{ extend page.deval }}
+		{{ block goto }}
+			<ul class="goto right symbol">
+				{{ if from_previous != null }}
+					<li class="next">
+						<a href="{{ $ url ("board.search.view", ["search": search.id, "from": from_previous]) }}">{{ $ tra ("yn.board.search.view.from.previous") }}</a>
+					</li>
+				{{ end }}
+				{{ if from_next != null }}
+					<li class="next">
+						<a href="{{ $ url ("board.search.view", ["search": search.id, "from": from_next]) }}">{{ $ tra ("yn.board.search.view.from.next") }}</a>
+					</li>
+				{{ end }}
+			</ul>
+		{{ block main }}
+			<div class="posts">
+				{{ for result in results }}
+					{{ let reference = result.reference }}
+						<div id="post-{{ $ reference.position }}" class="panel post state{{ $ reference.post.state }}">
+							{{ let
+								enable_peek = false,
+								topic = reference.topic
+							}}
+								{{ include ../fragment/yn-board-post-view.deval }}
+							{{ end }}
+						</div>
+					{{ end }}
+				{{ empty }}
+					<div class="panel panel-decorate">
+						<div class="panel-header">{{ $ tra ("yn.board.search.view.type") }}</div>
+						<div class="panel-body">
+							{{ $ tra ("yn.board.search.view.empty") }}
+						</div>
+					</div>
+				{{ end }}
+			</div>
+			<script type="text/javascript">
+				{{ unwrap }}
+					yn = window.yn || {};
+					yn.boardTopicStrings = {
+						copy:	"{{ $ jstr (tra ("yn.board.search.view.post.copy.success")) }}",
+						ignore:	"{{ $ jstr (tra ("yn.board.search.view.post.ignore.confirm")) }}"
+					};
+				{{ end }}
+			</script>
+		{{ end }}
+	{{ end }}
+{{ end }}

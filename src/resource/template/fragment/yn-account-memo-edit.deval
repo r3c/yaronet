@@ -1,0 +1,15 @@
+<form class="form-cascade form-thick screen" action="{{ $ url ("account.memo.edit") }}" method="POST">
+	{{ let
+		_alerts = alerts,
+		_fields = [
+			"text":	["textarea", null, ["focus": true, "large": true, "length": 30000, "placeholder": true, "rows": 4]]
+		],
+		_prefix = "yn.account.memo.edit.form."
+	}}
+		{{ include control-form.deval }}
+	{{ end }}
+	<div class="control glyph10 bind-control">
+		<input class="button save" type="submit" value="{{ $ tra ("yn.account.memo.edit.form.submit") }}" />
+		<a class="label back" href="{{ $ url ("account.memo.view") }}">{{ $ tra ("yn.account.memo.edit.back") }}</a>
+	</div>
+</form>

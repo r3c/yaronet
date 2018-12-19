@@ -1,0 +1,62 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = [
+			"rss": url ("board.bookmark.list", ["what": slice (what, 0, 1), "_template": "rss"])
+		],
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list")
+		],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-board-bookmark.js"),
+			cat (static.layout, "yn-board-bookmark.less")
+		],
+		_title = tra ("yn.board.bookmark.list"),
+		params = ["what": what, "count": count, "popup": request.popup]
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="bookmarks panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.bookmark.list.type") }}</div>
+				<div class="panel-body">
+					<div id="yn-bookmark-sources" class="sources" data-url-refresh="{{ $ url ("board.bookmark.list", cat (params, ["_template": "frame"])) }}">
+						{{ include ../fragment/yn-board-bookmark-list.deval }}
+					</div>
+				</div>
+				<div id="yn-bookmark-links" class="panel-footer glyph10">
+					<a class="label update" href="{{ $ url ("board.bookmark.list", params) }}">{{ $ tra ("yn.board.bookmark.list.update") }}</a>
+					{{ let
+						what_f = php ("strpos") (what, "f"),
+						what_l = php ("strpos") (what, "l"),
+						what_n = php ("strpos") (what, "n"),
+						what_s = php ("strpos") (what, "s")
+					}}
+						{{ if what_f == false && what_s != false }}
+							<a class="label fresh" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "f", what_s, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.fresh") }}</a>
+						{{ elseif what_f != false && what_s == false }}
+							<a class="label stale" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "s", what_f, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.stale") }}</a>
+						{{ end }}
+						{{ if what_l == false && what_n != false }}
+							<a class="label active" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "l", what_n, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.active") }}</a>
+						{{ elseif what_l != false && what_n == false }}
+							<a class="label new" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "n", what_l, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.new") }}</a>
+						{{ end }}
+						<a class="label more" href="{{ $ url ("board.bookmark.list", cat (params, ["count": count + 10])) }}">{{ $ tra ("yn.board.bookmark.list.more") }}</a>
+						<a class="label less" href="{{ $ url ("board.bookmark.list", cat (params, ["count": count - 10])) }}">{{ $ tra ("yn.board.bookmark.list.less") }}</a>
+						<a class="label rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.bookmark.list.rss") }}</a>
+					{{ end }}
+				</div>
+			</div>
+			<script type="text/javascript">
+				{{ unwrap }}
+					yn = window.yn || {};
+					yn.boardBookmarkStrings = {
+						drop:	"{{ $ jstr (tra ("yn.board.bookmark.list.drop.confirm")) }}"
+					};
+				{{ end }}
+			</script>
+		{{ end }}
+	{{ end }}
+{{ end }}

@@ -1,0 +1,85 @@
+{{ let
+	forum_id = forum.id != topic.section.forum_id && forum.id || null,
+	position = reference.position,
+	post = reference.post,
+	allow_edit = post.allow_edit (access, user.id),
+	allow_force = post.state == php ("yN\\Entity\\Board\\Post::#STATE_DEFAULT") || allow_edit,
+	allow_reply = topic.allow_reply (access),
+	do_force = allow_force && bool (request.force),
+	do_peek = enable_peek && bool (request.peek),
+	do_reply = enable_peek && int (request.peek) == 2,
+	hide_text = (post.state == php ("yN\\Entity\\Board\\Post::#STATE_HIDDEN") || post.ignore) && !do_force,
+	hide_user = post.state != php ("yN\\Entity\\Board\\Post::#STATE_DEFAULT") && !do_force
+}}
+	{{ if do_peek }}
+		<div class="peek{{ $ post.state == php ("yN\\Entity\\Board\\Post::#STATE_EMPHASIZED") && " peek-emphasized" || (post.state == php ("yN\\Entity\\Board\\Post::#STATE_HIDDEN") && " peek-hidden" || (post.ignore && " peek-ignored")) }}">
+			<div class="peek-control glyph10">
+				{{ if position > 1 }}
+					<a class="label peek-previous" href="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position - 1, "peek": request.peek]) }}">{{ $ position - 1 }}</a>
+				{{ end }}
+				{{ if position < topic.posts }}
+					<a class="right peek-next" href="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position + 1, "peek": request.peek]) }}">{{ $ position + 1 }}</a>
+				{{ end }}
+				<a class="label peek-close" href="#">{{ $ tra ("yn.board.bookmark.list.close") }}</a>
+				{{ if do_reply && user.id != null }}
+					<a class="bind-tooltip label peek-drop" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.bookmark.list.drop.hint") }}">{{ $ tra ("yn.board.bookmark.list.drop") }}</a>
+					<a class="bind-tooltip label peek-mark" href="{{ $ url ("board.bookmark.mark", ["topic": topic.id, "position": position - 1]) }}" title="{{ $ tra ("yn.board.bookmark.list.mark.hint") }}">{{ $ tra ("yn.board.bookmark.list.mark") }}</a>
+					<a class="bind-tooltip label peek-read" href="{{ $ url ("board.bookmark.mark", ["topic": topic.id, "position": topic.posts]) }}" title="{{ $ tra ("yn.board.bookmark.list.read.hint") }}">{{ $ tra ("yn.board.bookmark.list.read") }}</a>
+				{{ end }}
+			</div>
+			<div class="peek-origin">
+				{{ if !hide_user }}
+					<strong class="peek-author">{{ $ post.create_profile.user.login }}</strong>
+				{{ end }}
+				<em class="peek-time">{{ $ tra ("yn.board.post.view.create_time", ["post": post]) }}</em>
+			</div>
+			{{ if !hide_text }}
+				{{ unwrap }}
+					<div class="markup peek-text">{{ $ post.render_text ("html", router, logger, topic.id) }}</div>
+				{{ end }}
+			{{ end }}
+			{{ if do_reply && allow_reply }}
+				<div class="peek-action glyph10">
+					<a class="bind-tooltip label peek-quote" href="{{ $ url ("board.post.new", ["topic": topic.id, "quote": position, "peek": request.peek]) }}" title="{{ $ tra ("yn.board.bookmark.list.quote.hint") }}">{{ $ tra ("yn.board.bookmark.list.quote") }}</a>
+					<a class="bind-tooltip label peek-reply" href="#" title="{{ $ tra ("yn.board.bookmark.list.reply.hint") }}">{{ $ tra ("yn.board.bookmark.list.reply") }}</a>
+				</div>
+				<form class="form-cascade form-thick bind-raw" style="display: none;" action="{{ $ url ("board.post.new", ["topic": topic.id, "_template": "frame"]) }}" method="POST">
+					{{ let
+						_alerts = null,
+						_fields = [
+							"text": ["textarea", null, ["draft": cat ("board.topic.", topic.id, ".text"), "length": 30000, "rows": 6]]
+						],
+						_prefix = "yn.board.bookmark.list.form."
+					}}
+						{{ include control-form.deval }}
+					{{ end }}
+					<input name="posts" type="hidden" value="{{ $ default (request.posts, topic.posts) }}" />
+					<div class="control glyph10">
+						<input class="button send" type="submit" value="{{ $ tra ("yn.board.bookmark.list.form.submit") }}" />
+						{{ $ " " }}
+						{{ $ tra ("yn.board.bookmark.list.form.disclaimer") }}
+					</div>
+				</form>
+			{{ end }}
+		</div>
+	{{ else }}
+		{{ extend yn-board-post.deval }}
+		{{ block body }}
+			<div class="bind-markup markup text" itemprop="articleBody">
+				{{ unwrap }}
+					{{ $ post.render_text ("html", router, logger, topic.id) }}
+				{{ end }}
+			</div>
+			{{ if user.id != null }}				
+				<div class="action glyph10">
+					{{ if allow_edit }}
+						<a class="bind-tooltip label edit" href="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.edit.hint") }}" data-url-edit="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.edit") }}</a>
+					{{ end }}
+					<a class="bind-tooltip label quote" href="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "quote": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.quote.hint") }}" data-url-quote="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "quote": position, "peek": 1, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.quote") }}</a>
+					<a class="bind-tooltip label report" href="#" title="{{ $ tra ("yn.board.topic.view.post.report.hint") }}" data-title="{{ $ tra ("yn.board.topic.view.post.report") }}" data-url-report="{{ $ url ("board.post.report", ["topic": topic.id, "position": position, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.report") }}</a>
+					<a class="bind-tooltip label copy" style="display: none;" href="#" title="{{ $ tra ("yn.board.topic.view.post.copy.hint") }}" data-context="{{ $ tra ("yn.board.post.edit.context", ["position": position, "post": post, "topic": topic]) }}">{{ $ tra ("yn.board.topic.view.post.copy") }}</a>
+				</div>
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}

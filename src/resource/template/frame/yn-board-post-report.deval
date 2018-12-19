@@ -1,0 +1,16 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			{{ let
+				_alerts = alerts,
+				_fields = [],
+				_prefix = "yn.board.post.report.form."
+			}}
+				{{ include ../fragment/control-form.deval }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}

@@ -1,0 +1,44 @@
+{{ wrap html }}
+	{{ let
+		board_forum_organize_url = url ("board.forum.organize", ["forum": forum.id]),
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			board_forum_organize_url: tra ("yn.board.forum.organize", ["forum": forum])
+		],
+		_redirect = length (alerts) == 0 && board_forum_organize_url || null,
+		_static = [],
+		_title = tra ("yn.board.block.delete")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.block.delete.type") }}</div>
+				<div class="panel-body">
+					{{ if alerts == null }}
+						<div class="notice notice-info">
+							{{ $ tra ("yn.board.block.delete.warning", ["block": block]) }}
+						</div>
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ url ("board.block.delete", ["forum": block.forum_id, "rank": block.rank]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [],
+							_prefix = "yn.board.block.delete.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button delete" type="submit" value="{{ $ tra ("yn.board.block.delete.form.submit") }}" />
+							{{ $ " " }}
+							{{ $ tra ("yn.board.block.delete.form.disclaimer") }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

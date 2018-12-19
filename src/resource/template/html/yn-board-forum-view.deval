@@ -1,0 +1,65 @@
+{{ wrap html }}
+	{{ let
+		_forum = forum,
+		_meta = [
+			"description": tra ("yn.board.forum.view.description", ["forum": forum]),
+			"rss": url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias, "_template": "rss"])
+		],
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list")
+		],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-board-forum.js"),
+			cat (static.theme, "yn-board-forum.less")
+		],
+		_title = tra ("yn.board.forum.view", ["forum": forum])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="forum panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.forum.view.type") }}</div>
+				<div class="panel-body">
+					{{ if forum.is_illustrated }}
+						<div class="panel-icon">
+							<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
+						</div>
+					{{ end }}
+					<h2>{{ $ forum.name }}</h2>
+					<div class="markup">
+						{{ unwrap }}
+							{{ $ default (forum.render_preface ("html", router, logger), html (forum.description)) }}
+						{{ end }}
+					</div>
+				</div>
+				{{ let edit = false }}
+					{{ include ../fragment/yn-board-forum-view.deval }}
+				{{ end }}
+				<div class="panel-footer glyph10">
+					<a class="label active" href="{{ $ url ("board.forum.active", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.active") }}</a>
+					<a class="label rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.forum.view.rss") }}</a>
+					<a class="label directory" href="{{ $ url ("board.profile.list", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.users") }}</a>
+					{{ if forum.allow_edit (access) }}
+						<a class="label log" href="{{ $ url ("board.log.list", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.log") }}</a>
+						<a class="label edit" href="{{ $ url ("board.forum.edit", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.edit") }}</a>
+						<a class="label organize" href="{{ $ url ("board.forum.organize", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.organize") }}</a>
+						<a class="label permission" href="{{ $ url ("board.forum.permission", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.permission") }}</a>
+						<a class="label ban" href="{{ $ url ("board.ban.edit", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.ban") }}</a>
+					{{ end }}
+				</div>
+			</div>
+		{{ block tail }}
+			<div class="page-block">
+				<div class="last panel panel-decorate">
+					<div class="panel-header">{{ $ tra ("yn.board.forum.view.last") }}</div>
+					<div class="panel-body">
+						<div class="sources">
+							{{ include ../fragment/yn-board-bookmark-list.deval }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

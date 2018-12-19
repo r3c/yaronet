@@ -1,0 +1,10 @@
+{{ wrap html }}
+	{{ let
+		_redirect = length (alerts) == 0 && url ("account.message.list") || null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			{{ include ../fragment/yn-account-message-hide.deval }}
+		{{ end }}
+	{{ end }}
+{{ end }}

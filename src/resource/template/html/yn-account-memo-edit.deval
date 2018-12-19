@@ -1,0 +1,23 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("account.memo.view"): tra ("yn.account.memo.view")
+		],
+		_redirect = length (alerts) == 0 && url ("account.memo.view") || null,
+		_static = [],
+		_title = tra ("yn.account.memo.edit")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.account.memo.edit.type") }}</div>
+				<div class="panel-body">
+					{{ include ../fragment/yn-account-memo-edit.deval }}
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

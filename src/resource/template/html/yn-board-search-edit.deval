@@ -1,0 +1,42 @@
+{{ wrap html }}
+	{{ let
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum])
+		],
+		_redirect = length (alerts) == 0 && url ("board.search.view", ["search": search.id]) || null,
+		_static = [
+			cat (static.layout, "yn-board-topic.js"),
+			cat (static.theme, "yn-board-topic.less")
+		],
+		_title = tra ("yn.board.search.edit", ["forum": forum])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.search.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("board.search.new", ["forum": forum.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"criteria":	["group", true],
+								"query":	["text", true, ["focus": true]],
+								"login":	[]
+							],
+							_prefix = "yn.board.search.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button search" type="submit" value="{{ $ tra ("yn.board.search.edit.form.submit") }}" />
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

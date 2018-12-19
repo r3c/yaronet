@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.survey.poll.">
+		<section prefix="edit.">
+			<string key="form.alert">Poll successfully created. Copy the code below to insert it in your message.</string>
+			<string key="form.alert.choices-length">Your poll must contain at least two possible answers.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.poll-null" alias="base.alert.default" />
+			<string key="form.alert.question-length">Question is either too short or too long, it must contain between 1 and 500 characters.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Some choice text is either too short or too long, it must contain between 1 and 500 characters.</string>
+			<string key="form.alert.type-invalid" alias="base.alert.sql" />
+			<string key="form.field.choices">Choices*:</string>
+			<string key="form.field.choices.placeholder">Enter a choice then append it by pressing "enter" key.</string>
+			<string key="form.field.question">Question*:</string>
+			<string key="form.field.type">Poll type*:</string>
+			<string key="form.field.type.item.0">Single answer</string>
+			<string key="form.field.type.item.1">Multiple answers</string>
+			<string key="form.submit" alias="base.submit.save" />
+		</section>
+
+		<section prefix="view.">
+			<string key="choice">{text} - {percentage}% ({score} vote{if:{gt:{score},1},s})</string>
+			<string key="form.submit">Vote</string>
+		</section>
+	</section>
+</locale>

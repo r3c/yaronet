@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.section.">
+		<string key="edit">{if:{section.id},Edit,Create} section</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.access-invalid" alias="base.alert.cost" />
+			<string key="form.alert.block-forum-null" alias="base.alert.default" />
+			<string key="form.alert.block-text-length" alias="yn.board.block.edit.form.alert.text-length" />
+			<string key="form.alert.block-sql" alias="base.alert.default" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.description-length" alias="yn.board.forum.edit.form.alert.description-length" />
+			<string key="form.alert.forum-null" alias="base.alert.default" />
+			<string key="form.alert.header-length" alias="yn.board.forum.edit.form.alert.header-length" />
+			<string key="form.alert.name-length" alias="yn.board.forum.edit.form.alert.name-length" />
+			<string key="form.alert.reach-invalid" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.field.access">Accessibility*:</string>
+			<string key="form.field.access.hint">Defines required permissions to read or write to this section.</string>
+			<string key="form.field.access.item.0">Private (requires access to read or write)</string>
+			<string key="form.field.access.item.1">Public (read-only, requires write access)</string>
+			<string key="form.field.access.item.2">Open (no access required)</string>
+			<string key="form.field.description">Description*:</string>
+			<string key="form.field.description.hint">Short description of the section.</string>
+			<string key="form.field.header">Header:</string>
+			<string key="form.field.header.hint">Appears under section name and description if defined.</string>
+			<string key="form.field.flags">Options:</string>
+			<string key="form.field.flags.item.delegated">Authors have full access on their topics</string>
+			<string key="form.field.name">Section name*:</string>
+			<string key="form.field.name.hint">Name also defines the URL for this section.</string>
+			<string key="form.field.reach">Reach*:</string>
+			<string key="form.field.reach.hint">Defines where last active topics are visible from.</string>
+			<string key="form.field.reach.item.0">Invisible</string>
+			<string key="form.field.reach.item.1">Visible only from inside the forum</string>
+			<string key="form.field.reach.item.2">Visible from outsite the forum</string>
+			<string key="form.group.identity">Section identity</string>
+			<string key="form.group.identity.hint">Select a name and a description for this section to indicate what discussion themes it should group. Please note that changing section name also changes its URL, so it's better not to change the one you set initially if you already communicated it publicly</string>
+			<string key="form.group.permission">Access permissions</string>
+			<string key="form.group.permission.hint">Configure below the access permissions required to use this section, then go to administration panel if you want to allow some members to access restricted sections.</string>
+			<string key="form.group.visual">Appearance</string>
+			<string key="form.group.visual.hint">Following parameters define visual aspect of your section and allow you to customize it.</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="type">Section edit form</string>
+		</section>
+
+		<string key="merge">Merge</string>
+		<section prefix="merge.">
+			<string key="back">Cancel</string>
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.into-access">You are not moderator of section you want to merge into.</string>
+			<string key="form.alert.into-self">You can't merge a section into itself.</string>
+			<string key="form.alert.into-unknown">The section you want to merge into doesn't exist.</string>
+			<string key="form.field.into">Target section*:</string>
+			<string key="form.field.into.hint">Topics and posts will be moved to this section.</string>
+			<string key="form.field.into.placeholder" alias="yn.board.topic.edit.form.field.section.placeholder" />
+			<string key="form.group.merge">Merge a section</string>
+			<string key="form.group.merge.hint">Select a target section in which current section will be merged then deleted. Proceed with caution, this action can't be reversed.</string>
+			<string key="form.submit">Merge</string>
+			<string key="type">Sections merge</string>
+		</section>
+
+		<string key="permission">Permissions</string>
+		<section prefix="permission.">
+			<string key="back" alias="base.back" />
+			<string key="form.alert" alias="yn.board.forum.permission.form.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.login-unknown" alias="yn.board.forum.permission.form.alert.login-unknown" />
+			<string key="form.alert.profile-unknown" alias="base.alert.default" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.field.login.placeholder">Add member by login</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="table">Configure section permissions</string>
+			<string key="table.change">Can moderate section</string>
+			<string key="table.change.false">No (ignore forum permission)</string>
+			<string key="table.change.true">Yes (ignore forum permission)</string>
+			<string key="table.change.void">If forum moderator (default)</string>
+			<string key="table.help">This page allows you to configure special permissions on section "{section.name}", which will override any permission configured on forum "{section.forum.name}".&#xA;&#xA;Section is currently configured as "{case:{section.access},0,private,1,public,2,open}", meaning {case:{section.access},0,members need a explicit permission to read or write to it,1,members can read messages but need an explicit permission to write new ones,2,anyone can read and write to it without need for explicit permission}.&#xA;&#xA;You can add a new member to this list by entering a login and permissions you want to grant, or update permissions of already registered members.</string>
+			<string key="table.login">Login</string>
+			<string key="table.login.value">{profile.user.login}</string>
+			<string key="table.read">Can read topics and messages</string>
+			<string key="table.read.false" alias="yn.board.section.permission.table.change.false" />
+			<string key="table.read.true" alias="yn.board.section.permission.table.change.true" />
+			<string key="table.read.void">If section is public (default)</string>
+			<string key="table.write">Can write and reply</string>
+			<string key="table.write.false" alias="yn.board.section.permission.table.change.false" />
+			<string key="table.write.true" alias="yn.board.section.permission.table.change.true" />
+			<string key="table.write.void">If section is open (default)</string>
+			<string key="type">Section permissions</string>
+		</section>
+
+		<string key="view">{section.name}{ifset:{page}, - Page {page}}</string>
+		<section prefix="view.">
+			<string key="active">Last active topics</string>
+			<string key="create_profile">{if:{profile.user.id},{profile.user.login},(nobody)}</string>
+			<string key="description">{section.description} - {section.forum.name}</string>
+			<string key="edit">Edit</string>
+			<string key="form">Create new topic</string>
+			<string key="form.disclaimer" alias="yn.board.post.edit.form.disclaimer" />
+			<string key="form.field.name" alias="yn.board.topic.edit.form.field.name" />
+			<string key="form.field.name.hint" alias="yn.board.topic.edit.form.field.name.hint" />
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="info">{topic.posts} posts</string>
+			<string key="last_profile" alias="yn.board.section.view.create_profile" />
+			<string key="last_time">{if:{time},{date:{time},Y-m-d \\a\\t h:ia},(empty topic)}</string>
+			<string key="merge">Merge</string>
+			<string key="permission">Permissions</string>
+			<string key="rss">RSS feed</string>
+			<string key="subscription.clear">Unsubscribe to this section</string>
+			<string key="subscription.clear.hint">Do not track new topics from this section</string>
+			<string key="subscription.set">Subscribe to this section</string>
+			<string key="subscription.set.hint">Follow new topics from this section in "my topics" page</string>
+			<string key="type">Section</string>
+		</section>
+	</section>
+</locale>

@@ -1,0 +1,37 @@
+{
+	"modifiers": [
+		{
+			"pattern":	"\\.dist$",
+			"filter":	""
+		},
+		{
+			"pattern":	"\\.inc\\.less$",
+			"filter":	"",
+			"link":		"find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true"
+		},
+		{
+			"pattern":	"\\.min\\.css$"
+		},
+		{
+			"pattern":	"\\.css$",
+			"adapt":	"lessc --clean-css '{}'"
+		},
+		{
+			"pattern":	"\\.min\\.js$"
+		},
+		{
+			"pattern":	"\\.js$",
+			"adapt":	"uglifyjs --compress --mangle -- '{}'"
+		},
+		{
+			"pattern":	"\\.(gif|jpg|png)$",
+			"adapt":	"imagemin < '{}'"
+		},
+		{
+			"pattern":	"(.*)\\.less$",
+			"adapt":	"lessc --clean-css '{}'",
+			"link":		"find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true",
+			"name":		"\\1.css"
+		}
+	]
+}

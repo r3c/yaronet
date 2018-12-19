@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.board.block.">
+		<string key="delete">Supprimer</string>
+		<section prefix="delete.">
+			<string key="form.alert">Bloc supprimé.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.disclaimer" alias="yn.board.profile.delete.form.disclaimer" />
+			<string key="form.submit">Confirmer</string>
+			<string key="type">Confirmation de suppression de bloc</string>
+			<string key="warning">Veuillez confirmer la suppression du {if:{block.section_id},lien vers la section "{block.section.name}",bloc {if:{block.text},de texte "{block.text}",de séparation}}.</string>
+		</section>
+
+		<string key="edit">{if:{block.rank},Modifier un,Créer un nouveau} bloc</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.forum-null" alias="base.alert.default" />
+			<string key="form.alert.section-unknown" alias="yn.board.topic.edit.form.alert.section-unknown" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Votre texte est trop court ou trop long, il doit contenir entre 1 et 30000 caractères.</string>
+			<string key="form.field.move">Ordre d'affichage* :</string>
+			<string key="form.field.move.hint">Les blocs sont affichés de haut en bas par ordre d'affichage croissant.</string>
+			<string key="form.field.restore">Restaurer une section :</string>
+			<string key="form.field.restore.hint">Choisissez une section qui n'apparait plus dans votre forum pour l'ajouter de nouveau.</string>
+			<string key="form.field.section">Lien vers une section :</string>
+			<string key="form.field.section.hint">Faire apparaître un lien vers une section qui appartient à votre forum ou une section externe.</string>
+			<string key="form.field.section.placeholder" alias="yn.board.topic.edit.form.field.section.placeholder" />
+			<string key="form.field.text">Texte du bloc :</string>
+			<string key="form.field.text.hint">Afficher une barre de séparation dans votre forum, contenant éventuellement du texte.</string>
+			<string key="form.submit.custom" alias="base.submit.save" />
+			<string key="form.submit.restore">Restaurer</string>
+			<string key="type">Formulaire de configuration de bloc</string>
+		</section>
+	</section>
+</locale>

@@ -1,0 +1,63 @@
+{{ wrap html }}
+	{{ let
+		profile_avatar = profile.render_avatar (router),
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.profile.list"): tra ("yn.board.profile.list")
+		],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-board-profile.less")
+		],
+		_title = tra ("yn.board.profile.view", ["user": profile.user])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.profile.view.type") }}</div>
+				<div class="panel-body">
+					<h2>{{ $ tra ("yn.board.profile.view.user", ["profile": profile]) }}</h2>
+					{{ $ "" /* FIXME [html-table] */ }}
+					<table class="view">
+						<tr>
+							{{ if profile_avatar != null }}
+								<td rowspan="5">
+									<img class="avatar" src="{{ $ profile_avatar }}" alt="avatar" />
+								</td>
+							{{ end }}
+							<th>{{ $ tra ("yn.board.profile.view.gender") }}</th>
+							<td>{{ $ tra ("yn.board.profile.view.gender.value", ["profile": profile]) }}</td>
+						</tr>
+						<tr>
+							<th>{{ $ tra ("yn.board.profile.view.create_time") }}</th>
+							<td>{{ $ tra ("yn.board.profile.view.create_time.value", ["profile": profile]) }}</td>
+						</tr>
+						<tr>
+							<th>{{ $ tra ("yn.board.profile.view.pulse_time") }}</th>
+							<td>{{ $ tra ("yn.board.profile.view.pulse_time.value", ["profile": profile]) }}</td>
+						</tr>
+						<tr>
+							<th>{{ $ tra ("yn.board.profile.view.forum") }}</th>
+							<td>{{ $ tra ("yn.board.profile.view.forum.value", ["profile": profile]) }}</td>
+						</tr>
+						<tr>
+							<th>{{ $ tra ("yn.board.profile.view.posts") }}</th>
+							<td>{{ $ tra ("yn.board.profile.view.posts.value", ["profile": profile]) }}</td>
+						</tr>
+					</table>
+				</div>
+				<div class="panel-footer glyph10">
+					{{ if user.is_admin || profile.user_id == user.id }}
+						<a class="label edit bind-tooltip" href="{{ $ url ("account.user.edit", ["user": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.account.hint") }}">{{ $ tra ("yn.board.profile.view.account") }}</a>
+						<a class="label profile bind-tooltip" href="{{ $ url ("board.profile.edit", ["profile": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.edit.hint") }}">{{ $ tra ("yn.board.profile.view.edit") }}</a>
+					{{ end }}
+					{{ if user.is_admin && profile.user_id != user.id }}
+						<a class="label delete bind-tooltip" href="{{ $ url ("board.profile.delete", ["profile": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.delete.hint") }}">{{ $ tra ("yn.board.profile.view.delete") }}</a>
+					{{ end }}
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

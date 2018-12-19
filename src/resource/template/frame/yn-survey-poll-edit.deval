@@ -1,0 +1,44 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			<form class="form-cascade form-thick bind-poll" action="{{ $ url ("survey.poll.new") }}" method="POST">
+				{{ if length (alerts) == 0 }}
+					<div class="notice notice-ok">
+						{{ $ tra ("yn.survey.poll.edit.form.alert") }}
+					</div>
+					<div class="field">
+						<div class="value">
+							<input name="code" type="text" value="{{ $ cat ("[poll=", poll.id, "]") }}" />
+						</div>
+					</div>
+				{{ else }}
+					{{ let
+						_alerts = alerts,
+						_fields = [
+							"question":	["text", false, ["length": 500]],
+							"type":		["select", false, ["items": [
+								php ("yN\\Entity\\Survey\\Poll::#TYPE_SINGLE"),
+								php ("yN\\Entity\\Survey\\Poll::#TYPE_MULTIPLE")
+							]]],
+							"choices":	["complete", false, [
+								"limit":		php ("yN\\Entity\\Survey\\Poll::#RANK_MAX"),
+								"placeholder":	true,
+								"selectable":	true,
+								"sortable":		true
+							]]
+						],
+						_prefix = "yn.survey.poll.edit.form."
+					}}
+						{{ include ../fragment/control-form.deval }}
+					{{ end }}
+					<div class="control glyph10 bind-control">
+						<input class="button edit" type="submit" value="{{ $ tra ("yn.survey.poll.edit.form.submit") }}" />
+					</div>
+				{{ end }}
+			</form>
+		{{ end }}
+	{{ end }}
+{{ end }}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="page.">
+		<string key="activation">Votre compte n'est pas encore activé, veuillez suivre les instructions reçues par mail ou cliquer sur ce lien pour pouvoir poster.</string>
+		<string key="bookmarks1">Mes sujets</string>
+		<string key="bookmarks1.hint">Activité dans vos sujets</string>
+		<string key="bookmarks2">Suivi sujets</string>
+		<string key="bookmarks2.hint">Activité et nouveaux sujets</string>
+		<string key="chat">Chat</string>
+		<string key="chat.hint">Chat IRC</string>
+		<string key="contacts">Contacts</string>
+		<string key="copyright">Réalisé avec</string>
+		<string key="guides">Aide</string>
+		<string key="message" alias="yn.account.message.list.type" />
+		<string key="message.hint">{if:{message.id},Vous avez reçu un message de {message.sender.login},Vos messages privés}</string>
+		<string key="memo" alias="yn.account.memo.view.type" />
+		<string key="memo.hint" alias="yn.account.memo.view" />
+		<string key="metric">Statistiques</string>
+		<string key="profile">Profil</string>
+		<string key="profile.hint">Modifier votre profil</string>
+		<string key="recover">Mot de passe oublié ?</string>
+		<string key="recover.hint">Recevez un nouveau mot de passe par mail</string>
+		<string key="rules">Charte</string>
+		<string key="search">Recherche</string>
+		<string key="search.hint">Rechercher un message dans le forum</string>
+		<string key="signin">Cliquez ici pour vous connecter</string>
+		<string key="signin.hint">Connectez-vous pour profiter pleinement du site !</string>
+		<string key="signout">Quitter</string>
+		<string key="signout.hint">Déconnexion</string>
+		<string key="signup">Cliquez ici pour vous inscrire</string>
+		<string key="signup.hint">Créez votre compte et participez aux forums !</string>
+		<string key="time">{date:{time},H:i}</string>
+		<string key="welcome">{if:{user.id},Hello {user.login},Bienvenue} !</string>
+	</section>
+</locale>

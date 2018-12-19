@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.ban.">
+		<string key="edit">Ban</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="form.alert">Banned IP addresses successfully saved.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.delete">Deleting old banned addresses failed, please try again.</string>
+			<string key="form.alert.address-invalid">One of provided IP addresses is not a valid IPv4 or IPv6 address.</string>
+			<string key="form.alert.address-null" alias="base.alert.default" />
+			<string key="form.alert.addresses-length" alias="base.alert.default" />
+			<string key="form.alert.forum-null" alias="base.alert.default" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.field.addresses">IP addresses:</string>
+			<string key="form.field.addresses.hint">List of IP addresses banned from your forum.</string>
+			<string key="form.field.addresses.placeholder">IP address using IPv4 (1.2.3.4) ou IPv6 (2001:0db8:0000:85a3:0000:0000:ac1f:8001) format</string>
+			<string key="form.group.ban">Banned IP addresses</string>
+			<string key="form.group.ban.hint">Please input IP addresses to which you want to refuse posting new messages or topics. Users of these addresses will be blocked until you remove them from the list.</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="type">IP address ban</string>
+		</section>
+	</section>
+</locale>

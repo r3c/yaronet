@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<string key="base">{if:{title},{title} - yAronet,yAronet - Attention : forum addictif !}</string>
+	<section prefix="base.">
+		<string key="alert">Modifications enregistrées.</string>
+		<string key="alert.cost">Afin d'éviter de surcharger le serveur, merci d'attendre une minute avant d'effectuer cette opération.</string>
+		<string key="alert.default">Une erreur interne est survenue, veuillez réessayer dans quelques minutes ou contacter un administrateur du site pour obtenir de l'aide.</string>
+		<string key="alert.sql" alias="base.alert.default" />
+		<string key="back">Annuler</string>
+		<string key="name">yAronet</string>
+		<string key="submit.save">Enregistrer</string>
+		<string key="submit.search">Rechercher</string>
+		<string key="submit.send">Envoyer</string>
+		<string key="type.datetime.relative">{case:{lag:86400,{time}},0,Aujourd'hui,1,Hier,Le {date:{time},d/m/Y}} à {date:{time},H:i}</string>
+		<string key="type.time.absolute">{date:{time},H:i:s}</string>
+	</section>
+</locale>

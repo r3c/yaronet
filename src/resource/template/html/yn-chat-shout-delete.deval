@@ -1,0 +1,38 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [url ("home"): tra ("yn.home")],
+		_redirect = length (alerts) == 0 && url ("home") || null,
+		_static = [],
+		_title = tra ("yn.chat.shout.delete", ["shout": shout])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.chat.shout.delete.type") }}</div>
+				<div class="panel-body">
+					{{ if alerts == null }}
+						<div class="notice notice-info">
+							{{ $ tra ("yn.chat.shout.delete.warning", ["shout": shout]) }}
+						</div>
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ url ("chat.shout.delete", ["shout": shout.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [],
+							_prefix = "yn.chat.shout.delete.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button delete" type="submit" value="{{ $ tra ("yn.chat.shout.delete.form.submit") }}" />
+							{{ $ " " }}
+							{{ $ tra ("yn.chat.shout.delete.form.disclaimer") }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

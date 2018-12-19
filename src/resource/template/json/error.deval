@@ -1,0 +1,4 @@
+{{ extend base.deval }}
+{{ block body }}
+	{{ $ json (["alerts": [tra ("error.message", ["code": code])]]) }}
+{{ end }}

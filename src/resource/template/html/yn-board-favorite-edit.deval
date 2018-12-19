@@ -1,0 +1,45 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list")
+		],
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.board.favorite.edit")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.favorite.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("board.favorite.edit", ["profile": edit.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"favorite":	["group", true],
+								"forums":	["complete", true, [
+									"callback":		url ("board.forum.list", ["_template": "json"]),
+									"focus":		true,
+									"limit":		php ("yN\\Entity\\Board\\Favorite::#COUNT_MAX"),
+									"placeholder":	true,
+									"selectable":	true,
+									"sortable":		true
+								]]
+							],
+							_prefix = "yn.board.favorite.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.favorite.edit.form.submit") }}" />
+							<a class="label back" href="{{ $ url ("home") }}">{{ $ tra ("yn.board.favorite.edit.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

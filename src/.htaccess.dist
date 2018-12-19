@@ -1,0 +1,13 @@
+# Server options
+AddDefaultCharset {{engine.system.encoding.charset}}
+
+Options +FollowSymlinks
+Options -Indexes
+Options -MultiViews
+
+RewriteEngine On
+RewriteBase {{engine.network.route.page}}
+
+# Page routes
+RewriteCond %{REQUEST_URI} !/(?:index|install)\.php$
+RewriteRule (.*) index.php [L,QSA]

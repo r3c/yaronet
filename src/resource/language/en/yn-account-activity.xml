@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.account.activity.">
+		<string key="list">Activity</string>
+		<section prefix="list.">
+			<string key="address">IP address</string>
+			<string key="address.value">{activity.address}</string>
+			<string key="create_time">Connected since</string>
+			<string key="create_time.value" alias="base.type.time.absolute"><var name="time">{activity.create_time}</var></string>
+			<string key="identity">Identity</string>
+			<string key="identity.value">{def:{activity.user.login},{activity.group},Unknown}</string>
+			<string key="index">#</string>
+			<string key="index.value">{index}</string>
+			<string key="location">Location</string>
+			<string key="location.value">{activity.location}</string>
+			<string key="pulse_time">Active at</string>
+			<string key="pulse_time.value" alias="base.type.time.absolute"><var name="time">{activity.pulse_time}</var></string>
+			<string key="type">Connected users</string>
+		</section>
+
+		<section prefix="pulse.">
+			<string key="user_ghost">Boo</string>
+			<string key="user_ghost.hint">Currently {count} online user{ge:{count},2,s}</string>
+			<string key="user_group">{count} {def:{group},guest}{ge:{count},2,s}</string>
+			<string key="user_group.hint">Guest users</string>
+			<string key="user_known">{user.login}</string>
+			<string key="user_known.hint">Inactive for {ge:{inactive},3600,{div:{inactive},3600} hour{ge:{div:{inactive},3600},2,s},{ge:{inactive},60,{div:{inactive},60} minute{ge:{div:{inactive},60},2,s},{inactive} second{ge:{inactive},2,s}}}</string>
+		</section>
+	</section>
+</locale>

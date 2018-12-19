@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.account.message.">
+		<string key="delete">Supprimer un message privé</string>
+		<section prefix="delete.">
+			<string key="back">Retour</string>
+			<string key="form.alert">Message supprimé avec succès.</string>
+			<string key="form.alert.save">Impossible de supprimer ce message, il a peut-être été lu par l'un des destinataires.</string>
+			<string key="form.submit">Supprimer</string>
+			<string key="type">Suppression de message</string>
+			<string key="warning">Êtes-vous sûr de vouloir supprimer ce message ?</string>
+		</section>
+
+		<string key="edit">Envoyer un message privé</string>
+		<section prefix="edit.">
+			<string key="back">Annuler</string>
+			<string key="form.alert">Message édité avec succès.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.login-empty">Vous n'avez saisi aucun destinataire pour votre message.</string>
+			<string key="form.alert.login-unknown">Le destinataire est inconnu.</string>
+			<string key="form.alert.message-null" alias="base.alert.default" />
+			<string key="form.alert.read">Impossible de modifier ce message, il a déjà été lu par l'un des destinataires.</string>
+			<string key="form.alert.recipient-null" alias="base.alert.default" />
+			<string key="form.alert.sender-null" alias="base.alert.default" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Votre message est trop court ou trop long, il doit contenir entre 1 et 30000 caractères.</string>
+			<string key="form.field.reply">Message précédent :</string>
+			<string key="form.field.text.placeholder">Message à envoyer</string>
+			<string key="form.field.to">Destinataire(s)* :</string>
+			<string key="form.field.to.placeholder">Identifiant du ou des destinataire(s) du message</string>
+			<string key="form.submit">Envoyer</string>
+			<string key="type">Envoi de message</string>
+		</section>
+
+		<string key="hide">Cacher un message privé</string>
+		<section prefix="hide.">
+			<string key="back">Retour</string>
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.submit">Cacher</string>
+			<string key="type">Cacher un message</string>
+			<string key="warning">Êtes-vous sûr de vouloir cacher ce message ?</string>
+		</section>
+
+		<string key="list">Vos messages privés</string>
+		<section prefix="list.">
+			<string key="box">{login} {if:{read},a,n'a pas encore} lu ce message</string>
+			<string key="delete">Supprimer</string>
+			<string key="delete.confirm" alias="yn.account.message.delete.warning" />
+			<string key="delete.hint">Supprimer ce message tant qu'il est non lu</string>
+			<string key="edit">Modifier</string>
+			<string key="edit.hint">Changer le texte du message tant qu'il est non lu</string>
+			<string key="first">Plus récents</string>
+			<string key="first.hint">Voir les derniers messages reçus</string>
+			<string key="form.field.login.placeholder">Envoyé à ou par</string>
+			<string key="form.submit">Filtrer</string>
+			<string key="hide">Cacher</string>
+			<string key="hide.confirm" alias="yn.account.message.hide.warning" />
+			<string key="hide.hint">Enlever ce message de votre historique</string>
+			<string key="message">Mini-message</string>
+			<string key="message.hint">Envoyer un mini-message à l'auteur</string>
+			<string key="new">Nouveau</string>
+			<string key="new.hint">Envoyer un message privé</string>
+			<string key="prev">Plus anciens</string>
+			<string key="prev.hint">Voir les messages plus anciens</string>
+			<string key="profile">Profil</string>
+			<string key="profile.hint">Voir le profil de l'auteur</string>
+			<string key="reply">Répondre</string>
+			<string key="reply.hint">Répondre à l'expéditeur de ce message</string>
+			<string key="reply-all">Répondre à tous</string>
+			<string key="reply-all.hint">Répondre à l'expéditeur et aux autres destinataires</string>
+			<string key="rss">Flux RSS</string>
+			<string key="rss.hint">Flux RSS contenant vos messages privés</string>
+			<string key="time" alias="base.type.datetime.relative"><var name="time">{message.time}</var></string>
+			<string key="to">À :</string>
+			<string key="type">Messages</string>
+		</section>
+	</section>
+</locale>

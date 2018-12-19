@@ -1,0 +1,46 @@
+{{ wrap html }}
+	{{ let
+		help_page_view_url = page.name != "" && url ("help.page.view", ["label": page.label, "language": page.language]) || null,
+		_forum = null,
+		_meta = null,
+		_path = cat ([
+			url ("home"): tra ("yn.home")
+		], help_page_view_url && [
+			help_page_view_url: page.name
+		] || []),
+		_redirect = length (alerts) == 0 && url ("help.page.view", ["label": page.label, "language": page.language]) || null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.layout, "yn-help-page.less"),
+			cat (static.theme, "library/markitup/skin.less")
+		],
+		_title = tra ("yn.help.page.edit", ["page": page])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.help.page.edit.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("help.page.edit", ["label": page.label, "language": page.language]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"name":	["text", false, ["length": 200]],
+								"text":	["textarea", null, ["length": 30000, "markup": "bbcode", "rows": 24]]
+							],
+							_prefix = "yn.help.page.edit.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.help.page.edit.form.submit") }}" />
+							<a class="label back" href="{{ $ help_page_view_url }}">{{ $ tra ("yn.help.page.edit.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

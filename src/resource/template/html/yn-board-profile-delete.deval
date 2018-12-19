@@ -1,0 +1,42 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.profile.list"): tra ("yn.board.profile.list"),
+			url ("board.profile.view", ["profile": profile.user_id]): tra ("yn.board.profile.view", ["user": profile.user])
+		],
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.board.profile.delete")
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.profile.delete.type") }}</div>
+				<div class="panel-body">
+					{{ if alerts == null }}
+						<div class="notice notice-info">
+							{{ $ tra ("yn.board.profile.delete.warning", ["profile": profile]) }}
+						</div>
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ url ("board.profile.delete", ["profile": profile.user_id]) }}" method="POST" data-confirm="{{ $ tra ("yn.board.profile.delete.form.confirm") }}">
+						{{ let
+							_alerts = alerts,
+							_fields = [],
+							_prefix = "yn.board.profile.delete.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button delete" type="submit" value="{{ $ tra ("yn.board.profile.delete.form.submit") }}" />
+							{{ $ " " }}
+							{{ $ tra ("yn.board.profile.delete.form.disclaimer") }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

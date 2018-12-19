@@ -1,0 +1,10 @@
+{{ wrap html }}
+	{{ let
+		_meta = null,
+		_redirect = url ("board.section.view", ["section": topic.section_id, "section_hint": topic.section.hint]),
+		_static = [],
+		_title = null
+	}}
+		{{ include base.deval }}
+	{{ end }}
+{{ end }}

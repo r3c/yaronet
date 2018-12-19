@@ -1,0 +1,18 @@
+{{ if alerts == null }}
+	<div class="notice notice-info">
+		{{ $ tra ("yn.account.message.hide.warning", ["message": message]) }}
+	</div>
+{{ end }}
+<form class="form-cascade form-thick screen" action="{{ $ url ("account.message.hide", ["message": message.id]) }}" method="POST">
+	{{ let
+		_alerts = alerts,
+		_fields = [],
+		_prefix = "yn.account.message.hide.form."
+	}}
+		{{ include control-form.deval }}
+	{{ end }}
+	<div class="control glyph10">
+		<input class="button hide" type="submit" value="{{ $ tra ("yn.account.message.hide.form.submit") }}" />
+		<a class="label back" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.hide.back") }}</a>
+	</div>
+</form>

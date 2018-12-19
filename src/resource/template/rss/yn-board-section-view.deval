@@ -1,0 +1,14 @@
+{{ let
+	forum_id = forum.id != section.forum_id && forum.id || null,
+	link = url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint, "_template": null]),
+	title = section.name,
+	description = section.description,
+	items = map (topics, (topic) => [
+		url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "_template": null]),
+		topic.render_name ("text", router, logger),
+		null,
+		topic.last_time
+	])
+}}
+	{{ include base.deval }}
+{{ end }}

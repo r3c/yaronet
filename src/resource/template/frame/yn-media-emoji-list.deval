@@ -1,0 +1,36 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			{{ if search }}
+				<div class="bind-emoji">
+					<form class="form-cascade form-thick" action="{{ $ url ("media.emoji.list", ["type": type]) }}" method="POST">
+						<div class="field">
+							<div class="value">
+								<input name="prefix" type="text" placeholder="{{ $ tra ("yn.media.emoji.list.form.field.search.placeholder") }}" />
+							</div>
+						</div>
+					</form>
+					<div class="bind-emoji-list">
+						<div class="control glyph10">
+							<a class="label send" href="{{ $ url ("media.emoji.new") }}">{{ $ tra ("yn.media.emoji.list.new") }}</a>
+						</div>
+					</div>
+				</div>
+			{{ else }}
+				<div class="emojis">
+					{{ for name, url in emojis }}
+						<div class="emoji">
+							<div class="image">
+								<img alt="{{ $ name }}" src="{{ $ url }}" />
+							</div>
+							<a class="name" href="#">{{ $ name }}</a>
+						</div>
+					{{ end }}
+				</div>
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}

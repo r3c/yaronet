@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.topic.">
+		<string key="delete">Delete</string>
+		<section prefix="delete.">
+			<string key="form.alert">Topic deleted.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.disclaimer" alias="yn.board.profile.delete.form.disclaimer" />
+			<string key="form.submit">Confirm</string>
+			<string key="type">Topic deletion confirm</string>
+			<string key="warning">Please confirm you want to delete topic "{name}" ; this process will delete all the posts it contains.</string>
+		</section>
+
+		<string key="edit">{if:{topic.id},Edit,Create new} topic{if:{source.id}, (drifted)}</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="drift">{user.login} wanted to continue a side discussion in a new topic. Original discussion can be found in topic {source} while drifted discussion continues in topic {topic} where related posts have been copied.</string>
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.name-length">Your title is either too short of too long, it must contain between 1 and 200 characters.</string>
+			<string key="form.alert.positions-empty">You didn't specify any message to copy, please select at least one.</string>
+			<string key="form.alert.positions-incomplete">Some of the messages you specified do not exist in original topic.</string>
+			<string key="form.alert.positions-invalid">Invalid list of messages to copy, please check syntax is correct and number of messages doesn't exceed 30.</string>
+			<string key="form.alert.post-caution-length" alias="yn.board.post.edit.form.alert.caution-length" />
+			<string key="form.alert.post-cost" alias="base.alert.cost" />
+			<string key="form.alert.post-create-profile-null" alias="base.alert.default" />
+			<string key="form.alert.post-sql" alias="base.alert.sql" />
+			<string key="form.alert.post-state-invalid" alias="yn.board.post.edit.form.alert.state-invalid" />
+			<string key="form.alert.post-text-length" alias="yn.board.post.edit.form.alert.text-length" />
+			<string key="form.alert.reference-cost" alias="base.alert.cost" />
+			<string key="form.alert.reference-post-null" alias="base.alert.default" />
+			<string key="form.alert.reference-sql" alias="base.alert.sql" />
+			<string key="form.alert.reference-topic-null" alias="base.alert.default" />
+			<string key="form.alert.section-access">You must have permission to create topics in the new parent section before you can move a topic there.</string>
+			<string key="form.alert.section-null" alias="base.alert.default" />
+			<string key="form.alert.section-unknown">Unknown section, ensure you correctly spelled its name and the one of the forum it belongs to.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.user-active">Your account is not activated yet, you can't create new topics.</string>
+			<string key="form.alert.weight-invalid" alias="base.alert.default" />
+			<string key="form.field.flags">Options:</string>
+			<string key="form.field.flags.item.closed">Closed topic</string>
+			<string key="form.field.name">Topic title*:</string>
+			<string key="form.field.name.hint">You can use **bold** or //italic// formatting here.</string>
+			<string key="form.field.positions">Messages to take over*:</string>
+			<string key="form.field.positions.hint">Messages that will be copied from original topic (max. 30).</string>
+			<string key="form.field.positions.placeholder">Indices of messages separated by commas ; examples: 3,5,7 or 3-8</string>
+			<string key="form.field.section">Parent section*:</string>
+			<string key="form.field.section.hint">Section to which this topic belongs.</string>
+			<string key="form.field.section.placeholder">Forum and section names separated by a comma ; example: my forum, my section</string>
+			<string key="form.field.weight">Display order:</string>
+			<string key="form.field.weight.hint">Topics with a higher display order are displayed first.</string>
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="redirect">Topic sent, click here to continue.</string>
+			<string key="type">Topic edit form</string>
+		</section>
+
+		<string key="view">{topic_name}{ifset:{page}, - Page {page}}</string>
+		<section prefix="view.">
+			<string key="cross">There is at least one unread post in this topic. Click again to send, or read next post:</string>
+			<string key="cross.peek">unread post</string>
+			<string key="bookmark.clear">Stop following this topic</string>
+			<string key="bookmark.clear.hint">Stop tracking new posts from this topic</string>
+			<string key="bookmark.set">Follow this topic</string>
+			<string key="bookmark.set.hint">Track new posts from this topic in "my topics" page</string>
+			<string key="delete">Delete</string>
+			<string key="delete.hint">Delete this topic and messages it contains</string>
+			<string key="description">{topic_name} - {topic.section.name}</string>
+			<string key="drift">Drift</string>
+			<string key="drift.hint">Continue side discussion in a new topic</string>
+			<string key="edit">Edit</string>
+			<string key="edit.hint">Rename, move or configure this topic</string>
+			<string key="form">Reply in this topic</string>
+			<string key="form.disclaimer" alias="yn.board.post.edit.form.disclaimer" />
+			<string key="form.field.text.placeholder">Before you reply, please be aware you're not on the last page of this topic.</string>
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="post.copy">Copy</string>
+			<string key="post.copy.hint">Copy selected text to use it as a quote</string>
+			<string key="post.copy.success">Text copied! Use "insert" button above message editor to paste it.</string>
+			<string key="post.created">{case:{lag:86400,{time}},0,Today,1,Yesterday,{date:{time},Y-m-d}} at {date:{time},h:ia}</string>
+			<string key="post.edit">Edit</string>
+			<string key="post.edit.accept">Accept</string>
+			<string key="post.edit.cancel">Cancel</string>
+			<string key="post.edit.hint">Edit ce message</string>
+			<string key="post.edited">Edited by {profile.user.login} {case:{lag:86400,{time}},0,Today,1,Yesterday,On the {date:{time},Y-m-d}} at {date:{time},h:ia}</string>
+			<string key="post.ignore">Ignore</string>
+			<string key="post.ignore.confirm">Are you sure you want to ignore this user and hide all his/her posts? This choice can be reverted any time to want.</string>
+			<string key="post.ignore.hint">Ignore author of this post</string>
+			<string key="post.mark" alias="yn.board.bookmark.list.mark" />
+			<string key="post.mark.hint" alias="yn.board.bookmark.list.mark.hint" />
+			<string key="post.message" alias="yn.account.message.list.message" />
+			<string key="post.message.hint" alias="yn.account.message.list.message.hint" />
+			<string key="post.peek">Peek</string>
+			<string key="post.peek.hint">Peek content of this post</string>
+			<string key="post.position">Position</string>
+			<string key="post.position.hint">Right-click "copy link address" to point here</string>
+			<string key="post.profile" alias="yn.account.message.list.profile" />
+			<string key="post.profile.hint" alias="yn.account.message.list.profile.hint" />
+			<string key="post.quote">Quote</string>
+			<string key="post.quote.hint">Quote this post in your reply</string>
+			<string key="post.report">Report</string>
+			<string key="post.report.hint">Report this post to a moderator</string>
+			<string key="post.unignore">Stop ignoring</string>
+			<string key="post.unignore.hint">Stop ignoring author of this post</string>
+			<string key="reply">Reply</string>
+			<string key="reply.hint">Post a new reply to this topic</string>
+			<string key="report.accept">Report</string>
+			<string key="report.notice">If this post doesn't comply with forum rules you can report it to moderators by providing some context and clicking "Report". Warning: abuses will be punished.</string>
+			<string key="report.placeholder">Please provide some context for this report.</string>
+			<string key="type">Topic</string>
+		</section>
+	</section>
+</locale>

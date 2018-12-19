@@ -1,0 +1,42 @@
+{{ let
+	forum_id = forum.id != topic.section.forum_id && forum.id || null,
+	position = reference.position,
+	allow_edit = post.allow_edit (access, user.id),
+	allow_force = post.state == php ("yN\\Entity\\Board\\Post::#STATE_DEFAULT") || allow_edit,
+	do_force = allow_force && bool (request.force),
+	do_peek = bool (request.peek),
+	hide_text = (post.state == php ("yN\\Entity\\Board\\Post::#STATE_HIDDEN") || post.ignore) && !do_force,
+	hide_user = post.state != php ("yN\\Entity\\Board\\Post::#STATE_DEFAULT") && !do_force,
+	url_edit = position != null &&
+		url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": "frame"]) ||
+		url ("board.post.new", ["forum": forum_id, "topic": topic.id, "_template": "frame"]),
+	url_view = position != null &&
+		url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position, "_template": "frame"]) ||
+		""
+}}
+	{{ if do_peek }}
+		{{ $ request.text }}
+	{{ else if !new /* FIXME: new posts shouldn't be excluded, this is caused by external non-guarded links such as post author */ }}
+		{{ extend yn-board-post.deval }}
+		{{ block body }}
+			<form class="form-cascade form-thick" action="{{ $ url_edit }}" method="POST">
+				{{ let
+					_alerts = alerts,
+					_fields = [
+						"text":	["textarea", null, ["focus": true, "length": 30000, "markup": "bbcode"]]
+					],
+					_prefix = "yn.board.post.edit.form."
+				}}
+					{{ include control-form.deval }}
+				{{ end }}
+				<div class="bind-control action glyph10">
+					{{ if user.id != null }}
+						<a class="label accept" href="#">{{ $ tra ("yn.board.topic.view.post.edit.accept") }}</a>
+					{{ end }}
+					{{ $ " " }}
+					<a class="label cancel" href="{{ $ url_view }}">{{ $ tra ("yn.board.topic.view.post.edit.cancel") }}</a>
+				</div>
+			</form>
+		{{ end }}
+	{{ end }}
+{{ end }}

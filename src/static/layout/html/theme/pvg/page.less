@@ -1,0 +1,64 @@
+
+@import '../../page.inc.less';
+@import 'color.inc.less';
+
+@header-back-begin:		white;
+@header-back-end:		white;
+
+.page-block {
+	margin:	16px 0;
+}
+
+.page-footer {
+	border-style:	solid;
+}
+
+.page-header {
+	min-height:				30px;
+	background-color:		white;
+	background-image:		url('background/header.png');
+	background-position:	left center;
+	background-repeat:		repeat-x;
+	border-style:			none solid solid solid;
+	border-width:			0 1px 3px 1px;
+
+	div.logo a.default {
+		background-image:	url('glyph/logo.png');
+	}
+
+	div.partners a {
+		background-image:	url('glyph/infomaniak.png');
+	}
+}
+
+.page-menu {
+	border-style:	none solid solid solid;
+
+	@media screen and (max-width: 600px) {
+		right:			40px;
+		border-style:	none;
+	}
+}
+
+.panel {
+	&.panel-decorate {
+		.panel-body {
+			background-image:	url('background/panel.png');
+			background-size:	auto auto;
+		}
+	}
+
+	.panel-header {
+		background-image:	linear-gradient(darken(@panel-header-back, 0%), darken(@panel-header-back, 20%));
+	}
+}
+
+.panel-hl .panel-header {
+	background-image:	linear-gradient(darken(@panel-header-hl-back, 0%), darken(@panel-header-hl-back, 20%));
+}
+
+.window {
+	.window-header {
+		background-image:	linear-gradient(darken(@panel-header-back, 0%), darken(@panel-header-back, 20%));
+	}
+}

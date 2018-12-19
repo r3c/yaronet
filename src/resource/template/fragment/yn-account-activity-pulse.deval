@@ -1,0 +1,18 @@
+<a class="bind-tooltip ghost"{{ if user.is_admin }} href="{{ $ url ("account.activity.list", ["_template": null]) }}"{{ end }} title="{{ $ tra ("yn.account.activity.pulse.user_ghost.hint", ["count": length (activities)]) }}">{{ $ tra ("yn.account.activity.pulse.user_ghost") }}</a>
+{{ for activity in activities }}
+	{{ if activity.user != null }}
+		{{ let
+			class = location && slice (cat (activity.location, "."), 0, length (location)) == location && "near" || "far",
+			hint = tra ("yn.account.activity.pulse.user_known.hint", ["inactive": time - activity.pulse_time, "user": activity.user]),
+			url_message = url ("account.message.new", ["to": activity.user.login, "_template": null]),
+			url_message_new = url ("account.message.new", ["to": activity.user.login, "_template": "frame"])
+		}}
+			{{ $ " " }}
+			<a class="bind-message bind-tooltip {{ $ class }}"{{ if user.id != null }} href="{{ $ url_message }}" data-url-edit="{{ $ url_message_new }}"{{ end }} title="{{ $ hint }}">{{ $ tra ("yn.account.activity.pulse.user_known", ["user": activity.user]) }}</a>
+		{{ end }}
+	{{ end }}
+{{ end }}
+{{ for group, count in group (filter (activities, (activity) => activity.user == null), (activity) => activity.group, () => 1, (v1, v2) => v1 + v2) }}
+	{{ $ " " }}
+	<a class="bind-tooltip group" title="{{ $ tra ("yn.account.activity.pulse.user_group.hint", ["count": count, "group": group]) }}">{{ $ tra ("yn.account.activity.pulse.user_group", ["count": count, "group": group]) }}</a>
+{{ end }}

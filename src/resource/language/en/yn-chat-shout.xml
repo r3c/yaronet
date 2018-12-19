@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.chat.shout.">
+		<string key="delete">Shout</string>
+		<section prefix="delete.">
+			<string key="form.alert">Shout deleted.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.disclaimer" alias="yn.board.profile.delete.form.disclaimer" />
+			<string key="form.submit">Confirm</string>
+			<string key="type">Shout suppression confirm</string>
+			<string key="warning">Please confirm you want to delete shout from "{shout.nick}".</string>
+		</section>
+
+		<string key="edit">Shout</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="command.seen.duration">{login} {ge:{elapsed},60,was last seen {ge:{elapsed},86400,{div:{elapsed},86400} day{ge:{div:{elapsed},86400},2,s},{ge:{elapsed},3600,{div:{elapsed},3600} hour{ge:{div:{elapsed},3600},2,s},{div:{elapsed},60} minute{ge:{div:{elapsed},60},2,s}}} ago.,is somewhere around...}</string>
+			<string key="command.seen.self">I really don't see...</string>
+			<string key="command.seen.unknown">I don't know this user :(</string>
+			<string key="form.alert">Message sent!</string>
+			<string key="form.alert.captcha-invalid">You didn't pass anti-robot check, please ensure you click the checkbox below.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.nick-length">Your nickname is either too short or too long, it must contain between 1 and 50 characters.</string>
+			<string key="form.alert.nick-user">This nickname is already used by a registered member, please use another one.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Your message is either too short or too long, it must contain between 1 and 200 characters.</string>
+			<string key="form.field.captcha">Captcha*:</string>
+			<string key="form.field.captcha.hint">Please click the checkbox to confirm you're not a robot.</string>
+			<string key="form.field.nick">Nickname*:</string>
+			<string key="form.field.nick.hint">Your name or nickname.</string>
+			<string key="form.field.text.placeholder">Message</string>
+			<string key="form.submit">Post</string>
+			<string key="type">Poster un message</string>
+		</section>
+	</section>
+</locale>

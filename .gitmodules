@@ -1,0 +1,18 @@
+[submodule "deploy/module/amato"]
+	path = setup/module/amato
+	url = https://github.com/r3c/amato.git
+[submodule "deploy/module/deval"]
+	path = setup/module/deval
+	url = https://github.com/r3c/deval.git
+[submodule "deploy/module/glay"]
+	path = setup/module/glay
+	url = https://github.com/r3c/glay-php.git
+[submodule "deploy/module/losp"]
+	path = setup/module/losp
+	url = https://github.com/r3c/losp.git
+[submodule "deploy/module/queros"]
+	path = setup/module/queros
+	url = https://github.com/r3c/queros.git
+[submodule "deploy/module/redmap"]
+	path = setup/module/redmap
+	url = https://github.com/r3c/redmap.git

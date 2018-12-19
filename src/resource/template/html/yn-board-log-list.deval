@@ -1,0 +1,56 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum])
+		],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-board-log.less")
+		],
+		_title = tra ("yn.board.log.list", ["forum": forum])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="page panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.log.list.type") }}</div>
+				<div class="panel-body">
+					<p>{{ $ tra ("yn.board.log.list.table", ["forum": forum, "expire": time - php ("yN\\Entity\\Board\\Log::#EXPIRE_DURATION")]) }}</p>
+					<div class="grid">
+						<div class="head s2">{{ $ tra ("yn.board.log.list.time") }}</div>
+						<div class="head s2">{{ $ tra ("yn.board.log.list.profile") }}</div>
+						<div class="head s2">{{ $ tra ("yn.board.log.list.address") }}</div>
+						<div class="head s6">{{ $ tra ("yn.board.log.list.data") }}</div>
+						{{ for log in logs }}
+							<div class="cell s2 glyph10" data-title="{{ $ tra ("yn.board.log.list.time") }}">
+								<span class="label {{ $ php ("preg_replace") ("/.*\\./", "", log.type) }}">{{ $ tra ("yn.board.log.list.time.value", ["log": log]) }}</span>
+							</div>
+							<div class="cell s2" data-title="{{ $ tra ("yn.board.log.list.profile") }}">{{ $ tra ("yn.board.log.list.profile.value", ["log": log]) }}</div>
+							<div class="cell s2" data-title="{{ $ tra ("yn.board.log.list.address") }}">{{ $ tra ("yn.board.log.list.address.value", ["log": log]) }}</div>
+							<div class="cell s6" data-title="{{ $ tra ("yn.board.log.list.data") }}">{{ $ tra (cat ("yn.board.log.list.data.", log.type), ["log": log]) }}</div>
+						{{ end }}
+					</div>
+					<form class="form-cascade form-thick" action="{{ $ url ("board.log.list", ["forum": forum.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"date":		["date", true],
+								"login":	["text", true],
+								"address":	["text", true]
+							],
+							_prefix = "yn.board.log.list.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button send" type="submit" value="{{ $ tra ("yn.board.log.list.form.submit") }}" />
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

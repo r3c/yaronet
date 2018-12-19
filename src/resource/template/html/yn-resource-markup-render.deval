@@ -1,0 +1,17 @@
+{{ wrap html }}
+	{{ let
+		_meta = null,
+		_redirect = null,
+		_static = [],
+		_title = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			<div class="markup">
+				{{ unwrap }}
+					{{ $ text }}
+				{{ end }}
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

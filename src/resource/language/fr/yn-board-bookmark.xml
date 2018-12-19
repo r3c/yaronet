@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.board.bookmark.">
+		<string key="list">Mes sujets</string>
+		<section prefix="list.">
+			<string key="close">Fermer</string>
+			<string key="drop">Oublier</string>
+			<string key="drop.confirm">Voulez-vous cesser de suivre les nouveaux messages de ce sujet ?</string>
+			<string key="drop.hint">Ne plus suivre ce sujet [D]</string>
+			<string key="empty">Aucun sujet dans cette liste.</string>
+			<string key="form.disclaimer" alias="yn.board.post.edit.form.disclaimer" />
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="less">Afficher moins</string>
+			<string key="mark">Marquer</string>
+			<string key="mark.hint">Suivre ce sujet et reprendre ici la prochaine fois [M]</string>
+			<string key="more">Afficher plus</string>
+			<string key="quote">Citer</string>
+			<string key="quote.hint">Poster une réponse en citant ce message [Q]</string>
+			<string key="read">Lu</string>
+			<string key="read.hint">Suivre ce sujet et marquer les messages comme lus [Espace]</string>
+			<string key="reply">Répondre</string>
+			<string key="reply.hint">Poster une réponse dans ce sujet [Droite]</string>
+			<string key="rss">Flux RSS</string>
+			<string key="source.active">Derniers sujets publics actifs non suivis</string>
+			<string key="source.fresh">Sujets suivis ayant de nouveaux messages</string>
+			<string key="source.new">Derniers sujets publics créés non suivis</string>
+			<string key="source.stale">Sujets suivis sans nouveaux messages</string>
+			<string key="switch.active">Derniers sujets actifs</string>
+			<string key="switch.fresh">Sujets non lus</string>
+			<string key="switch.new">Derniers sujets créés</string>
+			<string key="switch.stale">Sujets déjà lus</string>
+			<string key="topic.hint">Section : {section.name}</string>
+			<string key="type">Liste des sujets</string>
+			<string key="update">Actualiser</string>
+		</section>
+	</section>
+</locale>

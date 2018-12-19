@@ -1,0 +1,13 @@
+{{ wrap html }}
+	{{ let
+		forum_id = forum.id != topic.section.forum_id && forum.id || null,
+		_redirect = length (alerts) == 0 && reference.position != null &&
+			url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": reference.position, "_template": "frame"]) ||
+			null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			{{ include ../fragment/yn-board-post-edit.deval }}
+		{{ end }}
+	{{ end }}
+{{ end }}

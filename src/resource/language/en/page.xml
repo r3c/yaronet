@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="page.">
+		<string key="activation">Your account is not activated yet, please follow instructions received by email or click following link before you can post.</string>
+		<string key="bookmarks1">My topics</string>
+		<string key="bookmarks1.hint">New posts in topics you follow</string>
+		<string key="bookmarks2">Bookmarks</string>
+		<string key="bookmarks2.hint">New posts in topics you follow and last updates</string>
+		<string key="chat">Chat</string>
+		<string key="chat.hint">IRC chatroom</string>
+		<string key="contacts">Contacts</string>
+		<string key="copyright">Built with</string>
+		<string key="guides">Help</string>
+		<string key="message" alias="yn.account.message.list.type" />
+		<string key="message.hint">{if:{message.id},You received a private message from {message.sender.login},Your private messages}</string>
+		<string key="memo" alias="yn.account.memo.view.type" />
+		<string key="memo.hint" alias="yn.account.memo.view" />
+		<string key="metric">Statistics</string>
+		<string key="profile">Profile</string>
+		<string key="profile.hint">Update your account and profile</string>
+		<string key="recover">Did you forget your password?</string>
+		<string key="recover.hint">Receive a new password by email</string>
+		<string key="rules">Rules</string>
+		<string key="search">Search</string>
+		<string key="search.hint">Search for post in forum</string>
+		<string key="signin">Click here to sign-in</string>
+		<string key="signin.hint">Sign-in to enjoy all website features!</string>
+		<string key="signout">Sign-out</string>
+		<string key="signout.hint">Disconnect from website</string>
+		<string key="signup">Click here to create an account</string>
+		<string key="signup.hint">Create an account and contribute to forums you like!</string>
+		<string key="time">{date:{time},h:ia}</string>
+		<string key="welcome">{if:{user.id},Hello {user.login},Welcome}!</string>
+	</section>
+</locale>

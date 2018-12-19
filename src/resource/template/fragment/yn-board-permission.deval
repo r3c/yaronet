@@ -1,0 +1,48 @@
+<div class="grid">
+	<div class="head s3">{{ $ tra ((+)cat (_prefix, "table.login")) }}</div>
+	<div class="head s3">{{ $ tra ((+)cat (_prefix, "table.read")) }}</div>
+	<div class="head s3">{{ $ tra ((+)cat (_prefix, "table.write")) }}</div>
+	<div class="head s3">{{ $ tra ((+)cat (_prefix, "table.change")) }}</div>
+	</tr>
+	{{ for permission in permissions }}
+		<div class="cell s3 glyph10" data-title="{{ $ tra ((+)cat (_prefix, "table.login")) }}">
+			<a class="label user" href="{{ $ url ("board.profile.view", ["profile": permission.profile.user_id]) }}">{{ $ tra ((+)cat (_prefix, "table.login.value"), ["profile": permission.profile]) }}</a>
+		</div>
+		{{ for name, access in ["read": permission.can_read, "write": permission.can_write, "change": permission.can_change] }}
+			<div class="cell s3" data-title="{{ $ tra ((+)cat (_prefix, "table.", name)) }}">
+				<div class="field">
+					<div class="value">
+						<select name="updates[{{ $ permission.profile.user_id }}][{{ $ name }}]">
+							<option value=""{{ if access == null }} selected="selected"{{ end }}>{{ $ tra ((+)cat (_prefix, "table.", name, ".void")) }}
+							<option value="1"{{ if access == true }} selected="selected"{{ end }}>{{ $ tra ((+)cat (_prefix, "table.", name, ".true")) }}
+							<option value="0"{{ if access == false }} selected="selected"{{ end }}>{{ $ tra ((+)cat (_prefix, "table.", name, ".false")) }}
+						</select>
+					</div>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+	<div class="cell s3" data-title="{{ $ tra ((+)cat (_prefix, "table.login")) }}">
+		{{ let
+			_alerts = null,
+			_fields = [
+				"login":	["complete", null, [
+					"callback": url ("board.profile.list", ["_template": "json"]),
+					"placeholder":	true
+				]]
+			],
+			_prefix = cat (_prefix, "form.")
+		}}
+			{{ include ../fragment/control-form.deval }}
+		{{ end }}
+	</div>
+	{{ for name in ["read", "write", "change"] }}
+		<div class="cell s3" data-title="{{ $ tra ((+)cat (_prefix, "table.", name)) }}">
+			<select name="insert[{{ $ name }}]">
+				<option value="">{{ $ tra ((+)cat (_prefix, "table.", name, ".void")) }}
+				<option value="1">{{ $ tra ((+)cat (_prefix, "table.", name, ".true")) }}
+				<option value="0">{{ $ tra ((+)cat (_prefix, "table.", name, ".false")) }}
+			</select>
+		</div>
+	{{ end }}
+</div>

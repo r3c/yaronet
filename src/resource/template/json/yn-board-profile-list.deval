@@ -1,0 +1,4 @@
+{{ extend base.deval }}
+{{ block body }}
+	{{ $ json (["items": map (profiles, (profile) => profile.user.login)]) }}
+{{ end }}

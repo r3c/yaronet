@@ -1,0 +1,10 @@
+{{ wrap html }}
+	{{ let
+		_meta = null,
+		_redirect = php ("$_SERVER")["HTTP_REFERER"] || url ("home"),
+		_static = [],
+		_title = null
+	}}
+		{{ include base.deval }}
+	{{ end }}
+{{ end }}

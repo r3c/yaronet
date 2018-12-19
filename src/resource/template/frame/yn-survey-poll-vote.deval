@@ -1,0 +1,7 @@
+{{ wrap html }}
+	{{ let
+		_redirect = url ("survey.poll.view", ["poll": poll.id])
+	}}
+		{{ include base.deval }}
+	{{ end }}
+{{ end }}

@@ -1,0 +1,9 @@
+{{ $ header ("Content-Type", cat ("text/html; charset=", encoding)) }}
+{{ $ header ("Cache-Control", "no-cache, no-store, must-revalidate") }}
+{{ $ header ("Expires", "0") }}
+{{ $ header ("Pragma", "no-cache") }}
+{{ if _redirect != null }}
+	{{ $ header ("Location", url_absolute (_redirect)) }}
+{{ else }}
+	{{ label body }}
+{{ end }}

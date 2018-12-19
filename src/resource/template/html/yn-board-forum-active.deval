@@ -1,0 +1,41 @@
+{{ wrap html }}
+	{{ let
+		forum_description = tra ("yn.board.forum.active.description", ["forum": forum]),
+		_forum = forum,
+		_meta = [
+			"description": forum_description
+		],
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum])
+		],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-board-section.js"),
+			cat (static.theme, "yn-board-section.less")
+		],
+		_title = tra ("yn.board.forum.active", ["forum": forum])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate section">
+				<div class="panel-header">{{ $ tra ("yn.board.forum.active.type") }}</div>
+				<div class="panel-body">
+					{{ if forum.is_illustrated }}
+						<div class="panel-icon">
+							<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
+						</div>
+					{{ end }}
+					<h2 class="glyph16">
+						<a href="{{ $ url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]) }}">{{ $ forum.name }}</a>
+					</h2>
+					<div>{{ $ forum_description }}</div>
+				</div>
+				{{ let section = null }}
+					{{ include ../fragment/yn-board-section-view.deval }}
+				{{ end }}
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

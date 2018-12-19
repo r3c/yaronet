@@ -1,0 +1,10 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			{{ include ../fragment/yn-board-bookmark-list.deval }}
+		{{ end }}
+	{{ end }}
+{{ end }}

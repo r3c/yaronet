@@ -1,0 +1,17 @@
+<form class="form-cascade form-thick screen" action="{{ $ message.id != null && url ("account.message.edit", ["message": message.id]) || url ("account.message.new") }}" method="POST">
+	{{ let
+		_alerts = alerts,
+		_fields = [
+			"reply":	["custom", false, ["contents": html (reply != null && reply.render_text ("text", router, logger) || ""), "visible": reply != null]],
+			"to":		["complete", false, ["append": true, "callback": url ("board.profile.list", ["_template": "json"]), "focus": request.to == null, "placeholder": true, "visible": message.id == null]],
+			"text":		["textarea", null, ["focus": request.to != null, "large": true, "length": 30000, "placeholder": true, "rows": 4]]
+		],
+		_prefix = "yn.account.message.edit.form."
+	}}
+		{{ include control-form.deval }}
+	{{ end }}
+	<div class="control glyph10">
+		<input class="button send" type="submit" value="{{ $ tra ("yn.account.message.edit.form.submit") }}" />
+		<a class="label back" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.edit.back") }}</a>
+	</div>
+</form>

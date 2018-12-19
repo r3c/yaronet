@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.media.emoji.">
+		<section prefix="edit.">
+			<string key="back">Back</string>
+			<string key="form.alert">Your emoji was successfully uploaded, you can now insert it in a message by copy-pasting the text below. Next time you want to use it, just input the first characters if its name in the search bar to find it back.</string>
+			<string key="form.alert.emoji-cost" alias="base.alert.cost" />
+			<string key="form.alert.emoji-name">Another emoji already exists with the name of the one you were about to add. Please select a different name.</string>
+			<string key="form.alert.emoji-null">Please select an image to send or an address from which to download it.</string>
+			<string key="form.alert.emoji-read">Unable to use specified image as emoji: download failed, size may be too big or it is not using one of accepted file formats (GIF, JPEG or PNG).</string>
+			<string key="form.alert.emoji-save" alias="base.alert.default" />
+			<string key="form.alert.emoji-size">Your image is too small or too large, please select an image where both dimensions are between 10 and 128 pixels.</string>
+			<string key="form.field.emoji">Image to send* :</string>
+			<string key="form.field.emoji.hint">File base name or URL to image will be used as the emoji name.</string>
+			<string key="form.field.emoji.placeholder">http://link.to.your/emoji.gif</string>
+			<string key="form.submit">Send</string>
+		</section>
+
+		<section prefix="list.">
+			<string key="form.field.search.placeholder">Type a few characters to begin searching for an emoji...</string>
+			<string key="new">Upload a new emoji</string>
+		</section>
+	</section>
+</locale>

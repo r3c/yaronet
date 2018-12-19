@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.help.page.">
+		<string key="edit">{if:{page.name},Edit page "{page.name}",Create new page}</string>
+		<section prefix="edit.">
+			<string key="back" alias="yn.account.user.edit.back" />
+			<string key="form.alert" alias="yn.board.profile.edit.form.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.label-null" alias="base.alert.default" />
+			<string key="form.alert.label-length" alias="base.alert.default" />
+			<string key="form.alert.language-null" alias="base.alert.default" />
+			<string key="form.alert.language-length" alias="base.alert.default" />
+			<string key="form.alert.name-length">Your page title is either too short or too long, it must contain between 1 and 200 characters.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Your page body is either too short or too long, it must contain between 1 and 30000 characters.</string>
+			<string key="form.field.name">Page title*:</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="type">Help page edit</string>
+		</section>
+
+		<string key="view">{page.name}</string>
+		<section prefix="view.">
+			<string key="edit">Edit this page</string>
+			<string key="type">Help page</string>
+		</section>
+	</section>
+</locale>

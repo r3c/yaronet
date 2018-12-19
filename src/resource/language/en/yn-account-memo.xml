@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.account.memo.">
+		<string key="edit">Edit notepad</string>
+		<section prefix="edit.">
+			<string key="back">Back</string>
+			<string key="form.alert">Changes successfully saved.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Your memo is either too short or too long, it must contain between 1 and 30000 characters.</string>
+			<string key="form.field.text.placeholder">Your personnal memo</string>
+			<string key="form.submit">Save</string>
+			<string key="type">Memo</string>
+		</section>
+
+		<string key="view">Your private notepad</string>
+		<section prefix="view.">
+			<string key="edit">Edit</string>
+			<string key="empty">Your notepad allows you to save private notes, linked to your account and available when you sign in to yAronet.&#xA;&#xA;It's currently empty ; click on the "Edit" button and use the text editor to add some contents. You can also use yAronet markup to apply some formatting to your notes.</string>
+			<string key="type">Memo</string>
+		</section>
+	</section>
+</locale>

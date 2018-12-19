@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.board.forum.">
+		<string key="active">Sujets actifs dans toutes les sections</string>
+		<section prefix="active.">
+			<string key="description">Derniers sujets actifs sur le forum</string>
+			<string key="type">Derniers sujets actifs</string>
+		</section>
+
+		<string key="edit">{if:{forum.id},Modifier,Créer} un forum</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="create">Un nouveau forum sur yAronet !</string>
+			<string key="create.help">Vous êtes sur le point de créer votre forum de discussion sur yAronet. Après avoir rempli les champs obligatoires du formulaire ci-dessous (vous pourrez compléter les autres plus tard) vous pourrez y ajouter des sections, configurer les droits d'accès et modifier son apparence.&#xA;&#xA;N'hésitez pas à poser vos questions sur le forum "Le site" si vous avez besoin d'aide !</string>
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.alias-conflict">L'alias que vous avez saisi est déjà utilisé par un autre forum, veuillez en choisir un autre.</string>
+			<string key="form.alert.alias-format">L'alias ne peut contenir que des caractères alphanumériques ou des tirets (-), et doit contenir au moins une lettre.</string>
+			<string key="form.alert.alias-length">L'alias est trop court ou trop long, il doit contenir entre 2 et 20 caractères.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.description-length">La description est trop courte ou trop longue, elle doit contenir entre 2 et 200 caractères.</string>
+			<string key="form.alert.header-length">L'en-tête est trop long, il doit contenir au maximum 30000 caractères.</string>
+			<string key="form.alert.icon-read">Impossible d'utiliser l'image spécifiée comme icône : son téléchargement a échoué, ou bien sa taille est trop grande, ou encore elle n'est pas de l'un des formats supportés (GIF, JPEG ou PNG).</string>
+			<string key="form.alert.name-conflict">Le nom que vous avez saisi est déjà utilisé par un autre forum, veuillez en choisir un autre.</string>
+			<string key="form.alert.name-length">Le nom est trop court ou trop long, il doit contenir entre 2 et 100 caractères.</string>
+			<string key="form.alert.permission-profile-null" alias="base.alert.default" />
+			<string key="form.alert.permission-sql" alias="base.alert.default" />
+			<string key="form.alert.permission-target-null" alias="base.alert.default" />
+			<string key="form.alert.preface-length">La préface est trop longue, elle doit contenir au maximum 30000 caractères.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.user-active">Votre compte n'est pas encore activé, vous ne pouvez pas créer de forums.</string>
+			<string key="form.field.alias">Alias :</string>
+			<string key="form.field.alias.hint">Identifiant optionnel de votre forum, apparaît dans l'URL.</string>
+			<string key="form.field.description">Description* :</string>
+			<string key="form.field.description.hint">Courte description de votre forum.</string>
+			<string key="form.field.flags">Options :</string>
+			<string key="form.field.flags.item.hidden">Forum caché (n'apparaît pas dans les recherches)</string>
+			<string key="form.field.header">En-tête :</string>
+			<string key="form.field.header.hint">S'il est défini, remplace l'en-tête "yAronet" présent par défaut.</string>
+			<string key="form.field.icon">Icône* :</string>
+			<string key="form.field.icon.else.item.void">Ne pas afficher d'icône</string>
+			<string key="form.field.icon.hint">Apparaît sur la page principale du forum à côté son nom.</string>
+			<string key="form.field.icon.placeholder">http://lien.vers.votre/icône.png</string>
+			<string key="form.field.name">Nom du forum* :</string>
+			<string key="form.field.name.hint">Le nom est affiché sur toutes les pages de votre forum et dans l'annuaire.</string>
+			<string key="form.field.preface">Préface :</string>
+			<string key="form.field.preface.hint">Si elle est définie, remplace la description du forum sur la page principale.</string>
+			<string key="form.field.template">Thème du forum* :</string>
+			<string key="form.field.template.hint">Change le thème visuel appliqué sur tout votre forum.</string>
+			<string key="form.field.template.item.html.amethyst">Utiliser le thème Améthyste</string>
+			<string key="form.field.template.item.html.azurite">Utiliser le thème Azurite</string>
+			<string key="form.field.template.item.html.chlorite">Utiliser le thème Chlorite</string>
+			<string key="form.field.template.item.html.citrine">Utiliser le thème Citrine</string>
+			<string key="form.field.template.item.html.kyanite">Utiliser le thème Kyanite</string>
+			<string key="form.field.template.item.html.magnetite">Utiliser le thème Magnétite</string>
+			<string key="form.field.template.item.html.obsidian">Utiliser le thème Obsidienne</string>
+			<string key="form.field.template.item.html.pvg">Utiliser le thème Pocket Videogame</string>
+			<string key="form.field.template.item.html.rgc">Utiliser le thème Retro-gaming Connexion</string>
+			<string key="form.field.template.item.html.tifr">Utiliser le thème Ti-Fr</string>
+			<string key="form.field.template.item.void">Ne pas changer le thème des membres</string>
+			<string key="form.group.identity">Identité du forum</string>
+			<string key="form.group.identity.hint">Seul un nom et une description sont indispensables pour votre forum mais vous pouvez également choisir un alias afin de personnaliser votre URL. Attention, notez que changer l'alias de votre forum affecte son URL, il est donc conseillé de ne pas le remplacer si vous l'avez déjà communiqué publiquement.</string>
+			<string key="form.group.visual">Apparence</string>
+			<string key="form.group.visual.hint">Les paramètres suivants déterminent l'aspect visuel de votre forum, afin de le personnaliser selon vos préférences. Si l'ajout de blocs de texte ou de barres de séparation peut aussi vous intéresser, rendez-vous sur la page de configuration du forum pour plus d'options.</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="type">Formulaire d'édition de forum</string>
+		</section>
+
+		<string key="list">Forums</string>
+		<section prefix="list.">
+			<string key="alias">Alias</string>
+			<string key="alias.value">{forum.alias}</string>
+			<string key="description">Description</string>
+			<string key="description.value">{forum.description}</string>
+			<string key="form.field.query" alias="yn.board.forum.edit.form.field.name" />
+			<string key="form.field.query.hint">Saisissez une partie du nom d'un forum pour démarrer la recherche.</string>
+			<string key="form.submit" alias="base.submit.search" />
+			<string key="name">Nom</string>
+			<string key="name.value">{forum.name}</string>
+			<string key="type">Liste des forums</string>
+		</section>
+
+		<string key="organize">Organiser</string>
+		<section prefix="organize.">
+			<string key="block">Organiser le contenu du forum</string>
+			<string key="block.help">Utilisez cette page pour configurer le contenu de votre forum. Vous pouvez créer de nouvelles sections qui hébergeront des sujets de discussions pour les regrouper par thème, ou bien ajouter des sections déjà existantes venant d'autres forums. Des blocs de texte peuvent aussi être ajoutés et servir de séparation visuelle ou fournir davantage d'informations à vos membres.&#xA;&#xA;Une fois les sections et blocs de texte de votre forum configurées vous pouvez les réordonner à l'aide des boutons "Monter" et "Descendre", ou les retirer du forum en utilisant le bouton "Retirer".&#xA;&#xA;Si vous avez besoin d'aide, n'hésitez pas à poser vos questions dans le forum "Le site" accessible sur la page d'accueil.</string>
+			<string key="link">Ajouter un lien vers une section</string>
+			<string key="section">Créer une nouvelle section</string>
+			<string key="text">Ajouter un bloc de texte</string>
+			<string key="type">Configuration de forum</string>
+		</section>
+
+		<string key="permission">Permissions</string>
+		<section prefix="permission.">
+			<string key="back" alias="base.back" />
+			<string key="form.alert">Modifications enregistrées. Les membres dont toutes les permissions sont à leur valeur par défaut sont automatiquement retirés de la liste.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.login-unknown">L'identifiant que vous souhaitez ajouter ne correspond à aucun membre.</string>
+			<string key="form.alert.profile-unknown" alias="base.alert.default" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.field.login.placeholder">Ajouter un membre</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="table">Configurer les permissions du forum</string>
+			<string key="table.change">Peut modérer le forum</string>
+			<string key="table.change.false">Non (dans aucune section)</string>
+			<string key="table.change.true">Oui (dans toutes les sections)</string>
+			<string key="table.change.void">Par défaut</string>
+			<string key="table.help">Cette page configure les permissions spéciales des membres du forum "{forum.name}", qui s'appliquent sur l'intégralité du forum et toutes ses sections à moins que vous ne définissiez des permissions plus précises pour certaines sections.&#xA;&#xA;Vous pouvez ajouter un nouveau membre à cette liste en saisissant son identifiant et les permissions que vous voulez lui accorder, ou modifier les permissions des membres déjà enregistrés.</string>
+			<string key="table.login">Identifiant</string>
+			<string key="table.login.value">{profile.user.login}</string>
+			<string key="table.read">Peut lire les sujets et messages</string>
+			<string key="table.read.false" alias="yn.board.forum.permission.table.change.false" />
+			<string key="table.read.true" alias="yn.board.forum.permission.table.change.true" />
+			<string key="table.read.void">Dans les sections publiques (défaut)</string>
+			<string key="table.write">Peut écrire et répondre</string>
+			<string key="table.write.false" alias="yn.board.forum.permission.table.change.false" />
+			<string key="table.write.true" alias="yn.board.forum.permission.table.change.true" />
+			<string key="table.write.void">Dans les sections ouvertes (défaut)</string>
+			<string key="type">Permissions de forum</string>
+		</section>
+
+		<string key="view">{forum.name}</string>
+		<section prefix="view.">
+			<string key="active" alias="yn.board.section.view.active" />
+			<string key="ban">Bannir</string>
+			<string key="block.delete">Retirer</string>
+			<string key="block.edit">Remplacer</string>
+			<string key="block.move-bottom">En bas</string>
+			<string key="block.move-down">Descendre</string>
+			<string key="block.move-top">En haut</string>
+			<string key="block.move-up">Monter</string>
+			<string key="description">{forum.description}</string>
+			<string key="edit">Modifier</string>
+			<string key="empty">Votre forum est vide, il est temps d'y ajouter un peu de contenu !&#xA;&#xA;Pour cela, cliquez le lien "Organiser" pour accéder à la page de configuration.</string>
+			<string key="last">Derniers sujets</string>
+			<string key="log">Historique</string>
+			<string key="organize">Organiser</string>
+			<string key="permission">Permissions</string>
+			<string key="rss">Flux RSS</string>
+			<string key="section.edit" alias="yn.board.section.view.edit" />
+			<string key="section.info">{section.topics} sujet{gt:{section.topics},1,s}</string>
+			<string key="section.last_profile" alias="yn.board.section.view.create_profile" />
+			<string key="section.last_time">{if:{time},{date:{time},d/m/Y à H:i},(section vide)}</string>
+			<string key="section.merge" alias="yn.board.section.view.merge" />
+			<string key="section.permission" alias="yn.board.section.view.permission" />
+			<string key="type">Forum</string>
+			<string key="users">Annuaire des membres</string>
+		</section>
+	</section>
+</locale>

@@ -1,0 +1,118 @@
+{{ wrap jstr }}
+	(function () {
+		var markups = [];
+		var open = function (url) {
+			return function (event) {
+				yn.controlFormMarkup ($(event.target), url);
+			};
+		};
+
+		markups = markups.concat ([
+			{name: '{{ $ tra ("library.markitup.b") }}',		className: 'b',		openWith: '[b]',	closeWith: '[/b]',	key: 'B'},
+			{name: '{{ $ tra ("library.markitup.i") }}',		className: 'i',		openWith: '[i]',	closeWith: '[/i]',	key: 'I'},
+			{name: '{{ $ tra ("library.markitup.u") }}',		className: 'u',		openWith: '[u]',	closeWith: '[/u]',	key: 'U'},
+			{name: '{{ $ tra ("library.markitup.s") }}',		className: 's',		openWith: '[s]',	closeWith: '[/s]',	key: 'S'},
+			{name: '{{ $ tra ("library.markitup.sup") }}',	className: 'sup',	openWith: '[sup]',	closeWith: '[/sup]'},
+			{name: '{{ $ tra ("library.markitup.sub") }}',	className: 'sub',	openWith: '[sub]',	closeWith: '[/sub]'},
+			{name: '{{ $ tra ("library.markitup.align") }}',	className: 'align',	dropMenu: [
+				{name: '{{ $ tra ("library.markitup.align.left") }}',	className: 'left',		openWith: '[align=left]',		closeWith: '[/align]'},
+				{name: '{{ $ tra ("library.markitup.align.center") }}',	className: 'center',	openWith: '[align=center]',		closeWith: '[/align]'},
+				{name: '{{ $ tra ("library.markitup.align.right") }}',	className: 'right',		openWith: '[align=right]',		closeWith: '[/align]'},
+				{name: '{{ $ tra ("library.markitup.align.justify") }}',	className: 'justify',	openWith: '[align=justify]',	closeWith: '[/align]'}
+			]},
+			{name: '{{ $ tra ("library.markitup.size") }}',	className: 'size',	openWith: '[font=[![{{ $ tra ("library.markitup.size.value") }}]!]]',	closeWith: '[/font]',	key: 'S',	dropMenu: [
+				{name: '{{ $ tra ("library.markitup.size.double") }}',	className: 'double',	openWith: '[font=200]',	closeWith: '[/font]' },
+				{name: '{{ $ tra ("library.markitup.size.normal") }}',	className: 'normal',	openWith: '[font=100]',	closeWith: '[/font]' },
+				{name: '{{ $ tra ("library.markitup.size.small") }}',	className: 'small',		openWith: '[font=50]',	closeWith: '[/font]' }
+			]},
+			{name: '{{ $ tra ("library.markitup.heading") }}',	className: 'heading',	dropMenu: [
+				{name: '{{ $ tra ("library.markitup.heading.h1") }}',	className: 'h1',	openWith: '[h1]',	closeWith: '[/h1]' },
+				{name: '{{ $ tra ("library.markitup.heading.h2") }}',	className: 'h2',	openWith: '[h2]',	closeWith: '[/h2]' },
+				{name: '{{ $ tra ("library.markitup.heading.h3") }}',	className: 'h3',	openWith: '[h3]',	closeWith: '[/h3]' },
+				{name: '{{ $ tra ("library.markitup.heading.h4") }}',	className: 'h4',	openWith: '[h4]',	closeWith: '[/h4]' }
+			]},
+			{name: '{{ $ tra ("library.markitup.color") }}',	className: 'color',	openWith: '[color=[![{{ $ tra ("library.markitup.color.hex") }}]!]]',	closeWith: '[/color]',	dropMenu: [
+				{name: '{{ $ tra ("library.markitup.color.white") }}',	className: 'white',		openWith: '[color=FFF]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.black") }}',	className: 'black',		openWith: '[color=000]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.navy") }}',	className: 'navy',		openWith: '[color=006]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.green") }}',	className: 'green',		openWith: '[color=090]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.red") }}',		className: 'red',		openWith: '[color=C30]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.maroon") }}',	className: 'maroon',	openWith: '[color=600]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.purple") }}',	className: 'purple',	openWith: '[color=909]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.orange") }}',	className: 'orange',	openWith: '[color=F60]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.yellow") }}',	className: 'yellow',	openWith: '[color=FF0]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.lime") }}',	className: 'lime',		openWith: '[color=0F0]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.teal") }}',	className: 'teal',		openWith: '[color=099]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.cyan") }}',	className: 'cyan',		openWith: '[color=0FF]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.royal") }}',	className: 'royal',		openWith: '[color=00F]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.pink") }}',	className: 'pink',		openWith: '[color=F0F]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.grey") }}',	className: 'grey',		openWith: '[color=666]',	closeWith: '[/color]'},
+				{name: '{{ $ tra ("library.markitup.color.silver") }}',	className: 'silver',	openWith: '[color=CCC]',	closeWith: '[/color]'}
+			]},
+			{separator: '---------------'},
+			{name: '{{ $ tra ("library.markitup.emoji") }}',	className: 'emoji',	dropMenu: [
+				{name: '{{ $ tra ("library.markitup.emoji.normal") }}',	className: 'normal',	call: open ('{{ $ url ("media.emoji.list", ["type": "normal", "_template": "frame"]) }}')},
+				{name: '{{ $ tra ("library.markitup.emoji.custom") }}',	className: 'custom',	call: open ('{{ $ url ("media.emoji.list", ["type": "custom", "_template": "frame"]) }}')}
+			]},
+			{name: '{{ $ tra ("library.markitup.img") }}',	className: 'img',	openWith: '[img]',		closeWith: '[/img]',	placeHolder: '{{ $ tra ("library.markitup.img.placeholder") }}'},
+			{name: '{{ $ tra ("library.markitup.a") }}',		className: 'a',		openWith: '[url]',		closeWith: '[/url]',	placeHolder: '{{ $ tra ("library.markitup.a.placeholder") }}',		key: 'L'},
+			{name: '{{ $ tra ("library.markitup.media") }}',	className: 'media',	openWith: '[media]',	closeWith: '[/media]',	placeHolder: '{{ $ tra ("library.markitup.media.placeholder") }}',	key: 'M'},
+			{separator: '---------------'},
+			{name: '{{ $ tra ("library.markitup.quote") }}',		className: 'quote',		openWith: '[quote]',	closeWith: '[/quote]',	key: 'Q'},
+			{name: '{{ $ tra ("library.markitup.spoiler") }}',	className: 'spoiler',	openWith: '[spoiler]',	closeWith: '[/spoiler]'},
+			{name: '{{ $ tra ("library.markitup.pre") }}',		className: 'pre',		openWith: '[pre]',		closeWith: '[/pre]'},
+			{name: '{{ $ tra ("library.markitup.box") }}',		className: 'box',	openWith: '[box=[![{{ $ tra ("library.markitup.box.title") }}]!]]',	closeWith: '[/box]',	placeHolder: '{{ $ tra ("library.markitup.box.placeholder") }}'},
+			{name: '{{ $ tra ("library.markitup.nsfw") }}',		className: 'nsfw',		openWith: '[nsfw]',		closeWith: '[/nsfw]'},
+			{name: '{{ $ tra ("library.markitup.list") }}',		className: 'list',	dropMenu: [
+				{name: '{{ $ tra ("library.markitup.list.create") }}',	className: 'list',		openWith: '[list]\n',	closeWith: '\n[/list]',		placeHolder: '[*] Item 1\n[*] Item 2'},
+				{name: '{{ $ tra ("library.markitup.list.bullet") }}',	className: 'bullet',	openWith: '[*] '},
+				{name: '{{ $ tra ("library.markitup.list.number") }}',	className: 'number',	openWith: '[#] '},
+			]},
+			{name: '{{ $ tra ("library.markitup.table") }}',	className: 'table',	dropMenu: [
+				{name: '{{ $ tra ("library.markitup.table.create") }}',	className: 'table',		openWith: '[table]\n',	closeWith: '\n[/table]',	placeHolder: '[^] H1 [^] H2\n[-]\n[|] C1 [|] C2'},
+				{name: '{{ $ tra ("library.markitup.table.header") }}',	className: 'header',	openWith: '[^] '},
+				{name: '{{ $ tra ("library.markitup.table.column") }}',	className: 'column',	openWith: '[|] '},
+				{name: '{{ $ tra ("library.markitup.table.row") }}',		className: 'row',		openWith: '[-] '}
+			]},
+			{name: '{{ $ tra ("library.markitup.hr") }}',	className: 'hr',	openWith: '[hr]'},
+			{separator: '---------------'},
+			{name: '{{ $ tra ("library.markitup.poll") }}',	className: 'poll',	call: open ('{{ $ url ("survey.poll.new", ["_template": "frame"]) }}')},
+			{name: '{{ $ tra ("library.markitup.code") }}',	className: 'code',	call: open ('{{ $ url ("media.language.list", ["_template": "frame"]) }}')},
+			{name: '{{ $ tra ("library.markitup.up") }}',	className: 'up',	call: function ()
+			{
+				window.open ('https://www.mirari.fr/?_template=yaronet-em', '_blank', 'width=600,height=400,scrollbars=yes,resizable=1');
+			}}
+		]);
+
+		if (yn.controlFormCopyKey !== undefined) {
+			markups = markups.concat ([
+				{separator: '---------------'},
+				{name: '{{ $ tra ("library.markitup.copy") }}',	className: 'copy',	openWith: function () {
+					var text = yn.controlFormCopyFetch ();
+
+					if (text === '')
+						alert ('{{ $ tra ("library.markitup.copy.empty") }}');
+
+					return text;
+				}}
+			]);
+		}
+
+		markups = markups.concat ([
+			{separator: '---------------'},
+			{name: '{{ $ tra ("library.markitup.preview") }}',	className: 'preview',	call: 'preview',	key: 'P'},
+			{name: '{{ $ tra ("library.markitup.clean") }}',		className: 'clean',	replaceWith: function (h) {
+				return h.selection.replace (/\\[.*?\\]/g, '');
+			}}
+		]);
+
+		return {
+			nameSpace:          'yn',
+			previewAutoRefresh:	false,
+			previewParserPath:	'{{ $ url ("resource.markup.render", ["format": "html", "syntax": "bbcode-block", "_template": null]) }}',
+			previewParserVar:	'text',
+			resizeHandle:		false,
+			markupSet: 			markups
+		};
+	}) ()
+{{ end }}

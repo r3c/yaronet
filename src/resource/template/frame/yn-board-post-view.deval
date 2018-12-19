@@ -1,0 +1,12 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			{{ let enable_peek = true }}
+				{{ include ../fragment/yn-board-post-view.deval }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}

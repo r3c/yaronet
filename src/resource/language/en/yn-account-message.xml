@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.account.message.">
+		<string key="delete">Delete private message</string>
+		<section prefix="delete.">
+			<string key="back">Back</string>
+			<string key="form.alert">Message successfully deleted.</string>
+			<string key="form.alert.save">Unable to delete message, it may have been read by one of its recipients.</string>
+			<string key="form.submit">Delete</string>
+			<string key="type">Message deletion</string>
+			<string key="warning">Êtes-vous sûr de vouloir supprimer ce message ?</string>
+		</section>
+
+		<string key="edit">Send private message</string>
+		<section prefix="edit.">
+			<string key="back">Cancel</string>
+			<string key="form.alert">Message successfully saved.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.login-empty">You didn't specify any recipient for your message.</string>
+			<string key="form.alert.login-unknown">Unknown recipient.</string>
+			<string key="form.alert.message-null" alias="base.alert.default" />
+			<string key="form.alert.read">Unable to edit message, it has already been read by one of its recipients.</string>
+			<string key="form.alert.recipient-null" alias="base.alert.default" />
+			<string key="form.alert.sender-null" alias="base.alert.default" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Your message is either too short or too long, it must contain between 1 and 30000 characters.</string>
+			<string key="form.field.reply">Previous message:</string>
+			<string key="form.field.text.placeholder">Message body</string>
+			<string key="form.field.to">Recipient(s)*:</string>
+			<string key="form.field.to.placeholder">Identifier of message recipient(s)</string>
+			<string key="form.submit">Send</string>
+			<string key="type">Private messages</string>
+		</section>
+
+		<string key="hide">Hide private message</string>
+		<section prefix="hide.">
+			<string key="back">Back</string>
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.submit">Hide</string>
+			<string key="type">Message hide</string>
+			<string key="warning">Are you sure you want to hide this message?</string>
+		</section>
+
+		<string key="list">Your private messages</string>
+		<section prefix="list.">
+			<string key="box">{login} {if:{read},read,didn't read} this message</string>
+			<string key="delete">Delete</string>
+			<string key="delete.confirm" alias="yn.account.message.delete.warning" />
+			<string key="delete.hint">Delete this message while it's still unread</string>
+			<string key="edit">Edit</string>
+			<string key="edit.hint">Change this message's text while it's still unread</string>
+			<string key="first">Newest</string>
+			<string key="first.hint">View newest messages</string>
+			<string key="form.field.login.placeholder">Send to or from</string>
+			<string key="form.submit">Filter</string>
+			<string key="hide">Hide</string>
+			<string key="hide.confirm" alias="yn.account.message.hide.warning" />
+			<string key="hide.hint">Remove this message from your history</string>
+			<string key="message">Private message</string>
+			<string key="message.hint">Send a private message to author</string>
+			<string key="new">Send new</string>
+			<string key="new.hint">Send new private message</string>
+			<string key="prev">Older</string>
+			<string key="prev.hint">View older messages</string>
+			<string key="profile">Profile</string>
+			<string key="profile.hint">See author profile</string>
+			<string key="reply">Reply</string>
+			<string key="reply.hint">Reply to this message's sender</string>
+			<string key="reply-all">Reply all</string>
+			<string key="reply-all.hint">Reply to sender and other recipients</string>
+			<string key="rss">RSS feed</string>
+			<string key="rss.hint">Get private messages as an RSS feed</string>
+			<string key="time" alias="base.type.datetime.relative"><var name="time">{message.time}</var></string>
+			<string key="to">To:</string>
+			<string key="type">Inbox</string>
+		</section>
+	</section>
+</locale>

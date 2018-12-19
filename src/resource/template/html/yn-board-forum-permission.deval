@@ -1,0 +1,43 @@
+{{ wrap html }}
+	{{ let
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum])
+		],
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.board.forum.permission", ["forum": forum])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.forum.permission.type") }}</div>
+				<div class="panel-body">
+					<h2>{{ $ tra ("yn.board.forum.permission.table") }}</h2>
+					{{ unwrap }}
+						<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.board.forum.permission.table.help", ["forum": forum]))) }}</p>
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ url ("board.forum.permission", ["forum": forum.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [],
+							_prefix = "yn.board.forum.permission.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						{{ let _prefix = "yn.board.forum.permission." }}
+							{{ include ../fragment/yn-board-permission.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.forum.permission.form.submit") }}" />
+							<a class="label back" href="{{ $ url ("board.forum.organize", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.permission.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

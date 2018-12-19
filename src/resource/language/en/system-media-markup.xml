@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="system.media.markup.">
+		<section prefix="html.">
+			<string key="nsfw.confirm">Are you sure you want to display this contents?</string>
+			<string key="nsfw.head">NSFW (not safe for work)</string>
+		</section>
+	</section>
+</locale>

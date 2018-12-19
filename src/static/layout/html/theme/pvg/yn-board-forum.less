@@ -1,0 +1,20 @@
+
+@import '../../yn-board-forum.inc.less';
+@import 'color.inc.less';
+
+div.forum table.blocks {
+	td.split {
+			background-image:	url('background/panel.png');
+			background-repeat:	repeat-y;
+	}
+
+	td.status div {
+		&.fresh {
+			background-image:	url('glyph/16/star-on.png');
+		}
+
+		&.stale {
+			background-image:	url('glyph/16/star-off.png');
+		}
+	}
+}

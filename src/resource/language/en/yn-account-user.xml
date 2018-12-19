@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.account.user.">
+		<string key="active">Activate user account</string>
+		<section prefix="active.">
+			<string key="form.alert">Your user account is activated, you can contribute to forums!</string>
+			<string key="form.alert.code-expire">Unable to update your account, your security code probably expired. If you want to retry, sign-out from website and use the "Forgotten password" link to receive a new code.</string>
+			<string key="form.alert.code-invalid">Incorrect security code. Please ensure you properly input the code you received by email.</string>
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.field.code">Security code*:</string>
+			<string key="form.field.code.hint">Enter the code received by email if not already prefilled.</string>
+			<string key="form.group.active">Activate account</string>
+			<string key="form.group.active.hint">Please input the security code you received by email below. If you didn't receive any code don't forget to check your "spam" folder, then sign-out from website and use "Forgotten password" link to receive a new email.</string>
+			<string key="form.submit">Activate</string>
+			<string key="type">User account activation</string>
+		</section>
+
+		<string key="edit">{if:{user.id},Edit,Create a new} account</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="create">A new member joins yAronet!</string>
+			<string key="create.help">Fill the form below to create your user account and join the yAronet community!&#xA;&#xA;By signing up you confirm you read the website rules (link at the bottom of this page) and accept to comply with them.</string>
+			<string key="email">{if:{new},Welcome to yAronet.cOm!,Change of email address on yAronet.cOm}</string>
+			<string key="email.body">Hello {user.login},&#xA;&#xA;You just {if:{new},created your user account,changed your email address} on yAronet.cOm, next step is to activate it! Click on the link below or sign-in using your login and password, then use this security code when asked: {recover}.&#xA;&#xA;{url}&#xA;&#xA;See you soon!</string>
+			<string key="form.alert">User account saved! If you just created your account or changed your email address you'll receive an email with a new code to validate your account.</string>
+			<string key="form.alert.captcha-invalid" alias="yn.chat.shout.edit.form.alert.captcha-invalid" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.email-conflict">The email address you entered is already used by someone else, please choose another one.</string>
+			<string key="form.alert.email-format">The email address you entered is either empty or invalid.</string>
+			<string key="form.alert.email-length">Your email address is either too short of too long, it must contain between 1 and 100 characters.</string>
+			<string key="form.alert.login-conflict">The login you entered is already used by someone else, please choose another one.</string>
+			<string key="form.alert.login-format">Your login must contain only alphanumeric characters and at most one special character among these: space, dash (-), underscore (_), circumflex accent (^) or pipe (|).</string>
+			<string key="form.alert.login-length">Your login is either too short of too long, it must contain between 2 and 50 characters.</string>
+			<string key="form.alert.password-empty">You didn't specify any password to securize your account.</string>
+			<string key="form.alert.password-invalid">Invalid password, you must enter your current password if you want to change it.</string>
+			<string key="form.alert.password-match">Passwords don't match, you must enter new password twice if you want to change it.</string>
+			<string key="form.alert.profile-avatar-invalid" alias="yn.board.profile.edit.form.alert.avatar-invalid" />
+			<string key="form.alert.profile-gender-invalid" alias="yn.board.profile.edit.form.alert.gender-invalid" />
+			<string key="form.alert.profile-signature-length" alias="yn.board.profile.edit.form.alert.signature-length" />
+			<string key="form.alert.profile-sql" alias="yn.board.profile.edit.form.alert.sql" />
+			<string key="form.alert.profile-user-null" alias="yn.board.profile.edit.form.alert.user-null" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.field.active">Account activated* :</string>
+			<string key="form.field.active.item.0">No</string>
+			<string key="form.field.active.item.1">Yes</string>
+			<string key="form.field.admin">Account type*:</string>
+			<string key="form.field.admin.item.0">User</string>
+			<string key="form.field.admin.item.1">Administrator</string>
+			<string key="form.field.captcha" alias="yn.chat.shout.edit.form.field.captcha" />
+			<string key="form.field.captcha.hint" alias="yn.chat.shout.edit.form.field.captcha.hint" />
+			<string key="form.field.disabled">Banned user*:</string>
+			<string key="form.field.disabled.item.0">No</string>
+			<string key="form.field.disabled.item.1">Yes</string>
+			<string key="form.field.email">Email address*:</string>
+			<string key="form.field.email.hint">Enter a valid address, a validation email will be sent to it.</string>
+			<string key="form.field.flags">Options:</string>
+			<string key="form.field.flags.item.uniform">Ignore forum themes</string>
+			<string key="form.field.language">Interface language:</string>
+			<string key="form.field.language.item.en">English</string>
+			<string key="form.field.language.item.fr">French</string>
+			<string key="form.field.login">Login*:</string>
+			<string key="form.field.login.hint">Your name or pseudonym used to sign-in.</string>
+			<string key="form.field.options">Preferences:</string>
+			<string key="form.field.options.item.html.native">Use native font</string>
+			<string key="form.field.options.item.html.nohead">Hide website header and logo</string>
+			<string key="form.field.options.item.html.nosign">Hide signatures and avatars</string>
+			<string key="form.field.password">Current password:</string>
+			<string key="form.field.password.hint">Password you were previously using to sign in.</string>
+			<string key="form.field.password-1">Choose a password:</string>
+			<string key="form.field.password-1.hint">No constraints are enforced on length or characters used.</string>
+			<string key="form.field.password-2">Repeat password:</string>
+			<string key="form.field.password-2.hint">Enter new password again to ensure there is no typo.</string>
+			<string key="form.field.template">Visual theme*:</string>
+			<string key="form.field.template.item.html.amethyst">Amethyst (blue on purple)</string>
+			<string key="form.field.template.item.html.azurite">Azurite (gray on dark blue)</string>
+			<string key="form.field.template.item.html.chlorite">Chlorite (white on green)</string>
+			<string key="form.field.template.item.html.citrine">Citrine (orange on black)</string>
+			<string key="form.field.template.item.html.kyanite">Kyanite (gray on light blue)</string>
+			<string key="form.field.template.item.html.magnetite">Magnetite (gray on white)</string>
+			<string key="form.field.template.item.html.obsidian">Obsidian (gray on black)</string>
+			<string key="form.field.template.item.html.pvg">Pocket Videogame (blue on yellow)</string>
+			<string key="form.field.template.item.html.rgc">Retro-gaming Connexion (beige on brown)</string>
+			<string key="form.field.template.item.html.tifr">Ti-Fr (yellow on gray)</string>
+			<string key="form.field.template.item.test">Test</string>
+			<string key="form.group.authenticate">Account password</string>
+			<string key="form.group.authenticate.hint">When creating your account or if you want to change your password, please enter your new password twice. If you forgot your password you can access the "forgotten password" page by signing out.</string>
+			<string key="form.group.custom">Theme preferences</string>
+			<string key="form.group.custom.hint">Preferences displayed below are related to current visual theme and may not have any effect if you switch to another one.</string>
+			<string key="form.group.identity">Account identity</string>
+			<string key="form.group.identity.hint">You can change your login or email address anytime you want, however it will send you an activation email for security reasons.</string>
+			<string key="form.group.render">Website visual aspect</string>
+			<string key="form.group.render.hint">Select language and theme that best fit your taste. Some forums can configure their own theme but you can chose to ignore it and always use yours instead.</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="type">Account update</string>
+		</section>
+
+		<string key="reclaim">Choose new password</string>
+		<section prefix="reclaim.">
+			<string key="form.alert">Your password was successfully changed, you can now use it to sign-in.</string>
+			<string key="form.alert.code-expire" alias="yn.account.user.active.form.alert.code-expire" />
+			<string key="form.alert.code-invalid" alias="yn.account.user.active.form.alert.code-invalid" />
+			<string key="form.alert.password-empty" alias="yn.account.user.edit.form.alert.password-empty" />
+			<string key="form.alert.password-match" alias="yn.account.user.edit.form.alert.password-match" />
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.field.code" alias="yn.account.user.active.form.field.code" />
+			<string key="form.field.code.hint" alias="yn.account.user.active.form.field.code.hint" />
+			<string key="form.field.password-1" alias="yn.account.user.edit.form.field.password-1" />
+			<string key="form.field.password-1.hint" alias="yn.account.user.edit.form.field.password-1.hint" />
+			<string key="form.field.password-2" alias="yn.account.user.edit.form.field.password-2" />
+			<string key="form.field.password-2.hint" alias="yn.account.user.edit.form.field.password-2.hint" />
+			<string key="form.group.reclaim">New password</string>
+			<string key="form.group.reclaim.hint">You forgot your password and asked to change it. Please enter the security code you received by email below then the new password you want to set.</string>
+			<string key="form.submit">Save</string>
+			<string key="type">Change password</string>
+		</section>
+
+		<string key="recover">Recover forgotten password</string>
+		<section prefix="recover.">
+			<string key="email">Forgotten password on yAronet.cOm</string>
+			<string key="email.body">Hello {user.login},&#xA;&#xA;This email allows you to choose a new password on yAronet. You'll need the following security code to continue: {recover}. Click on the link below or paste it to your browser address bar to continue:&#xA;&#xA;{url_reclaim}&#xA;&#xA;If you didn't ask for a password change please follow the link below to cancel this request and keep your current password:&#xA;&#xA;{url_active}&#xA;&#xA;See you soon!</string>
+			<string key="form.alert">Request accepted! You'll receive an email to select a new password in the next few minutes, don't forget to check your "spam" folder in case you don't find it.</string>
+			<string key="form.alert.captcha-invalid" alias="yn.chat.shout.edit.form.alert.captcha-invalid" />
+			<string key="form.alert.email-unknown">This email address doesn't match any registered user.</string>
+			<string key="form.alert.save" alias="base.alert.default" />
+			<string key="form.field.captcha" alias="yn.account.user.edit.form.field.captcha" />
+			<string key="form.field.captcha.hint" alias="yn.account.user.edit.form.field.captcha.hint" />
+			<string key="form.field.email">Email address*:</string>
+			<string key="form.field.email.hint">The address you used to create your account.</string>
+			<string key="form.group.recover">Forgotten password</string>
+			<string key="form.group.recover.hint">You forgot your account password? Enter your email address in the form below, pass the anti-robot check and submit to receive a new security code by email. This code will allow you to select a new password and recover access to your account.</string>
+			<string key="form.submit">Send</string>
+			<string key="type">Forgotten password</string>
+		</section>
+
+		<string key="signin">Sign-in to website</string>
+		<section prefix="signin.">
+			<string key="back">Continue without sign-in</string>
+			<string key="form.alert">Sign-in successful, you can now browse website!</string>
+			<string key="form.alert.fail">Sign-in failed, please ensure your login and password are correct.</string>
+			<string key="form.field.expire">Expires*:</string>
+			<string key="form.field.expire.item.86400">In 24 hours</string>
+			<string key="form.field.expire.item.8640000">In 100 days</string>
+			<string key="form.field.expire.item.session">When browser is closed</string>
+			<string key="form.field.login">Login*:</string>
+			<string key="form.field.password">Password*:</string>
+			<string key="form.submit">Sign-in</string>
+			<string key="type">User sign-in</string>
+		</section>
+	</section>
+</locale>

@@ -1,0 +1,15 @@
+{{ let callback = request.callback }}
+	{{ if callback }}
+		{{ $ header ("Content-Type", cat ("text/javascript; charset=", encoding)) }}
+		{{ $ callback }}(
+	{{ else }}
+		{{ $ header ("Content-Type", cat ("application/json; charset=", encoding)) }}
+	{{ end }}
+	{{ $ header ("Cache-Control", "no-cache, no-store, must-revalidate") }}
+	{{ $ header ("Expires", "0") }}
+	{{ $ header ("Pragma", "no-cache") }}
+	{{ label body }}
+	{{ if callback }}
+		)
+	{{ end }}
+{{ end }}

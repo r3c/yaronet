@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.account.activity.">
+		<string key="list">Activité</string>
+		<section prefix="list.">
+			<string key="address">Adresse IP</string>
+			<string key="address.value">{activity.address}</string>
+			<string key="create_time">Connecté(e) depuis</string>
+			<string key="create_time.value" alias="base.type.time.absolute"><var name="time">{activity.create_time}</var></string>
+			<string key="identity">Identité</string>
+			<string key="identity.value">{def:{activity.user.login},{activity.group},Inconnue}</string>
+			<string key="index">#</string>
+			<string key="index.value">{index}</string>
+			<string key="location">Emplacement</string>
+			<string key="location.value">{activity.location}</string>
+			<string key="pulse_time">Actif(ve) à</string>
+			<string key="pulse_time.value" alias="base.type.time.absolute"><var name="time">{activity.pulse_time}</var></string>
+			<string key="type">Utilisateurs connectés</string>
+		</section>
+
+		<section prefix="pulse.">
+			<string key="user_ghost">Boo</string>
+			<string key="user_ghost.hint">Actuellement {count} connecté{ge:{count},2,s} sur le site</string>
+			<string key="user_group">{count} {def:{group},inconnu}{ge:{count},2,s}</string>
+			<string key="user_group.hint">Groupe d'utilisateurs non identifiés</string>
+			<string key="user_known">{user.login}</string>
+			<string key="user_known.hint">Inactif(ve) depuis {ge:{inactive},3600,{div:{inactive},3600} heure{ge:{div:{inactive},3600},2,s},{ge:{inactive},60,{div:{inactive},60} minute{ge:{div:{inactive},60},2,s},{inactive} seconde{ge:{inactive},2,s}}}</string>
+		</section>
+	</section>
+</locale>

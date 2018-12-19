@@ -1,0 +1,66 @@
+{{ let
+	hide_bottom = !!user.get_option ("html.nosign"),
+	post_profile = post.create_profile,
+	post_user = post_profile.user,
+	url_message = url ("account.message.new", ["to": post_user.login, "_template": null]),
+	url_message_new = url ("account.message.new", ["to": post_user.login, "_template": "frame"])
+}}
+	<div class="panel-header symbol">
+		<a class="bind-tooltip position" href="{{ $ url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": php ("yN\\Entity\\Board\\Topic::get_page") (position), "_template": null], cat ("post-", position)) }}" title="{{ $ tra ("yn.board.topic.view.post.position.hint") }}">{{ $ position }}</a>
+		{{ if hide_text && !hide_user }}
+			<span class="next"><a class="bind-message bind-tooltip"{{ if user.id != null }} href="{{ $ url_message }}" title="{{ $ tra ("yn.board.topic.view.post.message.hint") }}" data-url-edit="{{ $ url_message_new }}"{{ end }}>{{ $ post_user.login }}</a></span>
+			<span class="next"><a class="bind-tooltip" href="{{ $ url ("board.ignore.clear", ["target": post_user.id]) }}" title="{{ $ tra ("yn.board.topic.view.post.unignore.hint") }}">{{ $ tra ("yn.board.topic.view.post.unignore") }}</a></span>
+		{{ end }}
+		{{ if (hide_text || hide_user) && allow_force }}
+			<span class="next"><a class="bind-tooltip show" href="#" title="{{ $ tra ("yn.board.topic.view.post.peek.hint") }}" data-url-peek="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position, "force": 1, "peek": 1, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.peek") }}</a></span>
+		{{ end }}
+		{{ if hide_text && allow_edit }}
+			<span class="next"><a class="bind-tooltip" href="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.edit.hint") }}">{{ $ tra ("yn.board.topic.view.post.edit") }}</a></span>
+		{{ end }}
+		{{ if user.id != null }}
+			<span class="next"><a class="bind-tooltip" href="{{ $ url ("board.bookmark.mark", ["topic": topic.id, "position": position - 1, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.mark.hint") }}">{{ $ tra ("yn.board.topic.view.post.mark") }}</a></span>
+		{{ end }}
+		{{ if post.caution != null }}
+			<span class="next">{{ $ post.caution }}</span>
+		{{ end }}
+	</div>
+	{{ if !hide_text }}
+		<div class="content">
+			{{ if !hide_user }}
+				<div class="origin" itemprop="author" itemscope itemtype="http://schema.org/Person">
+					<span class="from glyph10">
+						<a class="bind-message bind-tooltip login right gender{{ $ post_profile.gender }}"{{ if user.id != null }} href="{{ $ url_message }}" title="{{ $ tra ("yn.board.topic.view.post.message.hint") }}" itemprop="name" data-url-edit="{{ $ url_message_new }}"{{ end }}>{{ $ post_user.login }}</a>
+						<a class="bind-tooltip icon user" href="{{ $ url ("board.profile.view", ["profile": post_profile.user_id, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.profile.hint") }}"></a>
+						{{ if user.id != null && post_user.id != user.id }}
+							<a class="bind-tooltip icon ignore" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}"></a>
+						{{ end }}
+					</span>
+					<span class="time symbol">
+						<span class="next" itemprop="dateCreated" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.create_time) }}">{{ $ tra ("yn.board.topic.view.post.created", ["profile": post_profile, "time": post.create_time]) }}</span>
+						{{ if post.edit_profile != null && post.edit_time != null }}
+							<span class="next" itemprop="dateModified" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.edit_time) }}">{{ $ tra ("yn.board.topic.view.post.edited", ["profile": post.edit_profile, "time": post.edit_time]) }}</span>
+						{{ end }}
+					</span>
+				</div>
+			{{ end }}
+			<div class="body">
+				{{ label body }}
+			</div>
+			{{ let
+				avatar = post_profile.render_avatar (router),
+				signature = post_profile.render_signature ("html", router, logger)
+			}}
+				{{ if !hide_bottom && !hide_user && avatar != null && signature != null }}
+					<div class="bottom markup">
+						{{ if avatar != null }}
+							<img class="avatar" src="{{ $ avatar }}" alt="avatar" />
+						{{ end }}
+						{{ unwrap }}
+							{{ $ signature }}
+						{{ end }}
+					</div>
+				{{ end }}
+			{{ end }}
+		</div>
+	{{ end }}
+{{ end }}

@@ -1,0 +1,42 @@
+{{ wrap html }}
+	{{ let
+		board_forum_view_url = url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]),
+		board_section_view_url = url ("board.section.view", ["section": section.id, "section_hint": section.hint]),
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			board_forum_view_url: tra ("yn.board.forum.view", ["forum": forum]),
+			board_section_view_url: tra ("yn.board.section.view", ["section": section])
+		],
+		_redirect = length (alerts) == 0 && board_forum_view_url || null,
+		_static = [],
+		_title = tra ("yn.board.section.merge", ["section": section])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.section.merge.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("board.section.merge", ["section": section.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [
+								"merge":	["group", true],
+								"into":		["complete", true, ["callback": url ("board.section.list", ["_template": "json"]), "placeholder": true]]
+							],
+							_prefix = "yn.board.section.merge.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.section.merge.form.submit") }}" />
+							<a class="label back" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.merge.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

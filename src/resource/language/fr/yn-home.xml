@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<string key="yn.home">Index</string>
+	<section prefix="yn.home.">
+		<string key="chat">FlashChat</string>
+		<string key="chat.form.alert" alias="yn.chat.shout.edit.form.alert" />
+		<string key="chat.form.field.nick" alias="yn.chat.shout.edit.form.field.nick" />
+		<string key="chat.form.field.text.placeholder" alias="yn.chat.shout.edit.form.field.text.placeholder" />
+		<string key="chat.form.submit" alias="yn.chat.shout.edit.form.submit" />
+		<string key="chat.time" alias="page.time" />
+		<string key="description">Créez gratuitement votre forum de discussion ou rejoignez l'un de ceux déjà ouverts ! Actualité, jeux vidéo, bd, ciné, programmation, études... venez discuter :)</string>
+		<string key="guest">Bienvenue sur yAronet !</string>
+		<string key="guest.help">yAronet, c'est un ensemble de forums de discussion organisés par thème et ouverts à tous. Jetez un coup d'oeil, rejoignez les communautés qui vous plaisent, ou regroupez la vôtre en créant votre propre forum !&#xA;&#xA;Si vous êtes nouveau, n'hésitez pas à vous inscrire et à vous rendre dans le forum "Le site" si vous avez besoin d'aide. Bonne visite !</string>
+		<string key="link.favorite">Choisir les favoris</string>
+		<string key="link.forum">Créer votre forum</string>
+		<string key="link.forums">Chercher un forum</string>
+		<string key="link.profiles">Liste des membres</string>
+		<string key="link.trendy">Derniers sujets actifs</string>
+		<string key="personal">Vos forums favoris</string>
+		<string key="popular">Sélection de forums populaires</string>
+		<string key="random">Quelques forums au hasard</string>
+		<string key="type">Accueil</string>
+	</section>
+</locale>

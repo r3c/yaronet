@@ -1,0 +1,47 @@
+# Server options
+AddDefaultCharset {{engine.system.encoding.charset}}
+
+Options +FollowSymlinks
+Options -Indexes
+Options -MultiViews
+
+RewriteEngine On
+RewriteBase {{engine.network.route.static}}
+
+# Asset versioning
+RewriteRule ^[0-9]+/(.*) $1 [L]
+
+# Expiration rules
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault A7200
+	ExpiresByType image/gif A86400
+	ExpiresByType image/ico A86400
+	ExpiresByType image/icon A86400
+	ExpiresByType image/jpeg A86400
+	ExpiresByType image/jpg A86400
+	ExpiresByType image/png A86400
+	ExpiresByType image/x-icon A86400
+	ExpiresByType text/css A86400
+	ExpiresByType text/html A86400
+	ExpiresByType text/javascript A86400
+	ExpiresByType application/javascript A86400
+	ExpiresByType application/x-javascript A86400
+	ExpiresByType application/x-shockwave-flash A86400
+	ExpiresByType application/xhtml+xml A86400
+</IfModule>
+
+<IfModule mod_headers.c>
+	<FilesMatch "\\.(gif|ico|jpeg|jpg|png|swf)$">
+		Header set Cache-Control "max-age=86400, public"
+	</FilesMatch>
+	<FilesMatch "\\.(css)$">
+		Header set Cache-Control "max-age=86400, public"
+	</FilesMatch>
+	<FilesMatch "\\.(js)$">
+		Header set Cache-Control "max-age=86400, public"
+	</FilesMatch>
+	<FilesMatch "\\.(eot|svg|ttf|woff)$">
+		Header set Access-Control-Allow-Origin "*"
+	</FilesMatch>
+</IfModule>

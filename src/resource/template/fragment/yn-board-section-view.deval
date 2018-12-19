@@ -1,0 +1,51 @@
+{{ $ "" /* FIXME [html-table] */ }}
+<table class="topics">
+	{{ let forum_id = forum.id != section.forum_id && forum.id || null }}
+		{{ for topic in topics }}
+			{{ let
+				bookmark = topic.bookmark,
+				position = min (default (bookmark.position, 0) + 1, topic.posts),
+				class_state = topic.is_closed && "close" || (bookmark.watch && "watch" || (bookmark != null && "track" || "new")),
+				class_track = bookmark.position < topic.posts && "fresh" || "stale",
+				href = url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": php ("yN\\Entity\\Board\\Topic::get_page") (position)], bookmark != null && cat ("post-", position) || null),
+				last = php ("yN\\Entity\\Board\\Topic::get_page") (topic.posts)
+			}}
+				<tr class="{{ $ class_state }} {{ $ class_track }}">
+					<td class="blank"></td>
+					<td class="icon">
+						<div></div>
+					</td>
+					<td class="link symbol">
+						<a class="name{{ $ topic.weight > 0 && " weight" }}" href="{{ $ href }}">
+							{{ unwrap }}
+								{{ $ topic.render_name ("html", router, logger) }}
+							{{ end }}
+						</a>
+						<strong class="next">{{ $ tra ("yn.board.section.view.create_profile", ["profile": topic.create_profile]) }}</strong>
+						<span class="next">
+							{{ for page in range (1, min (last, 3)) }}
+								<a href="{{ $ url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": page]) }}">{{ $ page }}</a>
+								{{ $ " " }}
+							{{ end }}
+							{{ if last > 8 }}
+								...
+								{{ $ " " }}
+							{{ end }}
+							{{ for page in range (max (last - 5 + 1, 3 + 1), last) }}
+								<a href="{{ $ url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": page]) }}">{{ $ page }}</a>
+								{{ $ " " }}
+							{{ end }}
+						</span>
+					</td>
+					<td class="info">
+						{{ $ tra ("yn.board.section.view.info", ["topic": topic]) }}
+					</td>
+					<td class="last symbol">
+						<span class="begin">{{ $ tra ("yn.board.section.view.last_time", ["time": topic.last_time]) }}</span>
+						<strong class="next">{{ $ tra ("yn.board.section.view.last_profile", ["profile": topic.last_profile]) }}</strong>
+					</td>
+				</tr>
+			{{ end }}
+		{{ end }}
+	{{ end }}
+</table>

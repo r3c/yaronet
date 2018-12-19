@@ -1,0 +1,36 @@
+{{ wrap html }}
+	{{ let
+		_redirect = null
+	}}
+		{{ extend base.deval }}
+		{{ block body }}
+			<p class="question">{{ $ poll.question }}</p>
+			{{ if poll.vote }}
+				{{ let
+					scores = map (poll.choices, (choice) => choice.score),
+					highest = default (max (scores), 0),
+					total = default (reduce (scores, (s1, s2) => s1 + s2), 0)
+				}}
+					{{ for choice in poll.choices }}
+						<div class="choice"{{ if highest > 0 }} style="background-size: {{ $ int (choice.score * 100 / highest) }}%;"{{ end }}>
+							{{ $ tra ("yn.survey.poll.view.choice", ["percentage": total > 0 && int (choice.score * 100 / total) || 0, "score": choice.score, "text": choice.text]) }}
+						</div>
+					{{ end }}
+				{{ end }}
+			{{ else }}
+				<form class="form-thin" action="{{ $ url ("survey.poll.vote", ["poll": poll.id]) }}" method="POST">
+					{{ for choice in poll.choices }}
+						<div class="choice">
+							<input name="choices[]" type="{{ $ poll.type == php ("yN\\Entity\\Survey\\Poll::#TYPE_MULTIPLE") && "checkbox" || "radio" }}" value="{{ $ choice.rank }}" />
+							{{ $ " " }}
+							{{ $ choice.text }}
+						</div>
+					{{ end }}
+					<div class="control glyph10">
+						<input class="button send" type="submit" value="{{ $ tra ("yn.survey.poll.view.form.submit") }}" />
+					</div>
+				</form>
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}

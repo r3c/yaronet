@@ -1,0 +1,9 @@
+{
+	"source": "hash",
+	"modifiers": [
+		{
+			"pattern":	"^\\.gitignore$",
+			"filter":	""
+		}
+	]
+}

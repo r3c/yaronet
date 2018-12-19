@@ -1,0 +1,67 @@
+{{ wrap html }}
+	{{ let
+		_forum = null,
+		_meta = null,
+		_path = [url ("home"): tra ("yn.home")],
+		_redirect = null,
+		_static = [
+			cat (static.layout, "yn-board-profile.less")
+		],
+		_title = tra ("yn.board.profile.list")
+	}}
+		{{ extend page.deval }}
+		{{ block goto }}
+			<ul class="goto right symbol">
+				{{ if page_previous != null }}
+					<li><a href="{{ $ url ("board.profile.list", ["forum": forum_id, "page": page_previous, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.previous") }}</a></li>
+				{{ end }}
+				{{ if forum_id != null }}
+					<li class="next"><a href="{{ $ url ("board.profile.list", ["page": page, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.global") }}</a></li>
+				{{ end }}
+				{{ if page_next != null }}
+					<li class="next"><a href="{{ $ url ("board.profile.list", ["forum": forum_id, "page": page_next, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.next") }}</a></li>
+				{{ end }}
+			</ul>
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.profile.list.type") }}</div>
+				<div class="panel-body">
+					<form class="form-cascade form-thick" action="{{ $ url ("board.profile.list", ["forum": forum_id]) }}" method="GET" autocomplete="off">
+						{{ let
+							_alerts = null,
+							_fields = [
+								"query":	["complete", true, ["callback": url ("board.profile.list", ["_template": "json"]), "focus": true, "length": 50]]
+							],
+							_prefix = "yn.board.profile.list.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button search" type="submit" value="{{ $ tra ("yn.board.profile.list.form.submit") }}" />
+						</div>
+					</form>
+					<div class="grid">
+						<div class="head s2">{{ $ tra ("yn.board.profile.list.login") }}</div>
+						<div class="head s2">{{ $ tra ("yn.board.profile.list.create_time") }}</div>
+						<div class="head s2">{{ $ tra ("yn.board.profile.list.pulse_time") }}</div>
+						<div class="head s6">{{ $ tra ("yn.board.profile.list.forum") }}</div>
+						{{ for profile in profiles }}
+							<div class="cell s2 glyph10" data-title="{{ $ tra ("yn.board.profile.list.login") }}">
+								<a class="label user" href="{{ $ url ("board.profile.view", ["profile": profile.user_id]) }}">{{ $ tra ("yn.board.profile.list.login.value", ["profile": profile]) }}</a>
+							</div>
+							<div class="cell s2" data-title="{{ $ tra ("yn.board.profile.list.create_time") }}">{{ $ tra ("yn.board.profile.list.create_time.value", ["profile": profile]) }}</div>
+							<div class="cell s2" data-title="{{ $ tra ("yn.board.profile.list.pulse_time") }}">{{ $ tra ("yn.board.profile.list.pulse_time.value", ["profile": profile]) }}</div>
+							<div class="cell s6" data-title="{{ $ tra ("yn.board.profile.list.forum") }}">
+								{{ if profile.forum != null }}
+									<a href="{{ $ url ("board.forum.view", ["forum": profile.forum_id]) }}">{{ $ tra ("yn.board.profile.list.forum.value", ["profile": profile]) }}</a>
+								{{ else }}
+									{{ $ tra ("yn.board.profile.list.forum.value") }}
+								{{ end }}
+							</div>
+						{{ end }}
+					</div>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

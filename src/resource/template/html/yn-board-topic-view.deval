@@ -1,0 +1,125 @@
+{{ wrap html }}
+	{{ let
+		section = topic.section,
+		forum_id = forum.id != section.forum_id && forum.id || null,
+		topic_name = topic.render_name ("text", router, logger),
+		page_last = php ("yN\\Entity\\Board\\Topic::get_page") (topic.posts),
+		_forum = forum,
+		_meta = [
+			"canonical":	url ("board.topic.view", ["topic": topic.id, "topic_hint": topic.hint, "page": page]),
+			"description":	tra ("yn.board.topic.view.description", ["topic": topic, "topic_name": topic_name]),
+			"next":			page < page_last && url ("board.topic.view", ["topic": topic.id, "topic_hint": topic.hint, "page": page + 1]) || null,
+			"prev":			page > 1 && url ("board.topic.view", ["topic": topic.id, "topic_hint": topic.hint, "page": page - 1]) || null
+		],
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint]): tra ("yn.board.section.view", ["section": section])
+		],
+		_redirect = null,
+		_static = [
+			cat (static.global, "library/markitup/jquery.markitup.js"),
+			cat (static.layout, "library/markitup/set.less"),
+			cat (static.layout, "library/markitup/skin.less"),
+			cat (static.layout, "yn-board-topic.js"),
+			cat (static.theme, "library/markitup/skin.less"),
+			cat (static.theme, "yn-board-topic.less")
+		],
+		_title = tra ("yn.board.topic.view", ["topic": topic, "topic_name": topic_name, "page": page])
+	}}
+		{{ extend page.deval }}
+		{{ block goto }}
+			<ul class="goto right symbol">
+				{{ let
+					page_build = (p) => url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": p]),
+					page_current = page
+				}}
+					{{ include ../fragment/control-page.deval }}
+				{{ end }}
+			</ul>
+		{{ block main }}
+			<div class="posts">
+				{{ for index, reference in references }}
+					<div id="post-{{ $ reference.position }}" class="panel post{{ $ index == 0 && page > 1 && " recall" }} state{{ $ reference.post.state }}" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+						{{ let enable_peek = false }}
+							{{ include ../fragment/yn-board-post-view.deval }}
+						{{ end }}
+					</div>
+				{{ end }}
+			</div>
+			{{ if user.id != null }}
+				<div class="panel">
+					<div class="panel-footer glyph10">
+						{{ if topic.bookmark != null && topic.bookmark.watch }}
+							<a class="bind-tooltip label bookmark-off" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.clear.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.clear") }}</a>
+						{{ else }}
+							<a class="bind-tooltip label bookmark-on" href="{{ $ url ("board.bookmark.set", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.set.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.set") }}</a>
+						{{ end }}
+						{{ if topic.allow_reply (access) }}
+							<a class="bind-tooltip label reply" href="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "posts": topic.posts]) }}" title="{{ $ tra ("yn.board.topic.view.reply.hint") }}">{{ $ tra ("yn.board.topic.view.reply") }}</a>
+						{{ end }}
+						<a class="bind-tooltip label drift" href="{{ $ url ("board.topic.drift", ["forum": forum_id, "source": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.drift.hint") }}">{{ $ tra ("yn.board.topic.view.drift") }}</a>
+						{{ if topic.allow_edit (access) }}
+							<a class="bind-tooltip label edit" href="{{ $ url ("board.topic.edit", ["forum": forum_id, "topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.edit.hint") }}">{{ $ tra ("yn.board.topic.view.edit") }}</a>
+							<a class="bind-tooltip label delete" href="{{ $ url ("board.topic.delete", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.delete.hint") }}">{{ $ tra ("yn.board.topic.view.delete") }}</a>
+						{{ end }}
+					</div>
+				</div>
+			{{ end }}
+			<script type="text/javascript">
+				{{ unwrap }}
+					if (window.location.hash)
+						$("div.post" + window.location.hash).addClass ("panel-hl");
+
+					yn = window.yn || {};
+					yn.controlFormCopyKey = "board.topic.{{ $ jstr (topic.id) }}";
+					yn.boardTopicStrings = {
+						accept:			"{{ $ jstr (tra ("yn.board.topic.view.report.accept")) }}",
+						copy:			"{{ $ jstr (tra ("yn.board.topic.view.post.copy.success")) }}",
+						ignore:			"{{ $ jstr (tra ("yn.board.topic.view.post.ignore.confirm")) }}",
+						notice:			"{{ $ jstr (tra ("yn.board.topic.view.report.notice")) }}",
+						placeholder:	"{{ $ jstr (tra ("yn.board.topic.view.report.placeholder")) }}"
+					};
+				{{ end }}
+			</script>
+		{{ block tail }}
+			{{ if topic.allow_reply (access) }}
+				{{ let
+					url_cross = url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": default (max (map (references, (r) => r.position)), 0) + 1, "peek": 1, "_template": "frame"]),
+					url_new = url ("board.post.new", ["forum": forum_id, "topic": topic.id])
+				}}
+					<div class="page-block">
+						<div class="panel panel-decorate bind-post-new">
+							<div class="panel-header">{{ $ tra ("yn.board.topic.view.form") }}</div>
+							<div class="panel-body">
+								<form class="form-cascade form-thick bind-raw" action="{{ $ url_new }}" method="POST" data-url-cross="{{ $ url_cross }}">
+									{{ let
+										_alerts = null,
+										_fields = [
+											"text":		["textarea", null, ["draft": cat ("board.topic.", topic.id, ".text"), "length": 30000, "markup": "bbcode", "placeholder": page < page_last, "rows": 16]]
+										],
+										_prefix = "yn.board.topic.view.form."
+									}}
+										{{ include ../fragment/control-form.deval }}
+									{{ end }}
+									<input name="posts" type="hidden" value="{{ $ default (request.posts, topic.posts) }}" />
+									<div class="control glyph10">
+										<input class="button send" type="submit" value="{{ $ tra ("yn.board.topic.view.form.submit") }}" />
+										{{ $ " " }}
+										<span class="bind-cross-disclaimer">{{ $ tra ("yn.board.topic.view.form.disclaimer") }}</span>
+										<span class="cross markup bind-cross-warning" style="display: none;">
+											{{ $ tra ("yn.board.topic.view.cross") }}
+											{{ $ " " }}
+											<a class="ref" href="#">{{ $ tra ("yn.board.topic.view.cross.peek") }}</a>
+										</span>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				{{ end }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}

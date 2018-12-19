@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.bookmark.">
+		<string key="list">Bookmarks</string>
+		<section prefix="list.">
+			<string key="close">Close</string>
+			<string key="drop">Drop</string>
+			<string key="drop.confirm">Do you want to stop following new posts in this topic?</string>
+			<string key="drop.hint">Stop following this topic [D]</string>
+			<string key="empty">No topic in this list.</string>
+			<string key="form.disclaimer" alias="yn.board.post.edit.form.disclaimer" />
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="less">Show less</string>
+			<string key="mark">Bookmark</string>
+			<string key="mark.hint">Follow this topic and resume here next time [M]</string>
+			<string key="more">Show more</string>
+			<string key="quote">Quote</string>
+			<string key="quote.hint">Post a new reply and quote this message [Q]</string>
+			<string key="read">Read</string>
+			<string key="read.hint">Follow this topic and mark all posts as read [Space]</string>
+			<string key="reply">Reply</string>
+			<string key="reply.hint">Post a new reply to this topic [Right]</string>
+			<string key="rss">RSS feed</string>
+			<string key="source.active">Last updated unfollowed topics</string>
+			<string key="source.fresh">Followed topics with new posts</string>
+			<string key="source.new">Last created unfollowed topics</string>
+			<string key="source.stale">Followed topics without new posts</string>
+			<string key="switch.active">Last updated topics</string>
+			<string key="switch.fresh">Unread topics</string>
+			<string key="switch.new">Last created topics</string>
+			<string key="switch.stale">Read topics</string>
+			<string key="topic.hint">Section: {section.name}</string>
+			<string key="type">Bookmarks</string>
+			<string key="update">Refresh</string>
+		</section>
+	</section>
+</locale>

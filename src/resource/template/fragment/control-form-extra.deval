@@ -1,0 +1,11 @@
+{{ if options.append }} data-append="1"{{ end }}
+{{ if options.callback }} data-callback="{{ $ options.callback }}"{{ end }}
+{{ if options.draft }} data-draft="{{ $ options.draft }}"{{ end }}
+{{ if options.focus }} data-focus="1"{{ end }}
+{{ if options.ignorespell }} spellcheck="false"{{ end }}
+{{ if options.length }} maxlength="{{ $ options.length }}"{{ end }}
+{{ if options.limit }} data-limit="{{ $ int (options.limit) }}"{{ end }}
+{{ if options.markup }} data-markup="bbcode"{{ end }}
+{{ if options.placeholder }} placeholder="{{ $ tra (cat ((-)_prefix, "field.", name, ".placeholder")) }}"{{ end }}
+{{ if options.selectable }} data-selectable="1"{{ end }}
+{{ if options.sortable }} data-sortable="1"{{ end }}

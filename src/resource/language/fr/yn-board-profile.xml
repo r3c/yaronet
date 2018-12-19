@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.board.profile.">
+		<string key="delete">Désactiver un profil</string>
+		<section prefix="delete.">
+			<string key="form.alert">Profil désactivé.</string>
+			<string key="form.alert.delete">La suppression d'une donnée du profil a échoué, veuillez réessayer dans quelques instants.</string>
+			<string key="form.alert.save">La sauvegarde d'une donnée du profil a échoué, veuillez réessayer dans quelques instants.</string>
+			<string key="form.confirm">C'est votre dernier mot ?</string>
+			<string key="form.disclaimer">Attention, cette opération est irréversible</string>
+			<string key="form.submit">Confirmer</string>
+			<string key="type">Confirmation de désactivation</string>
+			<string key="warning">Veuillez confirmer la désactivation du profil "{profile.user.login}" ; cette opération va supprimer ou masquer ses messages et sujets, puis bloquer l'utilisation de ce profil.</string>
+		</section>
+
+		<string key="edit">Modifier un profil</string>
+		<section prefix="edit.">
+			<string key="back" alias="base.back" />
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.avatar-invalid" alias="base.alert.sql" />
+			<string key="form.alert.avatar-read">Impossible d'utiliser l'image spécifiée comme avatar : son téléchargement a échoué, ou bien sa taille est trop grande, ou encore elle n'est pas de l'un des formats supportés (GIF, JPEG ou PNG).</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.forum">Aucun forum ne porte ce nom, vérifiez votre saisie ou laissez ce champ vide.</string>
+			<string key="form.alert.gender-invalid" alias="base.alert.sql" />
+			<string key="form.alert.signature-length">Votre signature est trop longue, elle doit contenir au maximum 600 caractères.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.user-null" alias="base.alert.default" />
+			<string key="form.field.avatar">Avatar* :</string>
+			<string key="form.field.avatar.else.item.gravatar">Gravatar</string>
+			<string key="form.field.avatar.else.item.void">Ne pas utiliser d'avatar</string>
+			<string key="form.field.avatar.hint">Image de votre choix, affichée à côté de chacun de vos messages.</string>
+			<string key="form.field.avatar.placeholder">http://lien.vers.votre/avatar.png</string>
+			<string key="form.field.forum">Forum :</string>
+			<string key="form.field.forum.hint">Forum par lequel vous avez effectué votre inscription au site.</string>
+			<string key="form.field.gender">Sexe* :</string>
+			<string key="form.field.gender.hint">Indiquez votre sexe si vous le souhaitez, ou choisissez "inconnu" sinon.</string>
+			<string key="form.field.gender.item.0">Homme</string>
+			<string key="form.field.gender.item.1">Femme</string>
+			<string key="form.field.gender.item.2">Inconnu</string>
+			<string key="form.field.signature">Signature :</string>
+			<string key="form.field.signature.hint">Signature affichée sous vos messages ; les balises de mise en forme sont autorisées.</string>
+			<string key="form.group.membership">Origine de l'inscription</string>
+			<string key="form.group.profile">Configuration du profil</string>
+			<string key="form.submit" alias="base.submit.save" />
+			<string key="type">Modification de profil</string>
+		</section>
+
+		<string key="list">Profils</string>
+		<section prefix="list.">
+			<string key="create_time">Date d'inscription</string>
+			<string key="create_time.value" alias="base.type.datetime.relative"><var name="time">{profile.user.create_time}</var></string>
+			<string key="form.field.query" alias="yn.account.user.edit.form.field.login" />
+			<string key="form.field.query.hint">Saisissez les premières lettres d'un identifiant pour démarrer la recherche.</string>
+			<string key="form.submit" alias="base.submit.search" />
+			<string key="forum">Forum d'origine</string>
+			<string key="forum.value">{ifset:{profile.forum.id},{profile.forum.name},Aucun}</string>
+			<string key="global">Tous les forums</string>
+			<string key="login">Identifiant</string>
+			<string key="login.value">{profile.user.login}</string>
+			<string key="next" alias="control.page.next" />
+			<string key="previous" alias="control.page.previous" />
+			<string key="pulse_time">Dernière visite</string>
+			<string key="pulse_time.value" alias="base.type.datetime.relative"><var name="time">{profile.user.pulse_time}</var></string>
+			<string key="type">Recherche d'utilisateur</string>
+		</section>
+
+		<string key="view">{user.login}</string>
+		<section prefix="view.">
+			<string key="account">Modifier le compte</string>
+			<string key="account.hint">Configuration personnelle : identifiants, langue et thème</string>
+			<string key="create_time">Date d'inscription :</string>
+			<string key="create_time.value" alias="base.type.datetime.relative"><var name="time">{profile.user.create_time}</var></string>
+			<string key="delete">Désactiver le profil</string>
+			<string key="delete.hint">Supprime toutes les contributions et désactive le compte</string>
+			<string key="edit">Modifier le profil</string>
+			<string key="edit.hint">Informations publiques : sexe, signature et avatar</string>
+			<string key="forum">Forum d'origine :</string>
+			<string key="forum.value" alias="yn.board.profile.list.forum.value" />
+			<string key="gender">Sexe :</string>
+			<string key="gender.value">{case:{profile.gender},0,Homme,1,Femme,Inconnu}</string>
+			<string key="posts">Nombre de messages :</string>
+			<string key="posts.value">{profile.posts}</string>
+			<string key="pulse_time">Dernière visite :</string>
+			<string key="pulse_time.value" alias="base.type.datetime.relative"><var name="time">{profile.user.pulse_time}</var></string>
+			<string key="type">Profil utilisateur</string>
+			<string key="user">Profil utilisateur : {profile.user.login}</string>
+		</section>
+	</section>
+</locale>

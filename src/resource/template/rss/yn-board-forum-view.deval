@@ -1,0 +1,14 @@
+{{ let
+	pair = find (sources),
+	link = url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias, "_template": null]),
+	title = forum.name,
+	description = forum.description,
+	items = map (pair[1], (cursor) => [
+		url ("board.topic.view", ["topic": cursor[0].id, "topic_hint": cursor[0].hint, "_template": null]),
+		cursor[0].render_name ("text", router, logger),
+		null,
+		cursor[0].last_time
+	])
+}}
+	{{ include base.deval }}
+{{ end }}

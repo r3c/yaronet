@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.media.emoji.">
+		<section prefix="edit.">
+			<string key="back">Retour</string>
+			<string key="form.alert">Votre smiley a bien été envoyé, vous pouvez maintenant l'insérer dans un message en copiant le texte ci-dessous. La prochaine fois que vous souhaitez l'utiliser, vous pourrez saisir les premiers caractères de son nom dans la barre de recherche pour l'obtenir de nouveau.</string>
+			<string key="form.alert.emoji-cost" alias="base.alert.cost" />
+			<string key="form.alert.emoji-name">Un autre smiley existe déjà avec le même nom que celui que vous souhaitez ajouter. Veuillez choisir un autre nom.</string>
+			<string key="form.alert.emoji-null">Veuillez choisir une image à envoyer ou une adresse depuis laquelle la télécharger.</string>
+			<string key="form.alert.emoji-read">Impossible d'utiliser l'image spécifiée comme smiley : son téléchargement a échoué, ou bien sa taille est trop grande, ou encore elle n'est pas de l'un des formats supportés (GIF, JPEG ou PNG).</string>
+			<string key="form.alert.emoji-save" alias="base.alert.default" />
+			<string key="form.alert.emoji-size">Votre image est trop petite ou trop grande, veuillez choisir une image dont les dimensions sont entre 10 et 128 pixels.</string>
+			<string key="form.field.emoji">Image à envoyer* :</string>
+			<string key="form.field.emoji.hint">Le nom du fichier ou l'URL vers l'image sera utilisé pour définir le nom du smiley.</string>
+			<string key="form.field.emoji.placeholder">http://lien.vers.votre/emoji.gif</string>
+			<string key="form.submit">Envoyer</string>
+		</section>
+
+		<section prefix="list.">
+			<string key="form.field.search.placeholder">Saisissez quelques caractères pour chercher un smiley...</string>
+			<string key="new">Envoyer un nouveau smiley</string>
+		</section>
+	</section>
+</locale>

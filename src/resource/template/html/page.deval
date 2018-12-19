@@ -1,0 +1,125 @@
+{{ let
+	_static = cat ([
+		cat (static.global, "library/google-analytics/ga.js"),
+		cat (static.global, "library/jquery.scrollTo/jquery.scrollTo.js"),
+
+		cat (static.layout, "control-form.js"),
+		cat (static.layout, "control-form.less"),
+		cat (static.layout, "page.js"),
+
+		cat (static.theme, "page.less")
+	], _static)
+}}
+	{{ extend base.deval }}
+	{{ block body }}
+		{{ let
+			page_header = _forum != null && _forum.render_header ("html", router, logger) || null,
+			page_message = get_message ()
+		}}
+			{{ if !user.get_option ("html.nohead") }}
+				<div class="page-header">
+					<div class="logo markup">
+						{{ unwrap }}
+							{{ if page_header != null }}
+								{{ $ page_header }}
+							{{ else }}
+								{{ $ replace (logo, ["{home}": url ("home"), "{user}": default (user.id, 0)]) }}
+							{{ end }}
+						{{ end }}
+					</div>
+				</div>
+			{{ end }}
+			<div id="yn-menu" class="page-menu{{ if page_message != null }} menu-notify{{ end }}">
+				<div class="menu-links">
+					<span class="time">
+						{{ $ tra ("page.time", ["time": time]) }}
+					</span>
+					<span class="account glyph10">
+						{{ if _forum.id != null }}
+							<a class="bind-tooltip icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}"></a>
+						{{ end }}
+						{{ if user.id != null }}
+							<a class="bind-tooltip icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}"></a>
+							<a class="bind-tooltip icon chat" href="{{ $ cat ("http://kiwiirc.com/client/irc.mirari.fr/yaronet?nick=", php ("rawurlencode") (user.login)) }}" title="{{ $ tra ("page.chat.hint") }}"></a>
+							<a class="bind-tooltip icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
+						{{ end }}
+					</span>
+					<span class="board glyph10">
+						{{ if user.id != null }}
+							{{ let
+								url_memo = url ("account.memo.view"),
+								url_memo_edit = url ("account.memo.edit", ["_template": "frame"]),
+								url_memo_view = url ("account.memo.view", ["_template": "frame"]),
+
+								url_message = url ("account.message.list"),
+								url_message_list = url ("account.message.list", ["_template": "frame"]),
+								url_message_new = url ("account.message.new", ["_template": "frame"])
+							}}
+								<span class="label welcome">{{ $ tra ("page.welcome", ["user": user]) }}</span>
+								<a class="bind-tooltip label bookmark1" href="{{ $ url ("board.bookmark.list", ["what": "f"]) }}" title="{{ $ tra ("page.bookmarks1.hint") }}">{{ $ tra ("page.bookmarks1") }}</a>
+								<a class="bind-tooltip label bookmark2" href="{{ $ url ("board.bookmark.list", ["what": "fl"]) }}" title="{{ $ tra ("page.bookmarks2.hint") }}">{{ $ tra ("page.bookmarks2") }}</a>
+								<a id="yn-message" class="bind-message bind-tooltip label message{{ if page_message != null }} message-notify{{ end }}" href="{{ $ url_message }}" title="{{ $ tra ("page.message.hint", ["message": page_message]) }}" data-url-edit="{{ $ url_message_new }}" data-url-list="{{ $ url_message_list }}">{{ $ tra ("page.message") }}</a>
+								<a id="yn-memo" class="bind-tooltip label memo" href="{{ $ url_memo }}" title="{{ $ tra ("page.memo.hint") }}" data-url-edit="{{ $ url_memo_edit }}" data-url-view="{{ $ url_memo_view }}">{{ $ tra ("page.memo") }}</a>
+							{{ end }}
+						{{ else }}
+							<a class="bind-tooltip label signin" href="{{ $ url ("account.user.signin") }}" title="{{ $ tra ("page.signin.hint") }}">{{ $ tra ("page.signin") }}</a>
+							<a class="bind-tooltip label signup hl" href="{{ $ url ("account.user.signup", ["forum": _forum.id]) }}" title="{{ $ tra ("page.signup.hint") }}">{{ $ tra ("page.signup") }}</a>
+							<a class="bind-tooltip label recover" href="{{ $ url ("account.user.recover") }}" title="{{ $ tra ("page.recover.hint") }}">{{ $ tra ("page.recover") }}</a>
+						{{ end }}
+					</span>
+				</div>
+				<div id="yn-menu-users" class="menu-users" data-url-pulse="{{ $ url ("account.activity.pulse", ["_template": "frame"]) }}">
+					{{ include ../fragment/yn-account-activity-pulse.deval }}
+				</div>
+			</div>
+			<div class="page-block">
+				{{ if user.id != null && !user.is_active }}
+					<div class="activation notice notice-fail">
+						<a href="{{ $ url ("account.user.active", ["user": user.id]) }}">{{ $ tra ("page.activation") }}</a>
+					</div>
+				{{ end }}
+				{{ if _title != null }}
+					<div class="navigation glyph16">
+						<ul class="path label symbol" itemscope itemtype="http://schema.org/BreadcrumbList">
+							{{ for position, path in keys (_path) }}
+								<li class="tail" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+									<a href="{{ $ path }}" itemprop="item"><span itemprop="name">{{ $ _path[path] }}</span></a>
+									<meta itemprop="position" content="{{ $ position + 1 }}" />
+								</li>
+							{{ end }}
+							<li>
+								<h1>{{ $ _title }}</h1>
+							</li>
+						</ul>
+						{{ label goto }}
+					</div>
+				{{ end }}
+				{{ label main }}
+				{{ if _title != null }}
+					<div class="navigation glyph16">
+						<ul class="path label symbol">
+							{{ for path, caption in _path }}
+								<li class="tail">
+									<a href="{{ $ path }}">{{ $ caption }}</a>
+								</li>
+							{{ end }}
+							<li>{{ $ _title }}</li>
+						</ul>
+						{{ label goto }}
+					</div>
+				{{ end }}
+			</div>
+			{{ label tail }}
+			<div class="page-footer">
+				<span class="copyright glyph10">
+					{{ $ tra ("page.copyright") }} <a href="https://github.com/r3c/yaronet">yAronet</a> | {{ $ php ("round") ((php ("microtime") ((-)true) - microtime) * 1000) }} ms
+				</span>
+				<span class="help glyph10">
+					<a class="label guides" href="{{ $ url ("help.page.view", ["label": "guides"]) }}">{{ $ tra ("page.guides") }}</a>
+					<a class="label rules" href="{{ $ url ("help.page.view", ["label": "rules"]) }}">{{ $ tra ("page.rules") }}</a>
+					<a class="label contacts" href="{{ $ url ("help.page.view", ["label": "contacts"]) }}">{{ $ tra ("page.contacts") }}</a>
+				</span>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.search.">
+		<string key="edit">Search posts</string>
+		<section prefix="edit.">
+			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.login-unknown" alias="yn.board.log.list.form.alert.login-unknown" />
+			<string key="form.alert.query-length">Please input 4 characters or more for your search.</string>
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.group.criteria">Search criteria</string>
+			<string key="form.group.criteria.hint">Enter your search terms and other optional filters below to begin searching posts on this forum.</string>
+			<string key="form.field.login">Author login:</string>
+			<string key="form.field.login.hint">Filter on post owner's login.</string>
+			<string key="form.field.query">Search terms*:</string>
+			<string key="form.field.query.hint">Please input 4 characters or more.</string>
+			<string key="form.submit">Search</string>
+			<string key="type">Post search</string>
+		</section>
+
+		<string key="view">Search for "{search.query}"</string>
+		<section prefix="view.">
+			<string key="empty">There is no match for your search query.</string>
+			<string key="from.next">Next results</string>
+			<string key="from.previous">Previous results</string>
+			<string key="post.copy.success" alias="yn.board.topic.view.post.copy.success" />
+			<string key="post.created" alias="yn.board.topic.view.post.created" />
+			<string key="post.edited" alias="yn.board.topic.view.post.edited" />
+			<string key="post.ignore.confirm" alias="yn.board.topic.view.post.ignore.confirm" />
+			<string key="post.ignore.hint" alias="yn.board.topic.view.post.ignore.hint" />
+			<string key="post.message.hint" alias="yn.board.topic.view.post.message.hint" />
+			<string key="post.position.hint" alias="yn.board.topic.view.post.position.hint" />
+			<string key="post.profile" alias="yn.board.topic.view.post.profile" />
+			<string key="post.profile.hint" alias="yn.board.topic.view.post.profile.hint" />
+			<string key="post.topic">From topic: {name} ({section.name})</string>
+			<string key="post.unignore" alias="yn.board.topic.view.post.unignore" />
+			<string key="post.unignore.hint" alias="yn.board.topic.view.post.unignore.hint" />
+			<string key="type">Search results</string>
+		</section>
+	</section>
+</locale>

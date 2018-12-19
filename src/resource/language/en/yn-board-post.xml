@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="en">
+	<section prefix="yn.board.post.">
+		<string key="edit">{if:{post.id},Edit,Create} post</string>
+		<section prefix="edit.">
+			<string key="command.access">Access to command "{type}" rejected</string>
+			<string key="command.target">Unknown user "{login}"</string>
+			<string key="command.self">Can't use a command on yourself</string>
+			<string key="command.type.call.message">{caller.login} invited you on topic "{name}", follow this link to open it: [url]{url}[/url].</string>
+			<string key="command.type.call">{target.user.login} has been invited on this topic{if:{expire}, until the {date:{expire},Y-m-d \\a\\t h:ia}}.</string>
+			<string key="command.type.grant">{target.user.login} is now topic moderator{if:{expire}, until the {date:{expire},Y-m-d \\a\\t h:ia}}.</string>
+			<string key="command.type.kick">{target.user.login} has been banned from this topic{if:{expire}, until the {date:{expire},Y-m-d \\a\\t h:ia}}.</string>
+			<string key="command.type.reset">{target.user.login} has no special access on this topic anymore and is no longer banned from it.</string>
+			<string key="command.unknown">Unknown command "{type}"</string>
+			<string key="context">{post.create_profile.user.login} (./{topic.id}-{position}):</string>
+			<string key="form.alert">Post edited successfully.</string>
+			<string key="form.alert.caution-length">Your caution is either too short or too long, it must contain between 1 and 200 characters.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.create-profile-null" alias="base.alert.default" />
+			<string key="form.alert.message-cost" alias="yn.account.message.edit.form.alert.cost" />
+			<string key="form.alert.message-message-null" alias="yn.account.message.edit.form.alert.message-null" />
+			<string key="form.alert.message-recipient-null" alias="yn.account.message.edit.form.alert.recipient-null" />
+			<string key="form.alert.message-sender-null" alias="yn.account.message.edit.form.alert.sender-null" />
+			<string key="form.alert.message-sql" alias="yn.account.message.edit.form.alert.sql" />
+			<string key="form.alert.message-text-length" alias="yn.account.message.edit.form.alert.text-length" />
+			<string key="form.alert.permission-cost" alias="base.alert.cost" />
+			<string key="form.alert.permission-profile-null" alias="base.alert.default" />
+			<string key="form.alert.permission-sql" alias="base.alert.sql" />
+			<string key="form.alert.permission-target-null" alias="base.alert.default" />
+			<string key="form.alert.reference-cost" alias="base.alert.cost" />
+			<string key="form.alert.reference-post-null" alias="base.alert.default" />
+			<string key="form.alert.reference-sql" alias="base.alert.sql" />
+			<string key="form.alert.reference-topic-null" alias="base.alert.default" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="form.alert.state-invalid" alias="base.alert.sql" />
+			<string key="form.alert.text-length">Your message is either too short or too long, it must contain between 1 and 30000 characters.</string>
+			<string key="form.alert.user-active">Your account is not activated yet, you can't create new posts.</string>
+			<string key="form.disclaimer">Posted messages are property of their authors. Website owners can't be held responsible for their contents.</string>
+			<string key="form.field.caution">Caution:</string>
+			<string key="form.field.state">State*:</string>
+			<string key="form.field.state.item.0">Default</string>
+			<string key="form.field.state.item.1">Emphasized</string>
+			<string key="form.field.state.item.2">Hidden</string>
+			<string key="form.submit" alias="base.submit.send" />
+			<string key="redirect">Message sent, click here to continue.</string>
+			<string key="type">Post edit form</string>
+		</section>
+
+		<string key="report">Report a post</string>
+		<section prefix="report.">
+			<string key="form.alert">Report sent.</string>
+			<string key="form.alert.cost" alias="base.alert.cost" />
+			<string key="form.alert.sql" alias="base.alert.sql" />
+			<string key="text">{author.login} reported message at following address: {url}.{if:{reason},&#xA;&#xA;Reason: {reason}}</string>
+		</section>
+
+		<section prefix="view.">
+			<string key="create_time" alias="base.type.datetime.relative"><var name="time">{post.create_time}</var></string>
+		</section>
+	</section>
+</locale>

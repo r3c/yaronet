@@ -1,0 +1,48 @@
+{{ wrap html }}
+	{{ let
+		section = topic.section,
+		forum_id = forum.id != section.forum_id && forum.id || null,
+		topic_name = topic.render_name ("text", router, logger),
+		board_section_view_url = url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint]),
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			board_section_view_url: tra ("yn.board.section.view", ["section": section]),
+			url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint]): tra ("yn.board.topic.view", ["topic": topic, "topic_name": topic_name])
+		],
+		_redirect = length (alerts) == 0 && board_section_view_url || null,
+		_static = [],
+		_title = tra ("yn.board.topic.delete", ["topic": topic])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.topic.delete.type") }}</div>
+				<div class="panel-body">
+					{{ if alerts == null }}
+						<div class="notice notice-info">
+							{{ $ tra ("yn.board.topic.delete.warning", ["topic": topic, "name": topic_name]) }}
+						</div>
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ url ("board.topic.delete", ["topic": topic.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [],
+							_prefix = "yn.board.topic.delete.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button delete" type="submit" value="{{ $ tra ("yn.board.topic.delete.form.submit") }}" />
+							{{ $ " " }}
+							{{ $ tra ("yn.board.topic.delete.form.disclaimer") }}
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

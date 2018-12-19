@@ -1,0 +1,45 @@
+{{ wrap html }}
+	{{ let
+		board_section_view_url = url ("board.section.view", ["section": section.id, "section_hint": section.hint]),
+		_forum = forum,
+		_meta = null,
+		_path = [
+			url ("home"): tra ("yn.home"),
+			url ("board.forum.list"): tra ("yn.board.forum.list"),
+			url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]): tra ("yn.board.forum.view", ["forum": forum]),
+			board_section_view_url: tra ("yn.board.section.view", ["section": section])
+		],
+		_redirect = null,
+		_static = [],
+		_title = tra ("yn.board.section.permission", ["section": section])
+	}}
+		{{ extend page.deval }}
+		{{ block main }}
+			<div class="panel panel-decorate">
+				<div class="panel-header">{{ $ tra ("yn.board.section.permission.type") }}</div>
+				<div class="panel-body">
+					<h2>{{ $ tra ("yn.board.section.permission.table") }}</h2>
+					{{ unwrap }}
+						<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.board.section.permission.table.help", ["section": section]))) }}</p>
+					{{ end }}
+					<form class="form-cascade form-thick" action="{{ $ url ("board.section.permission", ["section": section.id]) }}" method="POST">
+						{{ let
+							_alerts = alerts,
+							_fields = [],
+							_prefix = "yn.board.section.permission.form."
+						}}
+							{{ include ../fragment/control-form.deval }}
+						{{ end }}
+						{{ let _prefix = "yn.board.section.permission." }}
+							{{ include ../fragment/yn-board-permission.deval }}
+						{{ end }}
+						<div class="control glyph10">
+							<input class="button save" type="submit" value="{{ $ tra ("yn.board.section.permission.form.submit") }}" />
+							<a class="label back" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.permission.back") }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+{{ end }}

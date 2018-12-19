@@ -1,0 +1,41 @@
+{{ let
+	show_around = 1,
+	show_begin = 3,
+	show_end = 5,
+	step1 = min (show_begin, page_last),
+	step4 = max (page_last - show_end + 1, step1 + 1),
+	step2 = max (page_current - show_around, step1 + 1),
+	step3 = min (max (page_current + show_around, step2 + 1), step4 - 1)
+}}
+	{{ if page_current > 1 }}
+		<li class="prev">
+			<a href="{{ $ page_build (page_current - 1) }}">{{ $ tra ("control.page.previous") }}</a>
+		</li>
+	{{ end }}
+	{{ for page in range (1, step1) }}
+		<li>
+			<a class="{{ $ page == page_current && "hl" }}" href="{{ $ page_build (page) }}">{{ $ page }}</a>
+		</li>
+	{{ end }}
+	{{ if step1 + 1 < step2 }}
+		<li>...</li>
+	{{ end }}
+	{{ for page in range (step2, step3) }}
+		<li>
+			<a class="{{ $ page == page_current && "hl" }}" href="{{ $ page_build (page) }}">{{ $ page }}</a>
+		</li>
+	{{ end }}
+	{{ if step3 + 1 < step4 }}
+		<li>...</li>
+	{{ end }}
+	{{ for page in range (step4, page_last) }}
+		<li>
+			<a class="{{ $ page == page_current && "hl" }}" href="{{ $ page_build (page) }}">{{ $ page }}</a>
+		</li>
+	{{ end }}
+	{{ if page_current < page_last }}
+		<li class="next">
+			<a href="{{ $ page_build (page_current + 1) }}">{{ $ tra ("control.page.next") }}</a>
+		</li>
+	{{ end }}
+{{ end }}

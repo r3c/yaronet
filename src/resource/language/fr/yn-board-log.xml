@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale language="fr">
+	<section prefix="yn.board.log.">
+		<string key="list">Historique</string>
+		<section prefix="list.">
+			<string key="address">Adresse IP</string>
+			<string key="address.value">{log.address}</string>
+			<string key="data">Nature de l'opération</string>
+			<string key="data.block.delete">Bloc supprimé dans le forum #{log.data.forum}, rang {log.data.rank}</string>
+			<string key="data.block.edit">Bloc {if:{log.data.new},créé,modifié} dans le forum #{log.data.forum}, rang #{log.data.rank}{ifset:{log.data.section},\, section #{log.data.section},{ifset:{log.data.text},\, avec texte}}</string>
+			<string key="data.forum.edit">Forum #{log.data.id} {if:{log.data.new},créé,modifié}{ifset:{log.data.name},\, nom "{log.data.name}"}{ifset:{log.data.description},\, description "{log.data.description}"}{ifset:{log.data.alias},\, alias "{log.data.alias}"}{ifset:{log.data.header},\, avec en-tête}{ifset:{log.data.preface},\, avec préface}{ifset:{log.data.template},\, thème "{log.data.template}"}{ifset:{log.data.is_hidden},\, {if:{log.data.is_hidden},caché,visible}}{ifset:{log.data.is_illustrated},\, {if:{log.data.is_illustrated},icône,pas d'icône}}</string>
+			<string key="data.post.edit">Message {if:{log.data.new},créé,modifié} dans le sujet #{log.data.topic}, position ./{log.data.position}{ifset:{log.data.text},\, avec texte}{ifset:{log.data.state},\, statut {case:{log.data.state},1,avertissement,2,masqué,normal}}{ifset:{log.data.caution},\, avertissement "{log.data.caution}"}</string>
+			<string key="data.section.edit">Section #{log.data.id} {if:{log.data.new},créée,modifiée}{ifset:{log.data.forum},\, forum #{log.data.forum}}{ifset:{log.data.name},\, nom "{log.data.name}"}{ifset:{log.data.description},\, description "{log.data.description}"}{ifset:{log.data.access},\, accès "{log.data.access}"}{ifset:{log.data.reach},\, portée "{log.data.reach}"}{ifset:{log.data.is_delegated},\, {if:{log.data.is_delegated},délégué,non délégué}}</string>
+			<string key="data.section.merge">Section #{log.data.id} fusionnée dans la section #{log.data.into}</string>
+			<string key="data.topic.delete">Sujet #{log.data.id} supprimé</string>
+			<string key="data.topic.edit">Sujet #{log.data.id} {if:{log.data.new},créé,modifié}{ifset:{log.data.section},\, section #{log.data.section}}{ifset:{log.data.name},\, titre "{log.data.name}"}{ifset:{log.data.weight},\, ordre {log.data.weight}}{ifset:{log.data.is_closed},\, {if:{log.data.is_closed},fermé,ouvert}}</string>
+			<string key="form.alert">Les filtres ont été appliqués avec succès.</string>
+			<string key="form.alert.date-format">Le format du jour de l'opération sur lequel vous souhaitez filtrer est incorrect.</string>
+			<string key="form.alert.login-unknown">L'identifiant sur lequel vous souhaitez filtrer n'existe pas.</string>
+			<string key="form.field.address">Adresse IP de l'auteur :</string>
+			<string key="form.field.address.hint">Filtrer par l'adresse IP de l'auteur de l'opération.</string>
+			<string key="form.field.date">Jour de l'opération* :</string>
+			<string key="form.field.date.hint">Filtrer par jour, au format YYYY-MM-DD.</string>
+			<string key="form.field.login">Identifiant de l'auteur :</string>
+			<string key="form.field.login.hint">Filtrer par identifiant de l'auteur de l'opération.</string>
+			<string key="form.submit">Filtrer</string>
+			<string key="profile">Auteur</string>
+			<string key="profile.value">{log.profile.user.login}</string>
+			<string key="table">Les actions effectuées sur le forum depuis le {date:{expire},d/m/Y à H:i} jusqu'à aujourd'hui peuvent être consultées à l'aide du formulaire ci-dessous.</string>
+			<string key="time">Date et heure</string>
+			<string key="time.value" alias="base.type.datetime.relative"><var name="time">{log.time}</var></string>
+			<string key="type">Actions récentes sur le forum</string>
+		</section>
+	</section>
+</locale>

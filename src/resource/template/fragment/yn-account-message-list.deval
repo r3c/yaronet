@@ -1,0 +1,75 @@
+<div class="control glyph10 bind-control">
+		<a class="label message bind-tooltip" href="{{ $ url ("account.message.new") }}" title="{{ $ tra ("yn.account.message.list.new.hint") }}">{{ $ tra ("yn.account.message.list.new") }}</a>
+		{{ if prev != null }}
+			<a class="label prev bind-tooltip" href="{{ $ url ("account.message.list", ["from": prev, "login": login]) }}" title="{{ $ tra ("yn.account.message.list.prev.hint") }}">{{ $ tra ("yn.account.message.list.prev") }}</a>
+		{{ end }}
+		{{ if from != null }}
+			<a class="label first bind-tooltip" href="{{ $ url ("account.message.list", ["login": login]) }}" title="{{ $ tra ("yn.account.message.list.first.hint") }}">{{ $ tra ("yn.account.message.list.first") }}</a>
+		{{ end }}
+		<a class="label rss bind-tooltip" href="{{ $ url ("account.message.list", ["from": from, "login": login, "_template": "rss"]) }}" title="{{ $ tra ("yn.account.message.list.rss.hint") }}">{{ $ tra ("yn.account.message.list.rss") }}</a>
+	<form class="form-inline form-thin message-filter" action="{{ $ url ("account.message.list") }}" method="GET">
+		{{ let
+			_alerts = null,
+			_fields = [
+				"login":	["complete", null, ["callback": url ("board.profile.list", ["_template": "json"]), "placeholder": true]]
+			],
+			_prefix = "yn.account.message.list.form."
+		}}
+			{{ include control-form.deval }}
+		{{ end }}
+		<input class="button filter" type="submit" value="{{ $ tra ("yn.account.message.list.form.submit") }}" />
+	</form>
+</div>
+
+<ul class="messages">
+	{{ for pair in messages }}
+		{{ let
+			message = pair[0],
+			boxes = pair[1],
+			read = find (boxes, (box) => box.recipient_id != message.sender_id && box.read) != null,
+			state = find (boxes, (box) => box.recipient_id == user.id && !box.read) != null && "new" || "old"
+		}}
+			<li class="message {{ $ cat (message.sender_id == user.id && "out" || "in", " ", state) }}">
+				<div class="origin">
+					<span class="from glyph10">
+						<a class="bind-message bind-tooltip login" href="{{ $ url ("account.message.new", ["to": message.sender.login]) }}" title="{{ $ tra ("yn.account.message.list.message.hint") }}" itemprop="name">{{ $ message.sender.login }}</a>
+						<a class="bind-tooltip icon user" href="{{ $ url ("board.profile.view", ["profile": message.sender_id, "_template": null]) }}" title="{{ $ tra ("yn.account.message.list.profile.hint") }}"></a>
+					</span>
+					<em class="time">{{ $ tra ("yn.account.message.list.time", ["message": message]) }}</em>
+					<span class="to glyph10">
+						{{ $ tra ("yn.account.message.list.to") }}
+						{{ for box in filter (boxes, (box) => box.recipient_id != message.sender_id) }}
+							<a class="bind-message bind-tooltip label message-{{ $ box.read && "read" || "new" }}" href="{{ $ url ("account.message.new", ["to": box.recipient.login]) }}" title="{{ $ tra ("yn.account.message.list.box", ["login": box.recipient.login, "read": box.read]) }}">{{ $ box.recipient.login }}</a>
+						{{ end }}
+					</span>
+				</div>
+				<div class="markup text">
+					{{ unwrap }}
+						{{ $ message.render_text ("html", router, logger) }}
+					{{ end }}
+				</div>
+				<div class="action control glyph10 bind-control">
+					{{ if message.sender.id != user.id }}
+						<a class="label reply bind-tooltip" href="{{ $ url ("account.message.new", ["to": message.sender.login, "reply": message.id]) }}" title="{{ $ tra ("yn.account.message.list.reply.hint") }}">{{ $ tra ("yn.account.message.list.reply") }}</a>
+						{{ if length (boxes) > 2 }}
+							<a class="label reply-all bind-tooltip" href="{{ $ url ("account.message.new", ["to": join (", ", cat ([message.sender.login], map (filter (boxes, (box) => box.recipient_id != user.id), (box) => box.recipient.login))), "reply": message.id]) }}" title="{{ $ tra ("yn.account.message.list.reply-all.hint") }}">{{ $ tra ("yn.account.message.list.reply-all") }}</a>
+						{{ end }}
+					{{ elseif !read }}
+						<a class="label edit bind-tooltip" href="{{ $ url ("account.message.edit", ["message": message.id]) }}" title="{{ $ tra ("yn.account.message.list.edit.hint") }}">{{ $ tra ("yn.account.message.list.edit") }}</a>
+						<a class="label delete bind-tooltip" href="{{ $ url ("account.message.delete", ["message": message.id]) }}" title="{{ $ tra ("yn.account.message.list.delete.hint") }}" data-confirm="{{ $ tra ("yn.account.message.list.delete.confirm") }}">{{ $ tra ("yn.account.message.list.delete") }}</a>
+					{{ end }}
+					<a class="label hide bind-tooltip" href="{{ $ url ("account.message.hide", ["message": message.id]) }}" title="{{ $ tra ("yn.account.message.list.hide.hint") }}" data-confirm="{{ $ tra ("yn.account.message.list.hide.confirm") }}">{{ $ tra ("yn.account.message.list.hide") }}</a>
+				</div>
+			</li>
+		{{ end }}
+	{{ end }}
+</ul>
+
+<div class="control glyph10 bind-control">
+	{{ if prev != null }}
+		<a class="label prev bind-tooltip" href="{{ $ url ("account.message.list", ["from": prev, "login": login]) }}" title="{{ $ tra ("yn.account.message.list.prev.hint") }}">{{ $ tra ("yn.account.message.list.prev") }}</a>
+	{{ end }}
+	{{ if from != null }}
+		<a class="label first bind-tooltip" href="{{ $ url ("account.message.list", ["login": login]) }}" title="{{ $ tra ("yn.account.message.list.first.hint") }}">{{ $ tra ("yn.account.message.list.first") }}</a>
+	{{ end }}
+</div>
