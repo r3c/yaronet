@@ -30,7 +30,7 @@ function task_clean($request, $logger, $sql, $display, $input, $user)
     // Delete expired log files
     $logger->clean(30 * 24 * 60 * 60); // 30 days
 
-    return Glay\Network\HTTP::data('Clean OK!');
+    return Glay\Network\HTTP::data('');
 }
 
 function task_flush($request, $logger, $sql, $display, $input, $user)

@@ -100,5 +100,5 @@ if [ -n "$opt_clean" -a -r "$token" ]; then
 	log_info 'Trigger cleaning task...'
 
 	curl -s -b "$token" "$url/tasks/clean" |
-	( ! grep -Fv 'Clean OK' )
+	( ! grep . )
 fi
