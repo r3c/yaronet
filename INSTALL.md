@@ -109,6 +109,37 @@ After completing these steps you should be able to open URL
 error you should have a look at your HTTP error logs as well as files in
 `/src/storage/log` directory.
 
+### Setup maintenance task
+
+You will need to periodically execute maintenance (cleaning) task to keep
+website working while taking care of removing obsolete data, otherwise it may
+gradually slow down and eventually stop working.
+
+Maintenance task can be executed by browsing to `/tasks/clean` page
+(e.g. `http://yourhost/yourlocation/tasks/clean` in our previous example) while
+being authenticated with an administrator account. This operation should be
+executed at least once a day.
+
+Since doing this operation manually is not convenient, you will probably want
+to automate it. Script provided in `/setup/schedule/clean.sh` can be used for
+this purpose: schedule it so it is executed from a crontab or equivalent,
+passing base URL to your website as an argument, e.g.:
+
+```
+0 * * * * /path/to/clean.sh http://yourhost/yourlocation
+```
+
+Then execute the script manually once and specify "-t" command line option to
+create authentication token:
+
+```
+/path/to/clean.sh -t http://yourhost/yourlocation
+```
+
+Script will prompt for your credentials and save authentication token to a
+`.token` file so the schedule can work without having to hardcode user and
+password anywhere.
+
 Deployment
 ----------
 
