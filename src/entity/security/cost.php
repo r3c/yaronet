@@ -111,17 +111,17 @@ class Cost extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'active_amount'	=> $this->active_amount,
-            'active_expire'	=> $this->active_expire,
-            'address'		=> $this->address,
-            'decay_amount'	=> $this->decay_amount
+            'active_amount' => $this->active_amount,
+            'active_expire' => $this->active_expire,
+            'address' => $this->address,
+            'decay_amount' => $this->decay_amount
         );
     }
 }
 
 Cost::$schema = new \RedMap\Schema('security_cost', array(
-    'active_amount'	=> null,
-    'active_expire'	=> null,
-    'address'		=> null,
-    'decay_amount'	=> null
+    'active_amount' => null,
+    'active_expire' => null,
+    'address' => null,
+    'decay_amount' => null
 ));

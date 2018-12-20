@@ -96,10 +96,10 @@ class Binary
 
         if (!isset($types)) {
             $types = array(
-                'GIF87a'							=> 'image/gif',
-                'GIF89a'							=> 'image/gif',
-                "\x89\x50\x4E\x47\x0D\x0A\x1A\x0A"	=> 'image/png',
-                "\xFF\xD8"							=> 'image/jpeg'
+                'GIF87a' => 'image/gif',
+                'GIF89a' => 'image/gif',
+                "\x89\x50\x4E\x47\x0D\x0A\x1A\x0A" => 'image/png',
+                "\xFF\xD8" => 'image/jpeg'
             );
         }
 

@@ -35,9 +35,9 @@ class Profile extends \yN\Entity\Model
         return self::entry_get_all(
             $sql,
             array(
-                'forum'	=> (int)$forum_id,
-                '+'		=> array(
-                    'forum'	=> null
+                'forum' => (int)$forum_id,
+                '+' => array(
+                    'forum' => null
                 )
             ),
             array('user' => false),
@@ -57,15 +57,15 @@ class Profile extends \yN\Entity\Model
         return self::entry_get_all(
             $sql,
             array(
-                'forum'	=> (int)$forum_id,
-                '+'		=> array(
-                    'forum'	=> null,
-                    'user'	=> array('login|like' => $login . '%', 'is_disabled' => 0)
+                'forum' => (int)$forum_id,
+                '+' => array(
+                    'forum' => null,
+                    'user' => array('login|like' => $login . '%', 'is_disabled' => 0)
                 )
             ),
             array(
-                '+'		=> array(
-                    'user'	=> array('pulse_time' => false)
+                '+' => array(
+                    'user' => array('pulse_time' => false)
                 )
             ),
             $count,
@@ -94,14 +94,14 @@ class Profile extends \yN\Entity\Model
         return self::entry_get_all(
             $sql,
             array(
-                '+'	=> array(
-                    'forum'	=> null,
-                    'user'	=> array('login|like' => $login . '%', 'is_disabled' => 0)
+                '+' => array(
+                    'forum' => null,
+                    'user' => array('login|like' => $login . '%', 'is_disabled' => 0)
                 )
             ),
             array(
-                '+'		=> array(
-                    'user'	=> array('pulse_time' => false)
+                '+' => array(
+                    'user' => array('pulse_time' => false)
                 )
             ),
             $count,
@@ -114,7 +114,7 @@ class Profile extends \yN\Entity\Model
         return self::entry_get_all(
             $sql,
             array(
-                '+'	=> array('forum' => null)
+                '+' => array('forum' => null)
             ),
             array('user' => false),
             $count,
@@ -230,12 +230,12 @@ class Profile extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'avatar'		=> $this->avatar,
-            'avatar_tag'	=> $this->avatar_tag,
-            'forum'			=> $this->forum_id,
-            'gender'		=> max(min($this->gender, 2), 0),
-            'signature'		=> $this->signature,
-            'user'			=> $this->user_id
+            'avatar' => $this->avatar,
+            'avatar_tag' => $this->avatar_tag,
+            'forum' => $this->forum_id,
+            'gender' => max(min($this->gender, 2), 0),
+            'signature' => $this->signature,
+            'user' => $this->user_id
         );
     }
 }
@@ -243,33 +243,33 @@ class Profile extends \yN\Entity\Model
 Profile::$schema_cache = new \RedMap\Schema(
     'board_profile_cache',
     array(
-        'posts'	=> null,
-        'user'	=> null
+        'posts' => null,
+        'user' => null
     )
 );
 
 Profile::$schema_load = new \RedMap\Schema(
     'board_profile',
     array(
-        'posts'	=> '(SELECT COUNT(*) FROM board_post WHERE create_profile = @user)',
-        'user'	=> null
+        'posts' => '(SELECT COUNT(*) FROM board_post WHERE create_profile = @user)',
+        'user' => null
     )
 );
 
 Profile::$schema = new \RedMap\Schema(
     'board_profile',
     array(
-        'avatar'		=> null,
-        'avatar_tag'	=> null,
-        'forum'			=> null,
-        'gender'		=> null,
-        'signature'		=> null,
-        'user'			=> null
+        'avatar' => null,
+        'avatar_tag' => null,
+        'forum' => null,
+        'gender' => null,
+        'signature' => null,
+        'user' => null
     ),
     '__',
     array(
-        'cache'	=> array(Profile::$schema_cache, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('user' => 'user')),
-        'forum'	=> array(Forum::$schema, \RedMap\Schema::LINK_OPTIONAL, array('forum' => 'id')),
-        'user'	=> array(\yN\Entity\Account\User::$schema, \RedMap\Schema::LINK_IMPLICIT, array('user' => 'id'))
+        'cache' => array(Profile::$schema_cache, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('user' => 'user')),
+        'forum' => array(Forum::$schema, \RedMap\Schema::LINK_OPTIONAL, array('forum' => 'id')),
+        'user' => array(\yN\Entity\Account\User::$schema, \RedMap\Schema::LINK_IMPLICIT, array('user' => 'id'))
     )
 );

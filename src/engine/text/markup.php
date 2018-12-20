@@ -124,10 +124,10 @@ class Markup
             if (!isset($names)) {
                 $charset = mb_internal_encoding();
                 $names = array(
-                    'html'	=> function ($s) use ($charset) {
+                    'html' => function ($s) use ($charset) {
                         return htmlspecialchars($s, ENT_COMPAT, $charset);
                     },
-                    'text'	=> function ($s) {
+                    'text' => function ($s) {
                         return $s;
                     }
                 );

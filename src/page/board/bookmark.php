@@ -23,7 +23,7 @@ function _bookmark_watch($sql, $display, $user, $topic_id, $watch)
     $location = 'board.bookmark.' . $topic->id . '.watch';
 
     return Glay\Network\HTTP::data($display->render('yn-board-bookmark-watch.deval', $location, array(
-        'topic'	=> $topic
+        'topic' => $topic
     )));
 }
 
@@ -69,9 +69,9 @@ function bookmark_list($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-board-bookmark-list.deval', 'board.bookmark', array(
-        'count'		=> $count,
-        'sources'	=> $sources,
-        'what'		=> $what
+        'count' => $count,
+        'sources' => $sources,
+        'what' => $what
     )));
 }
 
@@ -95,8 +95,8 @@ function bookmark_mark($request, $logger, $sql, $display, $input, $user)
     $location = 'board.bookmark.' . $topic->id . '.mark';
 
     return Glay\Network\HTTP::data($display->render('yn-board-bookmark-mark.deval', $location, array(
-        'position'	=> $position,
-        'topic'		=> $topic
+        'position' => $position,
+        'topic' => $topic
     )));
 }
 

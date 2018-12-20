@@ -95,17 +95,17 @@ class Page extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'label'		=> trim($this->label),
-            'language'	=> trim($this->language),
-            'name'		=> $this->name,
-            'text'		=> $this->text
+            'label' => trim($this->label),
+            'language' => trim($this->language),
+            'name' => $this->name,
+            'text' => $this->text
         );
     }
 }
 
 Page::$schema = new \RedMap\Schema('help_page', array(
-    'label'		=> null,
-    'language'	=> null,
-    'name'		=> null,
-    'text'		=> null
+    'label' => null,
+    'language' => null,
+    'name' => null,
+    'text' => null
 ));

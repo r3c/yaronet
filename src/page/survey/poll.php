@@ -34,8 +34,8 @@ function poll_edit($request, $logger, $sql, $display, $input, $user)
     }
 
     return Glay\Network\HTTP::data($display->render('yn-survey-poll-edit.deval', 'survey.poll.' . ($poll !== null ? (int)$poll->id : 0) . '.edit', array(
-        'alerts'	=> $alerts,
-        'poll'		=> $poll
+        'alerts' => $alerts,
+        'poll' => $poll
     )));
 }
 
@@ -48,7 +48,7 @@ function poll_view($request, $logger, $sql, $display, $input, $user)
     }
 
     return Glay\Network\HTTP::data($display->render('yn-survey-poll-view.deval', null, array(
-        'poll'	=> $poll
+        'poll' => $poll
     )));
 }
 
@@ -81,6 +81,6 @@ function poll_vote($request, $logger, $sql, $display, $input, $user)
     }
 
     return Glay\Network\HTTP::data($display->render('yn-survey-poll-vote.deval', 'survey.poll.' . $poll->id . '.vote', array(
-        'poll'	=> $poll
+        'poll' => $poll
     )));
 }

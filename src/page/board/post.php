@@ -290,9 +290,9 @@ function post_edit($request, $logger, $sql, $display, $input, $user)
 
             $i18n = new yN\Engine\Text\Internationalization($user->language);
             $context = $i18n->format('yn.board.post.edit.context', array(
-                'position'	=> $quote_reference->position,
-                'post'		=> $quote_post,
-                'topic'		=> $topic
+                'position' => $quote_reference->position,
+                'post' => $quote_post,
+                'topic' => $topic
             ));
 
             // FIXME: should be non-bbcode compatible [markup-bbcode]
@@ -312,13 +312,13 @@ function post_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $topic->section_id . '.' . $topic->id . '.' . ($reference->position ?: 0) . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-board-post-edit.deval', $location, array(
-        'access'	=> $access,
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'new'		=> $new,
-        'post'		=> $post,
-        'reference'	=> $reference,
-        'topic'		=> $topic
+        'access' => $access,
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'new' => $new,
+        'post' => $post,
+        'reference' => $reference,
+        'topic' => $topic
     ), $forum->template));
 }
 
@@ -377,9 +377,9 @@ function post_report($request, $logger, $sql, $display, $input, $user)
 
     $i18n = new yN\Engine\Text\Internationalization($user->language);
     $text = $i18n->format('yn.board.post.report.text', array(
-        'author'	=> $user,
-        'reason'	=> $input->get_string('reason', $reason) ? $reason : '',
-        'url'		=> $absolute
+        'author' => $user,
+        'reason' => $input->get_string('reason', $reason) ? $reason : '',
+        'url' => $absolute
     ));
 
     // Send message
@@ -396,7 +396,7 @@ function post_report($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $section->forum_id . '.' . $topic->section_id . '.' . $topic->id . '.' . $reference->position . '.report';
 
     return Glay\Network\HTTP::data($display->render('yn-board-post-report.deval', $location, array(
-        'alerts'	=> $alerts
+        'alerts' => $alerts
     ), $section->forum->template));
 }
 
@@ -436,9 +436,9 @@ function post_view($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $topic->section_id . '.' . $topic->id . '.' . $reference->position;
 
     return Glay\Network\HTTP::data($display->render('yn-board-post-view.deval', $location, array(
-        'access'	=> $access,
-        'forum'		=> $forum,
-        'reference'	=> $reference,
-        'topic'		=> $topic // FIXME: topic is required because reference.topic.section is null when accessed in board.post.view frame through board.topic.view
+        'access' => $access,
+        'forum' => $forum,
+        'reference' => $reference,
+        'topic' => $topic // FIXME: topic is required because reference.topic.section is null when accessed in board.post.view frame through board.topic.view
     ), $forum->template));
 }

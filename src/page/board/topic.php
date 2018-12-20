@@ -73,9 +73,9 @@ function topic_delete($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $topic->section_id . '.' . $topic->id . '.delete';
 
     return Glay\Network\HTTP::data($display->render('yn-board-topic-delete.deval', $location, array(
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'topic'		=> $topic
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'topic' => $topic
     ), $forum->template));
 }
 
@@ -278,9 +278,9 @@ function topic_edit($request, $logger, $sql, $display, $input, $user)
                         $post = new yN\Entity\Board\Post();
                         $post->create_profile_id = $user->id;
                         $post->convert_text($i18n->format('yn.board.topic.edit.drift', array(
-                            'source'	=> Glay\Network\URI::here()->combine($request->router->url('board.topic.view', array('topic' => $source->id, 'topic_hint' => $source->hint, 'page' => yN\Entity\Board\Topic::get_page($position), '_template' => null), 'post-' . $position)),
-                            'topic'		=> Glay\Network\URI::here()->combine($request->router->url('board.topic.view', array('topic' => $topic->id, 'topic_hint' => $topic->hint, '_template' => null))),
-                            'user'		=> $user
+                            'source' => Glay\Network\URI::here()->combine($request->router->url('board.topic.view', array('topic' => $source->id, 'topic_hint' => $source->hint, 'page' => yN\Entity\Board\Topic::get_page($position), '_template' => null), 'post-' . $position)),
+                            'topic' => Glay\Network\URI::here()->combine($request->router->url('board.topic.view', array('topic' => $topic->id, 'topic_hint' => $topic->hint, '_template' => null))),
+                            'user' => $user
                         )), $request->router, $logger, $source->id);
 
                         if (!$post->save($sql, $alert)) {
@@ -404,13 +404,13 @@ function topic_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $section->id . '.' . ($topic->id ?: 0) . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-board-topic-edit.deval', $location, array(
-        'access'	=> $access,
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'new'		=> $new,
-        'section'	=> $section,
-        'source'	=> $source,
-        'topic'		=> $topic
+        'access' => $access,
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'new' => $new,
+        'section' => $section,
+        'source' => $source,
+        'topic' => $topic
     ), $forum->template));
 }
 
@@ -475,10 +475,10 @@ function topic_view($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $topic->section_id . '.' . $topic->id;
 
     return Glay\Network\HTTP::data($display->render('yn-board-topic-view.deval', $location, array(
-        'access'		=> $access,
-        'forum'			=> $forum,
-        'page'			=> $page,
-        'references'	=> $references,
-        'topic'			=> $topic
+        'access' => $access,
+        'forum' => $forum,
+        'page' => $page,
+        'references' => $references,
+        'topic' => $topic
     ), $forum->template));
 }

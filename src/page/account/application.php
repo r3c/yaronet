@@ -16,8 +16,8 @@ function application_authorize($request, $logger, $sql, $display, $input, $user)
 
     // Build data
     $data = array(
-        'application'	=> $application->id,
-        'time'			=> $time
+        'application' => $application->id,
+        'time' => $time
     );
 
     $payload = $request->get_or_default('payload');

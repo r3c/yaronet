@@ -29,8 +29,8 @@ function shout_delete($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-chat-shout-delete.deval', 'chat.shout.' . $shout->id . '.delete', array(
-        'alerts'	=> $alerts,
-        'shout'		=> $shout
+        'alerts' => $alerts,
+        'shout' => $shout
     )));
 }
 
@@ -114,7 +114,7 @@ function shout_edit($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-chat-shout-edit.deval', 'chat.shout.' . ($shout->id ?: 0) . '.edit', array(
-        'alerts'	=> $alerts,
-        'shout'		=> $shout
+        'alerts' => $alerts,
+        'shout' => $shout
     )));
 }

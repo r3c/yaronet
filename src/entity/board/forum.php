@@ -109,15 +109,15 @@ class Forum extends \yN\Entity\Model
     public function revert()
     {
         return array(
-            'alias'				=> $this->alias,
-            'description'		=> $this->description,
-            'header'			=> $this->revert_header(),
-            'id'				=> $this->id,
-            'is_hidden'			=> $this->is_hidden,
-            'is_illustrated'	=> $this->is_illustrated,
-            'name'				=> $this->name,
-            'preface'			=> $this->revert_preface(),
-            'template'			=> $this->template
+            'alias' => $this->alias,
+            'description' => $this->description,
+            'header' => $this->revert_header(),
+            'id' => $this->id,
+            'is_hidden' => $this->is_hidden,
+            'is_illustrated' => $this->is_illustrated,
+            'name' => $this->name,
+            'preface' => $this->revert_preface(),
+            'template' => $this->template
         );
     }
 
@@ -173,16 +173,16 @@ class Forum extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'alias'				=> $this->alias !== null ? trim($this->alias) : null,
-            'description'		=> trim($this->description),
-            'header'			=> $this->header,
-            'icon_tag'			=> $this->icon_tag,
-            'id'				=> $this->id,
-            'is_hidden'			=> $this->is_hidden,
-            'is_illustrated'	=> $this->is_illustrated,
-            'name'				=> trim($this->name),
-            'preface'			=> $this->preface,
-            'template'			=> $this->template !== null ? trim($this->template) : null
+            'alias' => $this->alias !== null ? trim($this->alias) : null,
+            'description' => trim($this->description),
+            'header' => $this->header,
+            'icon_tag' => $this->icon_tag,
+            'id' => $this->id,
+            'is_hidden' => $this->is_hidden,
+            'is_illustrated' => $this->is_illustrated,
+            'name' => trim($this->name),
+            'preface' => $this->preface,
+            'template' => $this->template !== null ? trim($this->template) : null
         );
     }
 }
@@ -190,16 +190,16 @@ class Forum extends \yN\Entity\Model
 Forum::$schema = new \RedMap\Schema(
     'board_forum',
     array(
-        '$random'			=> array(\RedMap\Schema::FIELD_INTERNAL, 'rand()'),
-        'alias'				=> null,
-        'description'		=> null,
-        'header'			=> null,
-        'icon_tag'			=> null,
-        'id'				=> null,
-        'is_hidden'			=> null,
-        'is_illustrated'	=> null,
-        'name'				=> null,
-        'preface'			=> null,
-        'template'			=> null
+        '$random' => array(\RedMap\Schema::FIELD_INTERNAL, 'rand()'),
+        'alias' => null,
+        'description' => null,
+        'header' => null,
+        'icon_tag' => null,
+        'id' => null,
+        'is_hidden' => null,
+        'is_illustrated' => null,
+        'name' => null,
+        'preface' => null,
+        'template' => null
     )
 );

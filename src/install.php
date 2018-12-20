@@ -102,92 +102,92 @@ function make_page($blocks)
 {
     return '<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<style type="text/css">
-			body {
-				padding: 8px;
-				margin: 0;
-				background: #E7EBF7;
-				font: normal normal normal 14px verdana, arial, Helvetica, sans-serif;
-				color: #333333;
-			}
+    <head>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            body {
+                padding: 8px;
+                margin: 0;
+                background: #E7EBF7;
+                font: normal normal normal 14px verdana, arial, Helvetica, sans-serif;
+                color: #333333;
+            }
 
-			blockquote {
-				padding: 8px;
-				margin: 8px;
-				background: #EDEDED;
-				border: 1px solid #555555;
-			}
+            blockquote {
+                padding: 8px;
+                margin: 8px;
+                background: #EDEDED;
+                border: 1px solid #555555;
+            }
 
-			blockquote .section {
-				margin: 16px 0 0 0;
-			}
+            blockquote .section {
+                margin: 16px 0 0 0;
+            }
 
-			blockquote .section:first-child {
-				margin: 0;
-			}
+            blockquote .section:first-child {
+                margin: 0;
+            }
 
-			blockquote .section .field {
-				display: flex;
-				align-items: center;
-				margin: 8px 0;
-			}
+            blockquote .section .field {
+                display: flex;
+                align-items: center;
+                margin: 8px 0;
+            }
 
-			blockquote .section .field .caption {
-				flex: 1;
-				margin: 0 8px;
-			}
+            blockquote .section .field .caption {
+                flex: 1;
+                margin: 0 8px;
+            }
 
-			blockquote .section .field .help {
-				flex: 3;
-				margin: 0 8px;
-				font-size: 80%;
-			}
+            blockquote .section .field .help {
+                flex: 3;
+                margin: 0 8px;
+                font-size: 80%;
+            }
 
-			blockquote .section .field .input {
-				flex: 2;
-				margin: 0 8px;
-			}
+            blockquote .section .field .input {
+                flex: 2;
+                margin: 0 8px;
+            }
 
-			blockquote .section h2 {
-				padding: 0;
-				margin: 0;
-				font-size: 140%;
-				font-style: italic;
-				font-weight: bold;
-			}
+            blockquote .section h2 {
+                padding: 0;
+                margin: 0;
+                font-size: 140%;
+                font-style: italic;
+                font-weight: bold;
+            }
 
-			blockquote .section p {
-				padding: 0;
-				margin: 16px 0 0 0;
-			}
+            blockquote .section p {
+                padding: 0;
+                margin: 16px 0 0 0;
+            }
 
-			blockquote .section textarea {
-				margin: 16px 0 0 0;
-				width: 100%;
-				box-sizing: border-box;
-			}
+            blockquote .section textarea {
+                margin: 16px 0 0 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
 
-			form {
-				margin: 0;
+            form {
+                margin: 0;
             }
 
             .status-failure h2,
             .status-failure p {
-				color: #A00;
-			}
+                color: #A00;
+            }
 
             .status-success h2,
             .status-success p {
-				color: #060;
-			}
-		</style>
-		<title>yAronet setup script</title>
-	</head>
-	<body>
-		' . implode('', $blocks) . '
-	</body>
+                color: #060;
+            }
+        </style>
+        <title>yAronet setup script</title>
+    </head>
+    <body>
+        ' . implode('', $blocks) . '
+    </body>
 </html>';
 }
 

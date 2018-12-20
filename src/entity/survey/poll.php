@@ -141,10 +141,10 @@ class Poll extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'id'		=> $this->id,
-            'question'	=> $this->question,
-            'type'		=> $this->type,
-            'votes'		=> $this->votes
+            'id' => $this->id,
+            'question' => $this->question,
+            'type' => $this->type,
+            'votes' => $this->votes
         );
     }
 }
@@ -207,10 +207,10 @@ class PollChoice extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'poll'	=> $this->poll_id,
-            'rank'	=> $this->rank,
-            'score'	=> $this->score,
-            'text'	=> $this->text
+            'poll' => $this->poll_id,
+            'rank' => $this->rank,
+            'score' => $this->score,
+            'text' => $this->text
         );
     }
 }
@@ -238,28 +238,28 @@ class PollVote
 }
 
 PollChoice::$schema = new \RedMap\Schema('survey_poll_choice', array(
-    'poll'	=> null,
-    'rank'	=> null,
-    'score'	=> null,
-    'text'	=> null
+    'poll' => null,
+    'rank' => null,
+    'score' => null,
+    'text' => null
 ));
 
 PollVote::$schema = new \RedMap\Schema('survey_poll_vote', array(
-    'poll'	=> null,
-    'user'	=> null
+    'poll' => null,
+    'user' => null
 ));
 
 Poll::$schema = new \RedMap\Schema(
     'survey_poll',
     array(
-        'id'		=> null,
-        'question'	=> null,
-        'type'		=> null,
-        'votes'		=> null
+        'id' => null,
+        'question' => null,
+        'type' => null,
+        'votes' => null
     ),
     '__',
     array(
-        'choice'	=> array(PollChoice::$schema, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'poll')),
-        'vote'		=> array(PollVote::$schema, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'poll', '!user' => 'user'))
+        'choice' => array(PollChoice::$schema, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'poll')),
+        'vote' => array(PollVote::$schema, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'poll', '!user' => 'user'))
     )
 );

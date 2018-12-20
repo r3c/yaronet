@@ -10,12 +10,12 @@ function markup_render($request, $logger, $sql, $display, $input, $user)
     Glay\using('yN\\Engine\\Text\\Markup', './engine/text/markup.php');
 
     $formats = array(
-        'html'	=> true
+        'html' => true
     );
 
     $syntaxes = array(
-        'bbcode-block'	=> true,
-        'bbcode-inline'	=> true
+        'bbcode-block' => true,
+        'bbcode-inline' => true
     );
 
     if (!isset($formats[$format]) || !isset($syntaxes[$syntax]) || !$input->get_string('text', $text)) {
@@ -27,6 +27,6 @@ function markup_render($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-resource-markup-render.deval', 'resource.markup.render', array(
-        'text'	=> $text
+        'text' => $text
     )));
 }

@@ -30,7 +30,7 @@ function _subscription_state($sql, $display, $user, $section_id, $state)
     $location = 'board.subscription.' . $section->id . '.state';
 
     return Glay\Network\HTTP::data($display->render('yn-board-subscription-state.deval', $location, array(
-        'section'	=> $section
+        'section' => $section
     )));
 }
 

@@ -54,9 +54,9 @@ function search_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.search';
 
     return Glay\Network\HTTP::data($display->render('yn-board-search-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'search'	=> $search
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'search' => $search
     ), $forum->template));
 }
 
@@ -103,11 +103,11 @@ function search_view($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.search';
 
     return Glay\Network\HTTP::data($display->render('yn-board-search-view.deval', $location, array(
-        'access'		=> $access,
-        'forum'			=> $forum,
-        'from_next'		=> $from_next,
-        'from_previous'	=> $from_previous,
-        'results'		=> array_slice($results, 0, yN\Entity\Board\Search::RESULT_PAGE),
-        'search'		=> $search
+        'access' => $access,
+        'forum' => $forum,
+        'from_next' => $from_next,
+        'from_previous' => $from_previous,
+        'results' => array_slice($results, 0, yN\Entity\Board\Search::RESULT_PAGE),
+        'search' => $search
     ), $forum->template));
 }

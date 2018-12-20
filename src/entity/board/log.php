@@ -28,10 +28,10 @@ class Log extends \yN\Entity\Model
     public static function get_by_forum__time__profile__address($sql, $forum_id, $time_from, $time_to, $profile, $address)
     {
         $filters = array(
-            'forum'		=> (int)$forum_id,
-            'time|gt'	=> (int)$time_from,
-            'time|le'	=> (int)$time_to,
-            '+'			=> array('forum' => null, 'profile' => null)
+            'forum' => (int)$forum_id,
+            'time|gt' => (int)$time_from,
+            'time|le' => (int)$time_to,
+            '+' => array('forum' => null, 'profile' => null)
         );
 
         if ($address !== null) {
@@ -119,13 +119,13 @@ class Log extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'address'	=> $this->address,
-            'data'		=> json_encode($this->data),
-            'forum'		=> $this->forum_id,
-            'id'		=> $this->id,
-            'profile'	=> $this->profile_id,
-            'time'		=> $this->time,
-            'type'		=> $this->type
+            'address' => $this->address,
+            'data' => json_encode($this->data),
+            'forum' => $this->forum_id,
+            'id' => $this->id,
+            'profile' => $this->profile_id,
+            'time' => $this->time,
+            'type' => $this->type
         );
     }
 }
@@ -133,20 +133,20 @@ class Log extends \yN\Entity\Model
 Log::$schema = new \RedMap\Schema(
     'board_log',
     array(
-        'address'	=> null,
-        'data'		=> null,
-        'forum'		=> null,
-        'id'		=> null,
-        'profile'	=> null,
-        'time'		=> null,
-        'type'		=> null
+        'address' => null,
+        'data' => null,
+        'forum' => null,
+        'id' => null,
+        'profile' => null,
+        'time' => null,
+        'type' => null
     ),
     '__',
     array(
-        'forum'		=> array(function () {
+        'forum' => array(function () {
             return Forum::$schema;
         }, 0, array('forum' => 'id')),
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user'))
     )

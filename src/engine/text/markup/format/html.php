@@ -3,39 +3,39 @@
 defined('YARONET') or die;
 
 $format = array(
-    '.'			=> array('amato_format_html_newline'),
-    'a'			=> array('amato_format_html_anchor'),
-    'align'		=> array('amato_format_html_align', 2),
-    'b'			=> array(_amato_format_html_tag('b')),
-    'box'		=> array('amato_format_html_box', 2),
-    'c'			=> array('amato_format_html_color'),
-    'center'	=> array('amato_format_html_center', 2),
-    'cmd'		=> array(_amato_format_html_class('div', 'cmd'), 2),
-    'code'		=> array('amato_format_html_code', 2),
-    'e'			=> array('amato_format_html_emoji'),
-    'font'		=> array('amato_format_html_font'),
-    'h1'		=> array(_amato_format_html_class('div', 'h1')),
-    'h2'		=> array(_amato_format_html_class('div', 'h2')),
-    'h3'		=> array(_amato_format_html_class('div', 'h3')),
-    'h4'		=> array(_amato_format_html_class('div', 'h4')),
-    'hr'		=> array('amato_format_html_horizontal', 2),
-    'i'			=> array(_amato_format_html_tag('i')),
-    'img'		=> array('amato_format_html_image'),
-    'link'		=> array('amato_format_html_link'),
-    'list'		=> array('amato_format_html_list', 2),
-    'media'		=> array('amato_format_html_media', 2),
-    'nsfw'		=> array('amato_format_html_nsfw', 2),
-    'poll'		=> array('amato_format_html_poll', 2),
-    'pre'		=> array('amato_format_html_pre', 2),
-    'quote'		=> array('amato_format_html_quote', 2),
-    'ref'		=> array('amato_format_html_ref'),
-    's'			=> array(_amato_format_html_class('span', 's')),
-    'slap'		=> array('amato_format_html_slap'),
-    'spoil'		=> array(_amato_format_html_class('span', 'spoil')),
-    'sub'		=> array(_amato_format_html_tag('sub')),
-    'sup'		=> array(_amato_format_html_tag('sup')),
-    'table'		=> array('amato_format_html_table', 2),
-    'u'			=> array(_amato_format_html_class('span', 'u'))
+    '.' => array('amato_format_html_newline'),
+    'a' => array('amato_format_html_anchor'),
+    'align' => array('amato_format_html_align', 2),
+    'b' => array(_amato_format_html_tag('b')),
+    'box' => array('amato_format_html_box', 2),
+    'c' => array('amato_format_html_color'),
+    'center' => array('amato_format_html_center', 2),
+    'cmd' => array(_amato_format_html_class('div', 'cmd'), 2),
+    'code' => array('amato_format_html_code', 2),
+    'e' => array('amato_format_html_emoji'),
+    'font' => array('amato_format_html_font'),
+    'h1' => array(_amato_format_html_class('div', 'h1')),
+    'h2' => array(_amato_format_html_class('div', 'h2')),
+    'h3' => array(_amato_format_html_class('div', 'h3')),
+    'h4' => array(_amato_format_html_class('div', 'h4')),
+    'hr' => array('amato_format_html_horizontal', 2),
+    'i' => array(_amato_format_html_tag('i')),
+    'img' => array('amato_format_html_image'),
+    'link' => array('amato_format_html_link'),
+    'list' => array('amato_format_html_list', 2),
+    'media' => array('amato_format_html_media', 2),
+    'nsfw' => array('amato_format_html_nsfw', 2),
+    'poll' => array('amato_format_html_poll', 2),
+    'pre' => array('amato_format_html_pre', 2),
+    'quote' => array('amato_format_html_quote', 2),
+    'ref' => array('amato_format_html_ref'),
+    's' => array(_amato_format_html_class('span', 's')),
+    'slap' => array('amato_format_html_slap'),
+    'spoil' => array(_amato_format_html_class('span', 'spoil')),
+    'sub' => array(_amato_format_html_tag('sub')),
+    'sup' => array(_amato_format_html_tag('sup')),
+    'table' => array('amato_format_html_table', 2),
+    'u' => array(_amato_format_html_class('span', 'u'))
 );
 
 function _amato_format_html_class($tag, $class)
@@ -60,10 +60,10 @@ function _amato_format_html_tag($id)
 function amato_format_html_align($body, $params)
 {
     $aligns = array(
-        'c'	=> 'center',
-        'j'	=> 'justify',
-        'l'	=> 'left',
-        'r'	=> 'right'
+        'c' => 'center',
+        'j' => 'justify',
+        'l' => 'left',
+        'r' => 'right'
     );
 
     return $body !== '' ? '<div style="text-align: ' . $aligns[$params['w']] . ';">' . $body . '</div>' : '';

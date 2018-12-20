@@ -187,45 +187,45 @@ class Display
 
         $renderer->inject(\Deval\Builtin::deval());
         $renderer->inject(array(
-            'captcha'		=> array(
-                'input'	=> array($self, '_captcha_input'),
-                'js'	=> array($self, '_captcha_js')
+            'captcha' => array(
+                'input' => array($self, '_captcha_input'),
+                'js' => array($self, '_captcha_js')
             ),
-            'encoding'		=> mb_internal_encoding(),
-            'html'			=> array($self, '_html'),
-            'json'			=> array($self, '_json'),
-            'jstr'			=> array($self, '_jstr'),
-            'language'		=> $language,
-            'logo'  		=> config('engine.text.display.logo', '<img class="default-mascot" src="' . $static . 'image/mascot.png" /> <a class="default-name" href="{home}"></a>'),
-            'static'		=> array(
-                'global'	=> $static,
-                'layout'	=> $static . 'layout/' . $layout . '/',
-                'theme'		=> $static . 'layout/' . $layout . '/theme/' . $theme . '/'
+            'encoding' => mb_internal_encoding(),
+            'html' => array($self, '_html'),
+            'json' => array($self, '_json'),
+            'jstr' => array($self, '_jstr'),
+            'language' => $language,
+            'logo'   => config('engine.text.display.logo', '<img class="default-mascot" src="' . $static . 'image/mascot.png" /> <a class="default-name" href="{home}"></a>'),
+            'static' => array(
+                'global' => $static,
+                'layout' => $static . 'layout/' . $layout . '/',
+                'theme' => $static . 'layout/' . $layout . '/theme/' . $theme . '/'
             ),
-            'template'		=> $template,
-            'tra'			=> array($self, '_tra'),
-            'url'			=> array($self, '_url'),
-            'url_absolute'	=> array($self, '_url_absolute'),
-            'use_less'		=> config('engine.text.display.use-less', false),
-            'xml'			=> array($self, '_xml')
+            'template' => $template,
+            'tra' => array($self, '_tra'),
+            'url' => array($self, '_url'),
+            'url_absolute' => array($self, '_url_absolute'),
+            'use_less' => config('engine.text.display.use-less', false),
+            'xml' => array($self, '_xml')
         ));
 
         $defaults = array(
-            'activities'	=> $activities,
+            'activities' => $activities,
             'address'       => $address,
-            'get_message'	=> function () {
+            'get_message' => function () {
                 return $this->user->id !== null ? \yN\Entity\Account\Message::check($this->sql, $this->user->id) : null;
             },
-            'header'		=> function ($type, $value) {
+            'header' => function ($type, $value) {
                 header($type . ': ' . $value);
             },
-            'location'		=> $last_location,
-            'logger'		=> $this->logger,
-            'microtime'		=> $microtime,
-            'request'		=> $_REQUEST,
-            'router'		=> $this->router,
-            'time'			=> $time,
-            'user'			=> $this->user
+            'location' => $last_location,
+            'logger' => $this->logger,
+            'microtime' => $microtime,
+            'request' => $_REQUEST,
+            'router' => $this->router,
+            'time' => $time,
+            'user' => $this->user
         );
 
         return $renderer->render($defaults + $variables);

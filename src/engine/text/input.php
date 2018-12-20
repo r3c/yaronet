@@ -42,10 +42,10 @@ class Input
 
     /*
     ** Read image from known input fields, if provided.
-    ** $prefix:	input fields prefix (will read from $prefix-file and $prefix-url)
-    ** &image:	output image or null on error
-    ** &name:	output image name or null on error
-    ** return:	true if input fields were recognized or false otherwise
+    ** $prefix: input fields prefix (will read from $prefix-file and $prefix-url)
+    ** &image: output image or null on error
+    ** &name: output image name or null on error
+    ** return: true if input fields were recognized or false otherwise
     */
     public function get_image($prefix, &$image, &$name)
     {

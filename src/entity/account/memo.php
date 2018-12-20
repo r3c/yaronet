@@ -81,8 +81,8 @@ class Memo extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'text'	=> $this->text,
-            'user'	=> $this->user_id
+            'text' => $this->text,
+            'user' => $this->user_id
         );
     }
 }
@@ -90,12 +90,12 @@ class Memo extends \yN\Entity\Model
 Memo::$schema = new \RedMap\Schema(
     'account_memo',
     array(
-        'text'	=> null,
-        'user'	=> null
+        'text' => null,
+        'user' => null
     ),
     '__',
     array(
-        'user'	=> array(function () {
+        'user' => array(function () {
             return User::$schema;
         }, 0, array('user' => 'id'))
     )

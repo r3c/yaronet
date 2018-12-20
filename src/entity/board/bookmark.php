@@ -35,9 +35,9 @@ class Bookmark extends \yN\Entity\Model
         return self::entry_get_all(
             $sql,
             array('fresh' => (bool)$fresh, 'profile' => (int)$profile_id, 'watch' => true, '+' => array(
-                'profile'	=> null,
-                'topic'		=> array('+' => array(
-                    'section'	=> null
+                'profile' => null,
+                'topic' => array('+' => array(
+                    'section' => null
                 ))
             )),
             array('time' => false),
@@ -52,12 +52,12 @@ class Bookmark extends \yN\Entity\Model
         return $sql->update(
             self::$schema,
             array(
-                'fresh'		=> true,
-                'position'	=> new \RedMap\Min(max((int)$position, 0)),
-                'time'		=> $time
+                'fresh' => true,
+                'position' => new \RedMap\Min(max((int)$position, 0)),
+                'time' => $time
             ),
             array(
-                'topic'	=> (int)$topic_id
+                'topic' => (int)$topic_id
             )
         ) !== null;
     }
@@ -67,12 +67,12 @@ class Bookmark extends \yN\Entity\Model
         global $time;
 
         return $sql->insert(self::$schema, array(
-            'fresh'		=> false,
-            'position'	=> new \RedMap\Max(max((int)$position, 0)),
-            'profile'	=> (int)$profile_id,
-            'time'		=> $time,
-            'topic'		=> (int)$topic_id,
-            'watch'		=> new \RedMap\Coalesce(0)
+            'fresh' => false,
+            'position' => new \RedMap\Max(max((int)$position, 0)),
+            'profile' => (int)$profile_id,
+            'time' => $time,
+            'topic' => (int)$topic_id,
+            'watch' => new \RedMap\Coalesce(0)
         ), \RedMap\Engine::INSERT_UPSERT) !== null;
     }
 
@@ -81,12 +81,12 @@ class Bookmark extends \yN\Entity\Model
         global $time;
 
         return $sql->insert(self::$schema, array(
-            'fresh'		=> (bool)$fresh,
-            'position'	=> max((int)$position, 0),
-            'profile'	=> (int)$profile_id,
-            'time'		=> $time,
-            'topic'		=> (int)$topic_id,
-            'watch'		=> (bool)$watch
+            'fresh' => (bool)$fresh,
+            'position' => max((int)$position, 0),
+            'profile' => (int)$profile_id,
+            'time' => $time,
+            'topic' => (int)$topic_id,
+            'watch' => (bool)$watch
         ), \RedMap\Engine::INSERT_UPSERT) !== null;
     }
 
@@ -132,12 +132,12 @@ class Bookmark extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'fresh'		=> $this->fresh,
-            'position'	=> $this->position,
-            'profile'	=> $this->profile_id,
-            'time'		=> $this->time,
-            'topic'		=> $this->topic_id,
-            'watch'		=> $this->watch
+            'fresh' => $this->fresh,
+            'position' => $this->position,
+            'profile' => $this->profile_id,
+            'time' => $this->time,
+            'topic' => $this->topic_id,
+            'watch' => $this->watch
         );
     }
 }
@@ -145,19 +145,19 @@ class Bookmark extends \yN\Entity\Model
 Bookmark::$schema = new \RedMap\Schema(
     'board_bookmark',
     array(
-        'fresh'		=> null,
-        'position'	=> null,
-        'profile'	=> null,
-        'time'		=> null,
-        'topic'		=> null,
-        'watch'		=> null
+        'fresh' => null,
+        'position' => null,
+        'profile' => null,
+        'time' => null,
+        'topic' => null,
+        'watch' => null
     ),
     '__',
     array(
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user')),
-        'topic'		=> array(function () {
+        'topic' => array(function () {
             return Topic::$schema;
         }, 0, array('topic' => 'id'))
     )

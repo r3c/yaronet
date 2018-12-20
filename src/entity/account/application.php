@@ -60,11 +60,11 @@ class Application extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'id'	=> $this->id,
-            'key'	=> $this->key,
-            'name'	=> $this->name,
-            'url'	=> $this->url,
-            'user'	=> $this->user_id
+            'id' => $this->id,
+            'key' => $this->key,
+            'name' => $this->name,
+            'url' => $this->url,
+            'user' => $this->user_id
         );
     }
 }
@@ -72,15 +72,15 @@ class Application extends \yN\Entity\Model
 Application::$schema = new \RedMap\Schema(
     'account_application',
     array(
-        'id'	=> null,
-        'key'	=> null,
-        'name'	=> null,
-        'url'	=> null,
-        'user'	=> null
+        'id' => null,
+        'key' => null,
+        'name' => null,
+        'url' => null,
+        'user' => null
     ),
     '__',
     array(
-        'user'	=> array(function () {
+        'user' => array(function () {
             return User::$schema;
         }, 0, array('user' => 'id'))
     )

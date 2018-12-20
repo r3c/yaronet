@@ -25,13 +25,13 @@ class Block extends \yN\Entity\Model
         $rows = $sql->select(
             self::$schema,
             array(
-                'forum'	=> (int)$forum_id,
-                '+'		=> array(
-                    'section'	=> $profile_id !== null
+                'forum' => (int)$forum_id,
+                '+' => array(
+                    'section' => $profile_id !== null
                         ? array('+' => array(
-                            'permission'	=> array('!profile' => (int)$profile_id),
-                            'read'			=> array('!profile' => (int)$profile_id),
-                            'subscription'	=> array('!profile' => (int)$profile_id)
+                            'permission' => array('!profile' => (int)$profile_id),
+                            'read' => array('!profile' => (int)$profile_id),
+                            'subscription' => array('!profile' => (int)$profile_id)
                         ))
                         : null
                 )
@@ -49,9 +49,9 @@ class Block extends \yN\Entity\Model
     public static function get_by_forum__rank($sql, $forum_id, $rank)
     {
         return self::entry_get_one($sql, array(
-            '+'		=> array('forum' => null, 'section' => array('+' => array('forum' => null))),
-            'forum'	=> (int)$forum_id,
-            'rank'	=> $rank
+            '+' => array('forum' => null, 'section' => array('+' => array('forum' => null))),
+            'forum' => (int)$forum_id,
+            'rank' => $rank
         ));
     }
 
@@ -96,10 +96,10 @@ class Block extends \yN\Entity\Model
     ** same forum and re-creating it. Existing instances to any other block
     ** from this forum must be considered as invalid after this method is
     ** called.
-    ** $sql:	sql engine
-    ** $rank:	new blank rank
-    ** &alert:	output alert label
-    ** return:	success status
+    ** $sql: sql engine
+    ** $rank: new blank rank
+    ** &alert: output alert label
+    ** return: success status
     */
     public function move($sql, $rank, &$alert)
     {
@@ -144,10 +144,10 @@ class Block extends \yN\Entity\Model
     public function revert()
     {
         return array(
-            'forum'		=> $this->forum_id,
-            'rank'		=> $this->rank,
-            'section'	=> $this->section_id,
-            'text'		=> $this->revert_text()
+            'forum' => $this->forum_id,
+            'rank' => $this->rank,
+            'section' => $this->section_id,
+            'text' => $this->revert_text()
         );
     }
 
@@ -179,10 +179,10 @@ class Block extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'forum'		=> $this->forum_id,
-            'rank'		=> $this->rank,
-            'section'	=> $this->section_id,
-            'text'		=> $this->text
+            'forum' => $this->forum_id,
+            'rank' => $this->rank,
+            'section' => $this->section_id,
+            'text' => $this->text
         );
     }
 }
@@ -190,17 +190,17 @@ class Block extends \yN\Entity\Model
 Block::$schema = new \RedMap\Schema(
     'board_block',
     array(
-        'forum'		=> null,
-        'rank'		=> null,
-        'section'	=> null,
-        'text'		=> null
+        'forum' => null,
+        'rank' => null,
+        'section' => null,
+        'text' => null
     ),
     '__',
     array(
-        'forum'		=> array(function () {
+        'forum' => array(function () {
             return Forum::$schema;
         }, 0, array('forum' => 'id')),
-        'section'	=> array(function () {
+        'section' => array(function () {
             return Section::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('section' => 'id'))
     )

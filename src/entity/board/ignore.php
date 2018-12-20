@@ -57,8 +57,8 @@ class Ignore extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'profile'	=> $this->profile_id,
-            'target'	=> $this->target_id
+            'profile' => $this->profile_id,
+            'target' => $this->target_id
         );
     }
 }
@@ -66,7 +66,7 @@ class Ignore extends \yN\Entity\Model
 Ignore::$schema = new \RedMap\Schema(
     'board_ignore',
     array(
-        'profile'	=> null,
-        'target'	=> null
+        'profile' => null,
+        'target' => null
     )
 );

@@ -42,7 +42,7 @@ function emoji_edit($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-media-emoji-edit.deval', 'media.emoji.edit', array(
-        'alerts'	=> $alerts
+        'alerts' => $alerts
     )));
 }
 
@@ -74,8 +74,8 @@ function emoji_list($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-media-emoji-list.deval', 'media.emoji.list', array(
-        'emojis'	=> $emojis,
-        'search'	=> $search,
-        'type'		=> $type
+        'emojis' => $emojis,
+        'search' => $search,
+        'type' => $type
     )));
 }

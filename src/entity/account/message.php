@@ -23,13 +23,13 @@ class Message extends \yN\Entity\Model
         return self::entry_get_one(
             $sql,
             array(
-                '+'	=> array(
-                    'box'		=> array(
-                        '!recipient'	=> (int)$user_id,
-                        'hidden'		=> false,
-                        'read'			=> false
+                '+' => array(
+                    'box' => array(
+                        '!recipient' => (int)$user_id,
+                        'hidden' => false,
+                        'read' => false
                     ),
-                    'sender'	=> null
+                    'sender' => null
                 )
             ),
             array('id' => true),
@@ -225,10 +225,10 @@ class Message extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'id'		=> $this->id,
-            'sender'	=> $this->sender_id,
-            'text'		=> $this->text,
-            'time'		=> $this->time
+            'id' => $this->id,
+            'sender' => $this->sender_id,
+            'text' => $this->text,
+            'time' => $this->time
         );
     }
 }
@@ -308,10 +308,10 @@ class MessageCopy extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'hidden'	=> $this->hidden,
-            'message'	=> $this->message_id,
-            'read'		=> $this->read,
-            'recipient'	=> $this->recipient_id
+            'hidden' => $this->hidden,
+            'message' => $this->message_id,
+            'read' => $this->read,
+            'recipient' => $this->recipient_id
         );
     }
 }
@@ -319,17 +319,17 @@ class MessageCopy extends \yN\Entity\Model
 Message::$schema = new \RedMap\Schema(
     'account_message',
     array(
-        'id'		=> null,
-        'sender'	=> null,
-        'text'		=> null,
-        'time'		=> null
+        'id' => null,
+        'sender' => null,
+        'text' => null,
+        'time' => null
     ),
     '__',
     array(
-        'box'		=> array(function () {
+        'box' => array(function () {
             return MessageCopy::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'message', '!recipient' => 'recipient')),
-        'sender'	=> array(function () {
+        'sender' => array(function () {
             return User::$schema;
         }, 0, array('sender' => 'id'))
     )
@@ -338,15 +338,15 @@ Message::$schema = new \RedMap\Schema(
 MessageCopy::$schema = new \RedMap\Schema(
     'account_message_copy',
     array(
-        'hidden'	=> null,
-        'message'	=> null,
-        'read'		=> null,
-        'recipient'	=> null
+        'hidden' => null,
+        'message' => null,
+        'read' => null,
+        'recipient' => null
     ),
     '__',
     array(
-        'message'	=> array(Message::$schema, 0, array('message' => 'id')),
-        'recipient'	=> array(function () {
+        'message' => array(Message::$schema, 0, array('message' => 'id')),
+        'recipient' => array(function () {
             return User::$schema;
         }, 0, array('recipient' => 'id'))
     )

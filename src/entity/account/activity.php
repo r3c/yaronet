@@ -127,7 +127,7 @@ class Activity extends \yN\Entity\Model
     private static function get_group($user_agent)
     {
         $groups = array(
-            '#compatible; (bingbot|Googlebot|OrangeBot|Yandex)#'	=> 'bot'
+            '#compatible; (bingbot|Googlebot|OrangeBot|Yandex)#' => 'bot'
         );
 
         foreach ($groups as $pattern => $group) {
@@ -175,13 +175,13 @@ class Activity extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'address'		=> $this->address,
-            'create_time'	=> $this->create_time,
-            'expire_time'	=> $this->expire_time,
-            'group'			=> $this->group,
-            'location'		=> $this->location,
-            'pulse_time'	=> $this->pulse_time,
-            'user'			=> $this->user_id
+            'address' => $this->address,
+            'create_time' => $this->create_time,
+            'expire_time' => $this->expire_time,
+            'group' => $this->group,
+            'location' => $this->location,
+            'pulse_time' => $this->pulse_time,
+            'user' => $this->user_id
         );
     }
 }
@@ -189,17 +189,17 @@ class Activity extends \yN\Entity\Model
 Activity::$schema = new \RedMap\Schema(
     'account_activity',
     array(
-        'address'		=> null,
-        'create_time'	=> null,
-        'expire_time'	=> null,
-        'group'			=> null,
-        'location'		=> null,
-        'pulse_time'	=> null,
-        'user'			=> null
+        'address' => null,
+        'create_time' => null,
+        'expire_time' => null,
+        'group' => null,
+        'location' => null,
+        'pulse_time' => null,
+        'user' => null
     ),
     '__',
     array(
-        'user'	=> array(function () {
+        'user' => array(function () {
             return User::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('user' => 'id'))
     )

@@ -33,20 +33,20 @@ class Reference extends \yN\Entity\Model
     public static function get_by_position($sql, $topic_id, $position, $profile_id)
     {
         return self::entry_get_one($sql, array(
-            'position'	=> (int)$position,
-            'topic'		=> (int)$topic_id,
-            '+'			=> array(
-                'post'	=> array(
-                    '+'	=> array(
-                        'create_profile'	=> null,
-                        'edit_profile'		=> null,
-                        'ignore'			=> array('!profile' => (int)$profile_id)
+            'position' => (int)$position,
+            'topic' => (int)$topic_id,
+            '+' => array(
+                'post' => array(
+                    '+' => array(
+                        'create_profile' => null,
+                        'edit_profile' => null,
+                        'ignore' => array('!profile' => (int)$profile_id)
                     )
                 ),
-                'topic'	=> array(
-                    '+'	=> array(
-                        'section'	=> array(
-                            '+'	=> array('forum' => null)
+                'topic' => array(
+                    '+' => array(
+                        'section' => array(
+                            '+' => array('forum' => null)
                         )
                     )
                 )
@@ -78,18 +78,18 @@ class Reference extends \yN\Entity\Model
         return self::entry_get_all(
             $sql,
             array(
-                'position|ge'	=> $start,
-                'position|lt'	=> $start + $count,
-                'topic'			=> (int)$topic_id,
-                '+'				=> array(
-                    'post'	=> array(
-                        '+'	=> array(
-                            'create_profile'	=> null,
-                            'edit_profile'		=> null,
-                            'ignore'			=> array('!profile' => (int)$profile_id)
+                'position|ge' => $start,
+                'position|lt' => $start + $count,
+                'topic' => (int)$topic_id,
+                '+' => array(
+                    'post' => array(
+                        '+' => array(
+                            'create_profile' => null,
+                            'edit_profile' => null,
+                            'ignore' => array('!profile' => (int)$profile_id)
                         )
                     ),
-                    'topic'	=> null
+                    'topic' => null
                 )
             ),
             array('position' => true),
@@ -146,9 +146,9 @@ class Reference extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'position'	=> $this->position,
-            'post'		=> $this->post_id,
-            'topic'		=> $this->topic_id
+            'position' => $this->position,
+            'post' => $this->post_id,
+            'topic' => $this->topic_id
         );
     }
 
@@ -161,19 +161,19 @@ class Reference extends \yN\Entity\Model
 Reference::$schema = new \RedMap\Schema(
     'board_reference',
     array(
-        'position'	=> null,
-        'post'		=> null,
-        'topic'		=> null
+        'position' => null,
+        'post' => null,
+        'topic' => null
     ),
     '__',
     array(
-        'post'			=> array(function () {
+        'post' => array(function () {
             return Post::$schema;
         }, 0, array('post' => 'id')),
-        'post_index'	=> array(function () {
+        'post_index' => array(function () {
             return Post::$schema_index;
         }, 0, array('post' => 'post')),
-        'topic'			=> array(function () {
+        'topic' => array(function () {
             return Topic::$schema;
         }, 0, array('topic' => 'id'))
     )

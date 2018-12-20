@@ -71,8 +71,8 @@ function log_list($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.log';
 
     return Glay\Network\HTTP::data($display->render('yn-board-log-list.deval', $location, array(
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'logs'		=> $logs
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'logs' => $logs
     ), $forum->template));
 }

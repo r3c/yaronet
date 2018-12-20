@@ -65,8 +65,8 @@ function user_active($request, $logger, $sql, $display, $input, $user)
     $location = 'account.user.' . $active->id . '.active';
 
     return Glay\Network\HTTP::data($display->render('yn-account-user-active.deval', $location, array(
-        'active'	=> $active,
-        'alerts'	=> $alerts
+        'active' => $active,
+        'alerts' => $alerts
     )));
 }
 
@@ -286,10 +286,10 @@ function user_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'account.user.' . $edit->id . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-account-user-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'edit'		=> $edit,
-        'forum_id'	=> $forum_id,
-        'new'		=> $new
+        'alerts' => $alerts,
+        'edit' => $edit,
+        'forum_id' => $forum_id,
+        'new' => $new
     )));
 }
 
@@ -357,8 +357,8 @@ function user_reclaim($request, $logger, $sql, $display, $input, $user)
     $location = 'account.user.' . $reclaim->id . '.reclaim';
 
     return Glay\Network\HTTP::data($display->render('yn-account-user-reclaim.deval', $location, array(
-        'alerts'	=> $alerts,
-        'reclaim'	=> $reclaim
+        'alerts' => $alerts,
+        'reclaim' => $reclaim
     )));
 }
 
@@ -415,7 +415,7 @@ function user_recover($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-user-recover.deval', 'account.user.recover', array(
-        'alerts'	=> $alerts
+        'alerts' => $alerts
     )));
 }
 
@@ -462,8 +462,8 @@ function user_signin($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-user-signin.deval', 'account.user.signin', array(
-        'alerts'	=> $alerts,
-        'target'	=> $input->get_string('target', $target) ? $target : null
+        'alerts' => $alerts,
+        'target' => $input->get_string('target', $target) ? $target : null
     )));
 }
 

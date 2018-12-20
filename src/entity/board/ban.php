@@ -78,8 +78,8 @@ class Ban extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'address'	=> $this->address,
-            'forum'		=> $this->forum_id
+            'address' => $this->address,
+            'forum' => $this->forum_id
         );
     }
 }
@@ -87,12 +87,12 @@ class Ban extends \yN\Entity\Model
 Ban::$schema = new \RedMap\Schema(
     'board_ban',
     array(
-        'address'	=> null,
-        'forum'		=> null
+        'address' => null,
+        'forum' => null
     ),
     '__',
     array(
-        'forum'		=> array(function () {
+        'forum' => array(function () {
             return Forum::$schema;
         }, 0, array('forum' => 'id'))
     )

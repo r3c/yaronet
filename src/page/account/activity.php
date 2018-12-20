@@ -14,7 +14,7 @@ function activity_list($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-activity-list.deval', 'account.activity', array(
-        'activities'	=> $activities
+        'activities' => $activities
     )));
 }
 

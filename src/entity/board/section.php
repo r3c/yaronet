@@ -38,7 +38,7 @@ class Section extends \yN\Entity\Model
 
     public static function get_by_identifier($sql, $section_id, $profile_id = null)
     {
-        $relations = array('forum'	=> null);
+        $relations = array('forum' => null);
 
         if ($profile_id !== null) {
             $relations['subscription'] = array('!profile' => (int)$profile_id);
@@ -235,13 +235,13 @@ class Section extends \yN\Entity\Model
     public function revert()
     {
         return array(
-            'access'		=> $this->access,
-            'description'	=> $this->description,
-            'header'		=> $this->revert_header(),
-            'id'			=> $this->id,
-            'is_delegated'	=> $this->is_delegated,
-            'name'			=> $this->name,
-            'reach'			=> $this->reach
+            'access' => $this->access,
+            'description' => $this->description,
+            'header' => $this->revert_header(),
+            'id' => $this->id,
+            'is_delegated' => $this->is_delegated,
+            'name' => $this->name,
+            'reach' => $this->reach
         );
     }
 
@@ -284,14 +284,14 @@ class Section extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'access'		=> $this->access,
-            'description'	=> trim($this->description),
-            'forum'			=> $this->forum_id,
-            'header'		=> $this->header,
-            'id'			=> $this->id,
-            'is_delegated'	=> $this->is_delegated,
-            'name'			=> trim($this->name),
-            'reach'			=> $this->reach
+            'access' => $this->access,
+            'description' => trim($this->description),
+            'forum' => $this->forum_id,
+            'header' => $this->header,
+            'id' => $this->id,
+            'is_delegated' => $this->is_delegated,
+            'name' => trim($this->name),
+            'reach' => $this->reach
         );
     }
 
@@ -342,8 +342,8 @@ class SectionRead extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'profile'	=> $this->profile_id,
-            'section'	=> $this->section_id
+            'profile' => $this->profile_id,
+            'section' => $this->section_id
         );
     }
 }
@@ -351,14 +351,14 @@ class SectionRead extends \yN\Entity\Model
 Section::$schema_cache = new \RedMap\Schema(
     'board_section_cache',
     array(
-        'hint'			=> null,
-        'id'			=> null,
-        'last_topic'	=> null,
-        'topics'		=> null
+        'hint' => null,
+        'id' => null,
+        'last_topic' => null,
+        'topics' => null
     ),
     '__',
     array(
-        'last_topic'	=> array(function () {
+        'last_topic' => array(function () {
             return Topic::$schema;
         }, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('last_topic' => 'id'))
     )
@@ -367,14 +367,14 @@ Section::$schema_cache = new \RedMap\Schema(
 Section::$schema_load = new \RedMap\Schema(
     'board_section',
     array(
-        'hint'			=> '(SELECT name FROM board_section WHERE id = @id)',
-        'id'			=> null,
-        'last_topic'	=> '(SELECT id FROM board_topic WHERE section = @id ORDER BY last_time DESC LIMIT 1)',
-        'topics'		=> '(SELECT COUNT(*) FROM board_topic WHERE section = @id)'
+        'hint' => '(SELECT name FROM board_section WHERE id = @id)',
+        'id' => null,
+        'last_topic' => '(SELECT id FROM board_topic WHERE section = @id ORDER BY last_time DESC LIMIT 1)',
+        'topics' => '(SELECT COUNT(*) FROM board_topic WHERE section = @id)'
     ),
     '__',
     array(
-        'last_topic'	=> array(function () {
+        'last_topic' => array(function () {
             return Topic::$schema;
         }, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('last_topic' => 'id'))
     )
@@ -383,31 +383,31 @@ Section::$schema_load = new \RedMap\Schema(
 Section::$schema = new \RedMap\Schema(
     'board_section',
     array(
-        'access'		=> null,
-        'description'	=> null,
-        'forum'			=> null,
-        'header'		=> null,
-        'id'			=> null,
-        'is_delegated'	=> null,
-        'name'			=> null,
-        'reach'			=> null
+        'access' => null,
+        'description' => null,
+        'forum' => null,
+        'header' => null,
+        'id' => null,
+        'is_delegated' => null,
+        'name' => null,
+        'reach' => null
     ),
     '__',
     array(
-        'block'				=> array(function () {
+        'block' => array(function () {
             return Block::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'section')),
-        'cache'				=> array(Section::$schema_cache, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('id' => 'id')),
-        'forum'				=> array(function () {
+        'cache' => array(Section::$schema_cache, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('id' => 'id')),
+        'forum' => array(function () {
             return Forum::$schema;
         }, 0, array('forum' => 'id')),
-        'permission'		=> array(function () {
+        'permission' => array(function () {
             return Permission::$schema_section;
         }, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'section', '!profile' => 'profile')),
-        'read'				=> array(function () {
+        'read' => array(function () {
             return SectionRead::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'section', '!profile' => 'profile')),
-        'subscription'		=> array(function () {
+        'subscription' => array(function () {
             return Subscription::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'section', '!profile' => 'profile'))
     )
@@ -416,14 +416,14 @@ Section::$schema = new \RedMap\Schema(
 SectionRead::$schema = new \RedMap\Schema(
     'board_section_read',
     array(
-        'profile'	=> null,
-        'section'	=> null
+        'profile' => null,
+        'section' => null
     ),
     '__',
     array(
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user')),
-        'section'	=> array(Section::$schema, 0, array('section' => 'id'))
+        'section' => array(Section::$schema, 0, array('section' => 'id'))
     )
 );

@@ -82,7 +82,7 @@ function favorite_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.favorite.' . $edit->id . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-board-favorite-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'edit'		=> $edit
+        'alerts' => $alerts,
+        'edit' => $edit
     )));
 }

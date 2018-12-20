@@ -33,12 +33,12 @@ class Subscription extends \yN\Entity\Model
         return $sql->source(
             Bookmark::$schema,
             array(
-                'fresh'		=> array(\RedMap\Engine::SOURCE_VALUE, 1),
-                'position'	=> array(\RedMap\Engine::SOURCE_VALUE, new \RedMap\Min($position)),
-                'profile'	=> array(\RedMap\Engine::SOURCE_COLUMN, 'profile'),
-                'time'		=> array(\RedMap\Engine::SOURCE_VALUE, $time),
-                'topic'		=> array(\RedMap\Engine::SOURCE_VALUE, (int)$topic_id),
-                'watch'		=> array(\RedMap\Engine::SOURCE_VALUE, 1)
+                'fresh' => array(\RedMap\Engine::SOURCE_VALUE, 1),
+                'position' => array(\RedMap\Engine::SOURCE_VALUE, new \RedMap\Min($position)),
+                'profile' => array(\RedMap\Engine::SOURCE_COLUMN, 'profile'),
+                'time' => array(\RedMap\Engine::SOURCE_VALUE, $time),
+                'topic' => array(\RedMap\Engine::SOURCE_VALUE, (int)$topic_id),
+                'watch' => array(\RedMap\Engine::SOURCE_VALUE, 1)
             ),
             \RedMap\Engine::INSERT_UPSERT,
             self::$schema,
@@ -105,8 +105,8 @@ class Subscription extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'profile'	=> $this->profile_id,
-            'section'	=> $this->section_id
+            'profile' => $this->profile_id,
+            'section' => $this->section_id
         );
     }
 }
@@ -114,15 +114,15 @@ class Subscription extends \yN\Entity\Model
 Subscription::$schema = new \RedMap\Schema(
     'board_subscription',
     array(
-        'profile'	=> null,
-        'section'	=> null
+        'profile' => null,
+        'section' => null
     ),
     '__',
     array(
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user')),
-        'section'	=> array(function () {
+        'section' => array(function () {
             return Section::$schema;
         }, 0, array('section' => 'id'))
     )

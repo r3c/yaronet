@@ -101,8 +101,8 @@ function profile_delete($request, $logger, $sql, $display, $input, $user)
     $location = 'board.profile.' . $profile->user_id . '.delete';
 
     return Glay\Network\HTTP::data($display->render('yn-board-profile-delete.deval', $location, array(
-        'alerts'	=> $alerts,
-        'profile'	=> $profile
+        'alerts' => $alerts,
+        'profile' => $profile
     )));
 }
 
@@ -198,8 +198,8 @@ function profile_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.profile.' . $profile->user_id . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-board-profile-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'profile'	=> $profile
+        'alerts' => $alerts,
+        'profile' => $profile
     )));
 }
 
@@ -223,12 +223,12 @@ function profile_list($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-board-profile-list.deval', 'board.profile', array(
-        'forum_id'		=> $forum_id,
-        'page'			=> $page,
-        'page_next'		=> count($profiles) > $count ? min($page + 1, 100) : null,
-        'page_previous'	=> $page > 0 ? max($page - 1, 0) : null,
-        'query'			=> $query,
-        'profiles'		=> array_slice($profiles, 0, $count)
+        'forum_id' => $forum_id,
+        'page' => $page,
+        'page_next' => count($profiles) > $count ? min($page + 1, 100) : null,
+        'page_previous' => $page > 0 ? max($page - 1, 0) : null,
+        'query' => $query,
+        'profiles' => array_slice($profiles, 0, $count)
     )));
 }
 
@@ -244,6 +244,6 @@ function profile_view($request, $logger, $sql, $display, $input, $user)
     $location = 'board.profile.' . $profile->user_id;
 
     return Glay\Network\HTTP::data($display->render('yn-board-profile-view.deval', $location, array(
-        'profile'	=> $profile
+        'profile' => $profile
     )));
 }

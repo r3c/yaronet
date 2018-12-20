@@ -10,8 +10,8 @@ class Debug
     {
         echo '
 <div style="margin: 8px; background: #F0C0C0; border: 3px solid #F0A0A0; border-radius: 8px; font: normal normal normal 12px tahoma;">
-	<div style="padding: 1px 4px; margin: 4px; font-weight: bold;">' . $message . '</div>
-	<div style="padding: 1px 4px; margin: 4px; white-space: pre-wrap;">' . $verbose . '</div>
+    <div style="padding: 1px 4px; margin: 4px; font-weight: bold;">' . $message . '</div>
+    <div style="padding: 1px 4px; margin: 4px; white-space: pre-wrap;">' . $verbose . '</div>
 </div>';
     }
 
@@ -30,7 +30,7 @@ class Debug
 
                 foreach ($labels as $label) {
                     echo '
-	<li>' . $label[0] . ': ' . round($label[1] * 1000) . 'ms (+ ' . round($label[2] * 1000) . 'ms)</li>';
+    <li>' . $label[0] . ': ' . round($label[1] * 1000) . 'ms (+ ' . round($label[2] * 1000) . 'ms)</li>';
                 }
 
                 echo '

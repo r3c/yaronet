@@ -123,8 +123,8 @@ try {
         $template = $request->get_or_default('_template');
 
         $router->stick(array(
-            '_language'	=> yN\Engine\Text\Internationalization::is_valid($language) ? $language : null,
-            '_template'	=> yN\Engine\Text\Display::is_internal($template) ? $template : null
+            '_language' => yN\Engine\Text\Internationalization::is_valid($language) ? $language : null,
+            '_template' => yN\Engine\Text\Display::is_internal($template) ? $template : null
         ));
     } else {
         $language = null;
@@ -161,7 +161,7 @@ try {
     // Override contents for known errors
     if ($reply->code >= 400) {
         $reply = Glay\Network\HTTP::code($reply->code, $display->render('error.deval', 'error', array(
-            'code'	=> $reply->code
+            'code' => $reply->code
         ), null, true));
     }
 

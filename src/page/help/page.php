@@ -40,8 +40,8 @@ function page_edit($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-help-page-edit.deval', 'help.page.' . $page->label . '.edit', array(
-        'alerts'	=> $alerts,
-        'page'		=> $page
+        'alerts' => $alerts,
+        'page' => $page
     )));
 }
 
@@ -68,6 +68,6 @@ function page_view($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-help-page-view.deval', 'help.page.' . $page->label, array(
-        'page'	=> $page
+        'page' => $page
     )));
 }

@@ -37,12 +37,12 @@ class TwitterAPI
         }
 
         $oauth = array(
-            'oauth_consumer_key'		=> $this->consumer_key,
-            'oauth_nonce'				=> uniqid(),
-            'oauth_signature_method'	=> 'HMAC-SHA1',
-            'oauth_timestamp'			=> $time,
-            'oauth_token'				=> $this->token_key,
-            'oauth_version'				=> '1.0'
+            'oauth_consumer_key' => $this->consumer_key,
+            'oauth_nonce' => uniqid(),
+            'oauth_signature_method' => 'HMAC-SHA1',
+            'oauth_timestamp' => $time,
+            'oauth_token' => $this->token_key,
+            'oauth_version' => '1.0'
         );
 
         $oauth_signature_parameters = array_merge($oauth, $get);

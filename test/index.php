@@ -678,19 +678,19 @@ function board_topic_create($user, $forum, $section)
     $post_text = _id('text');
 
     HTTP::assert('topics/new/' . $section['id'], array(
-        'name'	=> $topic_name,
-        'text'	=> $post_text
+        'name' => $topic_name,
+        'text' => $post_text
     ))
         ->redirects_to('@topics/([0-9]+)@', $match);
 
     $topic = array(
-        'id'		=> $match[1],
-        'name'		=> $topic_name
+        'id' => $match[1],
+        'name' => $topic_name
     );
 
     $post = array(
-        'position'	=> '1',
-        'text'		=> $post_text
+        'position' => '1',
+        'text' => $post_text
     );
 
     if ($section['access'] >= 1) {
@@ -732,18 +732,18 @@ function board_topic_drift($user, $forum, $section, $source, $posts)
     $topic_name = _id('name');
 
     HTTP::assert('topics/drift/' . $source['id'], array(
-        'name'		=> $topic_name,
-        'positions'	=> implode(',', array_map(function ($post) {
+        'name' => $topic_name,
+        'positions' => implode(',', array_map(function ($post) {
             return $post['position'];
         }, $posts)),
-        'section'	=> $forum['name'] . ', ' . $section['name']
+        'section' => $forum['name'] . ', ' . $section['name']
     ))
         ->redirects_to('@topics/([0-9]+)@', $match);
 
     $position = 1;
     $topic = array(
-        'id'		=> $match[1],
-        'name'		=> $topic_name
+        'id' => $match[1],
+        'name' => $topic_name
     );
 
     array_unshift($posts, array('text' => ''));

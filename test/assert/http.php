@@ -98,9 +98,9 @@ class HTTP
         }
 
         $this->http = array(
-            'data'		=> $data,
-            'code'		=> $code,
-            'headers'	=> $headers
+            'data' => $data,
+            'code' => $code,
+            'headers' => $headers
         );
     }
 

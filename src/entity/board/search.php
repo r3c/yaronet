@@ -68,8 +68,8 @@ class Search extends \yN\Entity\Model
     public static function get_by_identifier($sql, $search_id)
     {
         return self::entry_get_one($sql, array(
-            '+'		=> array('forum' => null),
-            'id'	=> (int)$search_id
+            '+' => array('forum' => null),
+            'id' => (int)$search_id
         ));
     }
 
@@ -135,11 +135,11 @@ class Search extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'id'		=> $this->id,
-            'forum'		=> $this->forum_id,
-            'profile'	=> $this->profile_id,
-            'query'		=> $this->query,
-            'time'		=> $this->time
+            'id' => $this->id,
+            'forum' => $this->forum_id,
+            'profile' => $this->profile_id,
+            'query' => $this->query,
+            'time' => $this->time
         );
     }
 }
@@ -154,13 +154,13 @@ class SearchResult extends \yN\Entity\Model
     public static function execute($sql, $search_id, $query, $forum_id, $profile_id)
     {
         $filters = array(
-            '+'	=> array(
-                'post_index'	=> array(
-                    'text|mb'	=> $query
+            '+' => array(
+                'post_index' => array(
+                    'text|mb' => $query
                 ),
-                'topic'			=> array(
-                    '+'	=> array(
-                        'section'	=> array('forum' => (int)$forum_id)
+                'topic' => array(
+                    '+' => array(
+                        'section' => array('forum' => (int)$forum_id)
                     )
                 )
             )
@@ -173,9 +173,9 @@ class SearchResult extends \yN\Entity\Model
         return $sql->source(
             self::$schema,
             array(
-                'position'	=> array(\RedMap\Engine::SOURCE_COLUMN, 'position'),
-                'search'	=> array(\RedMap\Engine::SOURCE_VALUE, (int)$search_id),
-                'topic'		=> array(\RedMap\Engine::SOURCE_COLUMN, 'topic')
+                'position' => array(\RedMap\Engine::SOURCE_COLUMN, 'position'),
+                'search' => array(\RedMap\Engine::SOURCE_VALUE, (int)$search_id),
+                'topic' => array(\RedMap\Engine::SOURCE_COLUMN, 'topic')
             ),
             \RedMap\Engine::INSERT_APPEND,
             Reference::$schema,
@@ -192,20 +192,20 @@ class SearchResult extends \yN\Entity\Model
             array(
                 '+' => array(
                     'reference' => array(
-                        '+'	=> array(
-                            'post'	=> array(
-                                '+'	=> array(
-                                    'create_profile'	=> null,
-                                    'edit_profile'		=> null,
-                                    'ignore'			=> array('!profile' => (int)$profile_id)
+                        '+' => array(
+                            'post' => array(
+                                '+' => array(
+                                    'create_profile' => null,
+                                    'edit_profile' => null,
+                                    'ignore' => array('!profile' => (int)$profile_id)
                                 )
                             ),
-                            'topic'	=> array(
-                                '+'	=> array(
-                                    'permission'	=> array('!profile' => (int)$profile_id),
-                                    'section'		=> array(
-                                        '+'	=> array(
-                                            'permission'	=> array('!profile' => (int)$profile_id)
+                            'topic' => array(
+                                '+' => array(
+                                    'permission' => array('!profile' => (int)$profile_id),
+                                    'section' => array(
+                                        '+' => array(
+                                            'permission' => array('!profile' => (int)$profile_id)
                                         )
                                     )
                                 )
@@ -259,18 +259,18 @@ class SearchResult extends \yN\Entity\Model
 Search::$schema = new \RedMap\Schema(
     'board_search',
     array(
-        'forum'		=> null,
-        'id'		=> null,
-        'profile'	=> null,
-        'query'		=> null,
-        'time'		=> null
+        'forum' => null,
+        'id' => null,
+        'profile' => null,
+        'query' => null,
+        'time' => null
     ),
     '__',
     array(
-        'forum'		=> array(function () {
+        'forum' => array(function () {
             return Forum::$schema;
         }, 0, array('forum' => 'id')),
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user'))
     )
@@ -279,17 +279,17 @@ Search::$schema = new \RedMap\Schema(
 SearchResult::$schema = new \RedMap\Schema(
     'board_search_result',
     array(
-        'position'	=> null,
-        'search'	=> null,
-        'topic'		=> null
+        'position' => null,
+        'search' => null,
+        'topic' => null
     ),
     '__',
     array(
-        'reference'	=> array(function () {
+        'reference' => array(function () {
             return Reference::$schema;
         }, 0, array('position' => 'position', 'topic' => 'topic')),
-        'search'	=> array(Search::$schema, 0, array('search' => 'id')),
-        'topic'		=> array(function () {
+        'search' => array(Search::$schema, 0, array('search' => 'id')),
+        'topic' => array(function () {
             return Topic::$schema;
         }, 0, array('topic' => 'id'))
     )

@@ -64,7 +64,7 @@ function ban_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.ban.' . $forum->id . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-board-ban-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'forum'		=> $forum
+        'alerts' => $alerts,
+        'forum' => $forum
     )));
 }

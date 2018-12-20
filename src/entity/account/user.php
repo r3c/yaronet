@@ -261,12 +261,12 @@ class User extends \yN\Entity\Model
     public function render()
     {
         return array(
-            'create_time'	=> $this->create_time,
-            'id'			=> $this->id,
-            'language'		=> $this->language,
-            'login'			=> $this->login,
-            'pulse_time'	=> $this->pulse_time,
-            'template'		=> $this->template
+            'create_time' => $this->create_time,
+            'id' => $this->id,
+            'language' => $this->language,
+            'login' => $this->login,
+            'pulse_time' => $this->pulse_time,
+            'template' => $this->template
         );
     }
 
@@ -338,22 +338,22 @@ class User extends \yN\Entity\Model
         }
 
         return array(
-            'create_time'	=> $this->create_time,
-            'email'			=> trim($this->email),
-            'id'			=> $this->id,
-            'is_active'		=> $this->is_active,
-            'is_admin'		=> $this->is_admin,
-            'is_disabled'	=> $this->is_disabled,
-            'is_favorite'	=> $this->is_favorite,
-            'is_uniform'	=> $this->is_uniform,
-            'language'		=> trim($this->language),
-            'login'			=> trim($this->login),
-            'mechanism'		=> $this->mechanism,
-            'options'		=> (string)substr($options, 1),
-            'pulse_time'	=> $this->pulse_time,
-            'recover_time'	=> $this->recover_time,
-            'secret'		=> $this->secret,
-            'template'		=> trim($this->template)
+            'create_time' => $this->create_time,
+            'email' => trim($this->email),
+            'id' => $this->id,
+            'is_active' => $this->is_active,
+            'is_admin' => $this->is_admin,
+            'is_disabled' => $this->is_disabled,
+            'is_favorite' => $this->is_favorite,
+            'is_uniform' => $this->is_uniform,
+            'language' => trim($this->language),
+            'login' => trim($this->login),
+            'mechanism' => $this->mechanism,
+            'options' => (string)substr($options, 1),
+            'pulse_time' => $this->pulse_time,
+            'recover_time' => $this->recover_time,
+            'secret' => $this->secret,
+            'template' => trim($this->template)
         );
     }
 
@@ -364,20 +364,20 @@ class User extends \yN\Entity\Model
 }
 
 User::$schema = new \RedMap\Schema('account_user', array(
-    'create_time'	=> null,
-    'email'			=> null,
-    'id'			=> null,
-    'is_active'		=> null,
-    'is_admin'		=> null,
-    'is_disabled'	=> null,
-    'is_favorite'	=> null,
-    'is_uniform'	=> null,
-    'language'		=> null,
-    'login'			=> null,
-    'mechanism'		=> null,
-    'options'		=> null,
-    'pulse_time'	=> null,
-    'recover_time'	=> null,
-    'secret'		=> null,
-    'template'		=> null
+    'create_time' => null,
+    'email' => null,
+    'id' => null,
+    'is_active' => null,
+    'is_admin' => null,
+    'is_disabled' => null,
+    'is_favorite' => null,
+    'is_uniform' => null,
+    'language' => null,
+    'login' => null,
+    'mechanism' => null,
+    'options' => null,
+    'pulse_time' => null,
+    'recover_time' => null,
+    'secret' => null,
+    'template' => null
 ));

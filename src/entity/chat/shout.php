@@ -99,19 +99,19 @@ class Shout extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'id'		=> $this->id,
-            'is_guest'	=> $this->is_guest,
-            'nick'		=> $this->nick,
-            'text'		=> $this->text,
-            'time'		=> $this->time
+            'id' => $this->id,
+            'is_guest' => $this->is_guest,
+            'nick' => $this->nick,
+            'text' => $this->text,
+            'time' => $this->time
         );
     }
 }
 
 Shout::$schema = new \RedMap\Schema('chat_shout', array(
-    'id'		=> null,
-    'is_guest'	=> null,
-    'nick'		=> null,
-    'text'		=> null,
-    'time'		=> null
+    'id' => null,
+    'is_guest' => null,
+    'nick' => null,
+    'text' => null,
+    'time' => null
 ));

@@ -30,10 +30,10 @@ class Post extends \yN\Entity\Model
         return self::entry_get_all(
             $sql,
             array(
-                'create_profile'	=> (int)$profile_id,
-                '+'					=> array(
-                    'reference'	=> array(
-                        '+'	=> array('topic' => null)
+                'create_profile' => (int)$profile_id,
+                '+' => array(
+                    'reference' => array(
+                        '+' => array('topic' => null)
                     )
                 )
             ),
@@ -116,12 +116,12 @@ class Post extends \yN\Entity\Model
     public function revert()
     {
         return array(
-            'caution'		=> $this->caution,
-            'create_time'	=> $this->create_time,
-            'edit_time'		=> $this->edit_time,
-            'id'			=> $this->id,
-            'state'			=> $this->state,
-            'text'			=> $this->revert_text()
+            'caution' => $this->caution,
+            'create_time' => $this->create_time,
+            'edit_time' => $this->edit_time,
+            'id' => $this->id,
+            'state' => $this->state,
+            'text' => $this->revert_text()
         );
     }
 
@@ -159,14 +159,14 @@ class Post extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'caution'			=> $this->caution,
-            'create_profile'	=> $this->create_profile_id,
-            'create_time'		=> $this->create_time,
-            'edit_profile'		=> $this->edit_profile_id,
-            'edit_time'			=> $this->edit_time,
-            'id'				=> $this->id,
-            'state'				=> $this->state,
-            'text'				=> $this->text
+            'caution' => $this->caution,
+            'create_profile' => $this->create_profile_id,
+            'create_time' => $this->create_time,
+            'edit_profile' => $this->edit_profile_id,
+            'edit_time' => $this->edit_time,
+            'id' => $this->id,
+            'state' => $this->state,
+            'text' => $this->text
         );
     }
 
@@ -178,15 +178,15 @@ class Post extends \yN\Entity\Model
             $sql->insert(
                 self::$schema_index,
                 array(
-                    'create_profile'	=> $this->create_profile_id,
-                    'post'				=> $this->id,
-                    'text'				=> $text
+                    'create_profile' => $this->create_profile_id,
+                    'post' => $this->id,
+                    'text' => $text
                 ),
                 \RedMap\Engine::INSERT_REPLACE
             );
         } else {
             $sql->delete(self::$schema_index, array(
-                'post'	=> $this->id
+                'post' => $this->id
             ));
         }
 
@@ -201,27 +201,27 @@ class Post extends \yN\Entity\Model
 Post::$schema = new \RedMap\Schema(
     'board_post',
     array(
-        'caution'			=> null,
-        'create_profile'	=> null,
-        'create_time'		=> null,
-        'edit_profile'		=> null,
-        'edit_time'			=> null,
-        'id'				=> null,
-        'state'				=> null,
-        'text'				=> null
+        'caution' => null,
+        'create_profile' => null,
+        'create_time' => null,
+        'edit_profile' => null,
+        'edit_time' => null,
+        'id' => null,
+        'state' => null,
+        'text' => null
     ),
     '__',
     array(
-        'create_profile'	=> array(function () {
+        'create_profile' => array(function () {
             return Profile::$schema;
         }, 0, array('create_profile' => 'user')),
-        'edit_profile'		=> array(function () {
+        'edit_profile' => array(function () {
             return Profile::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('edit_profile' => 'user')),
-        'ignore'			=> array(function () {
+        'ignore' => array(function () {
             return Ignore::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('create_profile' => 'target', '!profile' => 'profile')),
-        'reference'			=> array(function () {
+        'reference' => array(function () {
             return Reference::$schema;
         }, 0, array('id' => 'post'))
     )
@@ -230,15 +230,15 @@ Post::$schema = new \RedMap\Schema(
 Post::$schema_index = new \RedMap\Schema(
     'board_post_index',
     array(
-        'create_profile'	=> null,
-        'post'				=> null,
-        'text'				=> null
+        'create_profile' => null,
+        'post' => null,
+        'text' => null
     ),
     '__',
     array(
-        'create_profile'	=> array(function () {
+        'create_profile' => array(function () {
             return Profile::$schema;
         }, 0, array('create_profile' => 'user')),
-        'post'				=> array(Post::$schema, 0, array('post' => 'id'))
+        'post' => array(Post::$schema, 0, array('post' => 'id'))
     )
 );

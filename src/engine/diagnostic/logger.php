@@ -54,15 +54,15 @@ class Logger
         }
 
         $params = array(
-            'address'	=> $address->string,
-            'context'	=> $this->context,
-            'date'		=> date(self::FORMAT_TIME, $time),
-            'label'		=> $label,
-            'level'		=> $level,
-            'message'	=> $message,
-            'time'		=> $time,
-            'title'		=> $title,
-            'url'		=> $_SERVER['REQUEST_URI']
+            'address' => $address->string,
+            'context' => $this->context,
+            'date' => date(self::FORMAT_TIME, $time),
+            'label' => $label,
+            'level' => $level,
+            'message' => $message,
+            'time' => $time,
+            'title' => $title,
+            'url' => $_SERVER['REQUEST_URI']
         );
 
         $macro = function ($matches) use ($params) {

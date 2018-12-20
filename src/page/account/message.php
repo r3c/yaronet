@@ -29,8 +29,8 @@ function message_delete($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-message-delete.deval', 'account.message.delete', array(
-        'alerts'	=> $alerts,
-        'message'	=> $message
+        'alerts' => $alerts,
+        'message' => $message
     )));
 }
 
@@ -102,10 +102,10 @@ function message_edit($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-message-edit.deval', 'account.message.edit', array(
-        'alerts'	=> $alerts,
-        'message'	=> $message,
-        'new'		=> $new,
-        'reply'		=> $reply
+        'alerts' => $alerts,
+        'message' => $message,
+        'new' => $new,
+        'reply' => $reply
     )));
 }
 
@@ -134,8 +134,8 @@ function message_hide($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-message-hide.deval', 'account.message.hide', array(
-        'alerts'	=> $alerts,
-        'message'	=> $message
+        'alerts' => $alerts,
+        'message' => $message
     )));
 }
 
@@ -169,9 +169,9 @@ function message_list($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-message-list.deval', 'account.message', array(
-        'from'		=> $from,
-        'login'		=> $login ?: null,
-        'messages'	=> $messages,
-        'prev'		=> $prev
+        'from' => $from,
+        'login' => $login ?: null,
+        'messages' => $messages,
+        'prev' => $prev
     )));
 }

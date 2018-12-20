@@ -341,21 +341,21 @@ class LocalPermissionAccess extends PermissionAccess
 Permission::$schema_forum = new \RedMap\Schema(
     'board_permission_forum',
     array(
-        'can_change'	=> null,
-        'can_read'		=> null,
-        'can_write'		=> null,
-        'expire'		=> null,
-        'forum'			=> null,
-        'profile'		=> null,
-        'section'		=> 'NULL',
-        'topic'			=> 'NULL'
+        'can_change' => null,
+        'can_read' => null,
+        'can_write' => null,
+        'expire' => null,
+        'forum' => null,
+        'profile' => null,
+        'section' => 'NULL',
+        'topic' => 'NULL'
     ),
     '__',
     array(
-        'forum'		=> array(function () {
+        'forum' => array(function () {
             return Forum::$schema;
         }, 0, array('forum' => 'id')),
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user'))
     )
@@ -364,21 +364,21 @@ Permission::$schema_forum = new \RedMap\Schema(
 Permission::$schema_section = new \RedMap\Schema(
     'board_permission_section',
     array(
-        'can_change'	=> null,
-        'can_read'		=> null,
-        'can_write'		=> null,
-        'expire'		=> null,
-        'forum'			=> 'NULL',
-        'profile'		=> null,
-        'section'		=> null,
-        'topic'			=> 'NULL'
+        'can_change' => null,
+        'can_read' => null,
+        'can_write' => null,
+        'expire' => null,
+        'forum' => 'NULL',
+        'profile' => null,
+        'section' => null,
+        'topic' => 'NULL'
     ),
     '__',
     array(
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user')),
-        'section'	=> array(function () {
+        'section' => array(function () {
             return Section::$schema;
         }, 0, array('section' => 'id'))
     )
@@ -387,21 +387,21 @@ Permission::$schema_section = new \RedMap\Schema(
 Permission::$schema_topic = new \RedMap\Schema(
     'board_permission_topic',
     array(
-        'can_change'	=> null,
-        'can_read'		=> null,
-        'can_write'		=> null,
-        'expire'		=> null,
-        'forum'			=> 'NULL',
-        'profile'		=> null,
-        'section'		=> 'NULL',
-        'topic'			=> null
+        'can_change' => null,
+        'can_read' => null,
+        'can_write' => null,
+        'expire' => null,
+        'forum' => 'NULL',
+        'profile' => null,
+        'section' => 'NULL',
+        'topic' => null
     ),
     '__',
     array(
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user')),
-        'topic'		=> array(function () {
+        'topic' => array(function () {
             return Topic::$schema;
         }, 0, array('topic' => 'id'))
     )

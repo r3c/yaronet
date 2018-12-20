@@ -38,7 +38,7 @@ class Topic extends \yN\Entity\Model
     public static function get_by_identifier($sql, $topic_id, $profile_id)
     {
         $relations = array(
-            'section'	=> array('+' => array('forum' => null))
+            'section' => array('+' => array('forum' => null))
         );
 
         if ($profile_id !== null) {
@@ -70,9 +70,9 @@ class Topic extends \yN\Entity\Model
         }
 
         $relations = array(
-            'section'	=> array(
-                'access|ge'	=> Section::ACCESS_PUBLIC,
-                'reach|ge'	=> Section::REACH_GLOBAL
+            'section' => array(
+                'access|ge' => Section::ACCESS_PUBLIC,
+                'reach|ge' => Section::REACH_GLOBAL
             )
         );
 
@@ -81,9 +81,9 @@ class Topic extends \yN\Entity\Model
         }
 
         $filters = array(
-            'is_closed'		=> 0,
-            'last_time|ge'	=> $time - 30 * 86400,
-            '+'				=> $relations
+            'is_closed' => 0,
+            'last_time|ge' => $time - 30 * 86400,
+            '+' => $relations
         );
 
         return self::entry_get_all($sql, $filters, $order, $count);
@@ -111,11 +111,11 @@ class Topic extends \yN\Entity\Model
         }
 
         $relations = array(
-            'section'	=> array(
-                'access|ge'	=> Section::ACCESS_PUBLIC,
-                'reach|ge'	=> Section::REACH_LOCAL,
-                '+'			=> array(
-                    'forum'	=> array('id' => (int)$forum_id)
+            'section' => array(
+                'access|ge' => Section::ACCESS_PUBLIC,
+                'reach|ge' => Section::REACH_LOCAL,
+                '+' => array(
+                    'forum' => array('id' => (int)$forum_id)
                 )
             )
         );
@@ -127,9 +127,9 @@ class Topic extends \yN\Entity\Model
         }
 
         $filters = array(
-            'is_closed'		=> 0,
-            'last_time|ge'	=> $time - 10 * 86400,
-            '+'				=> $relations
+            'is_closed' => 0,
+            'last_time|ge' => $time - 10 * 86400,
+            '+' => $relations
         );
 
         return self::entry_get_all($sql, $filters, $order, $count);
@@ -267,12 +267,12 @@ class Topic extends \yN\Entity\Model
     public function revert()
     {
         return array(
-            'id'		=> $this->id,
-            'is_closed'	=> $this->is_closed,
-            'last_time'	=> $this->last_time,
-            'name'		=> $this->revert_name(),
-            'section'	=> $this->section_id,
-            'weight'	=> $this->weight
+            'id' => $this->id,
+            'is_closed' => $this->is_closed,
+            'last_time' => $this->last_time,
+            'name' => $this->revert_name(),
+            'section' => $this->section_id,
+            'weight' => $this->weight
         );
     }
 
@@ -307,12 +307,12 @@ class Topic extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'id'		=> $this->id,
-            'is_closed'	=> $this->is_closed,
-            'last_time'	=> $this->last_time,
-            'name'		=> $this->name,
-            'section'	=> $this->section_id,
-            'weight'	=> $this->weight
+            'id' => $this->id,
+            'is_closed' => $this->is_closed,
+            'last_time' => $this->last_time,
+            'name' => $this->name,
+            'section' => $this->section_id,
+            'weight' => $this->weight
         );
     }
 
@@ -334,19 +334,19 @@ class Topic extends \yN\Entity\Model
 Topic::$schema_cache = new \RedMap\Schema(
     'board_topic_cache',
     array(
-        'create_profile'	=> null,
-        'create_time'		=> null,
-        'hint'				=> null,
-        'id'				=> null,
-        'last_profile'		=> null,
-        'posts'				=> null
+        'create_profile' => null,
+        'create_time' => null,
+        'hint' => null,
+        'id' => null,
+        'last_profile' => null,
+        'posts' => null
     ),
     '__',
     array(
-        'create_profile'	=> array(function () {
+        'create_profile' => array(function () {
             return Profile::$schema;
         }, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('create_profile' => 'user')),
-        'last_profile'		=> array(function () {
+        'last_profile' => array(function () {
             return Profile::$schema;
         }, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('last_profile' => 'user')),
     )
@@ -355,19 +355,19 @@ Topic::$schema_cache = new \RedMap\Schema(
 Topic::$schema_load = new \RedMap\Schema(
     'board_topic',
     array(
-        'create_profile'	=> '(SELECT p.create_profile FROM board_post p JOIN board_reference r ON r.post = p.id WHERE r.topic = @id AND r.position = 1 AND p.state = 0 LIMIT 1)',
-        'create_time'		=> '(SELECT p.create_time FROM board_post p JOIN board_reference r ON r.post = p.id WHERE r.topic = @id ORDER BY r.position LIMIT 1)',
-        'hint'				=> '(SELECT name FROM board_topic WHERE id = @id)',
-        'id'				=> null,
-        'last_profile'		=> '(SELECT p.create_profile FROM board_post p JOIN board_reference r ON r.post = p.id WHERE r.topic = @id AND p.state = 0 ORDER BY r.position DESC LIMIT 1)',
-        'posts'				=> '(SELECT COALESCE(MAX(position), 0) FROM board_reference WHERE topic = @id)'
+        'create_profile' => '(SELECT p.create_profile FROM board_post p JOIN board_reference r ON r.post = p.id WHERE r.topic = @id AND r.position = 1 AND p.state = 0 LIMIT 1)',
+        'create_time' => '(SELECT p.create_time FROM board_post p JOIN board_reference r ON r.post = p.id WHERE r.topic = @id ORDER BY r.position LIMIT 1)',
+        'hint' => '(SELECT name FROM board_topic WHERE id = @id)',
+        'id' => null,
+        'last_profile' => '(SELECT p.create_profile FROM board_post p JOIN board_reference r ON r.post = p.id WHERE r.topic = @id AND p.state = 0 ORDER BY r.position DESC LIMIT 1)',
+        'posts' => '(SELECT COALESCE(MAX(position), 0) FROM board_reference WHERE topic = @id)'
     ),
     '__',
     array(
-        'create_profile'	=> array(function () {
+        'create_profile' => array(function () {
             return Profile::$schema;
         }, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('create_profile' => 'user')),
-        'last_profile'		=> array(function () {
+        'last_profile' => array(function () {
             return Profile::$schema;
         }, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('last_profile' => 'user')),
     )
@@ -376,26 +376,26 @@ Topic::$schema_load = new \RedMap\Schema(
 Topic::$schema = new \RedMap\Schema(
     'board_topic',
     array(
-        'id'				=> null,
-        'is_closed'			=> null,
-        'last_time'			=> null,
-        'name'				=> null,
-        'section'			=> null,
-        'weight'			=> null
+        'id' => null,
+        'is_closed' => null,
+        'last_time' => null,
+        'name' => null,
+        'section' => null,
+        'weight' => null
     ),
     '__',
     array(
-        'bookmark'			=> array(function () {
+        'bookmark' => array(function () {
             return Bookmark::$schema;
         }, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'topic', '!profile' => 'profile')),
-        'cache'				=> array(Topic::$schema_cache, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('id' => 'id')),
-        'permission'		=> array(function () {
+        'cache' => array(Topic::$schema_cache, \RedMap\Schema::LINK_IMPLICIT | \RedMap\Schema::LINK_OPTIONAL, array('id' => 'id')),
+        'permission' => array(function () {
             return Permission::$schema_topic;
         }, \RedMap\Schema::LINK_OPTIONAL, array('id' => 'topic', '!profile' => 'profile')),
-        'permission_must'	=> array(function () {
+        'permission_must' => array(function () {
             return Permission::$schema_topic;
         }, 0, array('id' => 'topic', '!profile' => 'profile')), // [hack-private-topics]
-        'section'			=> array(function () {
+        'section' => array(function () {
             return Section::$schema;
         }, 0, array('section' => 'id'))
     )

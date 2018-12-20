@@ -31,8 +31,8 @@ function memo_edit($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-memo-edit.deval', 'account.memo.edit', array(
-        'alerts'	=> $alerts,
-        'memo'		=> $memo
+        'alerts' => $alerts,
+        'memo' => $memo
     )));
 }
 
@@ -46,6 +46,6 @@ function memo_view($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-memo-view.deval', 'account.memo', array(
-        'memo'	=> $memo
+        'memo' => $memo
     )));
 }

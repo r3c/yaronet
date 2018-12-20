@@ -23,9 +23,9 @@ class ReCaptchaAPI
         $http = new \Glay\Network\HTTP();
 
         $response = $http->query('POST', 'https://www.google.com/recaptcha/api/siteverify', array(
-            'remoteip'	=> $address->string,
-            'response'	=> $code,
-            'secret'	=> $this->site_secret
+            'remoteip' => $address->string,
+            'response' => $code,
+            'secret' => $this->site_secret
         ));
 
         $json = json_decode($response->data, true);

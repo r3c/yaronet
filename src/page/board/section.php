@@ -137,10 +137,10 @@ function section_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . ($section->id ?: 0) . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-board-section-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'section'	=> $section,
-        'new'		=> $new
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'section' => $section,
+        'new' => $new
     ), $forum->template));
 }
 
@@ -151,7 +151,7 @@ function section_list($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-board-section-list.deval', 'board.forum.section.list', array(
-        'sections'	=> $sections
+        'sections' => $sections
     )));
 }
 
@@ -192,9 +192,9 @@ function section_merge($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $from_section->id . '.merge';
 
     return Glay\Network\HTTP::data($display->render('yn-board-section-merge.deval', $location, array(
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'section'	=> $from_section
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'section' => $from_section
     ), $forum->template));
 }
 
@@ -272,10 +272,10 @@ function section_permission($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $section->id . '.permission';
 
     return Glay\Network\HTTP::data($display->render('yn-board-section-permission.deval', $location, array(
-        'alerts'		=> $alerts,
-        'forum'			=> $forum,
-        'permissions'	=> yN\Entity\Board\Permission::get_by_section($sql, $section->id),
-        'section'		=> $section
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'permissions' => yN\Entity\Board\Permission::get_by_section($sql, $section->id),
+        'section' => $section
     ), $forum->template));
 }
 
@@ -324,10 +324,10 @@ function section_view($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.' . $section->id;
 
     return Glay\Network\HTTP::data($display->render('yn-board-section-view.deval', $location, array(
-        'access'	=> $access,
-        'forum'		=> $forum,
-        'page'		=> $page,
-        'section'	=> $section,
-        'topics'	=> $topics
+        'access' => $access,
+        'forum' => $forum,
+        'page' => $page,
+        'section' => $section,
+        'topics' => $topics
     ), $forum->template));
 }

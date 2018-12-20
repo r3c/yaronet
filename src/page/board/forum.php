@@ -25,8 +25,8 @@ function forum_active($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.active';
 
     return Glay\Network\HTTP::data($display->render('yn-board-forum-active.deval', $location, array(
-        'forum'		=> $forum,
-        'topics'	=> $topics
+        'forum' => $forum,
+        'topics' => $topics
     ), $forum->template));
 }
 
@@ -173,9 +173,9 @@ function forum_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . ($forum->id ?: 0) . '.edit';
 
     return Glay\Network\HTTP::data($display->render('yn-board-forum-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'forum'		=> $forum,
-        'new'		=> $new
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'new' => $new
     ), $forum->template));
 }
 
@@ -190,7 +190,7 @@ function forum_list($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-board-forum-list.deval', 'board.forum', array(
-        'forums'	=> $forums
+        'forums' => $forums
     )));
 }
 
@@ -215,9 +215,9 @@ function forum_organize($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.organize';
 
     return Glay\Network\HTTP::data($display->render('yn-board-forum-organize.deval', $location, array(
-        'access'	=> $access,
-        'blocks'	=> $blocks,
-        'forum'		=> $forum
+        'access' => $access,
+        'blocks' => $blocks,
+        'forum' => $forum
     ), $forum->template));
 }
 
@@ -299,9 +299,9 @@ function forum_permission($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.permission';
 
     return Glay\Network\HTTP::data($display->render('yn-board-forum-permission.deval', $location, array(
-        'alerts'		=> $alerts,
-        'forum'			=> $forum,
-        'permissions'	=> $permissions
+        'alerts' => $alerts,
+        'forum' => $forum,
+        'permissions' => $permissions
     ), $forum->template));
 }
 
@@ -331,17 +331,17 @@ function forum_view($request, $logger, $sql, $display, $input, $user)
     };
 
     $sources = array(
-        'active'	=> $from_topics(yN\Entity\Board\Topic::get_by_last_time_forum($sql, $forum->id, yN\Entity\Board\Topic::ORDER_LAST, 10, $user->id)),
-        'new'		=> $from_topics(yN\Entity\Board\Topic::get_by_last_time_forum($sql, $forum->id, yN\Entity\Board\Topic::ORDER_CREATE, 10, $user->id))
+        'active' => $from_topics(yN\Entity\Board\Topic::get_by_last_time_forum($sql, $forum->id, yN\Entity\Board\Topic::ORDER_LAST, 10, $user->id)),
+        'new' => $from_topics(yN\Entity\Board\Topic::get_by_last_time_forum($sql, $forum->id, yN\Entity\Board\Topic::ORDER_CREATE, 10, $user->id))
     );
 
     // Render template
     $location = 'board.forum.' . $forum->id;
 
     return Glay\Network\HTTP::data($display->render('yn-board-forum-view.deval', $location, array(
-        'access'	=> yN\Entity\Board\Permission::check_by_forum($sql, $user, $forum),
-        'blocks'	=> $blocks,
-        'forum'		=> $forum,
-        'sources'	=> $sources
+        'access' => yN\Entity\Board\Permission::check_by_forum($sql, $user, $forum),
+        'blocks' => $blocks,
+        'forum' => $forum,
+        'sources' => $sources
     ), $forum->template));
 }

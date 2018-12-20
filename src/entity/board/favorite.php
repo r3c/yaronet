@@ -81,9 +81,9 @@ class Favorite extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'forum'		=> $this->forum_id,
-            'profile'	=> $this->profile_id,
-            'rank'		=> $this->rank
+            'forum' => $this->forum_id,
+            'profile' => $this->profile_id,
+            'rank' => $this->rank
         );
     }
 }
@@ -91,16 +91,16 @@ class Favorite extends \yN\Entity\Model
 Favorite::$schema = new \RedMap\Schema(
     'board_favorite',
     array(
-        'forum'		=> null,
-        'profile'	=> null,
-        'rank'		=> null
+        'forum' => null,
+        'profile' => null,
+        'rank' => null
     ),
     '__',
     array(
-        'forum'		=> array(function () {
+        'forum' => array(function () {
             return Forum::$schema;
         }, 0, array('forum' => 'id')),
-        'profile'	=> array(function () {
+        'profile' => array(function () {
             return Profile::$schema;
         }, 0, array('profile' => 'user'))
     )

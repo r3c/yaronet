@@ -56,9 +56,9 @@ function block_delete($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.delete';
 
     return Glay\Network\HTTP::data($display->render('yn-board-block-delete.deval', $location, array(
-        'alerts'	=> $alerts,
-        'block'		=> $block,
-        'forum'		=> $forum
+        'alerts' => $alerts,
+        'block' => $block,
+        'forum' => $forum
     ), $forum->template));
 }
 
@@ -148,9 +148,9 @@ function block_edit($request, $logger, $sql, $display, $input, $user)
     $location = 'board.forum.' . $forum->id . '.organize';
 
     return Glay\Network\HTTP::data($display->render('yn-board-block-edit.deval', $location, array(
-        'alerts'	=> $alerts,
-        'block'		=> $block,
-        'forum'		=> $forum,
-        'sections'	=> $sections
+        'alerts' => $alerts,
+        'block' => $block,
+        'forum' => $forum,
+        'sections' => $sections
     ), $forum->template));
 }
