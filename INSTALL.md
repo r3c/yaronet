@@ -40,6 +40,7 @@ on your target server.
   * If you are using another HTTP server you will need extra configuration detailed below
 * Run `/src/configure.sh` from your Unix shell
 * Or, if you don't have a Unix shell available:
+  * Retreive file `parser.php` from latest release of [Deval](https://github.com/r3c/deval/releases) and save it to `/setup/module/deval/src/parser.php`
   * Copy `/setup/module/amato/src` to `/src/library/amato` (or create a link to it)
   * Copy `/setup/module/deval/src` to `/src/library/deval` (or create a link to it)
   * Copy `/setup/module/glay/src` to `/src/library/glay` (or create a link to it)
