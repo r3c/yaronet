@@ -89,16 +89,22 @@ if [ -n "$opt_token" ]; then
 	code="$(curl -c "$token" -d expire=8640000 -d login="$login" --data-urlencode "password=$password" -s -w '%{http_code}' "$url/users/signin")"
 
 	if [ "$code" -eq 302 ]; then
-		log_info 'Authentication OK.'
+		log_info 'Authentication OK, token created.'
 	else
-		log_error 'Authentication failed.'
+		log_error 'Authentication failed, please make sure login and password are valid.'
+		exit 2
 	fi
 fi
 
 # Clean data
-if [ -n "$opt_clean" -a -r "$token" ]; then
+if [ -n "$opt_clean" ]; then
 	log_info 'Trigger cleaning task...'
 
-	curl -s -b "$token" "$url/tasks/clean" |
-	( ! grep . )
+	if [ -r "$token" ]; then
+		curl -s -b "$token" "$url/tasks/clean" |
+		( ! grep . )
+	else
+		log_error 'Missing authentication token, please run with "-t" option to create one.'
+		exit 2
+	fi
 fi
