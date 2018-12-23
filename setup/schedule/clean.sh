@@ -32,19 +32,14 @@ prompt()
 }
 
 # Read command line arguments
-opt_clean=
+opt_clean=1
 opt_quiet=
 opt_token=
 
-while getopts :chqtx opt; do
+while getopts :hqtx opt; do
 	case "$opt" in
-		c)
-			opt_clean=1
-			;;
-
 		h)
-			log_error "$(basename $0) [-c] [-h] [-q] [-t] [-x] <base url>"
-			log_error '  -c: trigger cleaning task on target site'
+			log_error "$(basename $0) [-h] [-q] [-t] [-x] <base url>"
 			log_error '  -h: display this help'
 			log_error '  -q: quiet mode'
 			log_error '  -t: create authentication token'
