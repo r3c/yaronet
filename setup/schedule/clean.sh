@@ -15,14 +15,20 @@ log_info()
 
 prompt()
 {
-	local result
+	local caption="$2"
+	local input="$1"
+	local value
 
-	stty -echo
-	read -p "$1" result
-	stty echo
-	echo >&2
+	if [ "$input" = hide ]; then
+		stty -echo
+		read -p "$caption" value
+		stty echo
+		echo >&2
+	else
+		read -p "$caption " value
+	fi
 
-	echo "$result"
+	echo "$value"
 }
 
 # Read command line arguments
@@ -83,10 +89,10 @@ url="$1"
 if [ -n "$opt_token" ]; then
 	log_info 'Please provide administration account credentials to generate authentication token:'
 
-	login="$(prompt 'login?')"
-	password="$(prompt 'password?')"
+	login="$(prompt show 'Administrator login?')"
+	password="$(prompt hide 'Administrator password?')"
 
-	code="$(curl -c "$token" -d expire=8640000 -d login="$login" --data-urlencode "password=$password" -s -w '%{http_code}' "$url/users/signin")"
+	code="$(curl -c "$token" -d expire=8640000 -d login="$login" --data-urlencode "password=$password" -o /dev/null -s -w '%{http_code}' "$url/users/signin")"
 
 	if [ "$code" -eq 302 ]; then
 		log_info 'Authentication OK, token created.'
