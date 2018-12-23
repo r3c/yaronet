@@ -96,6 +96,7 @@ if [ -n "$opt_token" ]; then
 
 	if [ "$code" -eq 302 ]; then
 		log_info 'Authentication OK, token created.'
+		chmod 600 "$token"
 	else
 		log_error 'Authentication failed, please make sure login and password are valid.'
 		exit 2
