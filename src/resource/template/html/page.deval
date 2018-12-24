@@ -40,7 +40,6 @@
 						{{ end }}
 						{{ if user.id != null }}
 							<a class="bind-tooltip icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}"></a>
-							<a class="bind-tooltip icon chat" href="{{ $ cat ("http://kiwiirc.com/client/irc.mirari.fr/yaronet?nick=", php ("rawurlencode") (user.login)) }}" title="{{ $ tra ("page.chat.hint") }}"></a>
 							<a class="bind-tooltip icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
 						{{ end }}
 					</span>
