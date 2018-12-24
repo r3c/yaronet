@@ -63,6 +63,7 @@
 						{{ end }}
 						{{ if user.id != null }}
 							<a class="bind-tooltip gly-icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}" alt="{{ $ tra ("page.profile") }}"></a>
+							<a class="bind-tooltip gly-icon chat" href="{{ $ cat ("http://kiwiirc.com/client/irc.mirari.fr/yaronet?nick=", php ("rawurlencode") (user.login)) }}" title="{{ $ tra ("page.chat.hint") }}" alt="{{ $ tra ("page.chat") }}"></a>
 							<a class="bind-tooltip gly-icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}" alt="{{ $ tra ("page.signout") }}"></a>
 						{{ end }}
 					</span>
