@@ -193,11 +193,14 @@ function make_page($blocks)
 
 mb_internal_encoding('utf-8');
 
+// Prevent access when configuration file already exists
 if (@include './config.php') {
     $blocks = array(make_block_advice(array(make_section_text('Configuration file found', array(
         'It seems there is already a configuration file (`config.php`) for this website.',
         'For security reasons, install script can only be used when website is not configured. Please rename or delete this file if you want to use install script.'
     )))));
+
+// Otherwise enter configuration mode
 } else {
     $templates = array(
         'static/.htaccess' => @file_get_contents(dirname(__FILE__) . '/static/.htaccess.dist'),
@@ -205,6 +208,7 @@ if (@include './config.php') {
         'config.php' => @file_get_contents(dirname(__FILE__) . '/config.php.dist')
     );
 
+    // Fail if some configuration template file is missing
     if (in_array(false, $templates, true)) {
         $blocks = array(make_block_status('failure', array(make_section_text('Configuration templates missing', array(
             'Couldn\'t find required configuration template files: ' . implode(', ', array_map(function ($name) {
@@ -212,6 +216,8 @@ if (@include './config.php') {
             }, array_keys($templates))) . '.',
             'Please make sure both files exist in same folder than install script (`install.php`) and can be read by current user account.'
         )))));
+
+    // Validate input values if form was just submitted
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = null;
 
@@ -221,6 +227,7 @@ if (@include './config.php') {
             $_POST['engine_text_i18n_cache'] = null;
         }
 
+        // Validate submitted fields
         foreach ($_POST as $key => $value) {
             if ($error !== null) {
                 break;
@@ -379,6 +386,7 @@ if (@include './config.php') {
             }
         }
 
+        // Accept configuration if version was provided and no error was raised
         if (isset($_POST['version']) && $error === null) {
             $saved = true;
 
@@ -404,6 +412,8 @@ if (@include './config.php') {
             }
 
             $blocks = array(make_block_status('success', array($section)));
+
+        // Otherwise display configuration input form
         } else {
             $base_url = preg_match('@^(.*)/install\\.php([?#]|$)@', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $match) ? $match[1] : '';
 
@@ -537,6 +547,8 @@ if (@include './config.php') {
                 ))
             );
         }
+
+        // Display first page with default settings
     } else {
         $blocks = array(
             make_block_advice(array(make_section_text(
