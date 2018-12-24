@@ -6,6 +6,8 @@
 		<string key="bookmarks1.hint">New posts in topics you follow</string>
 		<string key="bookmarks2">Bookmarks</string>
 		<string key="bookmarks2.hint">New posts in topics you follow and last updates</string>
+		<string key="chat">Chat</string>
+		<string key="chat.hint">IRC chatroom</string>
 		<string key="contacts">Contacts</string>
 		<string key="copyright">Built with</string>
 		<string key="credits">Credits</string>
