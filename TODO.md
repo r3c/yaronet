@@ -33,6 +33,9 @@ TODO
 - [ ] remove hack for private topics [hack-private-topics]
 - [ ] on topic edit, take permissions into account for parent section auto-complete
 
+DONE
+----
+
 ### Open source
 
 - [x] refactor old search table [legacy-search]
@@ -61,9 +64,6 @@ TODO
 - [x] update "losp" module references to GitHub
 - [x] update "queros" module references to GitHub
 - [x] update "redmap" module references to GitHub
-
-DONE
-----
 
 ### Unclassified
 
