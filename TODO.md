@@ -6,7 +6,7 @@ TODO
 
 ### Archive
 
-- [ ] delete unused glyphs in html/10: arrow-inside, cellphone, chart, clock-red, crown, flag-blue, information, paper, table
+- [ ] delete unused glyphs in html/10: arrow-inside, chart, clock-red, crown, flag-blue, information, paper, table
 - [ ] delete unused glyphs in html/16: bell, cut, ip, nuclear, zone-pencil
 
 ### Technical debt
