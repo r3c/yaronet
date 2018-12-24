@@ -7,10 +7,9 @@
 		404,page not found,
 		unknown error}</string>
 	<string key="error.message">{case:{code},
-		400,The request you sent is invalid. If you believe it's an issue on the website please report it to "Bugs" section.,
+		400,The request you sent is invalid. If you believe it's an issue on the website please report it to website administrators.,
 		401,Please connect using your login and password to access this page.,
 		403,You're not allowed to access this page.,
-		404,You followed an invalid link\, which may have been removed from website or is unavailable because of a temporary error. If you believe it's the later one please report it to "Bugs" section.,
-		This page is currently unavailable due to an internal error. Please report it to "Bugs" section if you can.}</string>
-	<string key="error.support">Link to "Bugs" section</string>
+		404,You followed an invalid link\, which may have been removed from website or is unavailable because of a temporary error. If you believe it's the later one please report it to website administrators.,
+		This page is currently unavailable due to an internal error. Please report it to website administrators if you have time to do so.}</string>
 </locale>

@@ -7,10 +7,9 @@
 		404,page introuvable,
 		erreur inconnue}</string>
 	<string key="error.message">{case:{code},
-		400,La requête que vous avez envoyée est incorrecte. Si vous pensez qu'il s'agit d'un problème sur le site\, n'hésitez pas à le signaler sur la section "Bugs".,
+		400,La requête que vous avez envoyée est incorrecte. Si vous pensez qu'il s'agit d'un problème sur le site\, n'hésitez pas à le signaler aux administrateurs du site.,
 		401,Connectez-vous à l'aide de vos identifiant et mot de passe pour accéder à cette page.,
 		403,Vous n'avez pas l'autorisation d'accéder à cette page.,
-		404,Le lien que vous avez suivi est invalide\, n'existe plus\, ou n'est plus disponible à cause d'un problème sur le site. Si vous pensez être dans ce dernier cas\, n'hésitez pas à le signaler sur la section "Bugs".,
-		Cette page n'est pas accessible à cause d'une erreur interne. Si vous en avez le temps\, merci de le signaler sur la section "Bugs".}</string>
-	<string key="error.support">Lien vers la section "Bugs"</string>
+		404,Le lien que vous avez suivi est invalide\, n'existe plus\, ou n'est plus disponible à cause d'un problème sur le site. Si vous pensez être dans ce dernier cas\, n'hésitez pas à le signaler aux administrateurs du site.,
+		Cette page n'est pas accessible à cause d'une erreur interne. Si vous en avez le temps\, merci de contacter les administrateur du site pour la signaler.}</string>
 </locale>

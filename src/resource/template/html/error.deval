@@ -12,12 +12,7 @@
 				<p>
 					{{ $ tra ("error.message", ["code": code]) }}
 				</p>
-				{{ if code != 401 && code != 403 }}
-					<p>
-						<a href="{{ $ url ("board.section.view", ["section": 77]) }}">{{ $ tra ("error.support") }}</a>
-					</p>
-				</div>
-			{{ end }}
+			</div>
 		{{ end }}
 	{{ end }}
 {{ end }}
