@@ -212,7 +212,7 @@ class Display
 
         $defaults = array(
             'activities' => $activities,
-            'address'       => $address,
+            'address' => $address,
             'get_message' => function () {
                 return $this->user->id !== null ? \yN\Entity\Account\Message::check($this->sql, $this->user->id) : null;
             },

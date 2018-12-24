@@ -21,9 +21,9 @@ function home($request, $logger, $sql, $display, $input, $user)
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-home.deval', 'home', array(
-        'personal'	=> $personal,
-        'popular'	=> $popular,
-        'random'	=> $random,
-        'shouts'	=> $shouts
+        'personal' => $personal,
+        'popular' => $popular,
+        'random' => $random,
+        'shouts' => $shouts
     )));
 }
