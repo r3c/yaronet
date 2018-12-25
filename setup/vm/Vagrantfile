@@ -3,6 +3,7 @@
 
 Vagrant.configure("2") do |config|
 	httpd_port = 8080
+	php_version = "7.0"
 	phpmyadmin_path = "/opt/phpmyadmin"
 	yaronet_path = "/opt/yaronet"
 
@@ -27,17 +28,17 @@ Vagrant.configure("2") do |config|
 
 		# Install apt packages
 		for package in \
-			apache2 \
-			libapache2-mod-php7.0 \
-			mariadb-server-10.0 \
-			nodejs-legacy \
-			npm \
-			php7.0-curl \
-			php7.0-gd \
-			php7.0-mbstring \
-			php7.0-mcrypt \
-			php7.0-mysql \
-			php7.0-xml; do
+			'apache2' \
+			'libapache2-mod-php#{php_version}' \
+			'mariadb-server-10.0' \
+			'nodejs-legacy' \
+			'npm' \
+			'php#{php_version}-curl' \
+			'php#{php_version}-gd' \
+			'php#{php_version}-mbstring' \
+			'php#{php_version}-mcrypt' \
+			'php#{php_version}-mysql' \
+			'php#{php_version}-xml'; do
 			apt-get -qq install -y "$package"
 		done
 
@@ -48,18 +49,18 @@ Vagrant.configure("2") do |config|
 			less \
 			less-plugin-clean-css \
 			uglify-js; do
-			npm install -gq "$module"
+			npm install --silent -gq "$module"
 		done
 
 		# Install phpMyAdmin
-		mkdir -p "#{phpmyadmin_path}"
+		mkdir -p '#{phpmyadmin_path}'
 		curl -s https://files.phpmyadmin.net/phpMyAdmin/4.7.4/phpMyAdmin-4.7.4-all-languages.tar.gz |
-		tar xz -C "#{phpmyadmin_path}" --strip-components=1
+		tar xz -C '#{phpmyadmin_path}' --strip-components=1
 
 		sed -r "
 			s/^(\\\\\\$cfg\\\\['Servers'\\\\]\\\\[\\\\\\$i\\\\])(\\\\['auth_type'\\\\])[[:blank:]]*=.*/\\1\\2 = 'config';\\n\\1['user'] = 'yaronet';/;
 			s/^(\\\\\\$cfg\\\\['Servers'\\\\]\\\\[\\\\\\$i\\\\]\\\\['AllowNoPassword'\\\\])[[:blank:]]*=.*/\\1 = true;/
-		" "#{phpmyadmin_path}/config.sample.inc.php" > "#{phpmyadmin_path}/config.inc.php"
+		" '#{phpmyadmin_path}/config.sample.inc.php' > '#{phpmyadmin_path}/config.inc.php'
 
 		# Configure Apache sites
 		cat << EOF > /etc/apache2/sites-available/phpmyadmin.conf
@@ -91,8 +92,8 @@ EOF
 		a2ensite -q yaronet
 
 		# Configure PHP
-		sed -ri 's/^(display_errors)[[:blank:]]*=.*/\1 = On/' /etc/php/7.0/apache2/php.ini
-		sed -ri 's/^(zend\.assertions)[[:blank:]]*=.*/\1 = 1/' /etc/php/7.0/apache2/php.ini
+		sed -ri 's/^(display_errors)[[:blank:]]*=.*/\1 = On/' '/etc/php/#{php_version}/apache2/php.ini'
+		sed -ri 's/^(zend\.assertions)[[:blank:]]*=.*/\1 = 1/' '/etc/php/#{php_version}/apache2/php.ini'
 
 		# Configure MySQL
 		cat << EOF | mysql
@@ -111,9 +112,9 @@ EOF
 
 	# Setup developer account
 	config.vm.provision "shell", privileged: false, inline: <<-SHELL
-		sh #{yaronet_path}/setup/configure.sh
+		sh '#{yaronet_path}/setup/configure.sh'
 
-		mysql -u yaronet yaronet < "#{yaronet_path}/setup/database/schema.sql"
+		mysql -u yaronet yaronet < '#{yaronet_path}/setup/database/schema.sql'
 	SHELL
 
 	# Display help message
