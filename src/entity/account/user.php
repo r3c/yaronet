@@ -228,7 +228,10 @@ class User extends \yN\Entity\Model
             return null;
         }
 
-        return substr(hash_hmac('crc32b', $this->recover_time, $this->id), 0, 8);
+        $token_hash = config('engine.entity.account.tokenhash', 'crc32b');
+        $token_length = config('engine.entity.account.tokenlen', 8);
+
+        return substr(hash_hmac($token_hash, $this->recover_time, $this->id), 0, $token_length);
     }
 
     public function get_template($external)

@@ -106,6 +106,12 @@ $config = array(
     // Input directory for locale strings
     //'engine.text.i18n.source' => './resource/language',
 
+    // Hash algo used for password recovery token
+    // 'engine.entity.account.tokenhash' => 'crc32b',
+
+    // Password recovery token length
+    // 'engine.entity.account.tokenlen' => 8,
+
     // Configuration file version
     //'version' => 1
 );
