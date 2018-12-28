@@ -176,8 +176,8 @@ done
 # Install npm modules
 (
 	cd "$setup/module/deval" &&
-	npm install --silent ||
-	log 2 "Could not execute npm install in $setup/module/deval, possibly due to VM restrictions, please retry manually from host system."
+	npm install --no-bin-links --silent ||
+	log 2 "Could not execute npm install in $setup/module/deval, please retry manually."
 )
 
 # Link modules to library directory
