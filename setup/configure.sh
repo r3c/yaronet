@@ -93,13 +93,15 @@ link()
 			;;
 	esac
 
-	log 1 "Linked folder '$target' to '$source'"
+	log 0 "Linked folder '$target' to '$source'"
 }
 
 # Print log message to stderr
 log()
 {
 	local prefix
+
+	test "$1" -ge "$opt_verbosity" || return
 
 	case "$1" in
 		0)
@@ -126,8 +128,9 @@ log()
 # Read command line arguments
 opt_deploy=
 opt_link=
+opt_verbosity=1
 
-while getopts :d:hl: opt; do
+while getopts :d:hl:v opt; do
 	case "$opt" in
 		d)
 			opt_deploy="$OPTARG"
@@ -135,15 +138,20 @@ while getopts :d:hl: opt; do
 
 		h)
 			log 1 "yAronet configuration and deployment tool"
-			log 1 "Usage: $(basename "$0") [-d <environment>] [-h] [-l <mode>]"
+			log 1 "Usage: $(basename "$0") [-d <environment>] [-h] [-l <mode>] [-v]"
 			log 1 "  -d <environment>: run deployment to given environment after setup"
 			log 1 "  -h: display usage and exit"
 			log 1 "  -l <mode>: link mode (duplicate, junction or symbolic)"
+			log 1 "  -v: increase verbosity level"
 			exit
 			;;
 
 		l)
 			opt_link="$OPTARG"
+			;;
+
+		v)
+			opt_verbosity=0
 			;;
 
 		:)
