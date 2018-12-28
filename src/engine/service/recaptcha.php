@@ -16,7 +16,7 @@ class ReCaptchaAPI
     {
         global $address;
 
-        if ($this->site_key === null || $this->site_secret === null || !$address->is_public()) {
+        if (!$this->enable()) {
             return true;
         }
 
@@ -31,6 +31,13 @@ class ReCaptchaAPI
         $json = json_decode($response->data, true);
 
         return $json !== null && isset($json['success']) && $json['success'];
+    }
+
+    public function enable()
+    {
+        global $address;
+
+        return $this->site_key !== null && $this->site_secret !== null && $address->is_public();
     }
 
     public function input()

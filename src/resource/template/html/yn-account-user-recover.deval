@@ -21,7 +21,7 @@
 							_fields = [
 								"recover":	["group", true],
 								"email":	["text", true, ["focus": true]],
-								"captcha":	["captcha", true, ["visible": address.is_public ()]]
+								"captcha":	["captcha", true, ["visible": feature.captcha ()]]
 							],
 							_prefix = "yn.account.user.recover.form."
 						}}

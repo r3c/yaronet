@@ -102,7 +102,7 @@
 								_alerts = null,
 								_fields = [
 									"nick":		["text", false, ["length": 50, "visible": user.id == null]],
-									"captcha":	["captcha", null, ["visible": address.is_public () && user.id == null]],
+									"captcha":	["captcha", null, ["visible": feature.captcha () && user.id == null]],
 									"text":		["text", null, ["length": 200, "placeholder": true]]
 								],
 								_prefix = "yn.home.chat.form."

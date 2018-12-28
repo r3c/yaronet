@@ -37,7 +37,7 @@
 								"identity":		["group", true],
 								"login":		["text", true, ["length": 50]],
 								"email":		["text", true, ["length": 100]],
-								"captcha":		["captcha", true, ["visible": address.is_public () && edit.id == null]],
+								"captcha":		["captcha", true, ["visible": feature.captcha () && edit.id == null]],
 								"admin":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],
 								"disabled":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],
 								"active":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],

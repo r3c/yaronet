@@ -27,6 +27,15 @@ class Display
         'html.tifr'
     );
 
+    public static function _captcha_enable()
+    {
+        \Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
+
+        $captcha = new \yN\Engine\Service\ReCaptchaAPI();
+
+        return $captcha->enable();
+    }
+
     public static function _captcha_input()
     {
         \Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
@@ -212,7 +221,9 @@ class Display
 
         $defaults = array(
             'activities' => $activities,
-            'address' => $address,
+            'feature' => array(
+                'captcha' => array($self, '_captcha_enable')
+            ),
             'get_message' => function () {
                 return $this->user->id !== null ? \yN\Entity\Account\Message::check($this->sql, $this->user->id) : null;
             },
