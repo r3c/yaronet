@@ -166,7 +166,11 @@ for executable in node npm; do
 done
 
 # Install npm modules
-( cd "$setup/module/deval" && npm install --silent )
+(
+	cd "$setup/module/deval" &&
+	npm install --silent ||
+	log 2 "Could not execute npm install in $setup/module/deval, possibly due to VM restrictions, please retry manually from host system."
+)
 
 # Link modules to library directory
 link "$opt_link" amato/src src/library/amato
