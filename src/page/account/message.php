@@ -67,8 +67,8 @@ function message_edit($request, $logger, $sql, $display, $input, $user)
         $recipients = array($user->id => true);
 
         // Create boxes when message is sent for the first time
-        if ($input->get_string('to', $to) && $new) {
-            foreach (array_slice(array_filter(array_map('trim', explode(',', $to)), 'strlen'), 0, 50) as $login) {
+        if ($input->get_strings('to', yN\Entity\Account\Message::RECIPIENT_MAX, $to) && $new) {
+            foreach (array_filter(array_map('trim', $to), 'strlen') as $login) {
                 $recipient = yN\Entity\Account\User::get_by_login($sql, $login);
 
                 if ($recipient !== null) {

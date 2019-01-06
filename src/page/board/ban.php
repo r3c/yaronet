@@ -22,19 +22,15 @@ function ban_edit($request, $logger, $sql, $display, $input, $user)
     if ($request->method === 'POST') {
         $alerts = array();
 
-        if ($input->get_string('addresses', $addresses_string)) {
-            $addresses = array_filter(array_map('trim', explode(',', $addresses_string)), 'strlen');
+        if ($input->get_strings('addresses', yN\Entity\Board\Ban::COUNT_MAX, $addresses)) {
+            $addresses = array_filter(array_map('trim', $addresses), 'strlen');
 
-            if (count($addresses) > yN\Entity\Board\Ban::COUNT_MAX) {
-                $alerts[] = 'addresses-length';
-            }
-
-            // Remove previous favorites
-            elseif (!yN\Entity\Board\Ban::delete_by_forum($sql, $forum->id)) {
+            // Remove previous bans
+            if (!yN\Entity\Board\Ban::delete_by_forum($sql, $forum->id)) {
                 $alerts[] = 'delete';
             }
 
-            // Insert new favorites
+            // Insert new bans
             else {
                 foreach ($addresses as $address) {
                     $ban = new yN\Entity\Board\Ban();
@@ -51,14 +47,14 @@ function ban_edit($request, $logger, $sql, $display, $input, $user)
         $alerts = null;
     }
 
-    // Retrieve current favorites
+    // Retrieve current bans
     $addresses = array();
 
     foreach (yN\Entity\Board\Ban::get_by_forum($sql, $forum->id) as $ban) {
         $addresses[] = $ban->address;
     }
 
-    $input->ensure('addresses', implode(', ', $addresses));
+    $input->ensure('addresses', $input->build_strings($addresses));
 
     // Render template
     $location = 'board.ban.' . $forum->id . '.edit';

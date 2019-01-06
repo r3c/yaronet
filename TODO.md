@@ -17,7 +17,7 @@ TODO
 - [ ] fix missing SQL transactions [sql-transaction]
 - [ ] split "edit" and "quote" features when creating new post
 - [ ] inject only instance variables or constants in Deval templates [deval-inject]
-- [ ] fix favorites (and possibly other multi-value input fields) not accepting entries with a "," character
+- [x] fix favorites (and possibly other multi-value input fields) not accepting entries with a "," character
 
 ### Mobile UX
 

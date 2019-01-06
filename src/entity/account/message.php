@@ -14,6 +14,8 @@ class Message extends \yN\Entity\Model
 
     const MODEL_COST = 1;
 
+    const RECIPIENT_MAX = 32;
+
     public static $schema;
     public static $schema_box;
     public static $schema_cache = null;

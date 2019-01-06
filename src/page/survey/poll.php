@@ -10,8 +10,8 @@ function poll_edit($request, $logger, $sql, $display, $input, $user)
         $alerts = array();
 
         // Parameters
-        $choices = $input->get_string('choices', $choices_string)
-            ? array_filter(array_map('trim', explode(',', $choices_string)), 'strlen')
+        $choices = $input->get_strings('choices', yN\Entity\Survey\Poll::RANK_MAX, $choices)
+            ? array_filter(array_map('trim', $choices), 'strlen')
             : array();
 
         $question = $input->get_string('question', $question)

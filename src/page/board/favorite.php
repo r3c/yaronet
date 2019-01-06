@@ -23,15 +23,11 @@ function favorite_edit($request, $logger, $sql, $display, $input, $user)
     if ($request->method === 'POST') {
         $alerts = array();
 
-        if ($input->get_string('forums', $forums_string)) {
-            $forums = array_filter(array_map('trim', explode(',', $forums_string)), 'strlen');
-
-            if (count($forums) > yN\Entity\Board\Favorite::COUNT_MAX) {
-                $alerts[] = 'forums-length';
-            }
+        if ($input->get_strings('forums', yN\Entity\Board\Favorite::COUNT_MAX, $forum_names)) {
+            $forum_names = array_filter(array_map('trim', $forum_names), 'strlen');
 
             // Remove previous favorites
-            elseif (!yN\Entity\Board\Favorite::delete_by_profile($sql, $edit->id)) {
+            if (!yN\Entity\Board\Favorite::delete_by_profile($sql, $edit->id)) {
                 $alerts[] = 'delete';
             }
 
@@ -39,7 +35,7 @@ function favorite_edit($request, $logger, $sql, $display, $input, $user)
             else {
                 $edit->is_favorite = false;
 
-                foreach ($forums as $name) {
+                foreach ($forum_names as $name) {
                     $forum = yN\Entity\Board\Forum::get_by_name($sql, $name);
 
                     if ($forum === null) {
@@ -76,7 +72,7 @@ function favorite_edit($request, $logger, $sql, $display, $input, $user)
         $forums[] = $favorite->forum->name;
     }
 
-    $input->ensure('forums', implode(', ', $forums));
+    $input->ensure('forums', $input->build_strings($forums));
 
     // Render template
     $location = 'board.favorite.' . $edit->id . '.edit';

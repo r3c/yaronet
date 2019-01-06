@@ -17,6 +17,21 @@ class Input
         $this->files =& $files;
     }
 
+    /*
+    ** Combine multiple strings into single string value separated by comma
+    ** (',') characters to match formatting from JavaScript `multiMerge`
+    ** function.
+    ** See function `yn.controlFormComplete` in control-form.js for reference.
+    ** $values: input values
+    ** return: combined string
+    */
+    public function build_strings($values)
+    {
+        return implode(', ', array_map(function ($value) {
+            return str_replace(',', ',,', $value);
+        }, $values));
+    }
+
     public function ensure($name, $value)
     {
         if (!isset($this->fields[$name])) {
@@ -93,5 +108,44 @@ class Input
         $value = $defined ? (string)$this->fields[$name] : '';
 
         return $defined;
+    }
+
+    /*
+    ** Read multiple strings from single input field, separated by comma (',')
+    ** characters to match formatting from JavaScript `multiSplit` function.
+    ** See function `yn.controlFormComplete` in control-form.js for reference.
+    ** $name: input field name
+    ** $limit: maximum allowed number of elements
+    ** $values: output values
+    ** return: true if input strings were found or false otherwise
+    */
+    public function get_strings($name, $limit, &$values)
+    {
+        if (!$this->get_string($name, $value)) {
+            return false;
+        }
+
+        $values = array();
+
+        for ($index = 0; $index < strlen($value); ++$index) {
+            if ($value[$index] === ',') {
+                if ($index + 1 < strlen($value) && $value[$index + 1] === ',') {
+                    $value = substr($value, 0, $index) . substr($value, $index + 1);
+                } else {
+                    $values[] = substr($value, 0, $index);
+
+                    if (count($values) >= $limit) {
+                        return true;
+                    }
+
+                    $value = substr($value, $index + 1);
+                    $index = 0;
+                }
+            }
+        }
+
+        $values[] = $value;
+
+        return true;
     }
 }

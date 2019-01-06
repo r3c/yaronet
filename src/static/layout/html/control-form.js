@@ -13,6 +13,36 @@ yn.controlFormComplete = function (target) {
 		var userInput;
 
 		// Configure multi-selection mode if enabled
+		var multiMerge = function (values) {
+			return $
+				.map(values, function (value) {
+					return value.replace(/,/g, ',,').trim();
+				})
+				.join(', ');
+		};
+
+		var multiSplit = function (value) {
+			var values = [];
+
+			for (var index = 0; index < value.length; ++index) {
+				if (value[index] === ',') {
+					if (index + 1 < value.length && value[index + 1] === ',') {
+						value = value.substring(0, index) + value.substring(index + 1);
+					}
+					else {
+						values.push(value.substring(0, index));
+
+						value = value.substring(index + 1);
+						index = 0;
+					}
+				}
+			}
+
+			values.push(value);
+
+			return values;
+		};
+
 		var limit = formInput.data('limit') || 10;
 		var multiple = formInput.data('multiple');
 
@@ -58,10 +88,9 @@ yn.controlFormComplete = function (target) {
 						.map(function () {
 							return $(this).find('.item').text();
 						})
-						.get()
-						.join(',');
+						.get();
 
-					formInput.val(values);
+					formInput.val(multiMerge(values));
 				};
 
 				// Allow sorting values if requested
@@ -75,7 +104,7 @@ yn.controlFormComplete = function (target) {
 				}
 
 				// Insert initial elements
-				$.each(formInput.val().split(/\s*,\s*/), function () {
+				$.each(multiSplit(formInput.val()), function () {
 					appendValue('', this);
 				});
 
@@ -97,11 +126,11 @@ yn.controlFormComplete = function (target) {
 
 			case "text":
 				appendValue = function (previous, current) {
-					return previous.split(/\s*,\s*/).slice(0, -1).concat([current, '']).join(', ');
+					return multiMerge(multiSplit(previous).slice(0, -1).concat([current, '']));
 				};
 
 				peekValue = function (current) {
-					return current.split(/\s*,\s*/).pop();
+					return multiSplit(current).pop().trim();
 				};
 
 				userInput = formInput;
