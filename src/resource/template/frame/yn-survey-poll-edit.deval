@@ -25,9 +25,8 @@
 							]]],
 							"choices":	["complete", false, [
 								"limit":		php ("yN\\Entity\\Survey\\Poll::#RANK_MAX"),
-								"placeholder":	true,
-								"selectable":	true,
-								"sortable":		true
+								"multiple":		"sort",
+								"placeholder":	true
 							]]
 						],
 						_prefix = "yn.survey.poll.edit.form."

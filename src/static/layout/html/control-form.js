@@ -7,124 +7,147 @@ yn = window.yn || {};
 */
 yn.controlFormComplete = function (target) {
 	target.each(function () {
-		var field = $(this);
-		var append = field.data('append') !== undefined;
-		var callback = field.data('callback');
-		var limit = field.data('limit') || 10;
-		var selectable = field.data('selectable') !== undefined;
-		var sortable = field.data('sortable') !== undefined;
+		var appendValue;
+		var formInput = $(this);
+		var peekValue;
+		var userInput;
 
-		if (selectable) {
-			var input = $('<input type="text">')
-				.insertBefore(field);
+		// Configure multi-selection mode if enabled
+		var limit = formInput.data('limit') || 10;
+		var multiple = formInput.data('multiple');
 
-			var list = $('<ul class="selectable glyph10">')
-				.insertAfter(field)
-				.disableSelection();
+		switch (multiple) {
+			case "list":
+			case "sort":
+				var items = $('<ul class="selectable glyph10">')
+					.insertAfter(formInput)
+					.disableSelection();
 
-			field.attr('type', 'hidden');
+				formInput.attr('type', 'hidden');
 
-			var insert = function (value) {
-				if (!value || value.length <= 0 || list.children('li').length >= limit)
-					return false;
+				appendValue = function (previous, current) {
+					if (!current || current.length <= 0 || items.children('li').length >= limit)
+						return current;
 
-				var remove = $('<a class="icon delete" href="#">').on('click', function () {
-					$(this).closest('li').remove();
+					var caption = $('<span class="label item">').text(current);
+					var remove = $('<a class="icon delete" href="#">').on('click', function () {
+						$(this).closest('li').remove();
+
+						update();
+
+						return false;
+					});
+
+					$('<li class="input-button handle">')
+						.append(remove)
+						.append(caption)
+						.appendTo(items);
 
 					update();
 
-					return false;
+					return '';
+				};
+
+				peekValue = function (current) {
+					return current;
+				};
+
+				var update = function () {
+					var values = items
+						.find('li')
+						.map(function () {
+							return $(this).find('.item').text();
+						})
+						.get()
+						.join(',');
+
+					formInput.val(values);
+				};
+
+				// Allow sorting values if requested
+				if (multiple === "sort") {
+					items
+						.addClass('sortable')
+						.sortable({
+							placeholder: 'input-focus',
+							update: update
+						});
+				}
+
+				// Insert initial elements
+				$.each(formInput.val().split(/\s*,\s*/), function () {
+					appendValue('', this);
 				});
 
-				$('<li class="input-button handle">')
-					.append(remove)
-					.append($('<span class="label item">').text(value))
-					.appendTo(list);
+				// Create new control for capturing user input
+				userInput = $('<input type="text">')
+					.on('keydown', function (event) {
+						if (event.which !== 13)
+							return;
 
-				update();
+						this.value = appendValue(this.value, this.value);
 
-				return true;
-			};
+						event.preventDefault();
 
-			var update = function () {
-				var value = list.find('li')
-					.map(function () {
-						return $(this).find('.item').text();
+						return false;
 					})
-					.get()
-					.join();
+					.insertBefore(formInput);
 
-				field.val(value);
-			};
+				break;
 
-			// Allow sorting values if requested
-			if (sortable) {
-				list
-					.addClass('sortable')
-					.sortable({
-						placeholder: 'input-focus',
-						update: update
-					});
-			}
+			case "text":
+				appendValue = function (previous, current) {
+					return previous.split(/\s*,\s*/).slice(0, -1).concat([current, '']).join(', ');
+				};
 
-			// Insert initial elements
-			$.each(field.val().split(/\s*,\s*/), function () {
-				insert(this);
-			});
+				peekValue = function (current) {
+					return current.split(/\s*,\s*/).pop();
+				};
+
+				userInput = formInput;
+
+				break;
+
+			default:
+				appendValue = function (previous, current) {
+					return current;
+				};
+
+				peekValue = function (current) {
+					return current;
+				};
+
+				userInput = formInput;
+
+				break;
 		}
-		else
-			input = field;
 
-		// Configure auto-complete callback if specified
+		// Configure auto-complete callback if enabled
+		var callback = formInput.data('callback');
+
 		if (callback) {
-			var extract = function (value) {
-				return append
-					? value.split(/\s*,\s*/).pop()
-					: value;
-			};
+			userInput
+				.off('keydown')
+				.autocomplete({
+					focus: function () {
+						return false;
+					},
+					select: function (event, ui) {
+						this.value = appendValue(this.value, ui.item.value);
 
-			var select = function (previous, current) {
-				if (selectable)
-					return insert(current) ? '' : previous;
-				else if (append)
-					return previous.split(/\s*,\s*/).slice(0, -1).concat([current, '']).join(', ')
-
-				return current;
-			};
-
-			input.autocomplete({
-				focus: function () {
-					return false;
-				},
-				select: function (event, ui) {
-					this.value = select(this.value, ui.item.value);
-
-					return false;
-				},
-				source: function (request, response) {
-					$.getJSON(callback, { query: extract(request.term) })
-						.done(function (json) {
-							response(json.items);
-						})
-						.fail(function () {
-							response([]);
-						});
-				},
-				minLength: 2
-			});
-		}
-		else if (selectable) {
-			input.on('keydown', function (event) {
-				if (event.which !== 13)
-					return;
-
-				if (insert(this.value))
-					this.value = '';
-
-				event.preventDefault();
-
-				return false;
-			});
+						return false;
+					},
+					source: function (request, response) {
+						$.getJSON(callback, { query: peekValue(request.term) })
+							.done(function (json) {
+								response(json.items);
+							})
+							.fail(function () {
+								response([]);
+							});
+					},
+					minLength: 2
+				});
 		}
 	});
 };

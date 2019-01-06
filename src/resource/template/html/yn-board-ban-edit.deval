@@ -23,8 +23,8 @@
 								"ban":	["group", true],
 								"addresses":	["complete", true, [
 									"limit":		php ("yN\\Entity\\Board\\Ban::#COUNT_MAX"),
-									"placeholder":	true,
-									"selectable":	true
+									"multiple":		"list",
+									"placeholder":	true
 								]]
 							],
 							_prefix = "yn.board.ban.edit.form."

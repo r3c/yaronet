@@ -24,9 +24,8 @@
 									"callback":		url ("board.forum.list", ["_template": "json"]),
 									"focus":		true,
 									"limit":		php ("yN\\Entity\\Board\\Favorite::#COUNT_MAX"),
-									"placeholder":	true,
-									"selectable":	true,
-									"sortable":		true
+									"multiple":		"sort",
+									"placeholder":	true
 								]]
 							],
 							_prefix = "yn.board.favorite.edit.form."

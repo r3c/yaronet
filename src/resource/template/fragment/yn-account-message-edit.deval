@@ -3,7 +3,7 @@
 		_alerts = alerts,
 		_fields = [
 			"reply":	["custom", false, ["contents": html (reply != null && reply.render_text ("text", router, logger) || ""), "visible": reply != null]],
-			"to":		["complete", false, ["append": true, "callback": url ("board.profile.list", ["_template": "json"]), "focus": request.to == null, "placeholder": true, "visible": message.id == null]],
+			"to":		["complete", false, ["callback": url ("board.profile.list", ["_template": "json"]), "focus": request.to == null, "multiple": "text", "placeholder": true, "visible": message.id == null]],
 			"text":		["textarea", null, ["focus": request.to != null, "large": true, "length": 30000, "placeholder": true, "rows": 4]]
 		],
 		_prefix = "yn.account.message.edit.form."
