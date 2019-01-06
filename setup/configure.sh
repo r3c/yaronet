@@ -101,7 +101,7 @@ log()
 {
 	local prefix
 
-	test "$1" -ge "$opt_verbosity" || return
+	test "$1" -ge "$opt_verbosity" || return 0
 
 	case "$1" in
 		0)
