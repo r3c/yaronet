@@ -142,7 +142,7 @@ function account_user_create($forum_id = null)
         ->matches_html('.notice-ok', '//');
 
     $recover_time = SQL::value('SELECT recover_time FROM account_user WHERE id = ?', array($user['id']));
-    $recover = substr(hash_hmac('crc32b', $recover_time, $user['id']), 0, 8);
+    $recover = substr(hash_hmac('sha256', $recover_time, $user['id']), 0, 8);
 
     HTTP::assert('users/' . $user['id'] . '/reclaim', array('code' => $recover, 'password-1' => $password, 'password-2' => $password))
         ->is_success()

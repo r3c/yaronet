@@ -228,7 +228,7 @@ class User extends \yN\Entity\Model
             return null;
         }
 
-        return substr(hash_hmac('crc32b', $this->recover_time, $this->id), 0, 8);
+        return substr(hash_hmac('sha256', $this->recover_time, $this->id), 0, 8);
     }
 
     public function get_template($external)
