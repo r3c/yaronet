@@ -54,7 +54,6 @@ const action = process.argv[2];
 
 switch (action) {
 	case 'build':
-	case 'start':
 		recurse('src/static', convert)
 			.catch(err => console.log(err))
 			.then(() => console.log('you can now deploy yAronet with option "engine.text.display.use-less" set to "false".'));

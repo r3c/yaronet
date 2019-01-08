@@ -1,0 +1,16 @@
+{
+  "name": "yaronet",
+  "description": "Yet another PHP bulletin board",
+  "scripts": {
+    "build": "node main.js build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r3c/yaronet.git"
+  },
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "less": "^3.9.0"
+  }
+}

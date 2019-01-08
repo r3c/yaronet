@@ -11,5 +11,4 @@
 /src/static/.htaccess
 /src/.htaccess
 /package-lock.json
-/package.json
 .creep.env
