@@ -535,7 +535,7 @@ function board_post_report_check($user, $report)
 }
 
 // Search for post in forum
-function board_search_execute($user, $forum, $post, $exists)
+function board_search_execute($user, $forum, $post, $author, $exists)
 {
     account_user_signin($user);
 
@@ -545,7 +545,13 @@ function board_search_execute($user, $forum, $post, $exists)
         ->is_success()
         ->matches_html('form input[name="query"]', '//');
 
-    HTTP::assert('searches/new/' . $forum['id'], array('query' => $post['text']))
+    $params = array('query' => $post['text']);
+
+    if ($author !== null) {
+        $params['login'] = $author['login'];
+    }
+
+    HTTP::assert('searches/new/' . $forum['id'], $params)
         ->redirects_to('@searches/([0-9]+)$@', $match);
 
     HTTP::assert('searches/' . $match[1])
@@ -913,7 +919,12 @@ board_section_subscribe($account_user_2, $board_section_2_1);
 board_topic_create_403($account_user_2, $board_section_2_2);
 board_post_create_403($account_user_2, $board_topic_2_2_1);
 board_topic_assert_403($account_user_2, $board_topic_2_3_1);
-board_search_execute($account_user_2, $board_forum_2, $board_post_2_3_1_1, false);
+
+// Search for post from user 1 in silent section
+board_search_execute($account_user_2, $board_forum_2, $board_post_2_2_1_1, $account_user_1, true);
+
+// Search for post from any user in hidden section
+board_search_execute($account_user_2, $board_forum_2, $board_post_2_3_1_1, null, false);
 
 /*
 ** User 1
@@ -967,7 +978,7 @@ board_bookmark_assert($account_user_2, $board_topic_2_1_1, true, 'other');
 board_bookmark_assert($account_user_2, $board_topic_2_1_3, true, 'first');
 board_topic_create($account_user_2, $board_forum_2, $board_section_2_2);
 $board_post_2_3_1_1 = board_post_create($account_user_2, $board_forum_2, $board_topic_2_3_1);
-board_search_execute($account_user_2, $board_forum_2, $board_post_2_3_1_1, true);
+board_search_execute($account_user_2, $board_forum_2, $board_post_2_3_1_1, null, true);
 board_section_assert($account_user_2, $board_section_2_3);
 board_post_create_403($account_user_2, $board_topic_2_1_3);
 

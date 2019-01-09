@@ -56,7 +56,7 @@ class Search extends \yN\Entity\Model
             return false;
         }
 
-        if (!SearchResult::execute($sql, $search->id, $query, $forum_id, $profile_id)) {
+        if (!SearchResult::execute($sql, $search->id, $query, $forum_id, $filter_profile_id)) {
             $alert = 'sql';
 
             return false;
