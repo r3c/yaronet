@@ -730,6 +730,46 @@ strong {
 				text-align:	left;
 			}
 		}
+
+		ul.groups {
+			padding:	0;
+			margin:		0;
+			overflow:	auto;
+			list-style:	none;
+
+			li {
+				padding:	0 0 2px 0;
+				font-size:	90%;
+			}
+
+			li.group {
+				text-align:	center;
+				display:	block;
+				overflow:	hidden;
+				color:		@em-text;
+			}
+
+			li.group:before,
+			li.group:after {
+				content:		"";
+				display:		inline-block;
+				width:			50%;
+				vertical-align:	middle;
+				border-color:	@em-text;
+				border-style:	solid;
+				border-width:	0 0 1px 0;
+			}
+
+			li.group:before {
+				margin:				0 .5em 0 -55%;
+				border-left-width:	1px;
+			}
+
+			li.group:after {
+				margin:				0 -55% 0 .5em;
+				border-right-width:	1px;
+			}
+		}
 	}
 
 	.panel-footer {
