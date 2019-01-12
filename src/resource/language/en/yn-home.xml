@@ -4,6 +4,8 @@
 	<section prefix="yn.home.">
 		<string key="chat">FlashChat</string>
 		<string key="chat.date" alias="base.type.date.relative" />
+		<string key="chat.delete" alias="base.submit.delete" />
+		<string key="chat.delete.hint">Delete this message</string>
 		<string key="chat.form.alert" alias="yn.chat.shout.edit.form.alert" />
 		<string key="chat.form.field.nick" alias="yn.chat.shout.edit.form.field.nick" />
 		<string key="chat.form.field.text.placeholder" alias="yn.chat.shout.edit.form.field.text.placeholder" />

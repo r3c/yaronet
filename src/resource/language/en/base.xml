@@ -8,6 +8,7 @@
 		<string key="alert.sql" alias="base.alert.default" />
 		<string key="back">Cancel</string>
 		<string key="name">yAronet</string>
+		<string key="submit.delete">Delete</string>
 		<string key="submit.save">Save</string>
 		<string key="submit.search">Search</string>
 		<string key="submit.send">Send</string>

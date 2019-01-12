@@ -82,20 +82,18 @@
 								{{ for day, daily_shouts in group(shouts, by_date, (s) => [s], (a, b) => cat(a, b)) }}
 									{{ for shout in daily_shouts }}
 										<li class="item">
-											{{ if user.is_admin }}
-												<a href="{{ $ url ("chat.shout.delete", ["shout": shout.id]) }}">
-											{{ end }}
 											<em class="time">{{ $ tra ("yn.home.chat.time", ["time": shout.time]) }}</em>
-											{{ if user.is_admin }}
-												</a>
-											{{ end }}
-											{{ $ " " }}
 											<strong class="author {{ $ shout.is_guest && "guest" || "user" }}">{{ $ shout.nick }}</strong>
 											<span class="text">
 												{{ unwrap }}
 													{{ $ shout.render_text ("html", router, logger) }}
 												{{ end }}
 											</span>
+											{{ if user.is_admin }}
+												<span class="glyph10">
+													<a class="bind-tooltip button delete" href="{{ $ url ("chat.shout.delete", ["shout": shout.id]) }}" title="{{ $ tra ("yn.home.chat.delete.hint") }}"></a>
+												</span>
+											{{ end }}
 										</li>
 									{{ end }}
 									<li class="group">
