@@ -93,6 +93,11 @@ class Display
         return \yN\Engine\Text\XML::encode($name, $data);
     }
 
+    public static function cache_directory()
+    {
+        return config('engine.text.display.cache', './storage/cache/template');
+    }
+
     public static function default_template()
     {
         return config('engine.text.display.template', 'html.kyanite');
@@ -188,7 +193,7 @@ class Display
         $setup = new \Deval\Setup();
         $setup->style = 'deindent,collapse';
 
-        $renderer_cache = config('engine.text.display.cache', './storage/cache/template');
+        $renderer_cache = self::cache_directory();
         $renderer = $renderer_cache !== null ? new \Deval\CacheRenderer($path, $renderer_cache, $setup) : new \Deval\FileRenderer($path, $setup);
 
         $self = get_class();

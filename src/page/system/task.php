@@ -55,15 +55,13 @@ function task_flush($request, $logger, $sql, $display, $input, $user)
     }
 
     // Remove cache files
-    $caches = array(
-        'engine.network.route.cache',
-        'engine.text.display.cache',
-        'engine.text.i18n.cache'
+    $directories = array(
+        yN\Engine\Network\Router::cache_directory(),
+        yN\Engine\Text\Display::cache_directory(),
+        yN\Engine\Text\Internationalization::cache_directory()
     );
 
-    foreach ($caches as $cache) {
-        $directory = config($cache, null);
-
+    foreach ($directories as $directory) {
         if ($directory === null) {
             continue;
         } elseif (!is_dir($directory)) {

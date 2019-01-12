@@ -41,9 +41,9 @@ Glay\Network\HTTP::$default_size_max = config('engine.network.http.size-max', 2 
 Glay\Network\HTTP::$default_timeout = config('engine.network.http.timeout', 15000);
 Glay\Network\HTTP::$default_useragent = config('engine.network.http.user-agent', 'Mozilla/5.0 (compatible; yAronet; +http://www.yaronet.com/)');
 
-require('./library/queros/queros.php');
 require('./library/redmap/redmap.php');
 require('./engine/diagnostic/logger.php');
+require('./engine/network/router.php');
 require('./engine/text/display.php');
 require('./engine/text/internationalization.php');
 require('./engine/text/input.php');
@@ -90,8 +90,7 @@ require('./entity/account/activity.php');
 require('./entity/account/message.php');
 
 // Create HTTP request router
-$router_cache = config('engine.network.route.cache', './storage/cache/route');
-$router = new Queros\Router('route.php', $router_cache !== null ? $router_cache . '/queros.php' : null);
+$router = yN\Engine\Network\Router::create();
 
 // Resolve route
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

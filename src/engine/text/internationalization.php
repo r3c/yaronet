@@ -11,6 +11,11 @@ class Internationalization
     private $language;
     private $locale;
 
+    public static function cache_directory()
+    {
+        return config('engine.text.i18n.cache', './storage/cache/language');
+    }
+
     public static function default_language()
     {
         return config('engine.text.i18n.language', 'en');
@@ -37,7 +42,7 @@ class Internationalization
             $language = self::default_language();
         }
 
-        $locale_cache = config('engine.text.i18n.cache', './storage/cache/language');
+        $locale_cache = self::cache_directory();
         $locale_source = config('engine.text.i18n.source', './resource/language');
 
         $locale = new \Losp\Locale(mb_internal_encoding(), $language, $locale_source, $locale_cache !== null ? $locale_cache . '/' . $language . '.php' : null);
