@@ -110,7 +110,7 @@
 			<string key="form.field.password-2.hint" alias="yn.account.user.edit.form.field.password-2.hint" />
 			<string key="form.group.reclaim">Nouveau mot de passe</string>
 			<string key="form.group.reclaim.hint">Vous avez demandé à changer le mot de passe de votre compte suite à un oubli. Veuillez saisir ci-dessous le code de sécurité reçu par e-mail ainsi que le nouveau mot de passe de votre choix.</string>
-			<string key="form.submit">Enregistrer</string>
+			<string key="form.submit" alias="base.submit.save" />
 			<string key="type">Changement de mot de passe</string>
 		</section>
 
@@ -128,7 +128,7 @@
 			<string key="form.field.email.hint">Adresse avec laquelle vous avez créé votre compte sur le site.</string>
 			<string key="form.group.recover">Mot de passe oublié</string>
 			<string key="form.group.recover.hint">Vous avez perdu votre mot de passe ? Entrez votre adresse e-mail dans le formulaire ci-dessous, passez la vérification anti-robot et validez pour recevoir un code de sécurité par e-mail. Ce code vous permettra de choisir un nouveau mot de passe et ainsi récupérer l'accès à votre compte.</string>
-			<string key="form.submit">Envoyer</string>
+			<string key="form.submit" alias="base.submit.send" />
 			<string key="type">Oubli de mot de passe</string>
 		</section>
 

@@ -13,7 +13,7 @@
 			<string key="form.field.emoji">Image à envoyer* :</string>
 			<string key="form.field.emoji.hint">Le nom du fichier ou l'URL vers l'image sera utilisé pour définir le nom du smiley.</string>
 			<string key="form.field.emoji.placeholder">http://lien.vers.votre/emoji.gif</string>
-			<string key="form.submit">Envoyer</string>
+			<string key="form.submit" alias="base.submit.send" />
 		</section>
 
 		<section prefix="list.">

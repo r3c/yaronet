@@ -110,7 +110,7 @@
 			<string key="form.field.password-2.hint" alias="yn.account.user.edit.form.field.password-2.hint" />
 			<string key="form.group.reclaim">New password</string>
 			<string key="form.group.reclaim.hint">You forgot your password and asked to change it. Please enter the security code you received by email below then the new password you want to set.</string>
-			<string key="form.submit">Save</string>
+			<string key="form.submit" alias="base.submit.save" />
 			<string key="type">Change password</string>
 		</section>
 
@@ -128,7 +128,7 @@
 			<string key="form.field.email.hint">The address you used to create your account.</string>
 			<string key="form.group.recover">Forgotten password</string>
 			<string key="form.group.recover.hint">You forgot your account password? Enter your email address in the form below, pass the anti-robot check and submit to receive a new security code by email. This code will allow you to select a new password and recover access to your account.</string>
-			<string key="form.submit">Send</string>
+			<string key="form.submit" alias="base.submit.send" />
 			<string key="type">Forgotten password</string>
 		</section>
 

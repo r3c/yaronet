@@ -13,7 +13,7 @@
 			<string key="form.field.login.hint">Filter on post owner's login.</string>
 			<string key="form.field.query">Search terms*:</string>
 			<string key="form.field.query.hint">Please input 4 characters or more.</string>
-			<string key="form.submit">Search</string>
+			<string key="form.submit" alias="base.submit.search" />
 			<string key="type">Post search</string>
 		</section>
 

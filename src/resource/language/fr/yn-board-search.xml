@@ -13,7 +13,7 @@
 			<string key="form.field.login.hint">Filtrer par identifiant de l'auteur du message.</string>
 			<string key="form.field.query">Mots à rechercher* :</string>
 			<string key="form.field.query.hint">Saisissez au minimum 4 caractères.</string>
-			<string key="form.submit">Rechercher</string>
+			<string key="form.submit" alias="base.submit.search" />
 			<string key="type">Recherche de messages</string>
 		</section>
 

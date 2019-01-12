@@ -7,7 +7,7 @@
 			<string key="form.alert.cost" alias="base.alert.cost" />
 			<string key="form.alert.sql" alias="base.alert.sql" />
 			<string key="form.disclaimer" alias="yn.board.profile.delete.form.disclaimer" />
-			<string key="form.submit">Confirm</string>
+			<string key="form.submit" alias="base.submit.delete" />
 			<string key="type">Topic deletion confirm</string>
 			<string key="warning">Please confirm you want to delete topic "{name}" ; this process will delete all the posts it contains.</string>
 		</section>
@@ -63,7 +63,7 @@
 			<string key="bookmark.clear.hint">Stop tracking new posts from this topic</string>
 			<string key="bookmark.set">Follow this topic</string>
 			<string key="bookmark.set.hint">Track new posts from this topic in "my topics" page</string>
-			<string key="delete">Delete</string>
+			<string key="delete" alias="base.submit.delete" />
 			<string key="delete.hint">Delete this topic and messages it contains</string>
 			<string key="description">{topic_name} - {topic.section.name}</string>
 			<string key="drift">Drift</string>

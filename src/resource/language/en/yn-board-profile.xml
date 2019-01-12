@@ -8,7 +8,7 @@
 			<string key="form.alert.save" alias="base.alert.default" />
 			<string key="form.confirm">Are you sure?</string>
 			<string key="form.disclaimer">Warning: this process can't be reversed</string>
-			<string key="form.submit">Confirm</string>
+			<string key="form.submit" alias="base.submit.delete" />
 			<string key="type">Profile deactivation confirm</string>
 			<string key="warning">Please confirm you want to disable user profile "{profile.user.login}" ; this process will delete or hide all his/her posts and topics then block the profile.</string>
 		</section>

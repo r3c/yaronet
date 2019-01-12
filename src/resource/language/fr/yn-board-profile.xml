@@ -8,7 +8,7 @@
 			<string key="form.alert.save">La sauvegarde d'une donnée du profil a échoué, veuillez réessayer dans quelques instants.</string>
 			<string key="form.confirm">C'est votre dernier mot ?</string>
 			<string key="form.disclaimer">Attention, cette opération est irréversible</string>
-			<string key="form.submit">Confirmer</string>
+			<string key="form.submit" alias="base.submit.delete" />
 			<string key="type">Confirmation de désactivation</string>
 			<string key="warning">Veuillez confirmer la désactivation du profil "{profile.user.login}" ; cette opération va supprimer ou masquer ses messages et sujets, puis bloquer l'utilisation de ce profil.</string>
 		</section>

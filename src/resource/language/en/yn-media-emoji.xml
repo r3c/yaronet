@@ -13,7 +13,7 @@
 			<string key="form.field.emoji">Image to send* :</string>
 			<string key="form.field.emoji.hint">File base name or URL to image will be used as the emoji name.</string>
 			<string key="form.field.emoji.placeholder">http://link.to.your/emoji.gif</string>
-			<string key="form.submit">Send</string>
+			<string key="form.submit" alias="base.submit.send" />
 		</section>
 
 		<section prefix="list.">

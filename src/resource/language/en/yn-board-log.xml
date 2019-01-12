@@ -23,7 +23,7 @@
 			<string key="form.field.date.hint">Filter on action day, using YYYY-MM-DD format.</string>
 			<string key="form.field.login">User login:</string>
 			<string key="form.field.login.hint">Filter on action owner's login.</string>
-			<string key="form.submit">Filter</string>
+			<string key="form.submit" alias="base.submit.search" />
 			<string key="profile">User</string>
 			<string key="profile.value">{log.profile.user.login}</string>
 			<string key="table">Actions performed on this forum since the {date:{expire},Y-m-d \\a\\t h:ia} until today can be viewed using the form below.</string>

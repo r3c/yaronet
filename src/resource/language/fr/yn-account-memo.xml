@@ -9,7 +9,7 @@
 			<string key="form.alert.sql" alias="base.alert.sql" />
 			<string key="form.alert.text-length">Votre memo est trop court ou trop long, il doit contenir entre 1 et 30000 caractères.</string>
 			<string key="form.field.text.placeholder">Vos notes personnelles</string>
-			<string key="form.submit">Enregistrer</string>
+			<string key="form.submit" alias="base.submit.save" />
 			<string key="type">Memo</string>
 		</section>
 

@@ -23,7 +23,7 @@
 			<string key="form.field.date.hint">Filtrer par jour, au format YYYY-MM-DD.</string>
 			<string key="form.field.login">Identifiant de l'auteur :</string>
 			<string key="form.field.login.hint">Filtrer par identifiant de l'auteur de l'opération.</string>
-			<string key="form.submit">Filtrer</string>
+			<string key="form.submit" alias="base.submit.search" />
 			<string key="profile">Auteur</string>
 			<string key="profile.value">{log.profile.user.login}</string>
 			<string key="table">Les actions effectuées sur le forum depuis le {date:{expire},d/m/Y à H:i} jusqu'à aujourd'hui peuvent être consultées à l'aide du formulaire ci-dessous.</string>

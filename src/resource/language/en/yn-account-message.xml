@@ -6,7 +6,7 @@
 			<string key="back">Back</string>
 			<string key="form.alert">Message successfully deleted.</string>
 			<string key="form.alert.save">Unable to delete message, it may have been read by one of its recipients.</string>
-			<string key="form.submit">Delete</string>
+			<string key="form.submit" alias="base.submit.delete" />
 			<string key="type">Message deletion</string>
 			<string key="warning">Êtes-vous sûr de vouloir supprimer ce message ?</string>
 		</section>
@@ -28,7 +28,7 @@
 			<string key="form.field.text.placeholder">Message body</string>
 			<string key="form.field.to">Recipient(s)*:</string>
 			<string key="form.field.to.placeholder">Identifier of message recipient(s)</string>
-			<string key="form.submit">Send</string>
+			<string key="form.submit" alias="base.submit.send" />
 			<string key="type">Private messages</string>
 		</section>
 
@@ -53,7 +53,7 @@
 			<string key="first">Newest</string>
 			<string key="first.hint">View newest messages</string>
 			<string key="form.field.login.placeholder">Send to or from</string>
-			<string key="form.submit">Filter</string>
+			<string key="form.submit" alias="base.submit.search" />
 			<string key="hide">Hide</string>
 			<string key="hide.confirm" alias="yn.account.message.hide.warning" />
 			<string key="hide.hint">Remove this message from your history</string>

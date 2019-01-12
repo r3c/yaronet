@@ -6,7 +6,7 @@
 			<string key="back">Retour</string>
 			<string key="form.alert">Message supprimé avec succès.</string>
 			<string key="form.alert.save">Impossible de supprimer ce message, il a peut-être été lu par l'un des destinataires.</string>
-			<string key="form.submit">Supprimer</string>
+			<string key="form.submit" alias="base.submit.delete" />
 			<string key="type">Suppression de message</string>
 			<string key="warning">Êtes-vous sûr de vouloir supprimer ce message ?</string>
 		</section>
@@ -28,7 +28,7 @@
 			<string key="form.field.text.placeholder">Message à envoyer</string>
 			<string key="form.field.to">Destinataire(s)* :</string>
 			<string key="form.field.to.placeholder">Identifiant du ou des destinataire(s) du message</string>
-			<string key="form.submit">Envoyer</string>
+			<string key="form.submit" alias="base.submit.send" />
 			<string key="type">Envoi de message</string>
 		</section>
 
@@ -53,7 +53,7 @@
 			<string key="first">Plus récents</string>
 			<string key="first.hint">Voir les derniers messages reçus</string>
 			<string key="form.field.login.placeholder">Envoyé à ou par</string>
-			<string key="form.submit">Filtrer</string>
+			<string key="form.submit" alias="base.submit.search" />
 			<string key="hide">Cacher</string>
 			<string key="hide.confirm" alias="yn.account.message.hide.warning" />
 			<string key="hide.hint">Enlever ce message de votre historique</string>
