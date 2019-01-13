@@ -12,7 +12,6 @@
 		<string key="submit.save">Save</string>
 		<string key="submit.search">Search</string>
 		<string key="submit.send">Send</string>
-		<string key="type.date.relative">{case:{lag:86400,{time}},0,Today,1,Yesterday,{date:{time},d-m}}</string>
 		<string key="type.datetime.relative">{case:{lag:86400,{time}},0,Today,1,Yesterday,On the {date:{time},Y-m-d}} at {date:{time},h:ia}</string>
 		<string key="type.time.absolute">{date:{time},h:i:sa}</string>
 	</section>

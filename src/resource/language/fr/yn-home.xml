@@ -3,7 +3,7 @@
 	<string key="yn.home">Index</string>
 	<section prefix="yn.home.">
 		<string key="chat">FlashChat</string>
-		<string key="chat.date" alias="base.type.date.relative" />
+		<string key="chat.date">↑ {case:{lag:86400,{time}},0,Aujourd'hui,1,Hier,{date:{time},j}{case:{date:{time},j},1,er} {case:{date:{time},n},1,Janvier,2,Février,3,Mars,4,Avril,5,Mai,6,Juin,7,Juillet,8,Août,9,Septembre,10,Octobre,11,Novembre,12,Decembre}} ↑</string>
 		<string key="chat.delete" alias="base.submit.delete" />
 		<string key="chat.delete.hint">Supprimer ce message</string>
 		<string key="chat.form.alert" alias="yn.chat.shout.edit.form.alert" />
