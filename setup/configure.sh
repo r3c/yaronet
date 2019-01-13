@@ -126,20 +126,14 @@ log()
 }
 
 # Read command line arguments
-opt_deploy=
 opt_link=
 opt_verbosity=1
 
-while getopts :d:hl:v opt; do
+while getopts :hl:v opt; do
 	case "$opt" in
-		d)
-			opt_deploy="$OPTARG"
-			;;
-
 		h)
 			log 1 "yAronet configuration and deployment tool"
-			log 1 "Usage: $(basename "$0") [-d <environment>] [-h] [-l <mode>] [-v]"
-			log 1 "  -d <environment>: run deployment to given environment after setup"
+			log 1 "Usage: $(basename "$0") [-h] [-l <mode>] [-v]"
 			log 1 "  -h: display usage and exit"
 			log 1 "  -l <mode>: link mode (duplicate, junction or symbolic)"
 			log 1 "  -v: increase verbosity level"
@@ -187,13 +181,3 @@ link "$opt_link" glay/src src/library/glay
 link "$opt_link" losp/src src/library/losp
 link "$opt_link" queros/src src/library/queros
 link "$opt_link" redmap/src src/library/redmap
-
-if [ -n "$opt_deploy" ]; then
-	# Check mandatory executables
-	for executable in creep imagemin lessc node npm uglifyjs; do
-		check "$executable" || exit 1
-	done
-
-	# Start deployment
-	( cd "$root"/src && creep -y "$opt_deploy" )
-fi
