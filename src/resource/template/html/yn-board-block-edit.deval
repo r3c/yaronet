@@ -21,7 +21,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.block.edit.type") }}</div>
+				<h2>{{ $ tra ("yn.board.block.edit.type") }}</h2>
 				<div class="panel-body">
 					<form class="form-cascade form-thick" action="{{ $ block.rank != null && url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) || url ("board.block.new", ["forum": block.forum_id]) }}" method="POST">
 						{{ let

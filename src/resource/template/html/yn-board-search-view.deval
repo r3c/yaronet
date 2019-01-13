@@ -44,7 +44,7 @@
 					{{ end }}
 				{{ empty }}
 					<div class="panel panel-decorate">
-						<div class="panel-header">{{ $ tra ("yn.board.search.view.type") }}</div>
+						<h2>{{ $ tra ("yn.board.search.view.type") }}</h2>
 						<div class="panel-body">
 							{{ $ tra ("yn.board.search.view.empty") }}
 						</div>

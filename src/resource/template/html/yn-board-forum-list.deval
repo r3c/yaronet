@@ -10,7 +10,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="page panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.forum.list.type") }}</div>
+				<h2>{{ $ tra ("yn.board.forum.list.type") }}</h2>
 				<div class="panel-body">
 					<form class="form-cascade form-thick" action="{{ $ url ("board.forum.list") }}" method="GET" autocomplete="off">
 						{{ let

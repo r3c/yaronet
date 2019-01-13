@@ -12,7 +12,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="page panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.help.page.view.type") }}</div>
+				<h2>{{ $ tra ("yn.help.page.view.type") }}</h2>
 				<div class="markup panel-body">
 					{{ unwrap }}
 						{{ $ page.render_text ("html", router, logger) }}

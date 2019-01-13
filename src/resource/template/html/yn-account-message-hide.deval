@@ -13,7 +13,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.account.message.hide.type") }}</div>
+				<h2>{{ $ tra ("yn.account.message.hide.type") }}</h2>
 				<div class="panel-body">
 					{{ include ../fragment/yn-account-message-hide.deval }}
 				</div>

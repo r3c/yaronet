@@ -10,7 +10,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.account.message.list.type") }}</div>
+				<h2>{{ $ tra ("yn.account.message.list.type") }}</h2>
 				<div class="panel-body">
 					{{ include ../fragment/yn-account-message-list.deval }}
 				</div>

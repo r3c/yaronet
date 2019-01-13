@@ -15,10 +15,10 @@
 		{{ block main }}
 			<div class="home">
 				<div class="index panel panel-decorate">
-					<div class="panel-header">{{ $ tra ("yn.home.type") }}</div>
+					<h2>{{ $ tra ("yn.home.type") }}</h2>
 					<div class="panel-body">
 						{{ if user.id == null }}
-							<h2>{{ $ tra ("yn.home.guest") }}</h2>
+							<h3>{{ $ tra ("yn.home.guest") }}</h3>
 							{{ unwrap }}
 								<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.home.guest.help"))) }}</p>
 							{{ end }}
@@ -51,7 +51,7 @@
 								forums = block[1],
 								links = block[2]
 							}}
-								<h2>{{ $ title }}</h2>
+								<h3>{{ $ title }}</h3>
 								<ul class="forums">
 								{{ for forum in forums }}
 									<li>
@@ -75,7 +75,7 @@
 					</div>
 				</div>
 				<div class="flashchat panel">
-					<div class="panel-header">{{ $ tra ("yn.home.chat") }}</div>
+					<h2>{{ $ tra ("yn.home.chat") }}</h2>
 					<div class="panel-body">
 						<ul class="groups">
 							{{ let by_date = (s) => tra("yn.home.chat.date", ["time": s.time]) }}

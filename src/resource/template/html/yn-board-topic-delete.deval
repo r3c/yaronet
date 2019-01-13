@@ -20,7 +20,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.topic.delete.type") }}</div>
+				<h2>{{ $ tra ("yn.board.topic.delete.type") }}</h2>
 				<div class="panel-body">
 					{{ if alerts == null }}
 						<div class="notice notice-info">

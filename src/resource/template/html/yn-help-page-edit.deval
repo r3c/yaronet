@@ -21,7 +21,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.help.page.edit.type") }}</div>
+				<h2>{{ $ tra ("yn.help.page.edit.type") }}</h2>
 				<div class="panel-body">
 					<form class="form-cascade form-thick" action="{{ $ url ("help.page.edit", ["label": page.label, "language": page.language]) }}" method="POST">
 						{{ let

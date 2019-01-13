@@ -24,7 +24,7 @@
 			</ul>
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.profile.list.type") }}</div>
+				<h2>{{ $ tra ("yn.board.profile.list.type") }}</h2>
 				<div class="panel-body">
 					<form class="form-cascade form-thick" action="{{ $ url ("board.profile.list", ["forum": forum_id]) }}" method="GET" autocomplete="off">
 						{{ let

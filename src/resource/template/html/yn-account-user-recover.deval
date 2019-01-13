@@ -13,7 +13,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.account.user.recover.type") }}</div>
+				<h2>{{ $ tra ("yn.account.user.recover.type") }}</h2>
 				<div class="panel-body">
 					<form class="form-cascade form-thick" action="{{ $ url ("account.user.recover") }}" method="POST">
 						{{ let

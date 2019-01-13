@@ -16,7 +16,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="page panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.log.list.type") }}</div>
+				<h2>{{ $ tra ("yn.board.log.list.type") }}</h2>
 				<div class="panel-body">
 					<p>{{ $ tra ("yn.board.log.list.table", ["forum": forum, "expire": time - php ("yN\\Entity\\Board\\Log::#EXPIRE_DURATION")]) }}</p>
 					<div class="grid">

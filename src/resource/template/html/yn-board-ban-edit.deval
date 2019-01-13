@@ -14,7 +14,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.ban.edit.type") }}</div>
+				<h2>{{ $ tra ("yn.board.ban.edit.type") }}</h2>
 				<div class="panel-body">
 					<form class="form-cascade form-thick" action="{{ $ url ("board.ban.edit", ["forum": forum.id]) }}" method="POST">
 						{{ let

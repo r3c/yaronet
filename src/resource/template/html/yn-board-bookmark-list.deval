@@ -19,7 +19,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="bookmarks panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.bookmark.list.type") }}</div>
+				<h2>{{ $ tra ("yn.board.bookmark.list.type") }}</h2>
 				<div class="panel-body">
 					<div id="yn-bookmark-sources" class="sources" data-url-refresh="{{ $ url ("board.bookmark.list", cat (params, ["_template": "frame"])) }}">
 						{{ include ../fragment/yn-board-bookmark-list.deval }}

@@ -650,7 +650,7 @@ function board_topic_assert($user, $forum, $section, $topic, $posts)
 {
     HTTP::assert('sections/' . $section['id'], array(), false, true)
         ->is_success()
-        ->matches_html('.section .panel-header', '/Section/')
+        ->matches_html('.section h2', '/Section/')
         ->matches_html('.topics .link a.name', _match($topic['name']));
 
     HTTP::assert('topics/' . $topic['id'], array(), false, true)
@@ -837,8 +837,8 @@ function home_assert()
 {
     HTTP::assert('')
         ->is_success()
-        ->matches_html('.flashchat .panel-header', '//')
-        ->matches_html('.index .panel-header', '//');
+        ->matches_html('.flashchat h2', '//')
+        ->matches_html('.index h2', '//');
 }
 
 test_start();

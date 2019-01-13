@@ -91,7 +91,7 @@
 				}}
 					<div class="page-block">
 						<div class="panel panel-decorate bind-post-new">
-							<div class="panel-header">{{ $ tra ("yn.board.topic.view.form") }}</div>
+							<h2>{{ $ tra ("yn.board.topic.view.form") }}</h2>
 							<div class="panel-body">
 								<form class="form-cascade form-thick bind-raw" action="{{ $ url_new }}" method="POST" data-url-cross="{{ $ url_cross }}">
 									{{ let

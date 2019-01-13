@@ -21,10 +21,10 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.forum.edit.type") }}</div>
+				<h2>{{ $ tra ("yn.board.forum.edit.type") }}</h2>
 				<div class="panel-body">
 					{{ if forum.id == null }}
-						<h2>{{ $ tra ("yn.board.forum.edit.create") }}</h2>
+						<h3>{{ $ tra ("yn.board.forum.edit.create") }}</h3>
 						{{ unwrap }}
 							<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.board.forum.edit.create.help"))) }}</p>
 						{{ end }}

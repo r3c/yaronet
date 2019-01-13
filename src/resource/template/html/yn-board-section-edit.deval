@@ -23,7 +23,7 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.section.edit.type") }}</div>
+				<h2>{{ $ tra ("yn.board.section.edit.type") }}</h2>
 				<div class="panel-body">
 					<form class="form-cascade form-thick" action="{{ $ section.id != null && url ("board.section.edit", ["section": section.id]) || url ("board.section.new", ["forum": forum.id]) }}" method="POST">
 						{{ let

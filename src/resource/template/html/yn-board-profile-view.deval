@@ -16,9 +16,9 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.profile.view.type") }}</div>
+				<h2>{{ $ tra ("yn.board.profile.view.type") }}</h2>
 				<div class="panel-body">
-					<h2>{{ $ tra ("yn.board.profile.view.user", ["profile": profile]) }}</h2>
+					<h3>{{ $ tra ("yn.board.profile.view.user", ["profile": profile]) }}</h3>
 					{{ $ "" /* FIXME [html-table] */ }}
 					<table class="view">
 						<tr>

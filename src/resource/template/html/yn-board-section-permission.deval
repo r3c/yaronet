@@ -16,9 +16,9 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.section.permission.type") }}</div>
+				<h2>{{ $ tra ("yn.board.section.permission.type") }}</h2>
 				<div class="panel-body">
-					<h2>{{ $ tra ("yn.board.section.permission.table") }}</h2>
+					<h3>{{ $ tra ("yn.board.section.permission.table") }}</h3>
 					{{ unwrap }}
 						<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.board.section.permission.table.help", ["section": section]))) }}</p>
 					{{ end }}

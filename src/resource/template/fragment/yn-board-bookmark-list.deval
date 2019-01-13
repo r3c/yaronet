@@ -1,6 +1,6 @@
 {{ for source, cursors in sources }}
 	<div class="source">
-		<h2>{{ $ tra (cat ("yn.board.bookmark.list.source.", source)) }}</h2>
+		<h3>{{ $ tra (cat ("yn.board.bookmark.list.source.", source)) }}</h3>
 		<ul class="topics">
 			{{ for cursor in cursors }}
 				{{ let

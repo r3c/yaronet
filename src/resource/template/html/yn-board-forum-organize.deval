@@ -17,9 +17,9 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="forum panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.forum.organize.type") }}</div>
+				<h2>{{ $ tra ("yn.board.forum.organize.type") }}</h2>
 				<div class="panel-body">
-					<h2>{{ $ tra ("yn.board.forum.organize.block") }}</h2>
+					<h3>{{ $ tra ("yn.board.forum.organize.block") }}</h3>
 					{{ unwrap }}
 						<p class="editorial">{{ $ php ("nl2br") (html (tra ("yn.board.forum.organize.block.help"))) }}</p>
 					{{ end }}

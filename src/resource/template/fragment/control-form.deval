@@ -23,7 +23,7 @@
 				{{ if default (options.visible, true) }}
 					{{ if type == "group" }}
 						<div class="group">
-							<h2>{{ $ tra (cat ((-)_prefix, "group.", name)) }}</h2>
+							<h3>{{ $ tra (cat ((-)_prefix, "group.", name)) }}</h3>
 							{{ if label }}
 								<p>{{ $ tra (cat ((-)_prefix, "group.", name, ".hint")) }}</p>
 							{{ end }}

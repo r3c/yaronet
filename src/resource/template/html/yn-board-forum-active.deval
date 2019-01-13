@@ -20,16 +20,16 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="panel panel-decorate section">
-				<div class="panel-header">{{ $ tra ("yn.board.forum.active.type") }}</div>
+				<h2>{{ $ tra ("yn.board.forum.active.type") }}</h2>
 				<div class="panel-body">
 					{{ if forum.is_illustrated }}
 						<div class="panel-icon">
 							<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
 						</div>
 					{{ end }}
-					<h2 class="glyph16">
+					<h3 class="glyph16">
 						<a href="{{ $ url ("board.forum.view", ["forum": forum.id, "forum_alias": forum.alias]) }}">{{ $ forum.name }}</a>
-					</h2>
+					</h3>
 					<div>{{ $ forum_description }}</div>
 				</div>
 				{{ let section = null }}

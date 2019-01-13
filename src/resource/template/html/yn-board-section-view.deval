@@ -38,14 +38,14 @@
 			</ul>
 		{{ block main }}
 			<div class="panel panel-decorate section">
-				<div class="panel-header">{{ $ tra ("yn.board.section.view.type") }}</div>
+				<h2>{{ $ tra ("yn.board.section.view.type") }}</h2>
 				<div class="panel-body">
 					{{ if forum.is_illustrated }}
 					<div class="panel-icon">
 						<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
 					</div>
 					{{ end }}
-					<h2 class="glyph16 symbol">
+					<h3 class="glyph16 symbol">
 						{{ if forum_id != null }}
 							<a href="{{ $ url ("board.forum.view", ["forum": section.forum_id, "forum_alias": section.forum.alias]) }}">{{ $ section.forum.name }}</a>
 						{{ end }}
@@ -53,7 +53,7 @@
 						{{ if section.allow_publish (access) }}
 							<a class="label new" href="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}">{{ $ tra ("yn.board.section.view.form") }}</a>
 						{{ end }}
-					</h2>
+					</h3>
 					<div>{{ $ section.description }}</div>
 				</div>
 				{{ let header = section.render_header ("html", router, logger) }}
@@ -87,7 +87,7 @@
 			{{ if section.allow_publish (access) }}
 				<div class="page-block">
 					<div class="panel panel-decorate bind-topic-new">
-						<div class="panel-header">{{ $ tra ("yn.board.section.view.form", ["section": section]) }}</div>
+						<h2>{{ $ tra ("yn.board.section.view.form", ["section": section]) }}</h2>
 						<div class="panel-body">
 							<form class="form-cascade form-thick bind-raw" action="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}" method="POST">
 								{{ let

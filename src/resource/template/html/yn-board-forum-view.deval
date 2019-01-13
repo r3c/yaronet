@@ -19,14 +19,14 @@
 		{{ extend page.deval }}
 		{{ block main }}
 			<div class="forum panel panel-decorate">
-				<div class="panel-header">{{ $ tra ("yn.board.forum.view.type") }}</div>
+				<h2>{{ $ tra ("yn.board.forum.view.type") }}</h2>
 				<div class="panel-body">
 					{{ if forum.is_illustrated }}
 						<div class="panel-icon">
 							<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
 						</div>
 					{{ end }}
-					<h2>{{ $ forum.name }}</h2>
+					<h3>{{ $ forum.name }}</h3>
 					<div class="markup">
 						{{ unwrap }}
 							{{ $ default (forum.render_preface ("html", router, logger), html (forum.description)) }}
@@ -52,7 +52,7 @@
 		{{ block tail }}
 			<div class="page-block">
 				<div class="last panel panel-decorate">
-					<div class="panel-header">{{ $ tra ("yn.board.forum.view.last") }}</div>
+					<h2>{{ $ tra ("yn.board.forum.view.last") }}</h2>
 					<div class="panel-body">
 						<div class="sources">
 							{{ include ../fragment/yn-board-bookmark-list.deval }}
