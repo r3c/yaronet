@@ -431,10 +431,9 @@ strong {
 	}
 
 	.navigation {
-		margin:		6px 0;
-		text-align:	right;
-
-		.clear ();
+		display:		flex;
+		align-items:	start;
+		margin:			6px 0;
 
 		h1 {
 			display:		inline;
@@ -444,13 +443,12 @@ strong {
 			font-weight:	normal;
 		}
 
-		ul li {
+		li {
 			display:	inline;
 		}
 
-		ul.path {
-			float:		left;
-			text-align:	left;
+		.path {
+			flex:	1;
 		}
 	}
 
