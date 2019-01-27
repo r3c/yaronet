@@ -36,10 +36,13 @@
 						<a class="bind-tooltip icon user" href="{{ $ url ("board.profile.view", ["profile": message.sender_id, "_template": null]) }}" title="{{ $ tra ("yn.account.message.list.profile.hint") }}"></a>
 					</span>
 					<em class="time">{{ $ tra ("yn.account.message.list.time", ["message": message]) }}</em>
-					<span class="to glyph10">
+					<span class="to">
 						{{ $ tra ("yn.account.message.list.to") }}
+					</span>
+					<span class="glyph10">
 						{{ for box in filter (boxes, (box) => box.recipient_id != message.sender_id) }}
 							<a class="bind-message bind-tooltip label message-{{ $ box.read && "read" || "new" }}" href="{{ $ url ("account.message.new", ["to": box.recipient.login]) }}" title="{{ $ tra ("yn.account.message.list.box", ["login": box.recipient.login, "read": box.read]) }}">{{ $ box.recipient.login }}</a>
+							{{ $ " " }}
 						{{ end }}
 					</span>
 				</div>

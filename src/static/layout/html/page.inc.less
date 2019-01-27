@@ -404,15 +404,24 @@ strong {
 		}
 
 		.origin {
-			.clear ();
-
+			display:				flex;
 			padding:				4px 0;
 			border-bottom-style:	solid;
 			border-bottom-width:	1px;
 			border-color:			@message-old-border;
 
+			.from {
+				white-space:	pre;
+			}
+
+			.time {
+				flex:			1;
+				white-space:	pre;
+				margin:			0 8px 0 0;
+			}
+
 			.to {
-				float:	right;
+				white-space:	pre;
 			}
 		}
 
