@@ -25,9 +25,9 @@
 							<div class="cell s1" data-title="{{ $ tra ("yn.account.activity.list.index") }}">{{ $ tra ("yn.account.activity.list.index.value", ["index": i + 1]) }}</div>
 							<div class="cell s3 glyph10" data-title="{{ $ tra ("yn.account.activity.list.identity") }}">
 								{{ if activity.user_id != null }}
-									<a class="label activity" href="{{ $ url ("board.profile.view", ["profile": activity.user_id]) }}">{{ $ tra ("yn.account.activity.list.identity.value", ["activity": activity]) }}</a>
+									<a class="gly-left activity" href="{{ $ url ("board.profile.view", ["profile": activity.user_id]) }}">{{ $ tra ("yn.account.activity.list.identity.value", ["activity": activity]) }}</a>
 								{{ else }}
-									<span class="label activity">{{ $ tra ("yn.account.activity.list.identity.value", ["activity": activity]) }}</span>
+									<span class="gly-left activity">{{ $ tra ("yn.account.activity.list.identity.value", ["activity": activity]) }}</span>
 								{{ end }}
 							</div>
 							<div class="cell s2" data-title="{{ $ tra ("yn.account.activity.list.address") }}">{{ $ tra ("yn.account.activity.list.address.value", ["activity": activity]) }}</div>

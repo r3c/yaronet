@@ -17,9 +17,9 @@
 							<a class="name{{ $ section.subscription != null && " right subscription" }}" href="{{ $ url ("board.section.view", ["forum": forum.id != section.forum_id && forum.id || null, "section": section.id, "section_hint": section.hint]) }}">{{ $ section.name }}</a>
 							{{ if (+)edit }}
 								<span class="glyph10 ux-control">
-									<a class="label edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.edit") }}</a>
-									<a class="label permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.permission") }}</a>
-									<a class="label merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.merge") }}</a>
+									<a class="gly-left edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.edit") }}</a>
+									<a class="gly-left permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.permission") }}</a>
+									<a class="gly-left merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.merge") }}</a>
 								</span>
 							{{ else }}
 								<div>
@@ -38,12 +38,12 @@
 								{{ if block.rank != move }}
 									<form class="form-link glyph10" action="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}" method="POST">
 										<input name="move" type="hidden" value="{{ $ move }}" />
-										<input class="label {{ $ way }}" type="submit" value="{{ $ tra (cat ("yn.board.forum.view.block.move-", way)) }}" />
+										<input class="gly-left {{ $ way }}" type="submit" value="{{ $ tra (cat ("yn.board.forum.view.block.move-", way)) }}" />
 									</form>
 								{{ end }}
 							{{ end }}
-							<a class="label edit" href="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.edit") }}</a>
-							<a class="label remove" href="{{ $ url ("board.block.delete", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.delete") }}</a>
+							<a class="gly-left edit" href="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.edit") }}</a>
+							<a class="gly-left remove" href="{{ $ url ("board.block.delete", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.delete") }}</a>
 						</div>
 					{{ end }}
 					</td>

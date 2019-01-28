@@ -32,7 +32,7 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10">
-							<input class="button search" type="submit" value="{{ $ tra ("yn.board.search.edit.form.submit") }}" />
+							<input class="gly-button search" type="submit" value="{{ $ tra ("yn.board.search.edit.form.submit") }}" />
 						</div>
 					</form>
 				</div>

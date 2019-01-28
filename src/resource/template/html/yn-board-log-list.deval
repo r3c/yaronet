@@ -26,7 +26,7 @@
 						<div class="head s6">{{ $ tra ("yn.board.log.list.data") }}</div>
 						{{ for log in logs }}
 							<div class="cell s2 glyph10" data-title="{{ $ tra ("yn.board.log.list.time") }}">
-								<span class="label {{ $ php ("preg_replace") ("/.*\\./", "", log.type) }}">{{ $ tra ("yn.board.log.list.time.value", ["log": log]) }}</span>
+								<span class="gly-left {{ $ php ("preg_replace") ("/.*\\./", "", log.type) }}">{{ $ tra ("yn.board.log.list.time.value", ["log": log]) }}</span>
 							</div>
 							<div class="cell s2" data-title="{{ $ tra ("yn.board.log.list.profile") }}">{{ $ tra ("yn.board.log.list.profile.value", ["log": log]) }}</div>
 							<div class="cell s2" data-title="{{ $ tra ("yn.board.log.list.address") }}">{{ $ tra ("yn.board.log.list.address.value", ["log": log]) }}</div>
@@ -46,7 +46,7 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10">
-							<input class="button send" type="submit" value="{{ $ tra ("yn.board.log.list.form.submit") }}" />
+							<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.log.list.form.submit") }}" />
 						</div>
 					</form>
 				</div>

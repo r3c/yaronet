@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div id="yn-bookmark-links" class="panel-footer glyph10 ux-control">
-					<a class="label update" href="{{ $ url ("board.bookmark.list", params) }}">{{ $ tra ("yn.board.bookmark.list.update") }}</a>
+					<a class="gly-left update" href="{{ $ url ("board.bookmark.list", params) }}">{{ $ tra ("yn.board.bookmark.list.update") }}</a>
 					{{ let
 						what_f = php ("strpos") (what, "f"),
 						what_l = php ("strpos") (what, "l"),
@@ -34,18 +34,18 @@
 						what_s = php ("strpos") (what, "s")
 					}}
 						{{ if what_f == false && what_s != false }}
-							<a class="label fresh" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "f", what_s, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.fresh") }}</a>
+							<a class="gly-left fresh" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "f", what_s, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.fresh") }}</a>
 						{{ elseif what_f != false && what_s == false }}
-							<a class="label stale" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "s", what_f, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.stale") }}</a>
+							<a class="gly-left stale" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "s", what_f, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.stale") }}</a>
 						{{ end }}
 						{{ if what_l == false && what_n != false }}
-							<a class="label active" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "l", what_n, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.active") }}</a>
+							<a class="gly-left active" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "l", what_n, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.active") }}</a>
 						{{ elseif what_l != false && what_n == false }}
-							<a class="label new" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "n", what_l, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.new") }}</a>
+							<a class="gly-left new" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "n", what_l, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.new") }}</a>
 						{{ end }}
-						<a class="label more" href="{{ $ url ("board.bookmark.list", cat (params, ["count": count + 10])) }}">{{ $ tra ("yn.board.bookmark.list.more") }}</a>
-						<a class="label less" href="{{ $ url ("board.bookmark.list", cat (params, ["count": count - 10])) }}">{{ $ tra ("yn.board.bookmark.list.less") }}</a>
-						<a class="label rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.bookmark.list.rss") }}</a>
+						<a class="gly-left more" href="{{ $ url ("board.bookmark.list", cat (params, ["count": count + 10])) }}">{{ $ tra ("yn.board.bookmark.list.more") }}</a>
+						<a class="gly-left less" href="{{ $ url ("board.bookmark.list", cat (params, ["count": count - 10])) }}">{{ $ tra ("yn.board.bookmark.list.less") }}</a>
+						<a class="gly-left rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.bookmark.list.rss") }}</a>
 					{{ end }}
 				</div>
 			</div>

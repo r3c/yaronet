@@ -28,9 +28,9 @@
 					{{ include ../fragment/yn-board-forum-view.deval }}
 				{{ end }}
 				<div class="panel-footer glyph10 ux-control">
-					<a class="label create" href="{{ $ url ("board.section.new", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.organize.section") }}</a>
-					<a class="label add" href="{{ $ url ("board.block.new", ["forum": forum.id, "section": ""]) }}">{{ $ tra ("yn.board.forum.organize.link") }}</a>
-					<a class="label add" href="{{ $ url ("board.block.new", ["forum": forum.id, "text": ""]) }}">{{ $ tra ("yn.board.forum.organize.text") }}</a>
+					<a class="gly-left create" href="{{ $ url ("board.section.new", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.organize.section") }}</a>
+					<a class="gly-left add" href="{{ $ url ("board.block.new", ["forum": forum.id, "section": ""]) }}">{{ $ tra ("yn.board.forum.organize.link") }}</a>
+					<a class="gly-left add" href="{{ $ url ("board.block.new", ["forum": forum.id, "text": ""]) }}">{{ $ tra ("yn.board.forum.organize.text") }}</a>
 				</div>
 			</div>
 		{{ end }}

@@ -31,8 +31,8 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10 ux-control">
-							<input class="button save" type="submit" value="{{ $ tra ("yn.board.section.merge.form.submit") }}" />
-							<a class="label back" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.merge.back") }}</a>
+							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.board.section.merge.form.submit") }}" />
+							<a class="gly-left back" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.merge.back") }}</a>
 						</div>
 					</form>
 				</div>

@@ -45,7 +45,7 @@
 						{{ end }}
 						<input name="posts" type="hidden" value="{{ $ default (request.posts, topic.posts) }}" />
 						<div class="control glyph10">
-							<input class="button send" type="submit" value="{{ $ tra ("yn.board.post.edit.form.submit") }}" />
+							<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.post.edit.form.submit") }}" />
 							{{ $ " " }}
 							{{ $ tra ("yn.board.post.edit.form.disclaimer") }}
 						</div>

@@ -50,11 +50,11 @@
 				</div>
 				<div class="panel-footer glyph10 ux-control">
 					{{ if user.is_admin || profile.user_id == user.id }}
-						<a class="label edit bind-tooltip" href="{{ $ url ("account.user.edit", ["user": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.account.hint") }}">{{ $ tra ("yn.board.profile.view.account") }}</a>
-						<a class="label profile bind-tooltip" href="{{ $ url ("board.profile.edit", ["profile": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.edit.hint") }}">{{ $ tra ("yn.board.profile.view.edit") }}</a>
+						<a class="gly-left edit bind-tooltip" href="{{ $ url ("account.user.edit", ["user": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.account.hint") }}">{{ $ tra ("yn.board.profile.view.account") }}</a>
+						<a class="gly-left profile bind-tooltip" href="{{ $ url ("board.profile.edit", ["profile": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.edit.hint") }}">{{ $ tra ("yn.board.profile.view.edit") }}</a>
 					{{ end }}
 					{{ if user.is_admin && profile.user_id != user.id }}
-						<a class="label delete bind-tooltip" href="{{ $ url ("board.profile.delete", ["profile": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.delete.hint") }}">{{ $ tra ("yn.board.profile.view.delete") }}</a>
+						<a class="gly-left delete bind-tooltip" href="{{ $ url ("board.profile.delete", ["profile": profile.user_id]) }}" title="{{ $ tra ("yn.board.profile.view.delete.hint") }}">{{ $ tra ("yn.board.profile.view.delete") }}</a>
 					{{ end }}
 				</div>
 			</div>

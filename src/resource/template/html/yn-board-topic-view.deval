@@ -30,7 +30,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block goto }}
-			<ul class="goto right symbol ux-goto">
+			<ul class="gly-right goto symbol ux-goto">
 				{{ let
 					page_build = (p) => url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": p]),
 					page_current = page
@@ -52,17 +52,17 @@
 				<div class="panel">
 					<div class="panel-footer glyph10 ux-control">
 						{{ if topic.bookmark != null && topic.bookmark.watch }}
-							<a class="bind-tooltip label bookmark-off" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.clear.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.clear") }}</a>
+							<a class="bind-tooltip gly-left bookmark-off" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.clear.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.clear") }}</a>
 						{{ else }}
-							<a class="bind-tooltip label bookmark-on" href="{{ $ url ("board.bookmark.set", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.set.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.set") }}</a>
+							<a class="bind-tooltip gly-left bookmark-on" href="{{ $ url ("board.bookmark.set", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.set.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.set") }}</a>
 						{{ end }}
 						{{ if topic.allow_reply (access) }}
-							<a class="bind-tooltip label reply" href="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "posts": topic.posts]) }}" title="{{ $ tra ("yn.board.topic.view.reply.hint") }}">{{ $ tra ("yn.board.topic.view.reply") }}</a>
+							<a class="bind-tooltip gly-left reply" href="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "posts": topic.posts]) }}" title="{{ $ tra ("yn.board.topic.view.reply.hint") }}">{{ $ tra ("yn.board.topic.view.reply") }}</a>
 						{{ end }}
-						<a class="bind-tooltip label drift" href="{{ $ url ("board.topic.drift", ["forum": forum_id, "source": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.drift.hint") }}">{{ $ tra ("yn.board.topic.view.drift") }}</a>
+						<a class="bind-tooltip gly-left drift" href="{{ $ url ("board.topic.drift", ["forum": forum_id, "source": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.drift.hint") }}">{{ $ tra ("yn.board.topic.view.drift") }}</a>
 						{{ if topic.allow_edit (access) }}
-							<a class="bind-tooltip label edit" href="{{ $ url ("board.topic.edit", ["forum": forum_id, "topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.edit.hint") }}">{{ $ tra ("yn.board.topic.view.edit") }}</a>
-							<a class="bind-tooltip label delete" href="{{ $ url ("board.topic.delete", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.delete.hint") }}">{{ $ tra ("yn.board.topic.view.delete") }}</a>
+							<a class="bind-tooltip gly-left edit" href="{{ $ url ("board.topic.edit", ["forum": forum_id, "topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.edit.hint") }}">{{ $ tra ("yn.board.topic.view.edit") }}</a>
+							<a class="bind-tooltip gly-left delete" href="{{ $ url ("board.topic.delete", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.delete.hint") }}">{{ $ tra ("yn.board.topic.view.delete") }}</a>
 						{{ end }}
 					</div>
 				</div>
@@ -105,7 +105,7 @@
 									{{ end }}
 									<input name="posts" type="hidden" value="{{ $ default (request.posts, topic.posts) }}" />
 									<div class="control glyph10">
-										<input class="button send" type="submit" value="{{ $ tra ("yn.board.topic.view.form.submit") }}" />
+										<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.topic.view.form.submit") }}" />
 										{{ $ " " }}
 										<span class="bind-cross-disclaimer">{{ $ tra ("yn.board.topic.view.form.disclaimer") }}</span>
 										<span class="cross markup bind-cross-warning" style="display: none;">

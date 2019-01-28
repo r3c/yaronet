@@ -28,7 +28,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block goto }}
-			<ul class="goto right symbol ux-goto">
+			<ul class="gly-right goto symbol ux-goto">
 				{{ let
 					page_build = (p) => url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint, "page": p]),
 					page_current = page
@@ -53,7 +53,7 @@
 						{{ end }}
 						<span class="sym-parent">{{ $ section.name }}</span>
 						{{ if section.allow_publish (access) }}
-							<a class="label new" href="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}">{{ $ tra ("yn.board.section.view.form") }}</a>
+							<a class="gly-left new" href="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}">{{ $ tra ("yn.board.section.view.form") }}</a>
 						{{ end }}
 					</h3>
 					<div>{{ $ section.description }}</div>
@@ -71,17 +71,17 @@
 				<div class="panel-footer glyph10 ux-control">
 					{{ if user.id != null }}
 						{{ if section.subscription != null }}
-							<a class="bind-tooltip label subscription-off" href="{{ $ url ("board.subscription.clear", ["section": section.id]) }}" title="{{ $ tra ("yn.board.section.view.subscription.clear.hint") }}">{{ $ tra ("yn.board.section.view.subscription.clear") }}</a>
+							<a class="bind-tooltip gly-left subscription-off" href="{{ $ url ("board.subscription.clear", ["section": section.id]) }}" title="{{ $ tra ("yn.board.section.view.subscription.clear.hint") }}">{{ $ tra ("yn.board.section.view.subscription.clear") }}</a>
 						{{ else }}
-							<a class="bind-tooltip label subscription-on" href="{{ $ url ("board.subscription.set", ["section": section.id]) }}" title="{{ $ tra ("yn.board.section.view.subscription.set.hint") }}">{{ $ tra ("yn.board.section.view.subscription.set") }}</a>
+							<a class="bind-tooltip gly-left subscription-on" href="{{ $ url ("board.subscription.set", ["section": section.id]) }}" title="{{ $ tra ("yn.board.section.view.subscription.set.hint") }}">{{ $ tra ("yn.board.section.view.subscription.set") }}</a>
 						{{ end }}
 					{{ end }}
-					<a class="label active" href="{{ $ url ("board.forum.active", ["forum": forum.id]) }}">{{ $ tra ("yn.board.section.view.active") }}</a>
-					<a class="label rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.section.view.rss") }}</a>
+					<a class="gly-left active" href="{{ $ url ("board.forum.active", ["forum": forum.id]) }}">{{ $ tra ("yn.board.section.view.active") }}</a>
+					<a class="gly-left rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.section.view.rss") }}</a>
 					{{ if section.allow_edit (access) }}
-						<a class="label edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.edit") }}</a>
-						<a class="label permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.permission") }}</a>
-						<a class="label merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.merge") }}</a>
+						<a class="gly-left edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.edit") }}</a>
+						<a class="gly-left permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.permission") }}</a>
+						<a class="gly-left merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.section.view.merge") }}</a>
 					{{ end }}
 				</div>
 			</div>
@@ -103,7 +103,7 @@
 									{{ include ../fragment/control-form.deval }}
 								{{ end }}
 								<div class="control glyph10">
-									<input class="button send" type="submit" value="{{ $ tra ("yn.board.section.view.form.submit") }}" />
+									<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.section.view.form.submit") }}" />
 									{{ $ " " }}
 									{{ $ tra ("yn.board.section.view.form.disclaimer") }}
 								</div>

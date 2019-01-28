@@ -42,10 +42,10 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10 ux-control">
-							<input class="button send" type="submit" value="{{ $ tra ("yn.board.topic.edit.form.submit") }}" />
+							<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.topic.edit.form.submit") }}" />
 							{{ if board_topic_view_url }}
 								{{ $ " " }}
-								<a class="label back" href="{{ $ board_topic_view_url }}">{{ $ tra ("yn.board.topic.edit.back") }}</a>
+								<a class="gly-left back" href="{{ $ board_topic_view_url }}">{{ $ tra ("yn.board.topic.edit.back") }}</a>
 							{{ end }}
 						</div>
 					</form>

@@ -41,7 +41,7 @@
 					{{ include ../fragment/control-form.deval }}
 				{{ end }}
 				<div class="control glyph10 bind-control">
-					<input class="button edit" type="submit" value="{{ $ tra ("yn.media.language.list.form.submit") }}" />
+					<input class="edit gly-button" type="submit" value="{{ $ tra ("yn.media.language.list.form.submit") }}" />
 				</div>
 			</form>
 		{{ end }}

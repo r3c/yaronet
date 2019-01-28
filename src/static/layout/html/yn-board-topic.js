@@ -107,7 +107,7 @@ $(function () {
 		var report = $(this).data('url-report');
 		var window = yn.window($(this), $(this).data('title'), 480, 240);
 
-		var accept = $('<input class="button accept" type="submit">')
+		var accept = $('<input class="accept gly-button" type="submit">')
 			.val(yn.boardTopicStrings.accept)
 			.on('click keydown', function (event) {
 				var data = { reason: window.inner.find('textarea').val() };

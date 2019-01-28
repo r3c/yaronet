@@ -6,7 +6,7 @@
 	</tr>
 	{{ for permission in permissions }}
 		<div class="cell s3 glyph10" data-title="{{ $ tra ((+)cat (_prefix, "table.login")) }}">
-			<a class="label user" href="{{ $ url ("board.profile.view", ["profile": permission.profile.user_id]) }}">{{ $ tra ((+)cat (_prefix, "table.login.value"), ["profile": permission.profile]) }}</a>
+			<a class="gly-left user" href="{{ $ url ("board.profile.view", ["profile": permission.profile.user_id]) }}">{{ $ tra ((+)cat (_prefix, "table.login.value"), ["profile": permission.profile]) }}</a>
 		</div>
 		{{ for name, access in ["read": permission.can_read, "write": permission.can_write, "change": permission.can_change] }}
 			<div class="cell s3" data-title="{{ $ tra ((+)cat (_prefix, "table.", name)) }}">

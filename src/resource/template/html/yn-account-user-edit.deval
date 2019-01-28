@@ -61,10 +61,10 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10 ux-control">
-							<input class="button save" type="submit" value="{{ $ tra ("yn.account.user.edit.form.submit") }}" />
+							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.account.user.edit.form.submit") }}" />
 							{{ if profile_url }}
 								{{ $ " " }}
-								<a class="label back" href="{{ $ profile_url }}">{{ $ tra ("yn.account.user.edit.back") }}</a>
+								<a class="gly-left back" href="{{ $ profile_url }}">{{ $ tra ("yn.account.user.edit.back") }}</a>
 							{{ end }}
 						</div>
 					</form>

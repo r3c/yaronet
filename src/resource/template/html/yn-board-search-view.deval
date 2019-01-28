@@ -17,7 +17,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block goto }}
-			<ul class="goto right symbol ux-goto">
+			<ul class="gly-right goto symbol ux-goto">
 				{{ if from_previous != null }}
 					<li class="sym-follow">
 						<a href="{{ $ url ("board.search.view", ["search": search.id, "from": from_previous]) }}">{{ $ tra ("yn.board.search.view.from.previous") }}</a>

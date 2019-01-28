@@ -11,7 +11,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block goto }}
-			<ul class="goto right symbol ux-goto">
+			<ul class="gly-right goto symbol ux-goto">
 				{{ if page_previous != null }}
 					<li><a href="{{ $ url ("board.profile.list", ["forum": forum_id, "page": page_previous, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.previous") }}</a></li>
 				{{ end }}
@@ -37,7 +37,7 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10">
-							<input class="button search" type="submit" value="{{ $ tra ("yn.board.profile.list.form.submit") }}" />
+							<input class="gly-button search" type="submit" value="{{ $ tra ("yn.board.profile.list.form.submit") }}" />
 						</div>
 					</form>
 					<div class="grid">
@@ -47,7 +47,7 @@
 						<div class="head s6">{{ $ tra ("yn.board.profile.list.forum") }}</div>
 						{{ for profile in profiles }}
 							<div class="cell s2 glyph10" data-title="{{ $ tra ("yn.board.profile.list.login") }}">
-								<a class="label user" href="{{ $ url ("board.profile.view", ["profile": profile.user_id]) }}">{{ $ tra ("yn.board.profile.list.login.value", ["profile": profile]) }}</a>
+								<a class="gly-left user" href="{{ $ url ("board.profile.view", ["profile": profile.user_id]) }}">{{ $ tra ("yn.board.profile.list.login.value", ["profile": profile]) }}</a>
 							</div>
 							<div class="cell s2" data-title="{{ $ tra ("yn.board.profile.list.create_time") }}">{{ $ tra ("yn.board.profile.list.create_time.value", ["profile": profile]) }}</div>
 							<div class="cell s2" data-title="{{ $ tra ("yn.board.profile.list.pulse_time") }}">{{ $ tra ("yn.board.profile.list.pulse_time.value", ["profile": profile]) }}</div>

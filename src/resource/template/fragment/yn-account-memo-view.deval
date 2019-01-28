@@ -4,5 +4,5 @@
 	{{ end }}
 </div>
 <div class="control glyph10 bind-control ux-control">
-	<a class="label edit" href="{{ $ url ("account.memo.edit") }}">{{ $ tra ("yn.account.memo.view.edit") }}</a>
+	<a class="edit gly-left" href="{{ $ url ("account.memo.edit") }}">{{ $ tra ("yn.account.memo.view.edit") }}</a>
 </div>

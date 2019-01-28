@@ -36,8 +36,8 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10 ux-control">
-							<input class="button save" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.custom") }}" />
-							<a class="label back" href="{{ $ board_forum_organize_url }}">{{ $ tra ("yn.board.block.edit.back") }}</a>
+							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.custom") }}" />
+							<a class="gly-left back" href="{{ $ board_forum_organize_url }}">{{ $ tra ("yn.board.block.edit.back") }}</a>
 						</div>
 					</form>
 					{{ if request.text == null && block.rank == null && length (sections) > 0 }}
@@ -56,7 +56,7 @@
 								</div>
 							</div>
 							<div class="control glyph10 ux-control">
-								<input class="button send" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.restore") }}" />
+								<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.restore") }}" />
 							</div>
 						</form>
 					{{ end }}

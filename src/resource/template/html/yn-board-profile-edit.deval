@@ -37,10 +37,10 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10 ux-control">
-							<input class="button save" type="submit" value="{{ $ tra ("yn.board.profile.edit.form.submit") }}" />
+							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.board.profile.edit.form.submit") }}" />
 							{{ if board_profile_view_url }}
 								{{ $ " " }}
-								<a class="label back" href="{{ $ board_profile_view_url }}">{{ $ tra ("yn.board.profile.edit.back") }}</a>
+								<a class="gly-left back" href="{{ $ board_profile_view_url }}">{{ $ tra ("yn.board.profile.edit.back") }}</a>
 							{{ end }}
 						</div>
 					</form>

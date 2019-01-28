@@ -25,8 +25,8 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10 ux-control">
-							<input class="button send" type="submit" value="{{ $ tra ("yn.chat.shout.edit.form.submit") }}" />
-							<a class="label back" href="{{ $ url ("home") }}">{{ $ tra ("yn.chat.shout.edit.back") }}</a>
+							<input class="gly-button send" type="submit" value="{{ $ tra ("yn.chat.shout.edit.form.submit") }}" />
+							<a class="gly-left back" href="{{ $ url ("home") }}">{{ $ tra ("yn.chat.shout.edit.back") }}</a>
 						</div>
 					</form>
 				</div>

@@ -35,8 +35,8 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10 ux-control">
-							<input class="button save" type="submit" value="{{ $ tra ("yn.help.page.edit.form.submit") }}" />
-							<a class="label back" href="{{ $ help_page_view_url }}">{{ $ tra ("yn.help.page.edit.back") }}</a>
+							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.help.page.edit.form.submit") }}" />
+							<a class="gly-left back" href="{{ $ help_page_view_url }}">{{ $ tra ("yn.help.page.edit.back") }}</a>
 						</div>
 					</form>
 				</div>

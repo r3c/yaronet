@@ -30,7 +30,7 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10">
-							<input class="button delete" type="submit" value="{{ $ tra ("yn.board.profile.delete.form.submit") }}" />
+							<input class="delete gly-button" type="submit" value="{{ $ tra ("yn.board.profile.delete.form.submit") }}" />
 							{{ $ " " }}
 							{{ $ tra ("yn.board.profile.delete.form.disclaimer") }}
 						</div>

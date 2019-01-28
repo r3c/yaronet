@@ -59,8 +59,8 @@ yn.controlFormComplete = function (target) {
 					if (!current || current.length <= 0 || items.children('li').length >= limit)
 						return current;
 
-					var caption = $('<span class="label item">').text(current);
-					var remove = $('<a class="icon delete" href="#">').on('click', function () {
+					var caption = $('<span class="gly-left item">').text(current);
+					var remove = $('<a class="delete gly-icon" href="#">').on('click', function () {
 						$(this).closest('li').remove();
 
 						update();

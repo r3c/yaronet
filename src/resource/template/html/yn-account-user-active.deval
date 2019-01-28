@@ -28,7 +28,7 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<div class="control glyph10">
-							<input class="button send" type="submit" value="{{ $ tra ("yn.account.user.active.form.submit") }}" />
+							<input class="gly-button send" type="submit" value="{{ $ tra ("yn.account.user.active.form.submit") }}" />
 						</div>
 					</form>
 				</div>

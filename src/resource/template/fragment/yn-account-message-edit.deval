@@ -11,7 +11,7 @@
 		{{ include control-form.deval }}
 	{{ end }}
 	<div class="control glyph10 ux-control">
-		<input class="button send" type="submit" value="{{ $ tra ("yn.account.message.edit.form.submit") }}" />
-		<a class="label back" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.edit.back") }}</a>
+		<input class="gly-button send" type="submit" value="{{ $ tra ("yn.account.message.edit.form.submit") }}" />
+		<a class="back gly-left" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.edit.back") }}</a>
 	</div>
 </form>

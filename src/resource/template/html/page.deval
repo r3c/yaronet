@@ -36,11 +36,11 @@
 					</span>
 					<span class="account glyph10 ux-control">
 						{{ if _forum.id != null }}
-							<a class="bind-tooltip icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}"></a>
+							<a class="bind-tooltip gly-icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}"></a>
 						{{ end }}
 						{{ if user.id != null }}
-							<a class="bind-tooltip icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}"></a>
-							<a class="bind-tooltip icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
+							<a class="bind-tooltip gly-icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}"></a>
+							<a class="bind-tooltip gly-icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
 						{{ end }}
 					</span>
 					<span class="board glyph10 ux-control">
@@ -54,16 +54,16 @@
 								url_message_list = url ("account.message.list", ["_template": "frame"]),
 								url_message_new = url ("account.message.new", ["_template": "frame"])
 							}}
-								<span class="label welcome">{{ $ tra ("page.welcome", ["user": user]) }}</span>
-								<a class="bind-tooltip label bookmark1" href="{{ $ url ("board.bookmark.list", ["what": "f"]) }}" title="{{ $ tra ("page.bookmarks1.hint") }}">{{ $ tra ("page.bookmarks1") }}</a>
-								<a class="bind-tooltip label bookmark2" href="{{ $ url ("board.bookmark.list", ["what": "fl"]) }}" title="{{ $ tra ("page.bookmarks2.hint") }}">{{ $ tra ("page.bookmarks2") }}</a>
-								<a id="yn-message" class="bind-message bind-tooltip label message{{ if page_message != null }} message-notify{{ end }}" href="{{ $ url_message }}" title="{{ $ tra ("page.message.hint", ["message": page_message]) }}" data-url-edit="{{ $ url_message_new }}" data-url-list="{{ $ url_message_list }}">{{ $ tra ("page.message") }}</a>
-								<a id="yn-memo" class="bind-tooltip label memo" href="{{ $ url_memo }}" title="{{ $ tra ("page.memo.hint") }}" data-url-edit="{{ $ url_memo_edit }}" data-url-view="{{ $ url_memo_view }}">{{ $ tra ("page.memo") }}</a>
+								<span class="gly-left welcome">{{ $ tra ("page.welcome", ["user": user]) }}</span>
+								<a class="bind-tooltip gly-left bookmark1" href="{{ $ url ("board.bookmark.list", ["what": "f"]) }}" title="{{ $ tra ("page.bookmarks1.hint") }}">{{ $ tra ("page.bookmarks1") }}</a>
+								<a class="bind-tooltip gly-left bookmark2" href="{{ $ url ("board.bookmark.list", ["what": "fl"]) }}" title="{{ $ tra ("page.bookmarks2.hint") }}">{{ $ tra ("page.bookmarks2") }}</a>
+								<a id="yn-message" class="bind-message bind-tooltip gly-left message{{ if page_message != null }} message-notify{{ end }}" href="{{ $ url_message }}" title="{{ $ tra ("page.message.hint", ["message": page_message]) }}" data-url-edit="{{ $ url_message_new }}" data-url-list="{{ $ url_message_list }}">{{ $ tra ("page.message") }}</a>
+								<a id="yn-memo" class="bind-tooltip gly-left memo" href="{{ $ url_memo }}" title="{{ $ tra ("page.memo.hint") }}" data-url-edit="{{ $ url_memo_edit }}" data-url-view="{{ $ url_memo_view }}">{{ $ tra ("page.memo") }}</a>
 							{{ end }}
 						{{ else }}
-							<a class="bind-tooltip label signin" href="{{ $ url ("account.user.signin") }}" title="{{ $ tra ("page.signin.hint") }}">{{ $ tra ("page.signin") }}</a>
-							<a class="bind-tooltip label signup hl" href="{{ $ url ("account.user.signup", ["forum": _forum.id]) }}" title="{{ $ tra ("page.signup.hint") }}">{{ $ tra ("page.signup") }}</a>
-							<a class="bind-tooltip label recover" href="{{ $ url ("account.user.recover") }}" title="{{ $ tra ("page.recover.hint") }}">{{ $ tra ("page.recover") }}</a>
+							<a class="bind-tooltip gly-left signin" href="{{ $ url ("account.user.signin") }}" title="{{ $ tra ("page.signin.hint") }}">{{ $ tra ("page.signin") }}</a>
+							<a class="bind-tooltip gly-left signup hl" href="{{ $ url ("account.user.signup", ["forum": _forum.id]) }}" title="{{ $ tra ("page.signup.hint") }}">{{ $ tra ("page.signup") }}</a>
+							<a class="bind-tooltip gly-left recover" href="{{ $ url ("account.user.recover") }}" title="{{ $ tra ("page.recover.hint") }}">{{ $ tra ("page.recover") }}</a>
 						{{ end }}
 					</span>
 				</div>
@@ -79,7 +79,7 @@
 				{{ end }}
 				{{ if _title != null }}
 					<div class="navigation glyph16">
-						<ul class="path label symbol ux-goto" itemscope itemtype="http://schema.org/BreadcrumbList">
+						<ul class="gly-left path symbol ux-goto" itemscope itemtype="http://schema.org/BreadcrumbList">
 							{{ for position, path in keys (_path) }}
 								<li class="sym-parent" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 									<a href="{{ $ path }}" itemprop="item"><span itemprop="name">{{ $ _path[path] }}</span></a>
@@ -96,7 +96,7 @@
 				{{ label main }}
 				{{ if _title != null }}
 					<div class="navigation glyph16">
-						<ul class="path label symbol ux-goto">
+						<ul class="gly-left path symbol ux-goto">
 							{{ for path, caption in _path }}
 								<li class="sym-parent">
 									<a href="{{ $ path }}">{{ $ caption }}</a>
@@ -114,9 +114,9 @@
 					{{ $ tra ("page.copyright") }} <a href="https://github.com/r3c/yaronet">yAronet</a> | {{ $ php ("round") ((php ("microtime") ((-)true) - microtime) * 1000) }} ms
 				</span>
 				<span class="help glyph10 ux-control">
-					<a class="label guides" href="{{ $ url ("help.page.view", ["label": "guides"]) }}">{{ $ tra ("page.guides") }}</a>
-					<a class="label rules" href="{{ $ url ("help.page.view", ["label": "rules"]) }}">{{ $ tra ("page.rules") }}</a>
-					<a class="label contacts" href="{{ $ url ("help.page.view", ["label": "contacts"]) }}">{{ $ tra ("page.contacts") }}</a>
+					<a class="gly-left guides" href="{{ $ url ("help.page.view", ["label": "guides"]) }}">{{ $ tra ("page.guides") }}</a>
+					<a class="gly-left rules" href="{{ $ url ("help.page.view", ["label": "rules"]) }}">{{ $ tra ("page.rules") }}</a>
+					<a class="gly-left contacts" href="{{ $ url ("help.page.view", ["label": "contacts"]) }}">{{ $ tra ("page.contacts") }}</a>
 				</span>
 			</div>
 		{{ end }}
