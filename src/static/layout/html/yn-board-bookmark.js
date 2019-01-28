@@ -4,7 +4,7 @@ yn.boardBookmarkStrings = yn.boardBookmarkStrings || {};
 
 $(function () {
 	var attach = function (sources, links) {
-		sources.find('.bind-topic a.label').on('click', function (event) {
+		sources.find('.bind-name').on('click', function (event) {
 			if (!window.opener || location.href.indexOf('?popup=1') < 0)
 				return true;
 
@@ -17,10 +17,10 @@ $(function () {
 			return false;
 		});
 
-		sources.find('.bind-topic a.show').on('click', function () {
+		sources.find('.bind-show').on('click', function () {
 			var parent = $(this).closest('.bind-topic');
 			var container = $('<div>').appendTo(parent);
-			var handle = parent.find('a.label');
+			var handle = parent.find('.bind-name');
 
 			return yn.markup_peek(handle, container, refresh, yn.boardBookmarkStrings);
 		});
@@ -44,7 +44,7 @@ $(function () {
 			return;
 
 		// Find and disable current selection
-		var current = $('.topic a.label.hl').first().parent();
+		var current = $('.bind-name.hl').first().parent();
 		var replace = [];
 		var peek = $('.peek:not([id])');
 
@@ -70,7 +70,7 @@ $(function () {
 						replace = parent.prev().find('.topic').last().parent();
 
 					if (replace.length === 0)
-						replace = $('.topic a.label').last().parent();
+						replace = $('.bind-name').last().parent();
 				}
 
 				break;
@@ -79,7 +79,7 @@ $(function () {
 				if (peek.length > 0)
 					peek.find('.peek-reply').focus().triggerHandler('click');
 				else
-					current.find('a.show').focus().triggerHandler('click');
+					current.find('.bind-show').focus().triggerHandler('click');
 
 				break;
 
@@ -91,7 +91,7 @@ $(function () {
 						replace = parent.next().find('.topic').first().parent();
 
 					if (replace.length === 0)
-						replace = $('.topic a.label').first().parent();
+						replace = $('.bind-name').first().parent();
 				}
 
 				break;
