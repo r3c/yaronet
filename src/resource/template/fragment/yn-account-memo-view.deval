@@ -3,6 +3,6 @@
 		{{ $ default (memo.render_text ("html", router, logger), php ("nl2br") (html (tra ("yn.account.memo.view.empty")))) }}
 	{{ end }}
 </div>
-<div class="control glyph10 bind-control">
+<div class="control glyph10 bind-control ux-control">
 	<a class="label edit" href="{{ $ url ("account.memo.edit") }}">{{ $ tra ("yn.account.memo.view.edit") }}</a>
 </div>

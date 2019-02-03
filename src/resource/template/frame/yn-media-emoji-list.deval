@@ -14,7 +14,7 @@
 						</div>
 					</form>
 					<div class="bind-emoji-list">
-						<div class="control glyph10">
+						<div class="control glyph10 ux-control">
 							<a class="label send" href="{{ $ url ("media.emoji.new") }}">{{ $ tra ("yn.media.emoji.list.new") }}</a>
 						</div>
 					</div>

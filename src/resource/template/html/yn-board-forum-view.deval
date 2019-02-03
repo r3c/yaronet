@@ -36,7 +36,7 @@
 				{{ let edit = false }}
 					{{ include ../fragment/yn-board-forum-view.deval }}
 				{{ end }}
-				<div class="panel-footer glyph10">
+				<div class="panel-footer glyph10 ux-control">
 					<a class="label active" href="{{ $ url ("board.forum.active", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.active") }}</a>
 					<a class="label rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.forum.view.rss") }}</a>
 					<a class="label directory" href="{{ $ url ("board.profile.list", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.users") }}</a>

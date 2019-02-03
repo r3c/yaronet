@@ -88,8 +88,8 @@
 			<string key="post.ignore.hint">Ignorer l'auteur de ce message</string>
 			<string key="post.mark" alias="yn.board.bookmark.list.mark" />
 			<string key="post.mark.hint" alias="yn.board.bookmark.list.mark.hint" />
-			<string key="post.message" alias="yn.account.message.list.message" />
-			<string key="post.message.hint" alias="yn.account.message.list.message.hint" />
+			<string key="post.message">Mini-message</string>
+			<string key="post.message.hint">Envoyer un mini-message à l'auteur</string>
 			<string key="post.peek">Voir</string>
 			<string key="post.peek.hint">Voir le contenu de ce message</string>
 			<string key="post.position">Position</string>

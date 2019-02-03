@@ -11,7 +11,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block goto }}
-			<ul class="goto right symbol">
+			<ul class="goto right symbol ux-goto">
 				{{ if page_previous != null }}
 					<li><a href="{{ $ url ("board.profile.list", ["forum": forum_id, "page": page_previous, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.previous") }}</a></li>
 				{{ end }}

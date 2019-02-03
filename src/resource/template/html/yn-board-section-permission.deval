@@ -33,7 +33,7 @@
 						{{ let _prefix = "yn.board.section.permission." }}
 							{{ include ../fragment/yn-board-permission.deval }}
 						{{ end }}
-						<div class="control glyph10">
+						<div class="control glyph10 ux-control">
 							<input class="button save" type="submit" value="{{ $ tra ("yn.board.section.permission.form.submit") }}" />
 							<a class="label back" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.permission.back") }}</a>
 						</div>

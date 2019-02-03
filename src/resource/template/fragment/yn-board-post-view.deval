@@ -13,7 +13,7 @@
 }}
 	{{ if do_peek }}
 		<div class="peek{{ $ post.state == php ("yN\\Entity\\Board\\Post::#STATE_EMPHASIZED") && " peek-emphasized" || (post.state == php ("yN\\Entity\\Board\\Post::#STATE_HIDDEN") && " peek-hidden" || (post.ignore && " peek-ignored")) }}">
-			<div class="peek-control glyph10">
+			<div class="peek-control glyph10 ux-control">
 				{{ if position > 1 }}
 					<a class="label peek-previous" href="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position - 1, "peek": request.peek]) }}">{{ $ position - 1 }}</a>
 				{{ end }}
@@ -39,7 +39,7 @@
 				{{ end }}
 			{{ end }}
 			{{ if do_reply && allow_reply }}
-				<div class="peek-action glyph10">
+				<div class="peek-action glyph10 ux-control">
 					<a class="bind-tooltip label peek-quote" href="{{ $ url ("board.post.new", ["topic": topic.id, "quote": position, "peek": request.peek]) }}" title="{{ $ tra ("yn.board.bookmark.list.quote.hint") }}">{{ $ tra ("yn.board.bookmark.list.quote") }}</a>
 					<a class="bind-tooltip label peek-reply" href="#" title="{{ $ tra ("yn.board.bookmark.list.reply.hint") }}">{{ $ tra ("yn.board.bookmark.list.reply") }}</a>
 				</div>
@@ -71,7 +71,7 @@
 				{{ end }}
 			</div>
 			{{ if user.id != null }}				
-				<div class="action glyph10">
+				<div class="action glyph10 ux-control">
 					{{ if allow_edit }}
 						<a class="bind-tooltip label edit" href="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.edit.hint") }}" data-url-edit="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.edit") }}</a>
 					{{ end }}

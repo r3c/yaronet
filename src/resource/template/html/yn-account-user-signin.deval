@@ -28,7 +28,7 @@
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
 						<input name="target" type="hidden" value="{{ $ default (request.target, target) }}" />
-						<div class="control glyph10">
+						<div class="control glyph10 ux-control">
 							<input class="button send" type="submit" value="{{ $ tra ("yn.account.user.signin.form.submit") }}" />
 							<a class="label back" href="{{ $ url ("home") }}">{{ $ tra ("yn.account.user.signin.back") }}</a>
 						</div>

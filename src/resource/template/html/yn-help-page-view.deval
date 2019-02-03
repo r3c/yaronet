@@ -19,7 +19,7 @@
 					{{ end }}
 				</div>
 				{{ if user.is_admin }}
-					<div class="panel-footer glyph10">
+					<div class="panel-footer glyph10 ux-control">
 						<a class="label edit" href="{{ $ url ("help.page.edit", ["label": page.label, "language": page.language]) }}">{{ $ tra ("yn.help.page.view.edit") }}</a>
 					</div>
 				{{ end }}

@@ -15,7 +15,7 @@
 				}}
 					{{ include ../fragment/control-form.deval }}
 				{{ end }}
-				<div class="control glyph10">
+				<div class="control glyph10 ux-control">
 					{{ if length (alerts) != 0 }}
 						<input class="button send" type="submit" value="{{ $ tra ("yn.media.emoji.edit.form.submit") }}" />
 					{{ end }}

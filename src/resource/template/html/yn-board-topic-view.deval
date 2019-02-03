@@ -30,7 +30,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block goto }}
-			<ul class="goto right symbol">
+			<ul class="goto right symbol ux-goto">
 				{{ let
 					page_build = (p) => url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": p]),
 					page_current = page
@@ -50,7 +50,7 @@
 			</div>
 			{{ if user.id != null }}
 				<div class="panel">
-					<div class="panel-footer glyph10">
+					<div class="panel-footer glyph10 ux-control">
 						{{ if topic.bookmark != null && topic.bookmark.watch }}
 							<a class="bind-tooltip label bookmark-off" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.clear.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.clear") }}</a>
 						{{ else }}

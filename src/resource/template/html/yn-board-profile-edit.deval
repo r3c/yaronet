@@ -36,7 +36,7 @@
 						}}
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
-						<div class="control glyph10">
+						<div class="control glyph10 ux-control">
 							<input class="button save" type="submit" value="{{ $ tra ("yn.board.profile.edit.form.submit") }}" />
 							{{ if board_profile_view_url }}
 								{{ $ " " }}

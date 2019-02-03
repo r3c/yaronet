@@ -13,11 +13,9 @@
 				}}
 					<li class="bind-topic">
 						<div class="topic glyph10 symbol">
-							<a class="bind-tooltip label {{ $ source }}-{{ $ class }}" href="{{ $ url_view }}" title="{{ $ tra ("yn.board.bookmark.list.topic.hint", ["section": topic.section]) }}" data-url-peek="{{ $ url_peek }}">{{ $ topic.render_name ("text", router, logger) }}</a>
-							<span class="count next">
-								<a class="show" href="{{ $ url_view }}">{{ $ next }}</a>
-								<span class="plus">{{ $ max (topic.posts - position, 0) }}</span>
-							</span>
+							<a class="bind-tooltip label name {{ $ source }}-{{ $ class }}" href="{{ $ url_view }}" title="{{ $ tra ("yn.board.bookmark.list.topic.hint", ["section": topic.section]) }}" data-url-peek="{{ $ url_peek }}">{{ $ topic.render_name ("text", router, logger) }}</a>
+							<a class="count next show" href="{{ $ url_view }}">{{ $ next }}</a>
+							<span class="plus">{{ $ max (topic.posts - position, 0) }}</span>
 						</div>
 					</li>
 				{{ end }}

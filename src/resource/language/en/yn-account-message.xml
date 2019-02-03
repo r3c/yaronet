@@ -57,8 +57,6 @@
 			<string key="hide">Hide</string>
 			<string key="hide.confirm" alias="yn.account.message.hide.warning" />
 			<string key="hide.hint">Remove this message from your history</string>
-			<string key="message">Private message</string>
-			<string key="message.hint">Send a private message to author</string>
 			<string key="new">Send new</string>
 			<string key="new.hint">Send new private message</string>
 			<string key="prev">Older</string>

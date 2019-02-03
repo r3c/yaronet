@@ -28,7 +28,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block goto }}
-			<ul class="goto right symbol">
+			<ul class="goto right symbol ux-goto">
 				{{ let
 					page_build = (p) => url ("board.section.view", ["forum": forum_id, "section": section.id, "section_hint": section.hint, "page": p]),
 					page_current = page
@@ -66,7 +66,7 @@
 					{{ end }}
 				{{ end }}
 				{{ include ../fragment/yn-board-section-view.deval }}
-				<div class="panel-footer glyph10">
+				<div class="panel-footer glyph10 ux-control">
 					{{ if user.id != null }}
 						{{ if section.subscription != null }}
 							<a class="bind-tooltip label subscription-off" href="{{ $ url ("board.subscription.clear", ["section": section.id]) }}" title="{{ $ tra ("yn.board.section.view.subscription.clear.hint") }}">{{ $ tra ("yn.board.section.view.subscription.clear") }}</a>

@@ -16,7 +16,7 @@
 						<td class="link">
 							<a class="name{{ $ section.subscription != null && " right subscription" }}" href="{{ $ url ("board.section.view", ["forum": forum.id != section.forum_id && forum.id || null, "section": section.id, "section_hint": section.hint]) }}">{{ $ section.name }}</a>
 							{{ if (+)edit }}
-								<span class="glyph10">
+								<span class="glyph10 ux-control">
 									<a class="label edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.edit") }}</a>
 									<a class="label permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.permission") }}</a>
 									<a class="label merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.merge") }}</a>
@@ -33,7 +33,7 @@
 							{{ end }}
 					{{ end }}
 					{{ if (+)edit }}
-						<div class="control glyph10">
+						<div class="control glyph10 ux-control">
 							{{ for way, move in ["up": default (blocks[index - 1].rank, rank_top), "down": default (blocks[index + 1].rank, rank_bottom), "top": rank_top, "bottom": rank_bottom] }}
 								{{ if block.rank != move }}
 									<form class="form-link glyph10" action="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}" method="POST">

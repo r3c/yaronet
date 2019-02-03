@@ -32,7 +32,7 @@
 						}}
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
-						<div class="control glyph10">
+						<div class="control glyph10 ux-control">
 							<input class="button save" type="submit" value="{{ $ tra ("yn.board.favorite.edit.form.submit") }}" />
 							<a class="label back" href="{{ $ url ("home") }}">{{ $ tra ("yn.board.favorite.edit.back") }}</a>
 						</div>

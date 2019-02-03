@@ -35,7 +35,7 @@
 						}}
 							{{ include ../fragment/control-form.deval }}
 						{{ end }}
-						<div class="control glyph10">
+						<div class="control glyph10 ux-control">
 							<input class="button save" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.custom") }}" />
 							<a class="label back" href="{{ $ board_forum_organize_url }}">{{ $ tra ("yn.board.block.edit.back") }}</a>
 						</div>
@@ -55,7 +55,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="control glyph10">
+							<div class="control glyph10 ux-control">
 								<input class="button send" type="submit" value="{{ $ tra ("yn.board.block.edit.form.submit.restore") }}" />
 							</div>
 						</form>

@@ -29,7 +29,7 @@
 				}}
 					{{ include control-form.deval }}
 				{{ end }}
-				<div class="bind-control action glyph10">
+				<div class="bind-control action glyph10 ux-control">
 					{{ if user.id != null }}
 						<a class="label accept" href="#">{{ $ tra ("yn.board.topic.view.post.edit.accept") }}</a>
 					{{ end }}

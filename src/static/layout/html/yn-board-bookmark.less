@@ -94,15 +94,24 @@ div.bookmarks {
 				margin:		8px 0;
 				list-style:	none;
 
-				div.topic {
+				.topic {
 					display:		flex;
 					align-items:	center;
 					line-height:	200%;
 					white-space:	nowrap;
 
-					a.label {
+					.count,
+					.name {
+						margin:	0 4px 0 0;
+					}
+
+					.name {
 						overflow:		hidden;
 						text-overflow:	ellipsis;
+					}
+	
+					.plus {
+						flex:	1
 					}
 				}
 			}

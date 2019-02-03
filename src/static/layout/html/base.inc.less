@@ -68,14 +68,12 @@
 
 	.icon {
 		padding-left:			10px;
-		margin:					0 4px;
 		background-position:	0 50%;
 		background-repeat:		no-repeat;
 	}
 
 	.label {
 		padding-left:			14px;
-		margin:					0 4px;
 		background-position:	0 50%;
 		background-repeat:		no-repeat;
 	}
@@ -86,7 +84,6 @@
 
 	.right {
 		padding-right:			14px;
-		margin-right:			4px;
 		background-position:	right 0 top 50%;
 		background-repeat:		no-repeat;
 	}
@@ -102,7 +99,6 @@
 
 	.label {
 		padding-left:			20px;
-		margin:					0 3px;
 		background-repeat:		no-repeat;
 		background-position:	0 50%;
 	}
@@ -303,6 +299,30 @@
 
 		&:last-child::after {
 			content:	none;
+		}
+	}
+}
+
+.ux-control {
+	@media (pointer: coarse) {
+		line-height:	200%;
+
+		& > * {
+			margin:	0 16px 0 0;
+		}
+	}
+
+	& > * {
+		margin:	0 8px 0 0;
+	}
+}
+
+.ux-goto {
+	@media (pointer: coarse) {
+		line-height:	200%;
+
+		& > * {
+			margin:	0 4px 0 0;
 		}
 	}
 }

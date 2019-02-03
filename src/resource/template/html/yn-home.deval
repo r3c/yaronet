@@ -64,7 +64,7 @@
 								{{ end }}
 								</ul>
 								{{ if links != null }}
-									<div class="links glyph10">
+									<div class="links glyph10 ux-control">
 										{{ for link in links }}
 											<a class="label {{ $ link[0] }}" href="{{ $ link[1] }}">{{ $ link[2] }}</a>
 										{{ end }}

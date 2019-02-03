@@ -25,7 +25,7 @@
 						{{ include ../fragment/yn-board-bookmark-list.deval }}
 					</div>
 				</div>
-				<div id="yn-bookmark-links" class="panel-footer glyph10">
+				<div id="yn-bookmark-links" class="panel-footer glyph10 ux-control">
 					<a class="label update" href="{{ $ url ("board.bookmark.list", params) }}">{{ $ tra ("yn.board.bookmark.list.update") }}</a>
 					{{ let
 						what_f = php ("strpos") (what, "f"),

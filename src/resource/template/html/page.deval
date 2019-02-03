@@ -34,7 +34,7 @@
 					<span class="time">
 						{{ $ tra ("page.time", ["time": time]) }}
 					</span>
-					<span class="account glyph10">
+					<span class="account glyph10 ux-control">
 						{{ if _forum.id != null }}
 							<a class="bind-tooltip icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}"></a>
 						{{ end }}
@@ -43,7 +43,7 @@
 							<a class="bind-tooltip icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
 						{{ end }}
 					</span>
-					<span class="board glyph10">
+					<span class="board glyph10 ux-control">
 						{{ if user.id != null }}
 							{{ let
 								url_memo = url ("account.memo.view"),
@@ -79,7 +79,7 @@
 				{{ end }}
 				{{ if _title != null }}
 					<div class="navigation glyph16">
-						<ul class="path label symbol" itemscope itemtype="http://schema.org/BreadcrumbList">
+						<ul class="path label symbol ux-path" itemscope itemtype="http://schema.org/BreadcrumbList">
 							{{ for position, path in keys (_path) }}
 								<li class="tail" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 									<a href="{{ $ path }}" itemprop="item"><span itemprop="name">{{ $ _path[path] }}</span></a>
@@ -96,7 +96,7 @@
 				{{ label main }}
 				{{ if _title != null }}
 					<div class="navigation glyph16">
-						<ul class="path label symbol">
+						<ul class="path label symbol ux-path">
 							{{ for path, caption in _path }}
 								<li class="tail">
 									<a href="{{ $ path }}">{{ $ caption }}</a>
@@ -113,7 +113,7 @@
 				<span class="copyright glyph10">
 					{{ $ tra ("page.copyright") }} <a href="https://github.com/r3c/yaronet">yAronet</a> | {{ $ php ("round") ((php ("microtime") ((-)true) - microtime) * 1000) }} ms
 				</span>
-				<span class="help glyph10">
+				<span class="help glyph10 ux-control">
 					<a class="label guides" href="{{ $ url ("help.page.view", ["label": "guides"]) }}">{{ $ tra ("page.guides") }}</a>
 					<a class="label rules" href="{{ $ url ("help.page.view", ["label": "rules"]) }}">{{ $ tra ("page.rules") }}</a>
 					<a class="label contacts" href="{{ $ url ("help.page.view", ["label": "contacts"]) }}">{{ $ tra ("page.contacts") }}</a>
