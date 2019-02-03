@@ -84,7 +84,7 @@ function account_user_create($forum_id = null)
     // Create
     HTTP::assert('users/signup')
         ->is_success()
-        ->matches_html('h2', '//')
+        ->matches_html('h3', '//')
         ->matches_html('p.editorial', '//')
         ->matches_html('input[name=login]', '/type="text"/')
         ->matches_html('input[name=password-1]', '/type="password"/');
@@ -104,7 +104,7 @@ function account_user_create($forum_id = null)
 
     HTTP::assert('users/' . $user['id'] . '/active')
         ->is_success()
-        ->matches_html('h2', '//')
+        ->matches_html('h3', '//')
         ->matches_html('input[name=code]', '/type="text"/');
 
     HTTP::assert('users/' . $user['id'] . '/active?code=' . rawurlencode($recover))
@@ -135,7 +135,7 @@ function account_user_create($forum_id = null)
     // Recover password
     HTTP::assert('users/recover')
         ->is_success()
-        ->matches_html('h2', '//');
+        ->matches_html('h3', '//');
 
     HTTP::assert('users/recover', array('email' => $user['email']))
         ->is_success()
@@ -384,7 +384,7 @@ function board_forum_assert($user, $forum)
     // Check organize page
     HTTP::assert('forums/' . $forum['id'] . '/organize')
         ->is_success()
-        ->matches_html('h2', '//');
+        ->matches_html('h3', '//');
 }
 
 // Forum create & edit
@@ -451,14 +451,14 @@ function board_post_assert($user, $forum, $topic, $post, $check_user)
     $http = HTTP::assert('topics/' . $topic['id'] . '/' . ceil($post['position'] / 30), array(), false, true)
         ->is_success()
         ->matches_html('.path h1', _match($topic['name']))
-        ->matches_html($scope . ' .content .text', _match($post['text']));
+        ->matches_html($scope . ' .body .text', _match($post['text']));
 
     if ($check_user) {
         $http
-            ->matches_html($scope . ' .content .body .edit', '@posts/' . $topic['id'] . '-([0-9]+)/edit@')
-            ->matches_html($scope . ' .content .bottom', _match($user['signature']))
-            ->matches_html($scope . ' .content .bottom img.avatar', '/www\\.gravatar\\.com/')
-            ->matches_html($scope . ' .content .origin .from .login', _match($user['login']));
+            ->matches_html($scope . ' .body .edit', '@posts/' . $topic['id'] . '-([0-9]+)/edit@')
+            ->matches_html($scope . ' .body .bottom', _match($user['signature']))
+            ->matches_html($scope . ' .body .bottom img.avatar', '/www\\.gravatar\\.com/')
+            ->matches_html($scope . ' .body .from .login', _match($user['login']));
     }
 
     HTTP::assert('posts/' . $forum['id'] . '-' . $topic['id'] . '-' . $post['position'] . '.frame')
@@ -556,7 +556,7 @@ function board_search_execute($user, $forum, $post, $author, $exists)
 
     HTTP::assert('searches/' . $match[1])
         ->is_success()
-        ->matches_html($scope . ' .content .text', ($exists ? '+' : '-') . _match($post['text']));
+        ->matches_html($scope . ' .body .text', ($exists ? '+' : '-') . _match($post['text']));
 }
 
 // Assert section contents
@@ -568,7 +568,7 @@ function board_section_assert($user, $section)
     HTTP::assert('sections/' . $section['id'], array(), false, true)
         ->is_success()
         ->matches_html('.section .markup', _match($section['header']))
-        ->matches_html('.section .panel-body h2', _match($section['name']));
+        ->matches_html('.section .panel-body h3', _match($section['name']));
 
     // Check search
     HTTP::assert('sections.json?query=' . rawurlencode($section['name']))
@@ -627,7 +627,7 @@ function board_section_merge($user, $section, $into)
 {
     HTTP::assert('sections/' . $section['id'] . '/merge')
         ->is_success()
-        ->matches_html('h2', '//');
+        ->matches_html('h3', '//');
 
     HTTP::assert('sections/' . $section['id'] . '/merge', array('into' => $into['id']))
         ->redirects_to('@forums/' . $into['forum'] . '-@');
@@ -702,7 +702,7 @@ function board_topic_create($user, $forum, $section)
     if ($section['access'] >= 1) {
         HTTP::assert('forums/' . $forum['id'] . '-' . $forum['alias'])
             ->is_success()
-            ->matches_html('.forum h2', _match($forum['name']))
+            ->matches_html('.forum h3', _match($forum['name']))
             ->matches_html('.last .sources .source .topics', '//')
             ->matches_html('.last a.active-self', _match($topic['name']))
             ->matches_html('.last a.new-self', _match($topic['name']));
