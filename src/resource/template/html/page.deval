@@ -34,15 +34,6 @@
 					<span class="time">
 						{{ $ tra ("page.time", ["time": time]) }}
 					</span>
-					<span class="account glyph10 ux-control">
-						{{ if _forum.id != null }}
-							<a class="bind-tooltip gly-icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}"></a>
-						{{ end }}
-						{{ if user.id != null }}
-							<a class="bind-tooltip gly-icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}"></a>
-							<a class="bind-tooltip gly-icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
-						{{ end }}
-					</span>
 					<span class="board glyph10 ux-control">
 						{{ if user.id != null }}
 							{{ let
@@ -64,6 +55,15 @@
 							<a class="bind-tooltip gly-left signin" href="{{ $ url ("account.user.signin") }}" title="{{ $ tra ("page.signin.hint") }}">{{ $ tra ("page.signin") }}</a>
 							<a class="bind-tooltip gly-left hl signup" href="{{ $ url ("account.user.signup", ["forum": _forum.id]) }}" title="{{ $ tra ("page.signup.hint") }}">{{ $ tra ("page.signup") }}</a>
 							<a class="bind-tooltip gly-left recover" href="{{ $ url ("account.user.recover") }}" title="{{ $ tra ("page.recover.hint") }}">{{ $ tra ("page.recover") }}</a>
+						{{ end }}
+					</span>
+					<span class="account glyph10 ux-control">
+						{{ if _forum.id != null }}
+							<a class="bind-tooltip gly-icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}"></a>
+						{{ end }}
+						{{ if user.id != null }}
+							<a class="bind-tooltip gly-icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}"></a>
+							<a class="bind-tooltip gly-icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
 						{{ end }}
 					</span>
 				</div>

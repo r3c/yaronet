@@ -568,15 +568,16 @@ strong {
 			transform:		none;
 		}
 
-		div.menu-links {
+		.menu-links {
 			@media screen and (max-width: 600px) {
-				display:	block;
+				display:	flex;
 				animation:	menu-open 250ms ease 0s 1;
 			}
 		}
 	}
 
-	div.menu-links {
+	.menu-links {
+		display:			flex;
 		padding:			3px 4px;
 		background-color:	@menu-back;
 		border-color:		@menu-border;
@@ -584,6 +585,7 @@ strong {
 
 		@media screen and (max-width: 600px) {
 			display:		none;
+			flex-direction:	column;
 			position:		relative;
 			right:			10px;
 			top:			10px;
@@ -594,25 +596,31 @@ strong {
 			box-shadow:		0px 0px 12px 3px @menu-border;
 		}
 
-		a.label {
+		.account {
 			@media screen and (max-width: 600px) {
-				display:	block;
-				margin:		2px 0;
-			}
-		}
-
-		span.account {
-			float:	right;
-
-			@media screen and (max-width: 600px) {
-				float:		none;
+				order:		1;
 				display:	block;
 				margin:		2px 0;
 				text-align:	center;
 			}
 		}
 
-		span.time {
+		.board {
+			flex:	1;
+
+			@media screen and (max-width: 600px) {
+				order:		2;
+			}
+
+			a {
+				@media screen and (max-width: 600px) {
+					display:	block;
+					margin:		2px 0;
+				}
+			}
+		}
+
+		.time {
 			padding-right:	4px;
 			color:			@menu-text;
 
@@ -621,14 +629,14 @@ strong {
 			}
 		}
 
-		span.welcome {
+		.welcome {
 			@media screen and (max-width: 600px) {
 				display:	none;
 			}
 		}
 	}
 
-	div.menu-users {
+	.menu-users {
 		padding:			3px 4px;
 		background-color:	@menu-back;
 		border-style:		dashed none none none;
@@ -648,11 +656,11 @@ strong {
 			content:	'';
 		}
 
-		a.far {
+		.far {
 			font-weight:	normal;
 		}
 
-		a.group {
+		.group {
 			font-style:		italic;
 			font-weight:	normal;
 		}
