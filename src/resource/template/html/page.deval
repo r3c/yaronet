@@ -27,6 +27,9 @@
 							{{ end }}
 						{{ end }}
 					</div>
+					<div class="partner">
+						<a href="https://www.infomaniak.com/"></a>
+					</div>
 				</div>
 			{{ end }}
 			<div id="yn-menu" class="page-menu{{ if page_message != null }} menu-notify{{ end }}">
