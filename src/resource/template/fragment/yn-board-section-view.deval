@@ -21,7 +21,7 @@
 								{{ $ topic.render_name ("html", router, logger) }}
 							{{ end }}
 						</a>
-						<strong class="sym-follow">{{ $ tra ("yn.board.section.view.create_profile", ["profile": topic.create_profile]) }}</strong>
+						<span class="author sym-follow">{{ $ tra ("yn.board.section.view.create_profile", ["profile": topic.create_profile]) }}</span>
 						<span class="sym-follow">
 							{{ for page in range (1, min (last, 3)) }}
 								<a href="{{ $ url ("board.topic.view", ["forum": forum_id, "topic": topic.id, "topic_hint": topic.hint, "page": page]) }}">{{ $ page }}</a>
@@ -41,8 +41,8 @@
 						{{ $ tra ("yn.board.section.view.info", ["topic": topic]) }}
 					</td>
 					<td class="last symbol">
-						<span class="sym-author">{{ $ tra ("yn.board.section.view.last_time", ["time": topic.last_time]) }}</span>
-						<strong class="sym-follow">{{ $ tra ("yn.board.section.view.last_profile", ["profile": topic.last_profile]) }}</strong>
+						<span class="time">{{ $ tra ("yn.board.section.view.last_time", ["time": topic.last_time]) }}</span>
+						<span class="author sym-follow">{{ $ tra ("yn.board.section.view.last_profile", ["profile": topic.last_profile]) }}</span>
 					</td>
 				</tr>
 			{{ end }}

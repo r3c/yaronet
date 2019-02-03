@@ -139,7 +139,7 @@
 			<string key="section.edit" alias="yn.board.section.view.edit" />
 			<string key="section.info">{section.topics} sujet{gt:{section.topics},1,s}</string>
 			<string key="section.last_profile" alias="yn.board.section.view.create_profile" />
-			<string key="section.last_time">{if:{time},{date:{time},d/m/Y à H:i},(section vide)}</string>
+			<string key="section.last_time">» {if:{time},{date:{time},d/m/Y à H:i},(section vide)}</string>
 			<string key="section.merge" alias="yn.board.section.view.merge" />
 			<string key="section.permission" alias="yn.board.section.view.permission" />
 			<string key="type">Forum</string>

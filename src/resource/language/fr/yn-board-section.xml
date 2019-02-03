@@ -104,7 +104,7 @@
 			<string key="form.submit" alias="base.submit.send" />
 			<string key="info">{topic.posts} messages</string>
 			<string key="last_profile" alias="yn.board.section.view.create_profile" />
-			<string key="last_time">{if:{time},{date:{time},d/m/Y à H:i},(sujet vide)}</string>
+			<string key="last_time">» {if:{time},{date:{time},d/m/Y à H:i},(sujet vide)}</string>
 			<string key="merge">Fusionner</string>
 			<string key="permission">Permissions</string>
 			<string key="rss">Flux RSS</string>
