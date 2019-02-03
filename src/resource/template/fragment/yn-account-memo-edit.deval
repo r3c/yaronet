@@ -8,7 +8,7 @@
 	}}
 		{{ include control-form.deval }}
 	{{ end }}
-	<div class="control glyph10 bind-control ux-control">
+	<div class="bind-control control glyph10 ux-control">
 		<input class="gly-button save" type="submit" value="{{ $ tra ("yn.account.memo.edit.form.submit") }}" />
 		<a class="back gly-left" href="{{ $ url ("account.memo.view") }}">{{ $ tra ("yn.account.memo.edit.back") }}</a>
 	</div>

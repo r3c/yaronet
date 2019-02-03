@@ -32,7 +32,7 @@
 						{{ end }}
 						<div class="control glyph10 ux-control">
 							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.board.section.merge.form.submit") }}" />
-							<a class="gly-left back" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.merge.back") }}</a>
+							<a class="back gly-left" href="{{ $ board_section_view_url }}">{{ $ tra ("yn.board.section.merge.back") }}</a>
 						</div>
 					</form>
 				</div>

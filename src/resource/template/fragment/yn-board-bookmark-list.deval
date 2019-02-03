@@ -12,7 +12,7 @@
 					url_view = url ("board.topic.view", ["topic": topic.id, "topic_hint": topic.hint, "page": php ("yN\\Entity\\Board\\Topic::get_page") (next), "_template": null], cat ("post-", next))
 				}}
 					<li class="bind-topic">
-						<div class="topic glyph10 symbol">
+						<div class="glyph10 symbol topic">
 							<a class="bind-name bind-tooltip gly-left name {{ $ source }}-{{ $ class }}" href="{{ $ url_view }}" title="{{ $ tra ("yn.board.bookmark.list.topic.hint", ["section": topic.section]) }}" data-url-peek="{{ $ url_peek }}">{{ $ topic.render_name ("text", router, logger) }}</a>
 							<span class="bind-show count sym-follow"><a href="{{ $ url_view }}">{{ $ next }}</a></span>
 							<span class="sym-more">{{ $ max (topic.posts - position, 0) }}</span>

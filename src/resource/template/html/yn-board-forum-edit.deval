@@ -53,7 +53,7 @@
 							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.board.forum.edit.form.submit") }}" />
 							{{ if board_forum_view_url }}
 								{{ $ " " }}
-								<a class="gly-left back" href="{{ $ board_forum_view_url }}">{{ $ tra ("yn.board.forum.edit.back") }}</a>
+								<a class="back gly-left" href="{{ $ board_forum_view_url }}">{{ $ tra ("yn.board.forum.edit.back") }}</a>
 							{{ end }}
 						</div>
 					</form>

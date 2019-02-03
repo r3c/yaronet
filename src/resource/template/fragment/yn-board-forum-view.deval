@@ -17,7 +17,7 @@
 							<a class="name{{ $ section.subscription != null && " right subscription" }}" href="{{ $ url ("board.section.view", ["forum": forum.id != section.forum_id && forum.id || null, "section": section.id, "section_hint": section.hint]) }}">{{ $ section.name }}</a>
 							{{ if (+)edit }}
 								<span class="glyph10 ux-control">
-									<a class="gly-left edit" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.edit") }}</a>
+									<a class="edit gly-left" href="{{ $ url ("board.section.edit", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.edit") }}</a>
 									<a class="gly-left permission" href="{{ $ url ("board.section.permission", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.permission") }}</a>
 									<a class="gly-left merge" href="{{ $ url ("board.section.merge", ["section": section.id]) }}">{{ $ tra ("yn.board.forum.view.section.merge") }}</a>
 								</span>
@@ -42,7 +42,7 @@
 									</form>
 								{{ end }}
 							{{ end }}
-							<a class="gly-left edit" href="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.edit") }}</a>
+							<a class="edit gly-left" href="{{ $ url ("board.block.edit", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.edit") }}</a>
 							<a class="gly-left remove" href="{{ $ url ("board.block.delete", ["forum": block.forum_id, "rank": block.rank]) }}">{{ $ tra ("yn.board.forum.view.block.delete") }}</a>
 						</div>
 					{{ end }}

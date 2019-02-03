@@ -50,19 +50,19 @@
 			</div>
 			{{ if user.id != null }}
 				<div class="panel">
-					<div class="panel-footer glyph10 ux-control">
+					<div class="glyph10 panel-footer ux-control">
 						{{ if topic.bookmark != null && topic.bookmark.watch }}
-							<a class="bind-tooltip gly-left bookmark-off" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.clear.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.clear") }}</a>
+							<a class="bookmark-off gly-left bind-tooltip" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.clear.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.clear") }}</a>
 						{{ else }}
-							<a class="bind-tooltip gly-left bookmark-on" href="{{ $ url ("board.bookmark.set", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.set.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.set") }}</a>
+							<a class="bookmark-on gly-left bind-tooltip" href="{{ $ url ("board.bookmark.set", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.bookmark.set.hint") }}">{{ $ tra ("yn.board.topic.view.bookmark.set") }}</a>
 						{{ end }}
 						{{ if topic.allow_reply (access) }}
 							<a class="bind-tooltip gly-left reply" href="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "posts": topic.posts]) }}" title="{{ $ tra ("yn.board.topic.view.reply.hint") }}">{{ $ tra ("yn.board.topic.view.reply") }}</a>
 						{{ end }}
-						<a class="bind-tooltip gly-left drift" href="{{ $ url ("board.topic.drift", ["forum": forum_id, "source": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.drift.hint") }}">{{ $ tra ("yn.board.topic.view.drift") }}</a>
+						<a class="bind-tooltip drift gly-left" href="{{ $ url ("board.topic.drift", ["forum": forum_id, "source": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.drift.hint") }}">{{ $ tra ("yn.board.topic.view.drift") }}</a>
 						{{ if topic.allow_edit (access) }}
-							<a class="bind-tooltip gly-left edit" href="{{ $ url ("board.topic.edit", ["forum": forum_id, "topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.edit.hint") }}">{{ $ tra ("yn.board.topic.view.edit") }}</a>
-							<a class="bind-tooltip gly-left delete" href="{{ $ url ("board.topic.delete", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.delete.hint") }}">{{ $ tra ("yn.board.topic.view.delete") }}</a>
+							<a class="bind-tooltip edit gly-left" href="{{ $ url ("board.topic.edit", ["forum": forum_id, "topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.edit.hint") }}">{{ $ tra ("yn.board.topic.view.edit") }}</a>
+							<a class="bind-tooltip delete gly-left" href="{{ $ url ("board.topic.delete", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.topic.view.delete.hint") }}">{{ $ tra ("yn.board.topic.view.delete") }}</a>
 						{{ end }}
 					</div>
 				</div>
@@ -90,10 +90,10 @@
 					url_new = url ("board.post.new", ["forum": forum_id, "topic": topic.id])
 				}}
 					<div class="page-block">
-						<div class="panel panel-decorate bind-post-new">
+						<div class="bind-post-new panel panel-decorate">
 							<h2>{{ $ tra ("yn.board.topic.view.form") }}</h2>
 							<div class="panel-body">
-								<form class="form-cascade form-thick bind-raw" action="{{ $ url_new }}" method="POST" data-url-cross="{{ $ url_cross }}">
+								<form class="bind-raw form-cascade form-thick" action="{{ $ url_new }}" method="POST" data-url-cross="{{ $ url_cross }}">
 									{{ let
 										_alerts = null,
 										_fields = [
@@ -108,7 +108,7 @@
 										<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.topic.view.form.submit") }}" />
 										{{ $ " " }}
 										<span class="bind-cross-disclaimer">{{ $ tra ("yn.board.topic.view.form.disclaimer") }}</span>
-										<span class="cross markup bind-cross-warning" style="display: none;">
+										<span class="bind-cross-warning cross markup" style="display: none;">
 											{{ $ tra ("yn.board.topic.view.cross") }}
 											{{ $ " " }}
 											<a class="ref" href="#">{{ $ tra ("yn.board.topic.view.cross.peek") }}</a>

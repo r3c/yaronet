@@ -248,7 +248,7 @@ yn.window = function (handle, title, width, height) {
 	var buttonClose = $('<input class="close gly-button" type="button">');
 
 	var container = $('<aside class="window">')
-		.append($('<div class="window-header form-thick glyph10">').text(title).append(buttonClose))
+		.append($('<div class="form-thick glyph10 window-header">').text(title).append(buttonClose))
 		.append($('<div class="window-inner">'))
 		.width(Math.min(width, $(document).width()))
 		.height(Math.min(height, $(document).height()))

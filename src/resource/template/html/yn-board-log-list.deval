@@ -15,7 +15,7 @@
 	}}
 		{{ extend page.deval }}
 		{{ block main }}
-			<div class="page panel panel-decorate">
+			<div class="panel-decorate page panel">
 				<h2>{{ $ tra ("yn.board.log.list.type") }}</h2>
 				<div class="panel-body">
 					<p>{{ $ tra ("yn.board.log.list.table", ["forum": forum, "expire": time - php ("yN\\Entity\\Board\\Log::#EXPIRE_DURATION")]) }}</p>
@@ -25,7 +25,7 @@
 						<div class="head s2">{{ $ tra ("yn.board.log.list.address") }}</div>
 						<div class="head s6">{{ $ tra ("yn.board.log.list.data") }}</div>
 						{{ for log in logs }}
-							<div class="cell s2 glyph10" data-title="{{ $ tra ("yn.board.log.list.time") }}">
+							<div class="cell glyph10 s2" data-title="{{ $ tra ("yn.board.log.list.time") }}">
 								<span class="gly-left {{ $ php ("preg_replace") ("/.*\\./", "", log.type) }}">{{ $ tra ("yn.board.log.list.time.value", ["log": log]) }}</span>
 							</div>
 							<div class="cell s2" data-title="{{ $ tra ("yn.board.log.list.profile") }}">{{ $ tra ("yn.board.log.list.profile.value", ["log": log]) }}</div>

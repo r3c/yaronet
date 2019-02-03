@@ -35,7 +35,7 @@
 							<a class="bind-tooltip gly-icon ignore" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}"></a>
 						{{ end }}
 					</span>
-					<span class="time symbol">
+					<span class="symbol time">
 						<span class="sym-follow" itemprop="dateCreated" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.create_time) }}">{{ $ tra ("yn.board.topic.view.post.created", ["profile": post_profile, "time": post.create_time]) }}</span>
 						{{ if post.edit_profile != null && post.edit_time != null }}
 							<span class="sym-follow" itemprop="dateModified" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.edit_time) }}">{{ $ tra ("yn.board.topic.view.post.edited", ["profile": post.edit_profile, "time": post.edit_time]) }}</span>

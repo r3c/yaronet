@@ -4,7 +4,7 @@
 	}}
 		{{ extend base.deval }}
 		{{ block body }}
-			<form class="form-cascade form-thick bind-language">
+			<form class="bind-language form-cascade form-thick">
 				{{ let
 					languages = [
 						"apache",
@@ -40,7 +40,7 @@
 				}}
 					{{ include ../fragment/control-form.deval }}
 				{{ end }}
-				<div class="control glyph10 bind-control">
+				<div class="bind-control control glyph10">
 					<input class="edit gly-button" type="submit" value="{{ $ tra ("yn.media.language.list.form.submit") }}" />
 				</div>
 			</form>

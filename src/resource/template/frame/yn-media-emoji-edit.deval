@@ -4,7 +4,7 @@
 	}}
 		{{ extend base.deval }}
 		{{ block body }}
-			<form class="form-cascade form-thick bind-emoji" action="{{ $ url ("media.emoji.new") }}" enctype="multipart/form-data" method="POST">
+			<form class="bind-emoji form-cascade form-thick" action="{{ $ url ("media.emoji.new") }}" enctype="multipart/form-data" method="POST">
 				{{ let
 					_alerts = alerts,
 					_fields = [
@@ -20,7 +20,7 @@
 						<input class="gly-button send" type="submit" value="{{ $ tra ("yn.media.emoji.edit.form.submit") }}" />
 					{{ end }}
 					{{ $ " " }}
-					<a class="gly-left back" href="{{ $ url ("media.emoji.list", ["type": "custom"]) }}">{{ $ tra ("yn.media.emoji.edit.back") }}</a>
+					<a class="back gly-left" href="{{ $ url ("media.emoji.list", ["type": "custom"]) }}">{{ $ tra ("yn.media.emoji.edit.back") }}</a>
 				</div>
 			</form>
 		{{ end }}

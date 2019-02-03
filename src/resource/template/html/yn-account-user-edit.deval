@@ -64,7 +64,7 @@
 							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.account.user.edit.form.submit") }}" />
 							{{ if profile_url }}
 								{{ $ " " }}
-								<a class="gly-left back" href="{{ $ profile_url }}">{{ $ tra ("yn.account.user.edit.back") }}</a>
+								<a class="back gly-left" href="{{ $ profile_url }}">{{ $ tra ("yn.account.user.edit.back") }}</a>
 							{{ end }}
 						</div>
 					</form>

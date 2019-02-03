@@ -33,7 +33,7 @@
 						{{ end }}
 						<div class="control glyph10 ux-control">
 							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.board.ban.edit.form.submit") }}" />
-							<a class="gly-left back" href="{{ $ url ("home") }}">{{ $ tra ("yn.board.ban.edit.back") }}</a>
+							<a class="back gly-left" href="{{ $ url ("home") }}">{{ $ tra ("yn.board.ban.edit.back") }}</a>
 						</div>
 					</form>
 				</div>

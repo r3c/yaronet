@@ -36,16 +36,16 @@
 				{{ let edit = false }}
 					{{ include ../fragment/yn-board-forum-view.deval }}
 				{{ end }}
-				<div class="panel-footer glyph10 ux-control">
-					<a class="gly-left active" href="{{ $ url ("board.forum.active", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.active") }}</a>
+				<div class="glyph10 panel-footer ux-control">
+					<a class="active gly-left" href="{{ $ url ("board.forum.active", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.active") }}</a>
 					<a class="gly-left rss" href="{{ $ _meta.rss }}">{{ $ tra ("yn.board.forum.view.rss") }}</a>
-					<a class="gly-left directory" href="{{ $ url ("board.profile.list", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.users") }}</a>
+					<a class="directory gly-left" href="{{ $ url ("board.profile.list", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.users") }}</a>
 					{{ if forum.allow_edit (access) }}
 						<a class="gly-left log" href="{{ $ url ("board.log.list", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.log") }}</a>
-						<a class="gly-left edit" href="{{ $ url ("board.forum.edit", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.edit") }}</a>
+						<a class="edit gly-left" href="{{ $ url ("board.forum.edit", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.edit") }}</a>
 						<a class="gly-left organize" href="{{ $ url ("board.forum.organize", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.organize") }}</a>
 						<a class="gly-left permission" href="{{ $ url ("board.forum.permission", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.permission") }}</a>
-						<a class="gly-left ban" href="{{ $ url ("board.ban.edit", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.ban") }}</a>
+						<a class="ban gly-left" href="{{ $ url ("board.ban.edit", ["forum": forum.id]) }}">{{ $ tra ("yn.board.forum.view.ban") }}</a>
 					{{ end }}
 				</div>
 			</div>

@@ -25,7 +25,7 @@
 						{{ include ../fragment/yn-board-bookmark-list.deval }}
 					</div>
 				</div>
-				<div id="yn-bookmark-links" class="panel-footer glyph10 ux-control">
+				<div id="yn-bookmark-links" class="glyph10 panel-footer ux-control">
 					<a class="gly-left update" href="{{ $ url ("board.bookmark.list", params) }}">{{ $ tra ("yn.board.bookmark.list.update") }}</a>
 					{{ let
 						what_f = php ("strpos") (what, "f"),
@@ -34,12 +34,12 @@
 						what_s = php ("strpos") (what, "s")
 					}}
 						{{ if what_f == false && what_s != false }}
-							<a class="gly-left fresh" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "f", what_s, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.fresh") }}</a>
+							<a class="fresh gly-left" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "f", what_s, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.fresh") }}</a>
 						{{ elseif what_f != false && what_s == false }}
 							<a class="gly-left stale" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "s", what_f, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.stale") }}</a>
 						{{ end }}
 						{{ if what_l == false && what_n != false }}
-							<a class="gly-left active" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "l", what_n, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.active") }}</a>
+							<a class="active gly-left" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "l", what_n, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.active") }}</a>
 						{{ elseif what_l != false && what_n == false }}
 							<a class="gly-left new" href="{{ $ url ("board.bookmark.list", cat (params, ["what": php ("substr_replace") (what, "n", what_l, 1)])) }}">{{ $ tra ("yn.board.bookmark.list.switch.new") }}</a>
 						{{ end }}

@@ -36,7 +36,7 @@
 						{{ end }}
 						<div class="control glyph10 ux-control">
 							<input class="gly-button save" type="submit" value="{{ $ tra ("yn.help.page.edit.form.submit") }}" />
-							<a class="gly-left back" href="{{ $ help_page_view_url }}">{{ $ tra ("yn.help.page.edit.back") }}</a>
+							<a class="back gly-left" href="{{ $ help_page_view_url }}">{{ $ tra ("yn.help.page.edit.back") }}</a>
 						</div>
 					</form>
 				</div>

@@ -46,7 +46,7 @@
 						<div class="head s2">{{ $ tra ("yn.board.profile.list.pulse_time") }}</div>
 						<div class="head s6">{{ $ tra ("yn.board.profile.list.forum") }}</div>
 						{{ for profile in profiles }}
-							<div class="cell s2 glyph10" data-title="{{ $ tra ("yn.board.profile.list.login") }}">
+							<div class="cell glyph10 s2" data-title="{{ $ tra ("yn.board.profile.list.login") }}">
 								<a class="gly-left user" href="{{ $ url ("board.profile.view", ["profile": profile.user_id]) }}">{{ $ tra ("yn.board.profile.list.login.value", ["profile": profile]) }}</a>
 							</div>
 							<div class="cell s2" data-title="{{ $ tra ("yn.board.profile.list.create_time") }}">{{ $ tra ("yn.board.profile.list.create_time.value", ["profile": profile]) }}</div>

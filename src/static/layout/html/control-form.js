@@ -49,7 +49,7 @@ yn.controlFormComplete = function (target) {
 		switch (multiple) {
 			case "list":
 			case "sort":
-				var items = $('<ul class="selectable glyph10">')
+				var items = $('<ul class="glyph10 selectable">')
 					.insertAfter(formInput)
 					.disableSelection();
 
@@ -68,7 +68,7 @@ yn.controlFormComplete = function (target) {
 						return false;
 					});
 
-					$('<li class="input-button handle">')
+					$('<li class="handle input-button">')
 						.append(remove)
 						.append(caption)
 						.appendTo(items);

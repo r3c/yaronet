@@ -4,7 +4,7 @@
 	}}
 		{{ extend base.deval }}
 		{{ block body }}
-			<form class="form-cascade form-thick bind-poll" action="{{ $ url ("survey.poll.new") }}" method="POST">
+			<form class="bind-poll form-cascade form-thick" action="{{ $ url ("survey.poll.new") }}" method="POST">
 				{{ if length (alerts) == 0 }}
 					<div class="notice notice-ok">
 						{{ $ tra ("yn.survey.poll.edit.form.alert") }}
@@ -33,7 +33,7 @@
 					}}
 						{{ include ../fragment/control-form.deval }}
 					{{ end }}
-					<div class="control glyph10 bind-control">
+					<div class="bind-control control glyph10">
 						<input class="edit gly-button" type="submit" value="{{ $ tra ("yn.survey.poll.edit.form.submit") }}" />
 					</div>
 				{{ end }}

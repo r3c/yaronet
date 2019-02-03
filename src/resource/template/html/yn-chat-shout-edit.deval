@@ -26,7 +26,7 @@
 						{{ end }}
 						<div class="control glyph10 ux-control">
 							<input class="gly-button send" type="submit" value="{{ $ tra ("yn.chat.shout.edit.form.submit") }}" />
-							<a class="gly-left back" href="{{ $ url ("home") }}">{{ $ tra ("yn.chat.shout.edit.back") }}</a>
+							<a class="back gly-left" href="{{ $ url ("home") }}">{{ $ tra ("yn.chat.shout.edit.back") }}</a>
 						</div>
 					</form>
 				</div>
