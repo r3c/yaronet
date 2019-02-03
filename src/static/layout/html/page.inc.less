@@ -468,6 +468,7 @@ strong {
 }
 
 .page-footer {
+	display:				flex;
 	padding:				3px 8px;
 	margin:					16px 0 8px 0;
 	background-color:		@footer-back;
@@ -476,12 +477,8 @@ strong {
 	border-width:			1px;
 	font-size:				90%;
 
-	span.copyright {
-		float:	right;
-
-		@media screen and (max-width: 400px) {
-			display:	none;
-		}
+	.help {
+		flex:	1;
 	}
 }
 

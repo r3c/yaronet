@@ -110,13 +110,13 @@
 			</div>
 			{{ label tail }}
 			<div class="page-footer">
-				<span class="copyright glyph10">
-					{{ $ tra ("page.copyright") }} <a href="https://github.com/r3c/yaronet">yAronet</a> | {{ $ php ("round") ((php ("microtime") ((-)true) - microtime) * 1000) }} ms
-				</span>
 				<span class="glyph10 help ux-control">
 					<a class="gly-left guides" href="{{ $ url ("help.page.view", ["label": "guides"]) }}">{{ $ tra ("page.guides") }}</a>
 					<a class="gly-left rules" href="{{ $ url ("help.page.view", ["label": "rules"]) }}">{{ $ tra ("page.rules") }}</a>
 					<a class="contacts gly-left" href="{{ $ url ("help.page.view", ["label": "contacts"]) }}">{{ $ tra ("page.contacts") }}</a>
+				</span>
+				<span class="copyright glyph10">
+					{{ $ tra ("page.copyright") }} <a href="https://github.com/r3c/yaronet">yAronet</a> | {{ $ php ("round") ((php ("microtime") ((-)true) - microtime) * 1000) }} ms
 				</span>
 			</div>
 		{{ end }}
