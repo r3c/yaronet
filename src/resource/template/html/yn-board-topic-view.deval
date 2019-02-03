@@ -41,7 +41,7 @@
 		{{ block main }}
 			<div class="posts">
 				{{ for index, reference in references }}
-					<div id="post-{{ $ reference.position }}" class="panel post{{ $ index == 0 && page > 1 && " recall" }} state{{ $ reference.post.state }}" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+					<div id="post-{{ $ reference.position }}" class="bind-post panel post{{ $ index == 0 && page > 1 && " recall" }} state{{ $ reference.post.state }}" itemscope itemtype="http://schema.org/DiscussionForumPosting">
 						{{ let enable_peek = false }}
 							{{ include ../fragment/yn-board-post-view.deval }}
 						{{ end }}

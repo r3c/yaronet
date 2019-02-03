@@ -29,12 +29,12 @@
 				}}
 					{{ include control-form.deval }}
 				{{ end }}
-				<div class="action bind-control glyph10 ux-control">
+				<div class="action glyph10 ux-control">
 					{{ if user.id != null }}
-						<a class="accept gly-left" href="#">{{ $ tra ("yn.board.topic.view.post.edit.accept") }}</a>
+						<a class="accept bind-accept gly-left" href="#">{{ $ tra ("yn.board.topic.view.post.edit.accept") }}</a>
 					{{ end }}
 					{{ $ " " }}
-					<a class="cancel gly-left" href="{{ $ url_view }}">{{ $ tra ("yn.board.topic.view.post.edit.cancel") }}</a>
+					<a class="bind-cancel cancel gly-left" href="{{ $ url_view }}">{{ $ tra ("yn.board.topic.view.post.edit.cancel") }}</a>
 				</div>
 			</form>
 		{{ end }}

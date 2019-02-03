@@ -36,19 +36,19 @@ $(function () {
 		return false;
 	});
 
-	$('.post').on('click keydown', '.action .edit', function (event) {
+	$('.bind-post').on('click keydown', '.bind-edit', function (event) {
 		if (event.which !== 1)
 			return true;
 
 		var handle = $(this);
-		var post = handle.closest('.post');
+		var post = handle.closest('.bind-post');
 		var height = post.find('.bind-markup').height();
 
 		var edit_bind = function (container) {
 			var form = container.find('form');
 
 			container
-				.find('.bind-control .accept')
+				.find('.bind-accept')
 				.on('click keydown', function (event) {
 					if (event.type === 'click' || event.which === 32) {
 						return yn.submit(form, $(this), function (html) {
@@ -60,7 +60,7 @@ $(function () {
 					}
 				})
 				.end()
-				.find('.bind-control .cancel')
+				.find('.bind-cancel')
 				.on('click keydown', function (event) {
 					if (event.type === 'click' || event.which === 32) {
 						return yn.load_html($.get($(this).attr('href')), $(this), container, view_bind);
@@ -81,7 +81,11 @@ $(function () {
 		return false;
 	});
 
-	$('.post').on('click keydown', '.action .quote', function (event) {
+	$('.bind-post').on('click keydown', '.bind-ignore', function () {
+		return confirm(yn.boardTopicStrings.ignore);
+	});
+
+	$('.bind-post').on('click keydown', '.bind-quote', function (event) {
 		var handle = $(this);
 
 		if (event.which !== 1)
@@ -103,7 +107,7 @@ $(function () {
 		return false;
 	});
 
-	$('.post').on('click keydown', '.action .report', function () {
+	$('.bind-post').on('click keydown', '.bind-report', function () {
 		var report = $(this).data('url-report');
 		var window = yn.window($(this), $(this).data('title'), 480, 240);
 
@@ -128,7 +132,7 @@ $(function () {
 		return false;
 	});
 
-	$('.post').on('click keydown', '.show', function () {
+	$('.bind-post').on('click keydown', '.bind-show', function () {
 		var container = $('<div>')
 			.css('position', 'absolute')
 			.offset($(this).offset())
@@ -137,14 +141,10 @@ $(function () {
 		return yn.markup_peek($(this), container, undefined, {});
 	});
 
-	$('.post').on('click keydown', '.from .ignore', function () {
-		return confirm(yn.boardTopicStrings.ignore);
-	});
-
-	$('.post').on('mouseup', '.text', function () {
+	$('.bind-post').on('mouseup', '.bind-text', function () {
 		var element = $(this);
 
-		yn.controlFormCopyMark(element, element.closest('.content').find('.action .copy'), yn.boardTopicStrings.copy);
+		yn.controlFormCopyMark(element, element.closest('.bind-post').find('.bind-copy'), yn.boardTopicStrings.copy);
 
 		return false;
 	});

@@ -77,12 +77,12 @@
 	font-weight:	bold;
 }
 
-div.posts {
-	div.post {
+.posts {
+	.post {
 		margin-bottom:	16px;
 
-		div.content {
-			padding:			0 6px 0 14px;
+		.body {
+			padding:			0 6px 4px 14px;
 			margin-right:		28px;
 			background-color:	@post-back;
 			background-image:	linear-gradient(to right, @tertiary 0%, @frame-back 90%, @frame-border 100%);
@@ -97,14 +97,11 @@ div.posts {
 				border-right-style:	none;
 			}
 
-			div.action {
-				padding:	0 0 4px 0;
-			}
-
-			div.bottom {
+			.bottom {
 				.clear ();
 
-				padding:		4px 0;
+				padding:		4px 0 0 0;
+				margin:			4px 0 0 0;
 				border-color:	@post-border;
 				border-style:	solid none none none;
 				border-width:	1px;
@@ -121,7 +118,7 @@ div.posts {
 				}
 			}
 
-			div.origin {
+			.origin {
 				display:		flex;
 				padding:		4px 0;
 				border-color:	@post-border;
@@ -134,23 +131,20 @@ div.posts {
 				}
 			}
 
-			div.text {
-				padding:	12px 0;
-				font-size:	110%;
+			.text {
+				padding:		12px 0;
+				font-size:		110%;
+				margin:			4px 0 0 0;
 			}
-		}
-
-		span.admin {
-			float:	right;
 		}
 	}
 
-	div.recall div.content {
+	.recall .content {
 		background-color:	@post-recall-back;
 		color:				@post-recall-text;
 	}
 
-	div.state1 div.content {
+	.state1 .content {
 		background-color:	@accent-back;
 		color:				@accent-text;
 	}

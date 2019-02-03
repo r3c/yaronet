@@ -12,7 +12,7 @@
 			<span class="sym-follow"><a class="bind-tooltip" href="{{ $ url ("board.ignore.clear", ["target": post_user.id]) }}" title="{{ $ tra ("yn.board.topic.view.post.unignore.hint") }}">{{ $ tra ("yn.board.topic.view.post.unignore") }}</a></span>
 		{{ end }}
 		{{ if (hide_text || hide_user) && allow_force }}
-			<span class="sym-follow"><a class="bind-tooltip show" href="#" title="{{ $ tra ("yn.board.topic.view.post.peek.hint") }}" data-url-peek="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position, "force": 1, "peek": 1, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.peek") }}</a></span>
+			<span class="sym-follow"><a class="bind-tooltip bind-show" href="#" title="{{ $ tra ("yn.board.topic.view.post.peek.hint") }}" data-url-peek="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position, "force": 1, "peek": 1, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.peek") }}</a></span>
 		{{ end }}
 		{{ if hide_text && allow_edit }}
 			<span class="sym-follow"><a class="bind-tooltip" href="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.edit.hint") }}">{{ $ tra ("yn.board.topic.view.post.edit") }}</a></span>
@@ -25,14 +25,14 @@
 		{{ end }}
 	</h2>
 	{{ if !hide_text }}
-		<div class="content">
+		<div class="body">
 			{{ if !hide_user }}
 				<div class="origin" itemprop="author" itemscope itemtype="http://schema.org/Person">
 					<span class="from glyph10 ux-control">
 						<a class="bind-message bind-tooltip gly-right login gender{{ $ post_profile.gender }}"{{ if user.id != null }} href="{{ $ url_message }}" title="{{ $ tra ("yn.board.topic.view.post.message.hint") }}" itemprop="name" data-url-edit="{{ $ url_message_new }}"{{ end }}>{{ $ post_user.login }}</a>
 						<a class="bind-tooltip gly-icon user" href="{{ $ url ("board.profile.view", ["profile": post_profile.user_id, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.profile.hint") }}"></a>
 						{{ if user.id != null && post_user.id != user.id }}
-							<a class="bind-tooltip gly-icon ignore" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}"></a>
+							<a class="bind-ignore bind-tooltip gly-icon" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}"></a>
 						{{ end }}
 					</span>
 					<span class="symbol time">
@@ -43,9 +43,7 @@
 					</span>
 				</div>
 			{{ end }}
-			<div class="body">
-				{{ label body }}
-			</div>
+			{{ label body }}
 			{{ let
 				avatar = post_profile.render_avatar (router),
 				signature = post_profile.render_signature ("html", router, logger)

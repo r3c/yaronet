@@ -65,7 +65,7 @@
 	{{ else }}
 		{{ extend yn-board-post.deval }}
 		{{ block body }}
-			<div class="bind-markup markup text" itemprop="articleBody">
+			<div class="bind-markup bind-text markup text" itemprop="articleBody">
 				{{ unwrap }}
 					{{ $ post.render_text ("html", router, logger, topic.id) }}
 				{{ end }}
@@ -73,11 +73,11 @@
 			{{ if user.id != null }}				
 				<div class="action glyph10 ux-control">
 					{{ if allow_edit }}
-						<a class="bind-tooltip edit gly-left" href="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.edit.hint") }}" data-url-edit="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.edit") }}</a>
+						<a class="bind-edit bind-tooltip edit gly-left" href="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.edit.hint") }}" data-url-edit="{{ $ url ("board.post.edit", ["forum": forum_id, "topic": topic.id, "position": position, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.edit") }}</a>
 					{{ end }}
-					<a class="bind-tooltip gly-left quote" href="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "quote": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.quote.hint") }}" data-url-quote="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "quote": position, "peek": 1, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.quote") }}</a>
-					<a class="bind-tooltip gly-left report" href="#" title="{{ $ tra ("yn.board.topic.view.post.report.hint") }}" data-title="{{ $ tra ("yn.board.topic.view.post.report") }}" data-url-report="{{ $ url ("board.post.report", ["topic": topic.id, "position": position, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.report") }}</a>
-					<a class="bind-tooltip copy gly-left" style="display: none;" href="#" title="{{ $ tra ("yn.board.topic.view.post.copy.hint") }}" data-context="{{ $ tra ("yn.board.post.edit.context", ["position": position, "post": post, "topic": topic]) }}">{{ $ tra ("yn.board.topic.view.post.copy") }}</a>
+					<a class="bind-quote bind-tooltip gly-left quote" href="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "quote": position, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.quote.hint") }}" data-url-quote="{{ $ url ("board.post.new", ["forum": forum_id, "topic": topic.id, "quote": position, "peek": 1, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.quote") }}</a>
+					<a class="bind-report bind-tooltip gly-left report" href="#" title="{{ $ tra ("yn.board.topic.view.post.report.hint") }}" data-title="{{ $ tra ("yn.board.topic.view.post.report") }}" data-url-report="{{ $ url ("board.post.report", ["topic": topic.id, "position": position, "_template": "frame"]) }}">{{ $ tra ("yn.board.topic.view.post.report") }}</a>
+					<a class="bind-copy bind-tooltip copy gly-left" style="display: none;" href="#" title="{{ $ tra ("yn.board.topic.view.post.copy.hint") }}" data-context="{{ $ tra ("yn.board.post.edit.context", ["position": position, "post": post, "topic": topic]) }}">{{ $ tra ("yn.board.topic.view.post.copy") }}</a>
 				</div>
 			{{ end }}
 		{{ end }}

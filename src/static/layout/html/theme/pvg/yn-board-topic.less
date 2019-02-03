@@ -10,19 +10,20 @@
 @post-content-width2:	80px;
 @post-content-width3:	40px;
 
-div.posts div.post {
+.posts .post {
 	margin-bottom:	0;
 	border-style:	none solid;
 
-	div.content {
+	.body {
 		position:			relative;
-		padding:			0;
+		padding-left:		0;
+		padding-right:		0;
 		background-image:	none;
 
-		div.action,
-		div.bottom,
-		div.field,
-		div.text {
+		.action,
+		.bottom,
+		.field,
+		.text {
 			padding-right:	6px;
 			margin-left:	@post-content-width1;
 
@@ -35,10 +36,10 @@ div.posts div.post {
 			}
 		}
 
-		div.bottom {
+		.bottom {
 			border-style:	none;
 
-			img.avatar {
+			.avatar {
 				position:	absolute;
 				top:		32px;
 				left:		(@post-content-width1 - @post-avatar-width1) / 2;
@@ -56,12 +57,13 @@ div.posts div.post {
 			}
 		}
 
-		div.origin {
-			padding:			4px;
+		.origin {
+			padding-left:		4px;
+			padding-right:		4px;
 			background-image:	url('background/panel.png');
 			background-repeat:	repeat-y;
 
-			a.login {
+			.login {
 				display:	block;
 				float:		left;
 				min-width:	@post-content-width1 - 8px;
