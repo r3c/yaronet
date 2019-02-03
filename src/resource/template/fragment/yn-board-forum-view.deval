@@ -52,8 +52,8 @@
 							{{ $ tra ("yn.board.forum.view.section.info", ["section": section]) }}
 						</td>
 						<td class="last symbol">
-							<span class="begin">{{ $ tra ("yn.board.forum.view.section.last_time", ["time": default (section.last_topic.last_time, 0)]) }}</span>
-							<strong class="next">{{ $ tra ("yn.board.forum.view.section.last_profile", ["profile": section.last_topic.last_profile]) }}</strong>
+							<span class="sym-author">{{ $ tra ("yn.board.forum.view.section.last_time", ["time": default (section.last_topic.last_time, 0)]) }}</span>
+							<strong class="sym-follow">{{ $ tra ("yn.board.forum.view.section.last_profile", ["profile": section.last_topic.last_profile]) }}</strong>
 						</td>
 					{{ end }}
 				</tr>

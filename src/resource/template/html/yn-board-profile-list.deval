@@ -16,10 +16,10 @@
 					<li><a href="{{ $ url ("board.profile.list", ["forum": forum_id, "page": page_previous, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.previous") }}</a></li>
 				{{ end }}
 				{{ if forum_id != null }}
-					<li class="next"><a href="{{ $ url ("board.profile.list", ["page": page, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.global") }}</a></li>
+					<li class="sym-follow"><a href="{{ $ url ("board.profile.list", ["page": page, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.global") }}</a></li>
 				{{ end }}
 				{{ if page_next != null }}
-					<li class="next"><a href="{{ $ url ("board.profile.list", ["forum": forum_id, "page": page_next, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.next") }}</a></li>
+					<li class="sym-follow"><a href="{{ $ url ("board.profile.list", ["forum": forum_id, "page": page_next, "query": query || null]) }}">{{ $ tra ("yn.board.profile.list.next") }}</a></li>
 				{{ end }}
 			</ul>
 		{{ block main }}

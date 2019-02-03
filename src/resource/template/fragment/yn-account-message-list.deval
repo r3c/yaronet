@@ -1,7 +1,7 @@
 <div class="control glyph10 bind-control ux-control">
 		<a class="label message bind-tooltip" href="{{ $ url ("account.message.new") }}" title="{{ $ tra ("yn.account.message.list.new.hint") }}">{{ $ tra ("yn.account.message.list.new") }}</a>
 		{{ if prev != null }}
-			<a class="label prev bind-tooltip" href="{{ $ url ("account.message.list", ["from": prev, "login": login]) }}" title="{{ $ tra ("yn.account.message.list.prev.hint") }}">{{ $ tra ("yn.account.message.list.prev") }}</a>
+			<a class="label previous bind-tooltip" href="{{ $ url ("account.message.list", ["from": prev, "login": login]) }}" title="{{ $ tra ("yn.account.message.list.prev.hint") }}">{{ $ tra ("yn.account.message.list.prev") }}</a>
 		{{ end }}
 		{{ if from != null }}
 			<a class="first label bind-tooltip" href="{{ $ url ("account.message.list", ["login": login]) }}" title="{{ $ tra ("yn.account.message.list.first.hint") }}">{{ $ tra ("yn.account.message.list.first") }}</a>
@@ -69,7 +69,7 @@
 
 <div class="control glyph10 bind-control ux-control">
 	{{ if prev != null }}
-		<a class="label prev bind-tooltip" href="{{ $ url ("account.message.list", ["from": prev, "login": login]) }}" title="{{ $ tra ("yn.account.message.list.prev.hint") }}">{{ $ tra ("yn.account.message.list.prev") }}</a>
+		<a class="label previous bind-tooltip" href="{{ $ url ("account.message.list", ["from": prev, "login": login]) }}" title="{{ $ tra ("yn.account.message.list.prev.hint") }}">{{ $ tra ("yn.account.message.list.prev") }}</a>
 	{{ end }}
 	{{ if from != null }}
 		<a class="label first bind-tooltip" href="{{ $ url ("account.message.list", ["login": login]) }}" title="{{ $ tra ("yn.account.message.list.first.hint") }}">{{ $ tra ("yn.account.message.list.first") }}</a>

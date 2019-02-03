@@ -8,12 +8,12 @@
 	step3 = min (max (page_current + show_around, step2 + 1), step4 - 1)
 }}
 	{{ if page_current > 1 }}
-		<li class="prev">
+		<li>
 			<a href="{{ $ page_build (page_current - 1) }}">{{ $ tra ("control.page.previous") }}</a>
 		</li>
 	{{ end }}
 	{{ for page in range (1, step1) }}
-		<li>
+		<li{{ if page == 1 }} class="sym-follow"{{ end }}>
 			<a class="{{ $ page == page_current && "hl" }}" href="{{ $ page_build (page) }}">{{ $ page }}</a>
 		</li>
 	{{ end }}
@@ -34,7 +34,7 @@
 		</li>
 	{{ end }}
 	{{ if page_current < page_last }}
-		<li class="next">
+		<li class="sym-follow">
 			<a href="{{ $ page_build (page_current + 1) }}">{{ $ tra ("control.page.next") }}</a>
 		</li>
 	{{ end }}

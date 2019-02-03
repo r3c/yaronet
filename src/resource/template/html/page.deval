@@ -79,9 +79,9 @@
 				{{ end }}
 				{{ if _title != null }}
 					<div class="navigation glyph16">
-						<ul class="path label symbol ux-path" itemscope itemtype="http://schema.org/BreadcrumbList">
+						<ul class="path label symbol ux-goto" itemscope itemtype="http://schema.org/BreadcrumbList">
 							{{ for position, path in keys (_path) }}
-								<li class="tail" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+								<li class="sym-parent" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 									<a href="{{ $ path }}" itemprop="item"><span itemprop="name">{{ $ _path[path] }}</span></a>
 									<meta itemprop="position" content="{{ $ position + 1 }}" />
 								</li>
@@ -96,9 +96,9 @@
 				{{ label main }}
 				{{ if _title != null }}
 					<div class="navigation glyph16">
-						<ul class="path label symbol ux-path">
+						<ul class="path label symbol ux-goto">
 							{{ for path, caption in _path }}
-								<li class="tail">
+								<li class="sym-parent">
 									<a href="{{ $ path }}">{{ $ caption }}</a>
 								</li>
 							{{ end }}

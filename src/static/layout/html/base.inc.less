@@ -248,21 +248,11 @@
 }
 
 .symbol {
-	.begin::before {
+	.sym-author::before {
 		content:	'» ';
 	}
 
-	.head {
-		&::before {
-			content:	' » ';
-		}
-
-		&:first-child::before {
-			content:	none;
-		}
-	}
-
-	.next {
+	.sym-follow {
 		&::before {
 			content:	' - ';
 		}
@@ -272,7 +262,7 @@
 		}
 	}
 
-	.plus {
+	.sym-more {
 		&::before {
 			content:	'(+';
 		}
@@ -282,17 +272,7 @@
 		}
 	}
 
-	.prev {
-		&::after {
-			content:	' - ';
-		}
-
-		&:first-child::before {
-			content:	none;
-		}
-	}
-
-	.tail {
+	.sym-parent {
 		&::after {
 			content:	' » ';
 		}

@@ -47,9 +47,11 @@
 					{{ end }}
 					<h3 class="glyph16 symbol">
 						{{ if forum_id != null }}
-							<a href="{{ $ url ("board.forum.view", ["forum": section.forum_id, "forum_alias": section.forum.alias]) }}">{{ $ section.forum.name }}</a>
+							<span class="sym-parent">
+								<a href="{{ $ url ("board.forum.view", ["forum": section.forum_id, "forum_alias": section.forum.alias]) }}">{{ $ section.forum.name }}</a>
+							</span>
 						{{ end }}
-						<span class="head tail">{{ $ section.name }}</span>
+						<span class="sym-parent">{{ $ section.name }}</span>
 						{{ if section.allow_publish (access) }}
 							<a class="label new" href="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}">{{ $ tra ("yn.board.section.view.form") }}</a>
 						{{ end }}

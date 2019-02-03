@@ -19,12 +19,12 @@
 		{{ block goto }}
 			<ul class="goto right symbol ux-goto">
 				{{ if from_previous != null }}
-					<li class="next">
+					<li class="sym-follow">
 						<a href="{{ $ url ("board.search.view", ["search": search.id, "from": from_previous]) }}">{{ $ tra ("yn.board.search.view.from.previous") }}</a>
 					</li>
 				{{ end }}
 				{{ if from_next != null }}
-					<li class="next">
+					<li class="sym-follow">
 						<a href="{{ $ url ("board.search.view", ["search": search.id, "from": from_next]) }}">{{ $ tra ("yn.board.search.view.from.next") }}</a>
 					</li>
 				{{ end }}
