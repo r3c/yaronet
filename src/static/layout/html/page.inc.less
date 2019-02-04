@@ -525,11 +525,12 @@ strong {
 }
 
 .page-menu {
-	margin-bottom:	12px;
-	border-color:	@menu-border;
-	border-style:	none none solid none;
-	border-width:	1px;
-	font-size:		90%;
+	margin-bottom:		12px;
+	background-color:	@menu-back;
+	border-color:		@menu-border;
+	border-style:		none none solid none;
+	border-width:		1px;
+	font-size:			90%;
 
 	@media screen and (max-width: 600px) {
 		position:		absolute;
@@ -574,11 +575,9 @@ strong {
 	}
 
 	.menu-links {
-		display:			flex;
-		padding:			3px 4px;
-		background-color:	@menu-back;
-		border-color:		@menu-border;
-		font-weight:		bold;
+		display:		flex;
+		padding:		3px 0;
+		font-weight:	bold;
 
 		@media screen and (max-width: 600px) {
 			display:		none;
@@ -634,11 +633,10 @@ strong {
 	}
 
 	.menu-users {
-		padding:			3px 4px;
-		background-color:	@menu-back;
-		border-style:		dashed none none none;
-		border-width:		1px;
-		border-color:		mix(@menu-back, @menu-border, 60%);
+		padding:		3px 0;
+		border-style:	dashed none none none;
+		border-width:	1px;
+		border-color:	mix(@menu-back, @menu-border, 60%);
 
 		@media screen and (max-width: 800px) {
 			display:	none;
