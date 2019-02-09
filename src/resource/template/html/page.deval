@@ -59,11 +59,11 @@
 					</span>
 					<span class="account glyph10 ux-control">
 						{{ if _forum.id != null }}
-							<a class="bind-tooltip gly-icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}"></a>
+							<a class="bind-tooltip gly-icon search" href="{{ $ url ("board.search.new", ["forum": _forum.id]) }}" title="{{ $ tra ("page.search.hint") }}" alt="{{ $ tra ("page.search") }}"></a>
 						{{ end }}
 						{{ if user.id != null }}
-							<a class="bind-tooltip gly-icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}"></a>
-							<a class="bind-tooltip gly-icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}"></a>
+							<a class="bind-tooltip gly-icon profile" href="{{ $ url ("board.profile.view", ["profile": user.id]) }}" title="{{ $ tra ("page.profile.hint") }}" alt="{{ $ tra ("page.profile") }}"></a>
+							<a class="bind-tooltip gly-icon signout" href="{{ $ url ("account.user.signout") }}" title="{{ $ tra ("page.signout.hint") }}" alt="{{ $ tra ("page.signout") }}"></a>
 						{{ end }}
 					</span>
 				</div>
