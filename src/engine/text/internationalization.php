@@ -46,7 +46,7 @@ class Internationalization
         $locale_source = config('engine.text.i18n.source', './resource/language');
 
         $locale = new \Losp\Locale(mb_internal_encoding(), $language, $locale_source, $locale_cache !== null ? $locale_cache . '/' . $language . '.php' : null);
-        $locale->declare('lag', function ($window, $from, $to = null) {
+        $locale->assign('lag', function ($window, $from, $to = null) {
             global $time;
 
             if ($to === null) {
