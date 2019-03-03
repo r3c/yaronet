@@ -42,7 +42,7 @@ class Cost extends \yN\Entity\Model
             return true;
         }
 
-        $cost = self::entry_get_one($sql, array('address' => $address->string)) ?? new self();
+        $cost = self::entry_get_one($sql, array('address' => $address->string)) ?: new self();
         $cost->address = $address->string;
 
         $delta = $cost->active_expire - $time;
