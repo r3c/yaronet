@@ -1,6 +1,9 @@
 yAronet: yet another PHP bulletin board
 =======================================
 
+[![Build Status](https://travis-ci.org/r3c/yaronet.svg?branch=master)](https://travis-ci.org/r3c/yaronet)
+[![license](https://img.shields.io/github/license/r3c/yaronet.svg)](https://opensource.org/licenses/AGPL-3.0)
+
 Overview
 --------
 
