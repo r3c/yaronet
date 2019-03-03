@@ -2,21 +2,14 @@
 
 function test_case($name)
 {
-    global $_test_dump;
+    global $_test_verbose;
 
-    $_test_dump = null;
+    $_test_verbose = null;
 
     echo "\n- " . $name;
 
     ob_flush();
     flush();
-}
-
-function test_dump($dump)
-{
-    global $_test_dump;
-
-    $_test_dump = $dump;
 }
 
 function test_metric($name, $value)
@@ -36,22 +29,16 @@ function test_start()
 
     $_test_metrics = array();
 
-    $path = 'assert.dump';
-
     assert_options(ASSERT_BAIL, true);
-    assert_options(ASSERT_CALLBACK, function () use ($path) {
-        global $_test_dump;
+    assert_options(ASSERT_CALLBACK, function () {
+        global $_test_verbose;
 
-        if (isset($_test_dump)) {
-            test_step('Wrote dump to "' . $path . '".');
+        test_step('Failed');
 
-            file_put_contents($path, $_test_dump);
+        if (isset($_test_verbose)) {
+            echo "\n$_test_verbose";
         }
     });
-
-    if (file_exists($path)) {
-        unlink($path);
-    }
 
     ini_set('max_execution_time', 1000);
 
@@ -83,4 +70,11 @@ function test_stop()
 
     ob_flush();
     flush();
+}
+
+function test_verbose($dump)
+{
+    global $_test_verbose;
+
+    $_test_verbose = $dump;
 }

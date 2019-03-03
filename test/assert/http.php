@@ -62,7 +62,7 @@ class HTTP
         test_step('HTTP ' . $code);
 
         if ($output !== false) {
-            test_dump($output);
+            test_verbose($output);
             test_metric('http.bytes', strlen($output));
 
             $offset = strpos($output, "\r\n\r\n");

@@ -20,7 +20,7 @@ class SQL
 
     public static function value($query, $params = array())
     {
-        test_dump("Query:\n" . $query . "\n\Parameters:\n" . var_export($params, true));
+        test_verbose("Query:\n" . $query . "\n\Parameters:\n" . var_export($params, true));
 
         $origin = microtime(true);
         $sql = self::query();
