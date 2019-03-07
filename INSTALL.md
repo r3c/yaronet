@@ -57,8 +57,8 @@ Open another terminal session, and run the following command to get inside the w
 
 Open http://localhost:8000/install.php and configure the site.
 
-TODO: Fix the deval/parser.php missing issue.
-TODO: Complete the process documentation to reach a working and stable development environment. 
+Open http://localhost:8000 to access the site.
+
 TODO: Automate more the kickstart workflow.
 
 ### Option 3: install manually on a server
@@ -81,7 +81,7 @@ Step by step install instructions:
 * Create a new location in HTTP server e.g. `/yaronet/` and have it point to `/src/` directory.
   * If you are using Apache you'll generate required `.htaccess` files in next steps.
   * If you are using another HTTP server you will need extra configuration detailed below.
-* If you have a Unix shell and Node.js installed, run `/src/configure.sh`.
+* If you have a Unix shell and Node.js installed, run `/setup/configure.sh`.
 * Otherwise if you don't:
   * Retreive file `parser.php` from latest release of [Deval](https://github.com/r3c/deval/releases) and save it to `/setup/module/deval/src/parser.php`.
   * Copy `/setup/module/amato/src` to `/src/library/amato` (or create a link to it).
