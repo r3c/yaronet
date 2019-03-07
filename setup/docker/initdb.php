@@ -3,7 +3,7 @@ $servername = $_SERVER["DB_HOST"];
 $username = $_SERVER["DB_USER"];
 $password = $_SERVER["DB_PASSWORD"];
 $database = $_SERVER["DB_NAME"];
-$initdb_script_path = '/yaronet/setup/database/schema.sql'; 
+$initdb_script_path = $_SERVER["APP_HOME"] . '/setup/database/schema.sql'; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
@@ -23,7 +23,7 @@ if($db_exists) {
     do{} while(mysqli_more_results($conn) && mysqli_next_result($conn));
     echo "Database schema initialized.";
 } else {
-    echo "Database $database not present. Will create it.";
+    die("Database $database not present. You need to create it.");
 }
 
 ?>

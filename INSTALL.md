@@ -49,17 +49,9 @@ Build the image and start the containers.
 * `docker-compose build`
 * `docker-compose up`
 
-Open another terminal session, and run the following command to get inside the web container and configure the environment.
-
-* `docker exec -it yaronet_web_1 bash`
-* `php setup/database/initdb.php`
-* `setup/configure.sh`
-
 Open http://localhost:8000/install.php and configure the site.
 
 Open http://localhost:8000 to access the site.
-
-TODO: Automate more the kickstart workflow.
 
 ### Option 3: install manually on a server
 
