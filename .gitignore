@@ -12,3 +12,4 @@
 /src/.htaccess
 /package-lock.json
 .creep.env
+tmp
