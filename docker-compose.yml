@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7.22
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_DATABASE: yaronet
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+    hostname: db
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+  web:
+    build: .
+    command: /bin/sh -c ./setup/vm/docker-entrypoint.sh
+    volumes:
+      - .:/yaronet
+    environment:
+      DB_HOST: 'db'
+      DB_PORT: '3306'
+      DB_USER: 'root'
+      DB_PASSWORD: 'password'
+      DB_NAME: 'yaronet'
+      APACHE_DOCUMENT_ROOT: /yaronet/src
+      APACHE_RUN_USER: www-data
+      APACHE_RUN_GROUP: www-data
+      APACHE_LOG_DIR: /var/log/apache2
+      APACHE_PID_FILE: /var/run/apache2/apache2.pid
+      APACHE_RUN_DIR: /var/run/apache2
+      APACHE_LOCK_DIR: /var/lock/apache2
+      APACHE_LOG_DIR: /var/log/apache2
+    ports:
+      - "8000:80"
+    links:
+      - db
+
