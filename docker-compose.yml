@@ -14,10 +14,11 @@ services:
       - ./tmp/db:/var/lib/mysql
   web:
     build: .
-    command: /bin/sh -c ./setup/vm/docker-entrypoint.sh
+    command: /bin/sh -c /yaronet/setup/docker/entrypoint.sh
     volumes:
       - .:/yaronet
     environment:
+      APP_HOME: /yaronet
       DB_HOST: 'db'
       DB_PORT: '3306'
       DB_USER: 'root'
