@@ -10,14 +10,14 @@ ln -s ${APP_HOME}/src /var/www/html
 
 # Install dependencies
 cd ${APP_HOME}
+chown -R www-data:www-data src /var/www
 npm install
-/bin/sh setup/configure.sh
+su -s setup/configure.sh www-data
 
 # Initialize database
 php setup/docker/initdb.php
 
 # Start Apache service
-chown -R www-data:www-data src
 if [ -f /var/run/apache2/apache2.pid ]; then
   rm /var/run/apache2/apache2.pid
 fi
