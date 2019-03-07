@@ -36,7 +36,32 @@ Vagrant box will take a few minutes for downloading and installing all
 requirements and display a success message on console when done. Go to
 "Configure website" section below to continue.
 
-### Option 2: install manually on a server
+### Option 2: run locally with Docker
+
+Required software on your local machine:
+
+* [Docker](https://docs.docker.com/install/) 
+
+Procedure:
+
+Build the image and start the containers.
+
+* `docker-compose build`
+* `docker-compose up`
+
+Open another terminal session, and run the following command to get inside the web container and configure the environment.
+
+* `docker exec -it yaronet_web_1 bash`
+* `php setup/database/initdb.php`
+* `setup/configure.sh`
+
+Open http://localhost:8000/install.php and configure the site.
+
+TODO: Fix the deval/parser.php missing issue.
+TODO: Complete the process documentation to reach a working and stable development environment. 
+TODO: Automate more the kickstart workflow.
+
+### Option 3: install manually on a server
 
 Following software is required before you can manually install yAronet on a
 development server:
