@@ -170,7 +170,7 @@ done
 # Install npm modules
 (
 	cd "$setup/module/deval" &&
-	npm install --no-bin-links --silent ||
+	npm install --no-bin-links --silent --unsafe-perm ||
 	log 2 "Could not execute npm install in $setup/module/deval, please retry manually."
 )
 
