@@ -235,11 +235,18 @@ if (@include './config.php') {
 
             switch ($key) {
                 case 'engine_network_route_page':
-                    if ($value !== '' && substr($value, 0, 1) !== '/') {
+                    if (substr($value, 0, 1) !== '/') {
                         $error = 'Invalid base path for page URLs, it must begin with a "/" character.';
                     }
 
                     break;
+
+				case 'engine_network_route_static':
+					if (substr($value, 0, 1) !== '/') {
+						$error = 'Invalid base path for static URLs, it must begin with a "/" character.';
+					}
+
+					break;
 
                 case 'engine_network_sql_connection':
                     require './library/redmap/redmap.php';
@@ -415,7 +422,8 @@ if (@include './config.php') {
 
         // Otherwise display configuration input form
         } else {
-            $base_url = preg_match('@^(.*)/install\\.php([?#]|$)@', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $match) ? $match[1] : '';
+            $route_page = '/' . ltrim(preg_match('@^(.*)/install\\.php([?#]|$)@', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $match) ? $match[1] : '', '/');
+			$route_static = rtrim($route_page, '/') . '/static';
 
             $blocks = array(
                 $error !== null ? make_block_status('failure', array(make_section_text('Configuration error', array($error)))) : '',
@@ -445,13 +453,13 @@ if (@include './config.php') {
                             'name' => 'engine_network_route_page',
                             'caption' => 'Base path for URLs:',
                             'help' => 'Base path used to build and parse URLs to all website pages. This parameter must begin with a &quot;/&quot; character and exactly match your HTTP server configuration, otherwise yAronet URL rewriting system won\'t work.',
-                            'text' => $base_url
+                            'text' => $route_page
                         ),
                         array(
                             'name' => 'engine_network_route_static',
                             'caption' => 'Base URL for assets:',
                             'help' => 'Base URL used to build URLs to all website static assets. You can reuse base path for URLs and append &quot;static&quot; to it, or specify an URL to some other server if you want to serve static assets from another server.',
-                            'text' => $base_url ? $base_url . '/static' : ''
+                            'text' => $route_static
                         )
                     )),
                     make_section_form('Text configuration', array(
@@ -479,7 +487,7 @@ if (@include './config.php') {
                             'name' => 'engine_text_display_logo',
                             'caption' => 'Default logo HTML:',
                             'help' => 'HTML code displayed as default website logo when no custom header is defined on current forum. This value must be a valid HTML code snippet and can include macros: {home} for website home page, {user} for current user identifier.',
-                            'text' => $base_url ? '<img class="default-mascot" src="' . $base_url . '/static/image/mascot.png" /> <a class="default-name" href="{home}"></a>' : ''
+                            'text' => '<img class="default-mascot" src="' . $route_static . '/image/mascot.png" /> <a class="default-name" href="{home}"></a>'
                         )
                     )),
                     make_section_form('Service configuration', array(
