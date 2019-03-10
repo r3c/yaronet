@@ -12,20 +12,21 @@ services:
       - '3306:3306'
     hostname: db
     volumes:
-      - ./tmp/db:/var/lib/mysql
+      - ./setup/docker/tmp/mysql:/var/lib/mysql
+
   web:
-    build: .
-    command: /bin/sh -c /yaronet/setup/docker/entrypoint.sh
+    build: setup/docker
+    command: /bin/sh -c /opt/yaronet/setup/docker/entrypoint.sh
     volumes:
-      - .:/yaronet
+      - .:/opt/yaronet
     environment:
-      APP_HOME: /yaronet
+      APP_HOME: /opt/yaronet
       DB_HOST: 'db'
       DB_PORT: '3306'
       DB_USER: 'yaronet'
       DB_PASSWORD: 'password'
       DB_NAME: 'yaronet'
-      APACHE_DOCUMENT_ROOT: /yaronet/src
+      APACHE_DOCUMENT_ROOT: /opt/yaronet/src
       APACHE_RUN_USER: www-data
       APACHE_RUN_GROUP: www-data
       APACHE_LOG_DIR: /var/log/apache2
@@ -37,4 +38,3 @@ services:
       - "8000:80"
     links:
       - db
-

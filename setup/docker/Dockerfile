@@ -17,4 +17,5 @@ RUN apt-get update && apt-get install -y \
 RUN sed -ri 's/# (en_US.UTF-8 UTF-8)/\1/' /etc/locale.gen \
     && locale-gen
 RUN cd /etc/apache2/mods-available/ && a2enmod rewrite
-expose 80
+
+EXPOSE 80
