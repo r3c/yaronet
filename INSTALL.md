@@ -16,20 +16,20 @@ Install on development server
 -----------------------------
 
 You can get a working yAronet instance by either using provided
-[Vagrant](https://www.vagrantup.com/) box in `/setup/vm` or installing manually
-on your target server.
+[Vagrant](https://www.vagrantup.com/) box in `/setup/vagrant` or installing
+manually on your target server.
 
 ### Option 1: install on Vagrant virtual machine
 
 Following software is required before you can install yAronet on a server using
 provided Vagrant box:
 
-* Vagrant 2.2.2 or above (not tested with previous versions):
+* [Vagrant](https://www.vagrantup.com/) 2.2.2 or above (not tested with previous versions):
   * Make sure you also satisfied Vagrant dependencies (e.g. Oracle VirtualBox).
 
 Step by step install instructions:
 
-* Run `vagrant up` from directory `/setup/vm`.
+* Run `vagrant up` from directory `/setup/vagrant`.
 * Wait for machine to be ready.
 
 Vagrant box will take a few minutes for downloading and installing all
@@ -40,7 +40,7 @@ requirements and display a success message on console when done. Go to
 
 Required software on your local machine:
 
-* [Docker](https://docs.docker.com/install/) 
+* [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/)
 
 Procedure:
 
@@ -52,8 +52,6 @@ Build the image and start the containers.
 Open http://localhost:8000/install.php and configure the site.
 
 * SQL connection string: `mysqli://yaronet:password@db:3306/yaronet?charset=utf8mb4`
-* Base path for URLs: `/`
-* Base URL for assets: `/static/`
 
 Open http://localhost:8000 to access the site.
 
