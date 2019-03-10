@@ -3,15 +3,24 @@ $servername = $_SERVER["DB_HOST"];
 $username = $_SERVER["DB_USER"];
 $password = $_SERVER["DB_PASSWORD"];
 $database = $_SERVER["DB_NAME"];
+$port = $_SERVER["DB_PORT"];
 $initdb_script_path = $_SERVER["APP_HOME"] . '/setup/database/schema.sql'; 
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$maxTries = 10;
+do {
+	$conn = new mysqli($servername, $username, $password, '', $port);
+	if ($conn->connect_error) {
+		echo $stderr, "\n" . 'MySQL Connection Error: (' . $conn->connect_errno . ') ' . $conn->connect_error . "\n";
+		--$maxTries;
+		if ($maxTries <= 0) {
+			exit(1);
+        }
+        echo "Retrying...(" . $maxTries . ")\n";
+		sleep(3);
+	}
+} while ($conn->connect_error);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection to MySQL failed: " . $conn->connect_error);
-} 
 echo "Connected successfully to MySQL\n";
 
 $db_exists = mysqli_select_db($conn, $database);
