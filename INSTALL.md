@@ -51,6 +51,10 @@ Build the image and start the containers.
 
 Open http://localhost:8000/install.php and configure the site.
 
+* SQL connection string: `mysqli://yaronet:password@db:3306/yaronet?charset=utf8mb4`
+* Base path for URLs: `/`
+* Base URL for assets: `/static/`
+
 Open http://localhost:8000 to access the site.
 
 ### Option 3: install manually on a server
