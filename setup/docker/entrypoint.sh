@@ -10,7 +10,7 @@ ln -s ${APP_HOME}/src /var/www/html
 
 # Install dependencies
 cd ${APP_HOME}
-chown -R www-data:www-data src /var/www
+chown -R www-data:www-data setup/module src /var/www
 npm install
 su -s setup/configure.sh www-data
 
