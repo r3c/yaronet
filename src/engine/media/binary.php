@@ -23,7 +23,8 @@ class Binary
         $store = self::get_store() . '/';
         $names = glob($store . basename($pattern));
 
-        if ($names === false) {
+        // Function `glob` can return null even if specification says otherwise, e.g. `glob("\x00")`
+        if ($names === false || $names === null) {
             return array();
         }
 
