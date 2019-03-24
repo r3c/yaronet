@@ -206,7 +206,7 @@
 		.markup-block (@markup-code-back, @markup-code-border, @markup-code-text);
 
 		display:		block;
-		white-space:	pre;
+		white-space:	pre-wrap;
 	}
 
 	iframe,
@@ -429,6 +429,7 @@
 	.pre {
 		color:			@markup-pre-text;
 		font-family:	monospace;
+		white-space:	pre-wrap;
 	}
 
 	pre.pre {
@@ -438,7 +439,6 @@
 	span.pre {
 		background-color:	@markup-pre-back;
 		padding:			0 3px;
-		white-space:		pre-wrap;
 		border-color:		@markup-pre-border;
 		border-radius:		3px;
 		border-style:		solid;
