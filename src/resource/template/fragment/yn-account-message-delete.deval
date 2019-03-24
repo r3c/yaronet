@@ -13,6 +13,6 @@
 	{{ end }}
 	<div class="control glyph10 ux-control">
 		<input class="delete gly-button" type="submit" value="{{ $ tra ("yn.account.message.delete.form.submit") }}" />
-		<a class="back gly-left" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.delete.back") }}</a>
+		<a class="back bind-back gly-left" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.delete.back") }}</a>
 	</div>
 </form>

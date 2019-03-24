@@ -33,7 +33,7 @@
 					}}
 						{{ include ../fragment/control-form.deval }}
 					{{ end }}
-					<div class="bind-control control glyph10">
+					<div class="control glyph10">
 						<input class="edit gly-button" type="submit" value="{{ $ tra ("yn.survey.poll.edit.form.submit") }}" />
 					</div>
 				{{ end }}

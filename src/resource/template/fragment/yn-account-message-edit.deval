@@ -12,6 +12,6 @@
 	{{ end }}
 	<div class="control glyph10 ux-control">
 		<input class="gly-button send" type="submit" value="{{ $ tra ("yn.account.message.edit.form.submit") }}" />
-		<a class="back gly-left" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.edit.back") }}</a>
+		<a class="back bind-back gly-left" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.edit.back") }}</a>
 	</div>
 </form>

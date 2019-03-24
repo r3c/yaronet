@@ -354,7 +354,7 @@ $(function () {
 						});
 					})
 					.end()
-					.find('form .back')
+					.find('form .bind-back')
 					.on('click keydown', function () {
 						return list_load($(this).attr('href'), $(this));
 					})
@@ -380,7 +380,7 @@ $(function () {
 						});
 					})
 					.end()
-					.find('form .back')
+					.find('form .bind-back')
 					.on('click keydown', function () {
 						return list_load($(this).attr('href'), $(this));
 					})
@@ -398,23 +398,22 @@ $(function () {
 					container.scrollTo(scrollTo, 500);
 
 				container
-					.find('.bind-control')
-					.find('.delete, .hide')
+					.find('.bind-delete, .bind-hide')
 					.on('click keydown', function () {
 						return delete_hide_load($(this).attr('href'), $(this), $(this).data('confirm'));
 					})
 					.end()
-					.find('.first')
+					.find('.bind-first')
 					.on('click keydown', function () {
 						return list_load($(this).attr('href'), $(this), '0%');
 					})
 					.end()
-					.find('.edit, .message, .reply, .reply-all')
+					.find('.bind-edit, .bind-new, .bind-reply, .bind-reply-all')
 					.on('click keydown', function () {
 						return edit_load($(this).attr('href'), $(this));
 					})
 					.end()
-					.find('.prev')
+					.find('.bind-previous')
 					.on('click keydown', function () {
 						return list_load($(this).attr('href'), $(this), '100%');
 					})
@@ -458,7 +457,7 @@ $(function () {
 					});
 				})
 				.end()
-				.find('.bind-control .back')
+				.find('.bind-back')
 				.off('click keydown')
 				.on('click keydown', function () {
 					return view_load($(this));
@@ -472,7 +471,7 @@ $(function () {
 
 		var view_bind = function (container) {
 			container
-				.find('.bind-control .edit')
+				.find('.bind-edit')
 				.off('click keydown')
 				.on('click keydown', function () {
 					return edit_load($(this));
