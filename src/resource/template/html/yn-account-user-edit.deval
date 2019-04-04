@@ -42,7 +42,7 @@
 								"disabled":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],
 								"active":		["radio", false, ["items": [0, 1], "visible": user.is_admin]],
 								"authenticate": ["group", true],
-								"password": 	["password", true, ["visible": edit.id != null]],
+								"password": 	["password", true, ["visible": edit.id != null && (edit.id == user.id || !user.is_admin)]],
 								"password-1":	["password", true],
 								"password-2":	["password", true],
 								"render":		["group", true, ["visible": edit.id != null]],

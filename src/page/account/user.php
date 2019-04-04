@@ -152,8 +152,24 @@ function user_edit($request, $logger, $sql, $display, $input, $user)
         }
 
         // Password update
-        if (($input->get_string('password-1', $password1) && $input->get_string('password-2', $password2) && $input->get_string('password', $password) && $password !== '') || $new) {
-            if (!$new && (!$user->is_admin || $edit->id === $user->id) && yN\Entity\Account\User::authenticate_login($sql, $user->login, $password) === null) {
+        if (($input->get_string('password-1', $password1) && $input->get_string('password-2', $password2)) || $new) {
+            if ($new) {
+                $password_invalid = false;
+                $password_skip = false;
+            } elseif ($edit->id !== $user->id && $user->is_admin) {
+                $password_invalid = false;
+                $password_skip = $password1 === '' && $password2 === '';
+            } elseif ($input->get_string('password', $password) && ($password !== '' || $password1 !== '' || $password2 !== '')) {
+                $password_invalid = yN\Entity\Account\User::authenticate_login($sql, $user->login, $password) === null;
+                $password_skip = false;
+            } else {
+                $password_invalid = true;
+                $password_skip = true;
+            }
+
+            if ($password_skip) {
+                // Pass
+            } elseif ($password_invalid) {
                 $alerts[] = 'password-invalid';
             } elseif ($password1 === '') {
                 $alerts[] = 'password-empty';
