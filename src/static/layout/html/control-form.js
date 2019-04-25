@@ -339,6 +339,10 @@ yn.controlFormMarkup = function (handle, url) {
 	var emoji_list_bind = function (container) {
 		container
 			.find('.bind-emoji input[name=prefix]')
+			.on('keypress', function (e) {
+				if (e.which == 13)
+					return false;
+			})
 			.on('keyup', yn.defer(200, function () {
 				var handle = $(this);
 				var prefix = handle.val();

@@ -6,7 +6,7 @@
 		{{ block body }}
 			{{ if search }}
 				<div class="bind-emoji">
-					<form class="form-cascade form-thick" action="{{ $ url ("media.emoji.list", ["type": type]) }}" method="POST">
+					<form class="form-cascade form-thick" action="{{ $ url ("media.emoji.list", ["type": type]) }}" method="GET">
 						<div class="field">
 							<div class="value">
 								<input name="prefix" type="text" placeholder="{{ $ tra ("yn.media.emoji.list.form.field.search.placeholder") }}" />
