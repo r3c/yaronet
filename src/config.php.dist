@@ -46,6 +46,9 @@ $config = array(
     // Sender address for outgoing e-mails
     //'engine.network.smtp.from' => 'no-reply@my.domain.com',
 
+    // Reply address for outgoing e-mails
+    //'engine.network.smtp.reply-to' => null,
+
     // SQL connection string, must use "scheme://user:pass@host/name?options" format
     //'engine.network.sql.connection' => 'mysqli://yaronet@localhost/yaronet?charset=utf8mb4',
 

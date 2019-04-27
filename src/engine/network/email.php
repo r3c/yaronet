@@ -16,9 +16,15 @@ class Email
     public function send($subject, $body, $recipients)
     {
         $from_default = isset($_SERVER['SERVER_ADMIN']) ? $_SERVER['SERVER_ADMIN'] : 'no-reply@' . $_SERVER['SERVER_NAME'];
+        $from = config('engine.network.smtp.from', $from_default);
+        $reply_to = config('engine.network.smtp.reply-to', null);
 
         $smtp = new \Glay\Network\SMTP();
-        $smtp->from(config('engine.network.smtp.from', $from_default), 'yAronet');
+        $smtp->from($from, 'yAronet');
+
+        if ($reply_to !== null) {
+            $smtp->reply_to($reply_to, 'yAronet');
+        }
 
         foreach ($recipients as $address => $name) {
             $smtp->add_to($address, $name);
