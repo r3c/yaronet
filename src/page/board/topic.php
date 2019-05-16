@@ -246,7 +246,9 @@ function topic_edit($request, $logger, $sql, $display, $input, $user)
 
             sort($positions);
 
-            if (count($positions) < 1) {
+            if (count($positions) > yN\Entity\Board\Topic::DRIFT_MAX) {
+                $alerts[] = 'positions-invalid';
+            } elseif (count($positions) < 1) {
                 $alerts[] = 'positions-empty';
             }
 
