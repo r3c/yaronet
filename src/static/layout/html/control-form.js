@@ -110,6 +110,7 @@ yn.controlFormComplete = function (target) {
 
 				// Create new control for capturing user input
 				userInput = $('<input type="text">')
+					.attr('placeholder', formInput.attr('placeholder'))
 					.on('keydown', function (event) {
 						if (event.which !== 13)
 							return;
