@@ -248,14 +248,16 @@ function topic_edit($request, $logger, $sql, $display, $input, $user)
 
             if (count($positions) > yN\Entity\Board\Topic::DRIFT_MAX) {
                 $alerts[] = 'positions-invalid';
+                $references = null;
             } elseif (count($positions) < 1) {
                 $alerts[] = 'positions-empty';
-            }
+                $references = null;
+            } else {
+                $references = yN\Entity\Board\Reference::get_by_positions($sql, $source->id, $positions, yN\Entity\Board\Topic::DRIFT_MAX);
 
-            $references = yN\Entity\Board\Reference::get_by_positions($sql, $source->id, $positions, yN\Entity\Board\Topic::DRIFT_MAX);
-
-            if (count($positions) !== count($references)) {
-                $alerts[] = 'positions-incomplete';
+                if (count($positions) !== count($references)) {
+                    $alerts[] = 'positions-incomplete';
+                }
             }
         } else {
             $references = null;
