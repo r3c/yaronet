@@ -160,6 +160,10 @@ Widget::$mime_matchers = array(
                 unset($properties['image']);
             }
 
+            if ($image !== null) {
+                $image->free();
+            }
+
             // Remove empty properties
             $properties = array_filter($properties);
 
@@ -190,6 +194,7 @@ Widget::$mime_matchers = array(
         function ($logger, $response) {
             \Glay\using('yN\\Engine\\Media\\Image', './engine/media/image.php');
 
+            // Ignore image if invalid or too large for an inline media
             $image = Image::create_from_binary($response->data);
 
             if ($image === null || $image->x > 4096 || $image->y > 4096) {
