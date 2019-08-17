@@ -153,8 +153,10 @@ Widget::$mime_matchers = array(
                 }
             }
 
-            // Ignore image if specified but invalid
-            if (isset($properties['image']) && Image::create_from_url($properties['image']) === null) {
+            // Ignore image if unspecified, invalid or too large for a thumbnail
+            $image = isset($properties['image']) ? Image::create_from_url($properties['image']) : null;
+
+            if ($image === null || $image->x > 1024 || $image->y > 1024) {
                 unset($properties['image']);
             }
 
@@ -190,7 +192,7 @@ Widget::$mime_matchers = array(
 
             $image = Image::create_from_binary($response->data);
 
-            if ($image === null) {
+            if ($image === null || $image->x > 4096 || $image->y > 4096) {
                 return array(false, null);
             }
 
