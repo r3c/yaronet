@@ -12,7 +12,7 @@ class Image
     public static function create_from_binary($data)
     {
         // Try to read as an image
-        $handle = @imagecreatefromstring($data);
+        $handle = @imagecreatefromstring($data) ?: @imagecreatefromwebp('data://text/plain;base64,' . base64_encode($data));
 
         if ($handle !== false) {
             return new Image($data, $handle, imagesx($handle), imagesy($handle));

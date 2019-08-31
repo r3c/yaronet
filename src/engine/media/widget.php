@@ -190,7 +190,7 @@ Widget::$mime_matchers = array(
         }
     ),
     'image' => array(
-        'image/(?:jpeg|gif|png)',
+        'image/(?:jpeg|gif|png|svg+xml|webp)',
         function ($logger, $response) {
             \Glay\using('yN\\Engine\\Media\\Image', './engine/media/image.php');
 
