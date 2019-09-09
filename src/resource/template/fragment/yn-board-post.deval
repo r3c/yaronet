@@ -32,7 +32,7 @@
 						<a class="bind-message bind-tooltip gly-right login gender{{ $ post_profile.gender }}"{{ if user.id != null }} href="{{ $ url_message }}" title="{{ $ tra ("yn.board.topic.view.post.message.hint") }}" itemprop="name" data-url-edit="{{ $ url_message_new }}"{{ end }}>{{ $ post_user.login }}</a>
 						<a class="bind-tooltip gly-icon user" href="{{ $ url ("board.profile.view", ["profile": post_profile.user_id, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.profile.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.profile") }}"></a>
 						{{ if user.id != null && post_user.id != user.id }}
-							<a class="bind-ignore bind-tooltip gly-icon" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.ignore") }}"></a>
+							<a class="bind-ignore bind-tooltip gly-icon ignore" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.ignore") }}"></a>
 						{{ end }}
 					</span>
 					<span class="symbol time">
