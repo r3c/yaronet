@@ -21,7 +21,8 @@ $routes = array(
         '' => array('/<message:\\d+>', array(
             'delete' => array('/delete', 'GET,POST', 'call', 'message_delete', './page/account/message.php'),
             'edit' => array('/edit', 'GET,POST', 'call', 'message_edit', './page/account/message.php'),
-            'hide' => array('/hide', 'GET,POST', 'call', 'message_hide', './page/account/message.php')
+            'hide' => array('/hide', 'GET,POST', 'call', 'message_hide', './page/account/message.php'),
+            'unread' => array('/unread', 'GET', 'call', 'message_unread', './page/account/message.php')
         )),
         'list' => array('(_<from:\\d+>)', 'GET', 'call', 'message_list', './page/account/message.php'),
         'new' => array('/new(/<reply:\\d+>)', 'GET,POST', 'call', 'message_edit', './page/account/message.php')

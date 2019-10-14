@@ -1,0 +1,13 @@
+<form class="form-cascade form-thick screen" action="{{ $ url ("account.message.unread", ["message": message.id]) }}" method="POST">
+	{{ let
+		_alerts = alerts,
+		_fields = [],
+		_prefix = "yn.account.message.unread.form."
+	}}
+		{{ include control-form.deval }}
+	{{ end }}
+	<div class="control glyph10 ux-control">
+		<input class="gly-button send" type="submit" value="{{ $ tra ("yn.account.message.unread.form.submit") }}" />
+		<a class="back bind-back gly-left" href="{{ $ url ("account.message.list") }}">{{ $ tra ("yn.account.message.unread.back") }}</a>
+	</div>
+</form>

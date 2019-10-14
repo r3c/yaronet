@@ -44,7 +44,7 @@
 
 		<string key="list">Your private messages</string>
 		<section prefix="list.">
-			<string key="box">{login} {if:{read},read,didn't read} this message</string>
+			<string key="box">{login} {if:{gt:{state},0},read,didn't read} this message</string>
 			<string key="delete">Delete</string>
 			<string key="delete.confirm" alias="yn.account.message.delete.warning" />
 			<string key="delete.hint">Delete this message while it's still unread</string>
@@ -72,6 +72,8 @@
 			<string key="time" alias="base.type.datetime.relative"><var name="time">{message.time}</var></string>
 			<string key="to">To:</string>
 			<string key="type">Inbox</string>
+			<string key="unread">Unread</string>
+			<string key="unread.hint">Mark as unread</string>
 		</section>
 	</section>
 </locale>

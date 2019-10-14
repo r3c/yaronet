@@ -342,30 +342,8 @@ $(function () {
 			var source = $(this);
 			var window = yn.window(source, button.text(), 640, 480);
 
-			var delete_hide_bind = function (container) {
-				container
-					.find('form')
-					.on('submit', function () {
-						return yn.submit($(this), $(this).find('input[type=submit]'), function (html) {
-							container.html(html);
-
-							delete_hide_bind(container);
-							list_bind(container);
-						});
-					})
-					.end()
-					.find('form .bind-back')
-					.on('click keydown', function () {
-						return list_load($(this).attr('href'), $(this));
-					})
-					.end();
-			};
-
 			var delete_hide_load = function (url, handle, question) {
-				return confirm(question) && yn.load_html($.post(url), handle, window.inner, function (container) {
-					delete_hide_bind(container);
-					list_bind(container);
-				});
+				return confirm(question) && yn.load_html($.post(url), handle, window.inner, list_bind);
 			};
 
 			var edit_bind = function (container) {
@@ -418,6 +396,11 @@ $(function () {
 						return list_load($(this).attr('href'), $(this), '100%');
 					})
 					.end()
+					.find('.bind-unread')
+					.on('click keydown', function () {
+						return unread_load($(this).attr('href'), $(this));
+					})
+					.end()
 					.find('form')
 					.on('submit', function () {
 						return list_load($(this).attr('action') + '?' + $(this).serialize(), $(this).find('input[type=submit]'));
@@ -431,6 +414,10 @@ $(function () {
 				return yn.load_html($.get(url), handle, window.inner, function (container) {
 					list_bind(container, scrollTo);
 				});
+			};
+
+			var unread_load = function (url, handle) {
+				return yn.load_html($.get(url), handle, window.inner, list_bind);
 			};
 
 			// Load edit frame (on click on a login) or messages list (otherwise)

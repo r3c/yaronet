@@ -125,7 +125,7 @@ function message_hide($request, $logger, $sql, $display, $input, $user)
     if ($request->method === 'POST') {
         $alerts = array();
 
-        if (!yN\Entity\Account\Message::hide_copy($sql, $message->id, $user->id)) {
+        if (!yN\Entity\Account\Message::state_by_identifier__recipient($sql, $message->id, $user->id, yN\Entity\Account\Message::STATE_HIDDEN)) {
             $alerts[] = 'save';
         }
     } else {
@@ -165,7 +165,9 @@ function message_list($request, $logger, $sql, $display, $input, $user)
         $prev = null;
     }
 
-    yN\Entity\Account\Message::read_all($sql, $user->id);
+    if ((int)$request->get_or_default('read', 0) !== 0) {
+        yN\Entity\Account\Message::state_by_recipient($sql, $user->id);
+    }
 
     // Render template
     return Glay\Network\HTTP::data($display->render('yn-account-message-list.deval', 'account.message', array(
@@ -173,5 +175,26 @@ function message_list($request, $logger, $sql, $display, $input, $user)
         'login' => $login ?: null,
         'messages' => $messages,
         'prev' => $prev
+    )));
+}
+
+function message_unread($request, $logger, $sql, $display, $input, $user)
+{
+    if ($user->id === null) {
+        return Glay\Network\HTTP::code(401);
+    }
+
+    $message = yN\Entity\Account\Message::get_by_identifier__recipient($sql, (int)$request->get_or_fail('message'), $user->id);
+
+    if ($message === null) {
+        return Glay\Network\HTTP::code(404);
+    }
+
+    // Change message state and ignore errors
+    yN\Entity\Account\Message::state_by_identifier__recipient($sql, $message->id, $user->id, yN\Entity\Account\Message::STATE_FRESH);
+
+    // Render template
+    return Glay\Network\HTTP::data($display->render('yn-account-message-unread.deval', 'account.message.unread', array(
+        'message' => $message
     )));
 }

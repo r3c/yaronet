@@ -41,8 +41,8 @@
 								url_memo_edit = url ("account.memo.edit", ["_template": "frame"]),
 								url_memo_view = url ("account.memo.view", ["_template": "frame"]),
 
-								url_message = url ("account.message.list"),
-								url_message_list = url ("account.message.list", ["_template": "frame"]),
+								url_message = url ("account.message.list", ["read": 1]),
+								url_message_list = url ("account.message.list", ["read": 1, "_template": "frame"]),
 								url_message_new = url ("account.message.new", ["_template": "frame"])
 							}}
 								<span class="gly-left welcome">{{ $ tra ("page.welcome", ["user": user]) }}</span>

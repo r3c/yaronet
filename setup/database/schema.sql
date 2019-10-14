@@ -49,11 +49,9 @@ CREATE TABLE IF NOT EXISTS `account_message` (
 CREATE TABLE IF NOT EXISTS `account_message_copy` (
   `message` int(10) UNSIGNED NOT NULL,
   `recipient` int(10) UNSIGNED NOT NULL,
-  `hidden` bit(1) NOT NULL,
-  `read` bit(1) NOT NULL,
+  `state` tinyint(2) UNSIGNED NOT NULL,
   PRIMARY KEY (`message`,`recipient`),
-  KEY `recipient__hidden__time` (`recipient`,`hidden`),
-  KEY `recipient__read__time` (`recipient`,`read`)
+  KEY `recipient__state__time` (`recipient`,`state`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `account_user` (

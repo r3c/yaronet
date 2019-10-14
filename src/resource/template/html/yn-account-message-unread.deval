@@ -1,0 +1,10 @@
+{{ wrap html }}
+	{{ let
+		_meta = null,
+		_redirect = url ("account.message.list"),
+		_static = [],
+		_title = null
+	}}
+		{{ include base.deval }}
+	{{ end }}
+{{ end }}

@@ -16,6 +16,11 @@ class Message extends \yN\Entity\Model
 
     const RECIPIENT_MAX = 32;
 
+    const STATE_NEW = 0;
+    const STATE_FRESH = 1;
+    const STATE_READ = 2;
+    const STATE_HIDDEN = 3;
+
     public static $schema;
     public static $schema_box;
     public static $schema_cache = null;
@@ -28,8 +33,7 @@ class Message extends \yN\Entity\Model
                 '+' => array(
                     'box' => array(
                         '!recipient' => (int)$user_id,
-                        'hidden' => false,
-                        'read' => false
+                        'state|le' => self::STATE_FRESH
                     ),
                     'sender' => null
                 )
@@ -51,7 +55,7 @@ class Message extends \yN\Entity\Model
     {
         // Make sure no other message recipient other than sender already read message
         // FIXME: replace with RedMap equivalent [sql-hardcode]
-        if (count($sql->client->select('SELECT 1 FROM account_message m JOIN account_message_copy c ON c.message = m.id AND c.recipient != m.sender AND c.read != 0 WHERE m.id = ?', array((int)$message_id))) !== 0) {
+        if (count($sql->client->select('SELECT 1 FROM account_message m JOIN account_message_copy c ON c.message = m.id AND c.recipient != m.sender AND c.state > ? WHERE m.id = ?', array(self::STATE_NEW, (int)$message_id))) !== 0) {
             return false;
         }
 
@@ -60,12 +64,12 @@ class Message extends \yN\Entity\Model
 
     public static function get_by_identifier__recipient($sql, $message_id, $user_id)
     {
-        return self::entry_get_one($sql, array('id' => (int)$message_id, '+' => array('box' => array('!recipient' => (int)$user_id, 'hidden' => false), 'sender' => null)));
+        return self::entry_get_one($sql, array('id' => (int)$message_id, '+' => array('box' => array('!recipient' => (int)$user_id, 'state|le' => self::STATE_READ), 'sender' => null)));
     }
 
     public static function get_by_identifier__sender($sql, $message_id, $user_id)
     {
-        return self::entry_get_one($sql, array('id' => (int)$message_id, 'sender' => (int)$user_id, '+' => array('box' => array('!recipient' => (int)$user_id, 'hidden' => false))));
+        return self::entry_get_one($sql, array('id' => (int)$message_id, 'sender' => (int)$user_id, '+' => array('box' => array('!recipient' => (int)$user_id, 'state|le' => self::STATE_READ))));
     }
 
     public static function get_by_recipient($sql, $user_id, $other_id, $from, $count)
@@ -74,19 +78,19 @@ class Message extends \yN\Entity\Model
         if ($other_id !== null) {
             $filter = 'SELECT DISTINCT message FROM ' .
             '(' .
-                'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND hidden = 0 ' .
+                'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND state < ? ' .
                 'UNION ALL ' .
-                'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND hidden = 0 ' .
+                'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND state < ? ' .
             ') AS i GROUP BY i.message HAVING COUNT(*) = 2 ORDER BY message DESC LIMIT ?';
-            $params = array($from, $from, $user_id, $from, $from, $other_id, $count);
+            $params = array($from, $from, $user_id, self::STATE_HIDDEN, $from, $from, $other_id, self::STATE_HIDDEN, $count);
         } else {
-            $filter = 'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND hidden = 0 ORDER BY message DESC LIMIT ?';
-            $params = array($from, $from, $user_id, $count);
+            $filter = 'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND state < ? ORDER BY message DESC LIMIT ?';
+            $params = array($from, $from, $user_id, self::STATE_HIDDEN, $count);
         }
 
         $rows = $sql->client->select(
             'SELECT ' .
-                'c.message message, c.recipient recipient, c.hidden hidden, c.read `read`, ' .
+                'c.message message, c.recipient recipient, c.state state, ' .
                 'm.id message__id, m.sender message__sender, m.time message__time, m.text message__text, ' .
                 's.create_time message__sender__create_time, s.email message__sender__email, s.recover_time message__sender__recover_time, s.id message__sender__id, s.is_admin message__sender__is_admin, s.is_active message__sender__is_active, s.is_disabled message__sender__is_disabled, s.is_favorite message__sender__is_favorite, s.is_uniform message__sender__is_uniform, s.language message__sender__language, s.login message__sender__login, s.mechanism message__sender__mechanism, s.pulse_time message__sender__pulse_time, s.secret message__sender__secret, s.template message__sender__template, s.options message__sender__options, ' .
                 'r.create_time recipient__create_time, r.email recipient__email, r.recover_time recipient__recover_time, r.id recipient__id, r.is_admin recipient__is_admin, r.is_active recipient__is_active, r.is_disabled recipient__is_disabled, r.is_favorite recipient__is_favorite, r.is_uniform recipient__is_uniform, r.language recipient__language, r.login recipient__login, r.mechanism recipient__mechanism, r.pulse_time recipient__pulse_time, r.secret recipient__secret, r.template recipient__template, r.options recipient__options ' .
@@ -116,20 +120,10 @@ class Message extends \yN\Entity\Model
         return array_values($messages);
     }
 
-    public static function hide_copy($sql, $message_id, $user_id)
-    {
-        return MessageCopy::hide($sql, $message_id, $user_id);
-    }
-
-    public static function read_all($sql, $user_id)
-    {
-        return MessageCopy::read_all($sql, $user_id);
-    }
-
     public static function send($sql, $message, $recipients, &$alert)
     {
         if ($message->id !== null) {
-            if (MessageCopy::is_read($sql, $message->id, $message->sender_id)) {
+            if (!MessageCopy::can_edit($sql, $message->id, $message->sender_id)) {
                 $alert = 'read';
 
                 return false;
@@ -147,8 +141,8 @@ class Message extends \yN\Entity\Model
         foreach ($recipients as $recipient) {
             $box = new MessageCopy();
             $box->message_id = $message->id;
-            $box->read = $message->sender_id === (int)$recipient;
             $box->recipient_id = (int)$recipient;
+            $box->state = $message->sender_id === (int)$recipient ? Message::STATE_READ : Message::STATE_NEW;
 
             if (!$box->save($sql, $alert)) {
                 $result = false;
@@ -156,6 +150,16 @@ class Message extends \yN\Entity\Model
         }
 
         return $result;
+    }
+
+    public static function state_by_identifier__recipient($sql, $message_id, $user_id, $state)
+    {
+        return MessageCopy::state_by_identifier__recipient($sql, $message_id, $user_id, $state);
+    }
+
+    public static function state_by_recipient($sql, $user_id)
+    {
+        return MessageCopy::state_by_recipient($sql, $user_id, Message::STATE_READ);
     }
 
     public function __construct($sql = null, $row = null, $ns = '')
@@ -242,41 +246,37 @@ class MessageCopy extends \yN\Entity\Model
     public static $schema;
     public static $schema_cache = null;
 
-    public static function is_read($sql, $message_id, $user_id)
+    public static function can_edit($sql, $message_id, $user_id)
     {
-        return self::entry_get_one($sql, array('message' => (int)$message_id, 'read' => true, 'recipient|ne' => (int)$user_id)) !== null;
+        return self::entry_get_one($sql, array('message' => (int)$message_id, 'recipient|ne' => (int)$user_id, 'state|ge' => Message::STATE_FRESH)) === null;
     }
 
-
-    public static function hide($sql, $message_id, $user_id)
+    public static function state_by_identifier__recipient($sql, $message_id, $user_id, $state)
     {
-        return $sql->update(self::$schema, array('hidden' => true, 'read' => true), array('message' => (int)$message_id, 'recipient' => (int)$user_id)) !== null;
+        return $sql->update(self::$schema, array('state' => $state), array('message' => (int)$message_id, 'recipient' => (int)$user_id)) !== null;
     }
 
-    public static function read_all($sql, $user_id)
+    public static function state_by_recipient($sql, $user_id, $state)
     {
-        return $sql->update(self::$schema, array('read' => true), array('recipient' => (int)$user_id)) !== null;
+        return $sql->update(self::$schema, array('state' => $state), array('recipient' => (int)$user_id)) !== null;
     }
-
 
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;
 
         if ($row !== null) {
-            $this->hidden = (int)$row[$ns . 'hidden'] !== 0;
             $this->message = isset($row[$ns . 'message__id']) ? new Message($sql, $row, $ns . 'message__') : null;
             $this->message_id = (int)$row[$ns . 'message'];
-            $this->read = (int)$row[$ns . 'read'] !== 0;
             $this->recipient = isset($row[$ns . 'recipient__id']) ? new User($sql, $row, $ns . 'recipient__') : null;
             $this->recipient_id = (int)$row[$ns . 'recipient'];
+            $this->state = (int)$row[$ns . 'state'];
         } else {
-            $this->hidden = false;
             $this->message = null;
             $this->message_id = null;
-            $this->read = false;
             $this->recipient = null;
             $this->recipient_id = null;
+            $this->state = Message::STATE_NEW;
         }
     }
 
@@ -310,10 +310,9 @@ class MessageCopy extends \yN\Entity\Model
     protected function export()
     {
         return array(
-            'hidden' => $this->hidden,
             'message' => $this->message_id,
-            'read' => $this->read,
-            'recipient' => $this->recipient_id
+            'recipient' => $this->recipient_id,
+            'state' => $this->state
         );
     }
 }
@@ -340,10 +339,9 @@ Message::$schema = new \RedMap\Schema(
 MessageCopy::$schema = new \RedMap\Schema(
     'account_message_copy',
     array(
-        'hidden' => null,
         'message' => null,
-        'read' => null,
-        'recipient' => null
+        'recipient' => null,
+        'state' => null
     ),
     '__',
     array(
