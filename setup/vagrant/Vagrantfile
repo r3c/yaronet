@@ -44,8 +44,6 @@ Vagrant.configure("2") do |config|
 
 		# Install nodejs modules
 		for module in \
-			imagemin \
-			imagemin-cli \
 			less \
 			less-plugin-clean-css \
 			uglify-js; do

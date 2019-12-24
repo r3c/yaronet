@@ -14,22 +14,18 @@
 		},
 		{
 			"pattern":	"\\.css$",
-			"adapt":	"lessc --clean-css '{}'"
+			"modify":	"lessc --clean-css '{}'"
 		},
 		{
 			"pattern":	"\\.min\\.js$"
 		},
 		{
 			"pattern":	"\\.js$",
-			"adapt":	"uglifyjs --compress --mangle -- '{}'"
-		},
-		{
-			"pattern":	"\\.(gif|jpg|png)$",
-			"adapt":	"imagemin < '{}'"
+			"modify":	"uglifyjs --compress --mangle -- '{}'"
 		},
 		{
 			"pattern":	"(.*)\\.less$",
-			"adapt":	"lessc --clean-css '{}'",
+			"modify":	"lessc --clean-css '{}'",
 			"link":		"find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true",
 			"name":		"\\1.css"
 		}

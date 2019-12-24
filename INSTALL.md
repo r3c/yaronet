@@ -65,7 +65,7 @@ development server:
 * Any compatible HTTP server like Apache or Nginx.
 * MariaDB/MySQL server v5.6.41 or above (not tested with previous versions).
 * Node.js v10.13.0 or above (you can skip this dependency but won't be able to deploy to production):
-  * imagemin, imagemin-cli, less, less-plugin-clean-css & uglify-js packages.
+  * less, less-plugin-clean-css & uglify-js packages.
 * Optionally a Unix shell (running it through Cygwin is fine).
 
 Step by step install instructions:

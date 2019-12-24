@@ -11,8 +11,6 @@
   },
   "license": "AGPL-3.0",
   "dependencies": {
-    "imagemin": "^6.1.0",
-    "imagemin-cli": "^4.0.0",
     "less": "^3.9.0",
     "less-plugin-clean-css": "^1.5.1",
     "uglify-js": "^3.4.9"
