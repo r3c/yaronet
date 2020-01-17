@@ -47,7 +47,7 @@ link()
 			fi
 
 			mkdir -p "$target"
-			cp -r "$source/"* "$target/"
+			rsync -r "$source/" "$target/"
 
 			;;
 
