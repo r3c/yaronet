@@ -31,8 +31,8 @@ $syntax = array(
         array(Amato\Tag::STOP, '[/yncMd:159]', null, null, 'amato_syntax_bbcode_command_revert')
     ),
     'code' => array(
-        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}:l>]<.*?:b>[/code]\n"),
-        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}:l>]<.*?:b>[/code]")
+        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}:l>]<(?%:(?!\\[/code\\]).)*:b>[/code]\n"),
+        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}:l>]<(?%:(?!\\[/code\\]).)*:b>[/code]")
     ),
     'e' => array(
         array(Amato\Tag::ALONE, ':D', array('n' => 'grin'), 'amato_syntax_bbcode_emoji_convert'),
@@ -184,8 +184,8 @@ $syntax = array(
         array(Amato\Tag::ALONE, '[poll=<[0-9]{1,10}:i>]')
     ),
     'pre' => array(
-        array(Amato\Tag::ALONE, "[pre]<.*?:b>[/pre]\n"),
-        array(Amato\Tag::ALONE, "[pre]<.*?:b>[/pre]")
+        array(Amato\Tag::ALONE, "[pre]<(?%:(?!\\[/pre\\]).)*:b>[/pre]\n"),
+        array(Amato\Tag::ALONE, "[pre]<(?%:(?!\\[/pre\\]).)*:b>[/pre]")
     ),
     'quote' => array(
         array(Amato\Tag::START, "[quote]"),
