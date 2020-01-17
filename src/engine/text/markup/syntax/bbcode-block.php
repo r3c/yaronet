@@ -17,7 +17,7 @@ $syntax = array(
         array(Amato\Tag::STOP, "[/align]")
     ),
     'box' => array(
-        array(Amato\Tag::START, "[box=<[^][\n]{1,200}:t>]"),
+        array(Amato\Tag::START, "[box=<[^][\n]{1,200}@t>]"),
         array(Amato\Tag::STOP, "[/box]\n"),
         array(Amato\Tag::STOP, "[/box]")
     ),
@@ -31,8 +31,8 @@ $syntax = array(
         array(Amato\Tag::STOP, '[/yncMd:159]', null, null, 'amato_syntax_bbcode_command_revert')
     ),
     'code' => array(
-        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}:l>]<(?%:(?!\\[/code\\]).)*:b>[/code]\n"),
-        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}:l>]<(?%:(?!\\[/code\\]).)*:b>[/code]")
+        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}@l>]<(?:(?!\\[/code\\]).)*@b>[/code]\n"),
+        array(Amato\Tag::ALONE, "[code=<[-0-9A-Za-z._+]{1,16}@l>]<(?:(?!\\[/code\\]).)*@b>[/code]")
     ),
     'e' => array(
         array(Amato\Tag::ALONE, ':D', array('n' => 'grin'), 'amato_syntax_bbcode_emoji_convert'),
@@ -122,11 +122,11 @@ $syntax = array(
         array(Amato\Tag::ALONE, "\xF0\x9F\x98\xAD", array('n' => 'cry'), 'amato_syntax_bbcode_emoji_convert'),
         array(Amato\Tag::ALONE, "\xF0\x9F\x98\xAE", array('n' => 'embarrassed'), 'amato_syntax_bbcode_emoji_convert'),
         array(Amato\Tag::ALONE, "\xF0\x9F\x9A\x97", array('n' => 'car'), 'amato_syntax_bbcode_emoji_convert'),
-        array(Amato\Tag::ALONE, '##<[-0-9A-Za-z_]{1,32}:n>##', array('c' => ''), 'amato_syntax_bbcode_emoji_convert'),
-        array(Amato\Tag::ALONE, '#<[0-9a-z]{1,16}:n>#', null, 'amato_syntax_bbcode_emoji_convert')
+        array(Amato\Tag::ALONE, '##<[-0-9A-Za-z_]{1,32}@n>##', array('c' => ''), 'amato_syntax_bbcode_emoji_convert'),
+        array(Amato\Tag::ALONE, '#<[0-9a-z]{1,16}@n>#', null, 'amato_syntax_bbcode_emoji_convert')
     ),
     'font' => array(
-        array(Amato\Tag::START, '[font=<[0-9]{1,10}:p>]'),
+        array(Amato\Tag::START, '[font=<[0-9]{1,10}@p>]'),
         array(Amato\Tag::STOP, '[/font]')
     ),
     'h1' => array(
@@ -153,8 +153,8 @@ $syntax = array(
         array(Amato\Tag::ALONE, '[hr]')
     ),
     'img' => array(
-        array(Amato\Tag::ALONE, "[img=<$syntax_pattern_url:t>]<$syntax_pattern_url:u>[/img]", null, 'amato_syntax_bbcode_image_convert'),
-        array(Amato\Tag::ALONE, "[img]<$syntax_pattern_url:u>[/img]", null, 'amato_syntax_bbcode_image_convert')
+        array(Amato\Tag::ALONE, "[img=<$syntax_pattern_url@t>]<$syntax_pattern_url@u>[/img]", null, 'amato_syntax_bbcode_image_convert'),
+        array(Amato\Tag::ALONE, "[img]<$syntax_pattern_url@u>[/img]", null, 'amato_syntax_bbcode_image_convert')
     ),
     'list' => array(
         array(Amato\Tag::START, "[list]<\\s*#\n>[#]", array('o' => '1')),
@@ -162,18 +162,18 @@ $syntax = array(
         array(Amato\Tag::STEP, "<\\s*#\n>[#]", array('o' => '1')),
         array(Amato\Tag::STEP, "<\\s*#\n>[##]", array('o' => '2')),
         array(Amato\Tag::STEP, "<\\s*#\n>[###]", array('o' => '3')),
-        array(Amato\Tag::STEP, "<\\s*#\n>[#=<[1-9][0-9]*:o>]"),
+        array(Amato\Tag::STEP, "<\\s*#\n>[#=<[1-9][0-9]*@o>]"),
         array(Amato\Tag::STEP, "<\\s*#\n>[*]", array('u' => '1')),
         array(Amato\Tag::STEP, "<\\s*#\n>[**]", array('u' => '2')),
         array(Amato\Tag::STEP, "<\\s*#\n>[***]", array('u' => '3')),
-        array(Amato\Tag::STEP, "<\\s*#\n>[*=<[1-9][0-9]*:u>]"),
+        array(Amato\Tag::STEP, "<\\s*#\n>[*=<[1-9][0-9]*@u>]"),
         array(Amato\Tag::STOP, "[/list]\n"),
         array(Amato\Tag::STOP, "[/list]")
     ),
     'media' => array(
-        array(Amato\Tag::ALONE, "<$syntax_pattern_http$syntax_pattern_url_safe:u>", null, 'amato_syntax_bbcode_media_convert'),
-        array(Amato\Tag::ALONE, "[media]<$syntax_pattern_url:u>[/media]", null, 'amato_syntax_bbcode_media_convert'),
-        array(Amato\Tag::ALONE, "[media=<$syntax_pattern_url:u>]", null, 'amato_syntax_bbcode_media_convert')
+        array(Amato\Tag::ALONE, "<$syntax_pattern_http$syntax_pattern_url_safe@u>", null, 'amato_syntax_bbcode_media_convert'),
+        array(Amato\Tag::ALONE, "[media]<$syntax_pattern_url@u>[/media]", null, 'amato_syntax_bbcode_media_convert'),
+        array(Amato\Tag::ALONE, "[media=<$syntax_pattern_url@u>]", null, 'amato_syntax_bbcode_media_convert')
     ),
     'nsfw' => array(
         array(Amato\Tag::START, "[nsfw]"),
@@ -181,11 +181,11 @@ $syntax = array(
         array(Amato\Tag::STOP, "[/nsfw]")
     ),
     'poll' => array(
-        array(Amato\Tag::ALONE, '[poll=<[0-9]{1,10}:i>]')
+        array(Amato\Tag::ALONE, '[poll=<[0-9]{1,10}@i>]')
     ),
     'pre' => array(
-        array(Amato\Tag::ALONE, "[pre]<(?%:(?!\\[/pre\\]).)*:b>[/pre]\n"),
-        array(Amato\Tag::ALONE, "[pre]<(?%:(?!\\[/pre\\]).)*:b>[/pre]")
+        array(Amato\Tag::ALONE, "[pre]<(?:(?!\\[/pre\\]).)*@b>[/pre]\n"),
+        array(Amato\Tag::ALONE, "[pre]<(?:(?!\\[/pre\\]).)*@b>[/pre]")
     ),
     'quote' => array(
         array(Amato\Tag::START, "[quote]"),
@@ -196,11 +196,11 @@ $syntax = array(
         array(Amato\Tag::STOP, "[/cite]")
     ),
     'ref' => array(
-        array(Amato\Tag::ALONE, './<[0-9]{1,10}:t>-<[0-9]{1,10}:p>', null, 'amato_syntax_bbcode_ref_convert'),
-        array(Amato\Tag::ALONE, './<[0-9]{1,10}:p>', null, 'amato_syntax_bbcode_ref_convert')
+        array(Amato\Tag::ALONE, './<[0-9]{1,10}@t>-<[0-9]{1,10}@p>', null, 'amato_syntax_bbcode_ref_convert'),
+        array(Amato\Tag::ALONE, './<[0-9]{1,10}@p>', null, 'amato_syntax_bbcode_ref_convert')
     ),
     'slap' => array(
-        array(Amato\Tag::ALONE, "!slap <[ -~]{1,50}:t>", null, 'amato_syntax_bbcode_slap_convert')
+        array(Amato\Tag::ALONE, "!slap <[ -~]{1,50}@t>", null, 'amato_syntax_bbcode_slap_convert')
     ),
     'spoil' => array(
         array(Amato\Tag::START, '[spoiler]'),
@@ -210,27 +210,27 @@ $syntax = array(
         array(Amato\Tag::START, "[table]<\\s*#\n>[|]", array('d' => '1')),
         array(Amato\Tag::START, "[table]<\\s*#\n>[||]", array('d' => '2')),
         array(Amato\Tag::START, "[table]<\\s*#\n>[|||]", array('d' => '3')),
-        array(Amato\Tag::START, "[table]<\\s*#\n>[|=<[1-9][0-9]*:d>]"),
+        array(Amato\Tag::START, "[table]<\\s*#\n>[|=<[1-9][0-9]*@d>]"),
         array(Amato\Tag::START, "[table]<\\s*#\n>[^]", array('h' => '1')),
         array(Amato\Tag::START, "[table]<\\s*#\n>[^^]", array('h' => '2')),
         array(Amato\Tag::START, "[table]<\\s*#\n>[^^^]", array('h' => '3')),
-        array(Amato\Tag::START, "[table]<\\s*#\n>[^=<[1-9][0-9]*:h>]"),
+        array(Amato\Tag::START, "[table]<\\s*#\n>[^=<[1-9][0-9]*@h>]"),
         array(Amato\Tag::STEP, "[-]<\\s*#\n>[|]", array('d' => '1', 'r' => '')),
         array(Amato\Tag::STEP, "[-]<\\s*#\n>[||]", array('d' => '2', 'r' => '')),
         array(Amato\Tag::STEP, "[-]<\\s*#\n>[|||]", array('d' => '3', 'r' => '')),
-        array(Amato\Tag::STEP, "[-]<\\s*#\n>[|=<[1-9][0-9]*:d>]", array('r' => '')),
+        array(Amato\Tag::STEP, "[-]<\\s*#\n>[|=<[1-9][0-9]*@d>]", array('r' => '')),
         array(Amato\Tag::STEP, "[-]<\\s*#\n>[^]", array('h' => '1', 'r' => '')),
         array(Amato\Tag::STEP, "[-]<\\s*#\n>[^^]", array('h' => '2', 'r' => '')),
         array(Amato\Tag::STEP, "[-]<\\s*#\n>[^^^]", array('h' => '3', 'r' => '')),
-        array(Amato\Tag::STEP, "[-]<\\s*#\n>[^=<[1-9][0-9]*:h>]", array('r' => '')),
+        array(Amato\Tag::STEP, "[-]<\\s*#\n>[^=<[1-9][0-9]*@h>]", array('r' => '')),
         array(Amato\Tag::STEP, "[|]", array('d' => '1')),
         array(Amato\Tag::STEP, "[||]", array('d' => '2')),
         array(Amato\Tag::STEP, "[|||]", array('d' => '3')),
-        array(Amato\Tag::STEP, "[|=<[1-9][0-9]*:d>]"),
+        array(Amato\Tag::STEP, "[|=<[1-9][0-9]*@d>]"),
         array(Amato\Tag::STEP, "[^]", array('h' => '1')),
         array(Amato\Tag::STEP, "[^^]", array('h' => '2')),
         array(Amato\Tag::STEP, "[^^^]", array('h' => '3')),
-        array(Amato\Tag::STEP, "[^=<[1-9][0-9]*:h>]"),
+        array(Amato\Tag::STEP, "[^=<[1-9][0-9]*@h>]"),
         array(Amato\Tag::STOP, "[/table]\n"),
         array(Amato\Tag::STOP, "[/table]")
     )

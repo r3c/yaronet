@@ -19,10 +19,10 @@ $syntax = array(
         array(Amato\Tag::ALONE, ':#', array('n' => 'fc-10'), 'amato_syntax_fc_emoji_convert'),
         array(Amato\Tag::ALONE, ':p', array('n' => 'fc-11'), 'amato_syntax_fc_emoji_convert'),
         array(Amato\Tag::ALONE, '=)', array('n' => 'fc-12'), 'amato_syntax_fc_emoji_convert'),
-        array(Amato\Tag::ALONE, '#<n:(-0-9a-z){1,16}>#', null, 'amato_syntax_fc_emoji_convert')
+        array(Amato\Tag::ALONE, '#<[-0-9a-z]{1,16}@n>#', null, 'amato_syntax_fc_emoji_convert')
     ),
     'link' => array(
-        array(Amato\Tag::ALONE, "<$syntax_pattern_http$syntax_pattern_url:u>", null, 'amato_syntax_bbcode_anchor_convert', 'amato_syntax_bbcode_anchor_revert')
+        array(Amato\Tag::ALONE, "<$syntax_pattern_http$syntax_pattern_url@u>", null, 'amato_syntax_bbcode_anchor_convert', 'amato_syntax_bbcode_anchor_revert')
     )
 );
 
