@@ -1,33 +1,33 @@
 {
 	"modifiers": [
 		{
-			"pattern":	"\\.dist$",
-			"filter":	""
+			"pattern": "\\.dist$",
+			"filter": ""
 		},
 		{
-			"pattern":	"\\.inc\\.less$",
-			"filter":	"",
-			"link":		"find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true"
+			"pattern": "\\.inc\\.less$",
+			"filter": "",
+			"link": "find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true"
 		},
 		{
-			"pattern":	"\\.min\\.css$"
+			"pattern": "\\.min\\.css$"
 		},
 		{
-			"pattern":	"\\.css$",
-			"modify":	"lessc --clean-css '{}'"
+			"pattern": "\\.css$",
+			"modify": "lessc --clean-css '{}'"
 		},
 		{
-			"pattern":	"\\.min\\.js$"
+			"pattern": "\\.min\\.js$"
 		},
 		{
-			"pattern":	"\\.js$",
-			"modify":	"uglifyjs --compress --mangle -- '{}'"
+			"pattern": "\\.js$",
+			"modify": "uglifyjs --compress --mangle -- '{}'"
 		},
 		{
-			"pattern":	"(.*)\\.less$",
-			"modify":	"lessc --clean-css '{}'",
-			"link":		"find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true",
-			"name":		"\\1.css"
+			"pattern": "(.*)\\.less$",
+			"modify": "lessc --clean-css '{}'",
+			"link": "find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true",
+			"rename": "\\1.css"
 		}
 	]
 }

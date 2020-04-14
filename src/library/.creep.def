@@ -2,8 +2,8 @@
 	"source": "hash",
 	"modifiers": [
 		{
-			"pattern":	"^\\.gitignore$",
-			"filter":	""
+			"pattern": "^\\.gitignore$",
+			"filter": ""
 		}
 	]
 }

@@ -1,12 +1,12 @@
 {
 	"modifiers": [
 		{
-			"pattern":	"^\\.gitignore$",
-			"filter":	""
+			"pattern": "^\\.gitignore$",
+			"filter": ""
 		},
 		{
-			"pattern":	"\\.dist$",
-			"filter":	""
+			"pattern": "\\.dist$",
+			"filter": ""
 		}
 	]
 }
