@@ -42,7 +42,6 @@ foreach (array('engine.system.encoding.charset', 'engine.system.locale.name', 'e
 }
 
 ini_set('error_reporting', 32759);
-get_magic_quotes_gpc() and die('fatal: disable magic quotes');
 mb_internal_encoding($config['engine.system.encoding.charset']) or die('fatal: invalid configuration');
 setlocale(LC_ALL, $config['engine.system.locale.name']) or die('fatal: invalid configuration');
 

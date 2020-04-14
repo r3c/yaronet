@@ -28,7 +28,6 @@ if ($lock !== null && !in_array($_SERVER['REMOTE_ADDR'], explode(' ', config('en
 }
 
 // Apply global configuration settings
-get_magic_quotes_gpc() and die('Invalid PHP configuration, please disable <a href="http://php.net/manual/security.magicquotes.php">magic quotes</a>.');
 mb_internal_encoding(config('engine.system.encoding.charset', 'utf-8')) or die('Invalid configuration value for "engine.system.encoding.charset" option.');
 setlocale(LC_ALL, config('engine.system.locale.name', 'en_US.utf8')) or die('Invalid configuration value for "engine.system.locale.name" option.');
 
