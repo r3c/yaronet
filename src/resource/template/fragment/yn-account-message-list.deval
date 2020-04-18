@@ -53,7 +53,7 @@
 					{{ if message.sender.id != user.id }}
 						<a class="bind-reply bind-tooltip gly-left reply" href="{{ $ url ("account.message.new", ["to": message.sender.login, "reply": message.id]) }}" title="{{ $ tra ("yn.account.message.list.reply.hint") }}">{{ $ tra ("yn.account.message.list.reply") }}</a>
 						{{ if length (boxes) > 2 }}
-							<a class="bind-reply-all bind-tooltip gly-left reply-all" href="{{ $ url ("account.message.new", ["to": join (", ", cat ([message.sender.login], map (filter (boxes, (box) => box.recipient_id != user.id), (box) => box.recipient.login))), "reply": message.id]) }}" title="{{ $ tra ("yn.account.message.list.reply-all.hint") }}">{{ $ tra ("yn.account.message.list.reply-all") }}</a>
+							<a class="bind-reply-all bind-tooltip gly-left reply-all" href="{{ $ url ("account.message.new", ["to": join (cat ([message.sender.login], map (filter (boxes, (box) => box.recipient_id != user.id), (box) => box.recipient.login)), ", "), "reply": message.id]) }}" title="{{ $ tra ("yn.account.message.list.reply-all.hint") }}">{{ $ tra ("yn.account.message.list.reply-all") }}</a>
 						{{ end }}
 						{{ if !is_fresh_to_me }}
 							<a class="bind-unread bind-tooltip gly-left unread" href="{{ $ url ("account.message.unread", ["message": message.id]) }}" title="{{ $ tra ("yn.account.message.list.unread.hint") }}">{{ $ tra ("yn.account.message.list.unread") }}</a>
