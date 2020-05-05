@@ -148,7 +148,7 @@ Widget::$mime_matchers = array(
             $properties = array();
 
             foreach (array('description', 'image', 'site_name', 'title') as $name) {
-                if (preg_match('@<meta[^<>]+property\\s*=\\s*[\'"]og:' . preg_quote($name, '@') . '[\'"][^<>]+content\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\')[^<>]+>@', $headers, $match)) {
+                if (preg_match('@<meta[^<>]+property\\s*=\\s*[\'"]og:' . preg_quote($name, '@') . '[\'"][^<>]+content\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\')[^<>]*>@', $headers, $match)) {
                     $properties[$name] = html_entity_decode((isset($match[1]) ? $match[1] : '') ?: (isset($match[3]) ? $match[3] : ''), ENT_QUOTES, $encoding);
                 }
             }
