@@ -137,7 +137,7 @@ Widget::$mime_matchers = array(
             \Glay\using('yN\\Engine\\Media\\Image', './engine/media/image.php');
 
             // Fail when "head" HTML tag is either missing or too large
-            if (!preg_match('@<\\s*head\\s*>(.*)<\\s*/\\s*head\\s*>@is', $response->data, $match) || strlen($match[1]) > 512 * 1024) {
+            if (!preg_match('@<\\s*head[^<>]*>(.*)<\\s*/\\s*head\\s*>@is', $response->data, $match) || strlen($match[1]) > 512 * 1024) {
                 return array(false, null);
             }
 
