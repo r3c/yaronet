@@ -164,8 +164,10 @@ Widget::$mime_matchers = array(
                 $image->free();
             }
 
-            // Remove empty properties
-            $properties = array_filter($properties);
+            // Remove empty or too long properties
+            $properties = array_filter($properties, function ($value) {
+                return strlen($value) > 0 && strlen($value) < 1024;
+            });
 
             return array(count($properties) > 0, json_encode($properties));
         },
