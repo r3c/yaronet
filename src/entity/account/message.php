@@ -241,7 +241,9 @@ class Message extends \yN\Entity\Model
 
 class MessageCopy extends \yN\Entity\Model
 {
-    const MODEL_COST = 1;
+    // Non-zero cost here would conflict with "!call" feature used in
+    // board.post as there would be no guarantee all messages are sent.
+    const MODEL_COST = 0;
 
     public static $schema;
     public static $schema_cache = null;
