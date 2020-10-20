@@ -14,6 +14,8 @@
 		<string key="guides">Help</string>
 		<string key="message" alias="yn.account.message.list.type" />
 		<string key="message.hint">{if:{message.id},You received a private message from {message.sender.login},Your private messages}</string>
+		<string key="news">News</string>
+		<string key="news.hint">yAroNews: your custom RSS feed</string>
 		<string key="memo" alias="yn.account.memo.view.type" />
 		<string key="memo.hint" alias="yn.account.memo.view" />
 		<string key="metric">Statistics</string>
