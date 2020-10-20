@@ -37,6 +37,7 @@
 								tra ("yn.home.popular"),
 								popular,
 								[
+									["blogs", "//blog.yaronet.com/", tra ("yn.home.link.blogs")],
 									["forums", url ("board.forum.list"), tra ("yn.home.link.forums")],
 									["profiles", url ("board.profile.list"), tra ("yn.home.link.profiles")]
 								]
