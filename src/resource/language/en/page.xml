@@ -8,6 +8,7 @@
 		<string key="bookmarks2.hint">New posts in topics you follow and last updates</string>
 		<string key="contacts">Contacts</string>
 		<string key="copyright">Built with</string>
+		<string key="credits">Credits</string>
 		<string key="guides">Help</string>
 		<string key="message" alias="yn.account.message.list.type" />
 		<string key="message.hint">{if:{message.id},You received a private message from {message.sender.login},Your private messages}</string>
