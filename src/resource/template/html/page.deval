@@ -53,6 +53,7 @@
 								<a class="bind-tooltip bookmark2 gly-left" href="{{ $ url ("board.bookmark.list", ["what": "fl"]) }}" title="{{ $ tra ("page.bookmarks2.hint") }}">{{ $ tra ("page.bookmarks2") }}</a>
 								<a id="yn-message" class="bind-message bind-tooltip gly-left message{{ if page_message != null }} message-notify{{ end }}" href="{{ $ url_message }}" title="{{ $ tra ("page.message.hint", ["message": page_message]) }}" data-url-edit="{{ $ url_message_new }}" data-url-list="{{ $ url_message_list }}">{{ $ tra ("page.message") }}</a>
 								<a id="yn-memo" class="bind-tooltip gly-left memo" href="{{ $ url_memo }}" title="{{ $ tra ("page.memo.hint") }}" data-url-edit="{{ $ url_memo_edit }}" data-url-view="{{ $ url_memo_view }}">{{ $ tra ("page.memo") }}</a>
+								<a class="bind-tooltip gly-left news" href="http://ns.yaronet.com" title="{{ $ tra ("page.news.hint") }}">{{ $ tra ("page.news") }}</a>
 							{{ end }}
 						{{ else }}
 							<a class="bind-tooltip gly-left signin" href="{{ $ url ("account.user.signin") }}" title="{{ $ tra ("page.signin.hint") }}">{{ $ tra ("page.signin") }}</a>
