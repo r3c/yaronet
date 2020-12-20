@@ -1,5 +1,5 @@
 {
-	"source": "hash",
+	"tracker": "hash",
 	"modifiers": [
 		{
 			"pattern": "^\\.gitignore$",

@@ -1,4 +1,10 @@
 {
+	"cascades": [
+		"library",
+		"resource",
+		"storage",
+		"static"
+	],
 	"modifiers": [
 		{
 			"pattern": "^\\.gitignore$",
