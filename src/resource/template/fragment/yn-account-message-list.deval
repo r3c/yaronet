@@ -30,14 +30,13 @@
 			is_new_to_them = find (boxes, (box) => box.recipient_id != user.id && box.state > 0) != null
 		}}
 			<li class="message {{ $ cat (message.sender_id == user.id && "out" || "in", " ", is_fresh_to_me && "new" || "old") }}">
-				<div class="origin ux-control">
-					<span class="from glyph10">
+				<div class="glyph10 origin">
+					<span class="from ux-control">
 						<a class="bind-tooltip gly-left login user" href="{{ $ url ("board.profile.view", ["profile": message.sender_id, "_template": null]) }}" title="{{ $ tra ("yn.account.message.list.profile.hint") }}" itemprop="name">{{ $ message.sender.login }}</a>
+						<em class="gly-left time">{{ $ tra ("yn.account.message.list.time", ["message": message]) }}</em>
 					</span>
-					<em class="time">{{ $ tra ("yn.account.message.list.time", ["message": message]) }}</em>
-					<span class="glyph10 to ux-goto">
-						{{ $ tra ("yn.account.message.list.to") }}
-						{{ $ " " }}
+					<span class="to ux-control ux-goto">
+						<em>{{ $ tra ("yn.account.message.list.to") }}</em>
 						{{ for box in filter (boxes, (box) => box.recipient_id != message.sender_id) }}
 							<a class="bind-message bind-tooltip gly-left message-{{ $ box.state > 0 && "read" || "new" }}" href="{{ $ url ("account.message.new", ["to": box.recipient.login]) }}" title="{{ $ tra ("yn.account.message.list.box", ["login": box.recipient.login, "state": box.state]) }}">{{ $ box.recipient.login }}</a>
 							{{ $ " " }}

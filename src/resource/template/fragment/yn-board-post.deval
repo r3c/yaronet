@@ -27,7 +27,7 @@
 	{{ if !hide_text }}
 		<div class="body">
 			{{ if !hide_user }}
-				<div class="origin" itemprop="author" itemscope itemtype="http://schema.org/Person">
+				<div class="origin ux-control" itemprop="author" itemscope itemtype="http://schema.org/Person">
 					<span class="from glyph10 ux-control">
 						<a class="bind-message bind-tooltip gly-right login gender{{ $ post_profile.gender }}"{{ if user.id != null }} href="{{ $ url_message }}" title="{{ $ tra ("yn.board.topic.view.post.message.hint") }}" itemprop="name" data-url-edit="{{ $ url_message_new }}"{{ end }}>{{ $ post_user.login }}</a>
 						<a class="bind-tooltip gly-icon user" href="{{ $ url ("board.profile.view", ["profile": post_profile.user_id, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.profile.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.profile") }}"></a>

@@ -30,7 +30,7 @@
 				</div>
 			{{ end }}
 			<div id="yn-menu" class="page-menu{{ if page_message != null }} menu-notify{{ end }}">
-				<div class="menu-links">
+				<div class="menu-links ux-control">
 					<span class="time">
 						{{ $ tra ("page.time", ["time": time]) }}
 					</span>
