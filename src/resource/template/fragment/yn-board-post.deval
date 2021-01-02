@@ -27,20 +27,16 @@
 	{{ if !hide_text }}
 		<div class="body">
 			{{ if !hide_user }}
-				<div class="origin ux-control" itemprop="author" itemscope itemtype="http://schema.org/Person">
-					<span class="from glyph10 ux-control">
-						<a class="bind-message bind-tooltip gly-right login gender{{ $ post_profile.gender }}"{{ if user.id != null }} href="{{ $ url_message }}" title="{{ $ tra ("yn.board.topic.view.post.message.hint") }}" itemprop="name" data-url-edit="{{ $ url_message_new }}"{{ end }}>{{ $ post_user.login }}</a>
-						<a class="bind-tooltip gly-icon user" href="{{ $ url ("board.profile.view", ["profile": post_profile.user_id, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.profile.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.profile") }}"></a>
-						{{ if user.id != null && post_user.id != user.id }}
-							<a class="bind-ignore bind-tooltip gly-icon ignore" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.ignore") }}"></a>
-						{{ end }}
-					</span>
-					<span class="symbol time">
-						<span class="sym-follow" itemprop="dateCreated" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.create_time) }}">{{ $ tra ("yn.board.topic.view.post.created", ["profile": post_profile, "time": post.create_time]) }}</span>
-						{{ if post.edit_profile != null && post.edit_time != null }}
-							<span class="sym-follow" itemprop="dateModified" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.edit_time) }}">{{ $ tra ("yn.board.topic.view.post.edited", ["profile": post.edit_profile, "time": post.edit_time]) }}</span>
-						{{ end }}
-					</span>
+				<div class="glyph10 origin symbol ux-control" itemprop="author" itemscope itemtype="http://schema.org/Person">
+					<a class="bind-message bind-tooltip gly-right login gender{{ $ post_profile.gender }}"{{ if user.id != null }} href="{{ $ url_message }}" title="{{ $ tra ("yn.board.topic.view.post.message.hint") }}" itemprop="name" data-url-edit="{{ $ url_message_new }}"{{ end }}>{{ $ post_user.login }}</a>
+					<a class="bind-tooltip gly-icon user" href="{{ $ url ("board.profile.view", ["profile": post_profile.user_id, "_template": null]) }}" title="{{ $ tra ("yn.board.topic.view.post.profile.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.profile") }}"></a>
+					{{ if user.id != null && post_user.id != user.id }}
+						<a class="bind-ignore bind-tooltip gly-icon ignore" href="{{ $ url ("board.ignore.set", ["target": post_profile.user_id]) }}" title="{{ $ tra ("yn.board.topic.view.post.ignore.hint") }}" alt="{{ $ tra ("yn.board.topic.view.post.ignore") }}"></a>
+					{{ end }}
+					<span class="created" itemprop="dateCreated" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.create_time) }}">{{ $ tra ("yn.board.topic.view.post.created", ["profile": post_profile, "time": post.create_time]) }}</span>
+					{{ if post.edit_profile != null && post.edit_time != null }}
+						<span class="sym-follow" itemprop="dateModified" datetime="{{ $ php ("date") (php ("#DATE_W3C"), post.edit_time) }}">{{ $ tra ("yn.board.topic.view.post.edited", ["profile": post.edit_profile, "time": post.edit_time]) }}</span>
+					{{ end }}
 				</div>
 			{{ end }}
 			{{ label body }}
@@ -48,13 +44,17 @@
 				avatar = post_profile.render_avatar (router),
 				signature = post_profile.render_signature ("html", router, logger)
 			}}
-				{{ if !hide_bottom && !hide_user && avatar != null && signature != null }}
+				{{ if !hide_bottom && !hide_user && (avatar != null || signature != null) }}
 					<div class="bottom markup">
 						{{ if avatar != null }}
 							<img class="avatar" src="{{ $ avatar }}" alt="avatar" />
 						{{ end }}
-						{{ unwrap }}
-							{{ $ signature }}
+						{{ if signature != null }}
+							<div>
+								{{ unwrap }}
+									{{ $ signature }}
+								{{ end }}
+							</div>
 						{{ end }}
 					</div>
 				{{ end }}

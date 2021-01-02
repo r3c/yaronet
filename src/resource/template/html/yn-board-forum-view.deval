@@ -20,17 +20,19 @@
 		{{ block main }}
 			<div class="forum panel panel-decorate">
 				<h2>{{ $ tra ("yn.board.forum.view.type") }}</h2>
-				<div class="panel-body">
+				<div class="panel-header">
 					{{ if forum.is_illustrated }}
 						<div class="panel-icon">
 							<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
 						</div>
 					{{ end }}
-					<h3>{{ $ forum.name }}</h3>
-					<div class="markup">
-						{{ unwrap }}
-							{{ $ default (forum.render_preface ("html", router, logger), html (forum.description)) }}
-						{{ end }}
+					<div>
+						<h3>{{ $ forum.name }}</h3>
+						<div class="markup">
+							{{ unwrap }}
+								{{ $ default (forum.render_preface ("html", router, logger), html (forum.description)) }}
+							{{ end }}
+						</div>
 					</div>
 				</div>
 				{{ let edit = false }}

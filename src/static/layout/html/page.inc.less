@@ -38,17 +38,7 @@
 @window-back: @panel-back;
 @window-border: @logo-border;
 
-.clear () {
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
-
 .control {
-  .clear ();
-
   margin: 4px 0;
 
   &:first-child {
@@ -303,7 +293,7 @@ strong {
 
 .grid {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   margin: 8px 0;
 
   .cell,
@@ -370,65 +360,79 @@ strong {
   }
 }
 
-.message-filter {
-  float: right;
-}
+.message-box {
+  .message-control {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
-.messages {
-  padding: 0;
-  margin: 8px;
-  list-style: none;
-
-  .message {
-    padding: 0 8px 4px 8px;
-    margin: 16px 0;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 8px;
-
-    &:first-child {
-      margin-top: 0;
+    .message-filter {
+      margin-left: auto;
     }
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  .message-list {
+    padding: 0;
+    margin: 12px 8px;
+    list-style: none;
 
-    &.in {
-      margin-right: 64px;
-    }
+    .message {
+      padding: 0 8px 4px 8px;
+      margin: 16px 0;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 8px;
 
-    &.new {
-      background-color: @message-new-back;
-      border-color: @message-new-border;
-      box-shadow: 0 0 3px 0 @message-new-border;
-    }
+      &:first-child {
+        margin-top: 0;
+      }
 
-    &.old {
-      background-color: @message-old-back;
-      border-color: @message-old-border;
-      box-shadow: 0 0 3px 0 @message-old-border;
-    }
+      &:last-child {
+        margin-bottom: 0;
+      }
 
-    &.out {
-      margin-left: 64px;
-    }
+      &.in {
+        margin-right: 64px;
+      }
 
-    .action {
-      text-align: right;
-    }
+      &.new {
+        background-color: @message-new-back;
+        border-color: @message-new-border;
+        box-shadow: 0 0 3px 0 @message-new-border;
+      }
 
-    .origin {
-      display: flex;
-      justify-content: space-between;
-      padding: 4px 0;
-      border-bottom-style: solid;
-      border-bottom-width: 1px;
-      border-color: @message-old-border;
-    }
+      &.old {
+        background-color: @message-old-back;
+        border-color: @message-old-border;
+        box-shadow: 0 0 3px 0 @message-old-border;
+      }
 
-    .text {
-      padding: 4px 0;
+      &.out {
+        margin-left: 64px;
+      }
+
+      .action {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .origin {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4px 0;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-color: @message-old-border;
+
+        .to {
+          margin-left: auto;
+        }
+      }
+
+      .text {
+        padding: 4px 0;
+      }
     }
   }
 }
@@ -683,7 +687,8 @@ strong {
   border-width: 1px;
 
   &.panel-decorate {
-    .panel-body {
+    .panel-body,
+    .panel-header {
       padding: 8px 8px 8px 24px;
       background-image: linear-gradient(
         to right,
@@ -698,24 +703,6 @@ strong {
 
   .panel-body {
     padding: 4px;
-
-    .clear ();
-
-    .panel-icon {
-      float: left;
-      padding: 4px;
-      margin: 0 8px 0 0;
-      background-color: lighten(@panel-back, 3%);
-      border-color: @panel-border;
-      border-style: dotted;
-      border-width: 1px;
-
-      img {
-        display: block;
-        max-width: 128px;
-        max-height: 128px;
-      }
-    }
 
     p.editorial {
       padding: 8px 16px;
@@ -807,6 +794,33 @@ strong {
     border-color: @panel-footer-border;
     border-style: solid none none none;
     border-width: 1px;
+  }
+
+  .panel-header {
+    display: flex;
+    padding: 4px;
+
+    & > * {
+      margin-left: 8px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .panel-icon {
+    padding: 4px;
+    background-color: lighten(@panel-back, 3%);
+    border-color: @panel-border;
+    border-style: dotted;
+    border-width: 1px;
+
+    img {
+      display: block;
+      max-width: 128px;
+      max-height: 128px;
+    }
   }
 
   h2 {
@@ -902,6 +916,8 @@ strong {
   }
 
   .window-header {
+    display: flex;
+    justify-content: space-between;
     flex: 0 0 0;
     padding: 5px 6px 3px 6px;
     background-color: @panel-header-back;
@@ -921,7 +937,6 @@ strong {
     cursor: move;
 
     input {
-      float: right;
       height: 18px;
       background-position: 50% 50%;
     }

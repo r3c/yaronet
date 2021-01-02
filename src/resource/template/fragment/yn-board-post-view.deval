@@ -16,15 +16,19 @@
 			<div class="glyph10 peek-control ux-control">
 				{{ if position > 1 }}
 					<a class="gly-left peek-previous" href="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position - 1, "peek": request.peek]) }}">{{ $ position - 1 }}</a>
-				{{ end }}
-				{{ if position < topic.posts }}
-					<a class="gly-right peek-next" href="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position + 1, "peek": request.peek]) }}">{{ $ position + 1 }}</a>
+				{{ else }}
+					<span class="gly-left peek-previous-none"></span>
 				{{ end }}
 				<a class="gly-left peek-close" href="#">{{ $ tra ("yn.board.bookmark.list.close") }}</a>
 				{{ if do_reply && user.id != null }}
 					<a class="bind-tooltip gly-left peek-drop" href="{{ $ url ("board.bookmark.clear", ["topic": topic.id]) }}" title="{{ $ tra ("yn.board.bookmark.list.drop.hint") }}">{{ $ tra ("yn.board.bookmark.list.drop") }}</a>
 					<a class="bind-tooltip gly-left peek-mark" href="{{ $ url ("board.bookmark.mark", ["topic": topic.id, "position": position - 1]) }}" title="{{ $ tra ("yn.board.bookmark.list.mark.hint") }}">{{ $ tra ("yn.board.bookmark.list.mark") }}</a>
 					<a class="bind-tooltip gly-left peek-read" href="{{ $ url ("board.bookmark.mark", ["topic": topic.id, "position": topic.posts]) }}" title="{{ $ tra ("yn.board.bookmark.list.read.hint") }}">{{ $ tra ("yn.board.bookmark.list.read") }}</a>
+				{{ end }}
+				{{ if position < topic.posts }}
+					<a class="gly-right peek-next" href="{{ $ url ("board.post.view", ["forum": forum_id, "topic": topic.id, "position": position + 1, "peek": request.peek]) }}">{{ $ position + 1 }}</a>
+				{{ else }}
+					<span class="gly-right peek-next-none"></span>
 				{{ end }}
 			</div>
 			<div class="peek-origin">

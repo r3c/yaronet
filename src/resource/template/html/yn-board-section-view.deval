@@ -39,24 +39,26 @@
 		{{ block main }}
 			<div class="panel-decorate section panel">
 				<h2>{{ $ tra ("yn.board.section.view.type") }}</h2>
-				<div class="panel-body">
+				<div class="panel-header">
 					{{ if forum.is_illustrated }}
 					<div class="panel-icon">
 						<img alt="logo" src="{{ $ url ("media.image.render", ["name": cat ("forum-", forum.id), "tag": forum.icon_tag]) }}" />
 					</div>
 					{{ end }}
-					<h3 class="glyph16 symbol">
-						{{ if forum_id != null }}
-							<span class="sym-parent">
-								<a href="{{ $ url ("board.forum.view", ["forum": section.forum_id, "forum_alias": section.forum.alias]) }}">{{ $ section.forum.name }}</a>
-							</span>
-						{{ end }}
-						<span class="sym-parent">{{ $ section.name }}</span>
-						{{ if section.allow_publish (access) }}
-							<a class="gly-left new" href="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}">{{ $ tra ("yn.board.section.view.form") }}</a>
-						{{ end }}
-					</h3>
-					<div>{{ $ section.description }}</div>
+					<div>
+						<h3 class="glyph16 symbol">
+							{{ if forum_id != null }}
+								<span class="sym-parent">
+									<a href="{{ $ url ("board.forum.view", ["forum": section.forum_id, "forum_alias": section.forum.alias]) }}">{{ $ section.forum.name }}</a>
+								</span>
+							{{ end }}
+							<span class="sym-parent">{{ $ section.name }}</span>
+							{{ if section.allow_publish (access) }}
+								<a class="gly-left new" href="{{ $ url ("board.topic.new", ["forum": forum_id, "section": section.id]) }}">{{ $ tra ("yn.board.section.view.form") }}</a>
+							{{ end }}
+						</h3>
+						<div>{{ $ section.description }}</div>
+					</div>
 				</div>
 				{{ let header = section.render_header ("html", router, logger) }}
 					{{ if header != null }}

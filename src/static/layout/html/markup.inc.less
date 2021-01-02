@@ -40,14 +40,6 @@
 @markup-table-back: spin(@markup-back, 45%);
 @markup-table-border: spin(@markup-border, 45%);
 
-.markup-clear () {
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
-
 .markup-block (@back, @border, @text) {
   padding: 4px 8px;
   margin: 8px 24px;
@@ -139,33 +131,34 @@
   }
 
   .peek-control {
+    display: flex;
+    align-items: center;
     padding: 4px 0;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-color: @peek-border;
     text-align: center;
-  }
 
-  .peek-next {
-    float: right;
+    .peek-next,
+    .peek-next-none {
+      margin-left: auto;
+    }
+
+    .peek-previous,
+    .peek-previous-none {
+      margin-right: auto;
+    }
   }
 
   .peek-origin {
-    .markup-clear ();
-
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 4px 0;
-  }
-
-  .peek-previous {
-    float: left;
   }
 
   .peek-text {
     font-size: 110%;
-  }
-
-  .peek-time {
-    float: right;
   }
 }
 

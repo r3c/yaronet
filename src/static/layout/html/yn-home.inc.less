@@ -27,7 +27,7 @@
 
 .home {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   .flashchat {
@@ -70,7 +70,8 @@
     }
 
     ul.forums {
-      overflow: auto;
+      display: flex;
+      flex-wrap: wrap;
       box-sizing: border-box;
       width: 100%;
       padding: 0 8px;
@@ -78,16 +79,10 @@
       list-style: none;
 
       li {
-        float: left;
-        width: 50%;
+        flex: 1 0 50%;
 
-        &:nth-child(2n + 1) {
-          clear: both;
-        }
-
-        @media screen and (max-width: 400px) {
-          float: none;
-          width: 100%;
+        @media screen and (max-width: 600px) {
+          flex: 1 0 100%;
         }
 
         .forum {

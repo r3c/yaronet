@@ -69,8 +69,8 @@ yn.controlFormComplete = function (target) {
 					});
 
 					$('<li class="handle input-button">')
-						.append(remove)
 						.append(caption)
+						.append(remove)
 						.appendTo(items);
 
 					update();
