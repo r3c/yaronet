@@ -1,117 +1,121 @@
+@home-index-back: @input-back;
+@home-index-border: @input-border;
 
-@home-index-back:		@input-back;
-@home-index-border:		@input-border;
-
-@guest-text:			mix(@frame-text, @frame-border, 40%);
+@guest-text: mix(@frame-text, @frame-border, 40%);
 
 .glyph10 {
-	.favorite {
-		background-image:	url('../../glyph/10/knot.png');
-	}
+  .favorite {
+    background-image: url("../../glyph/10/knot.png");
+  }
 
-	.forum {
-		background-image:	url('../../glyph/10/plus.png');
-	}
+  .forum {
+    background-image: url("../../glyph/10/plus.png");
+  }
 
-	.forums {
-		background-image:	url('../../glyph/10/directory.png');
-	}
+  .forums {
+    background-image: url("../../glyph/10/directory.png");
+  }
 
-	.profiles {
-		background-image:	url('../../glyph/10/user.png');
-	}
+  .profiles {
+    background-image: url("../../glyph/10/user.png");
+  }
 
-	.trendy {
-		background-image:	url('../../glyph/10/fire.png');
-	}
+  .trendy {
+    background-image: url("../../glyph/10/fire.png");
+  }
 }
 
 .home {
-	display:			flex;
-	flex-flow:			row wrap;
-	justify-content:	space-between;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 
-	.flashchat {
-		flex:	1;
-		margin:	0 0 0 12px;
+  .flashchat {
+    flex: 1;
+    margin: 0 0 0 12px;
 
-		@media screen and (max-width: 600px) {
-			flex:	1 100%;
-			margin:	12px 0 0 0;
-		}
+    @media screen and (max-width: 600px) {
+      flex: 1 100%;
+      margin: 12px 0 0 0;
+    }
 
-		form {
-			height:		auto;
-			padding:	0 4px 4px 4px;
-		}
+    form {
+      height: auto;
+      padding: 0 4px 4px 4px;
+    }
 
-		.guest {
-			color:	@guest-text;
-		}
-	}
+    .guest {
+      color: @guest-text;
+    }
+  }
 
-	.index {
-		flex:				3;
-		background-image:	linear-gradient(to right, @tertiary 0%, @frame-back 95%, @frame-border 100%);
-		background-repeat:	repeat-y;
-		background-size:	16px auto;
+  .index {
+    flex: 3;
+    background-image: linear-gradient(
+      to right,
+      @tertiary 0%,
+      @frame-back 95%,
+      @frame-border 100%
+    );
+    background-repeat: repeat-y;
+    background-size: 16px auto;
 
-		@media screen and (max-width: 600px) {
-			flex:	1 100%;
-		}
+    @media screen and (max-width: 600px) {
+      flex: 1 100%;
+    }
 
-		.links {
-			margin:		8px auto;
-			text-align:	center;
-		}
+    .links {
+      margin: 8px auto;
+      text-align: center;
+    }
 
-		ul.forums {
-			overflow:	auto;
-			box-sizing:	border-box;
-			width:		100%;
-			padding:	0 8px;
-			margin:		0;
-			list-style:	none;
+    ul.forums {
+      overflow: auto;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 8px;
+      margin: 0;
+      list-style: none;
 
-			li {
-				float:	left;
-				width:	50%;
+      li {
+        float: left;
+        width: 50%;
 
-				&:nth-child(2n + 1) {
-					clear:	both;
-				}
+        &:nth-child(2n + 1) {
+          clear: both;
+        }
 
-				@media screen and (max-width: 400px) {
-					float:	none;
-					width:	100%;
-				}
+        @media screen and (max-width: 400px) {
+          float: none;
+          width: 100%;
+        }
 
-				.forum {
-					position:			relative;
-					padding:			4px 4px 6px 46px;
-					margin:				4px;
-					background-color:	@home-index-back;
-					border-color:		@home-index-border;
-					border-radius:		8px 0;
-					border-style:		solid;
-					border-width:		1px;
+        .forum {
+          position: relative;
+          padding: 4px 4px 6px 46px;
+          margin: 4px;
+          background-color: @home-index-back;
+          border-color: @home-index-border;
+          border-radius: 8px 0;
+          border-style: solid;
+          border-width: 1px;
 
-					&:hover {
-						background-color:	darken(@home-index-back, 10%);
-					}
+          &:hover {
+            background-color: darken(@home-index-back, 10%);
+          }
 
-					a {
-						display:	block;
-						font-size:	120%;
-					}
+          a {
+            display: block;
+            font-size: 120%;
+          }
 
-					img {
-						position:	absolute;
-						top:		8px;
-						left:		8px;
-					}
-				}
-			}
-		}
-	}
+          img {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+          }
+        }
+      }
+    }
+  }
 }

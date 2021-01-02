@@ -1,142 +1,142 @@
+@topic-back: @input-back;
+@topic-border: @input-border;
+@topic-text: mix(@main-text, @topic-back, 60%);
 
-@topic-back:		@input-back;
-@topic-border:		@input-border;
-@topic-text:		mix(@main-text, @topic-back, 60%);
-
-@topic-stale-text:	mix(@main-text, @topic-back, 40%);
+@topic-stale-text: mix(@main-text, @topic-back, 40%);
 
 .glyph10 {
-	.active {
-		background-image:	url('../../glyph/10/calendar.png');
-	}
+  .active {
+    background-image: url("../../glyph/10/calendar.png");
+  }
 
-	.merge {
-		background-image:	url('../../glyph/10/join.png');
-	}
+  .merge {
+    background-image: url("../../glyph/10/join.png");
+  }
 
-	.permission {
-		background-image:	url('../../glyph/10/shield.png');
-	}
+  .permission {
+    background-image: url("../../glyph/10/shield.png");
+  }
 }
 
 .glyph16 {
-	.new {
-		background-image:	url('../../glyph/16/book-plus.png');
-	}
+  .new {
+    background-image: url("../../glyph/16/book-plus.png");
+  }
 }
 
 div.section {
-	h3 {
-		margin-top:	0;
-	}
+  h3 {
+    margin-top: 0;
+  }
 
-	table.topics {
-		width:				100%;
-		border-color:		@topic-border;
-		border-collapse:	collapse;
-		border-style:		solid none none none;
-		border-width:		1px;
+  table.topics {
+    width: 100%;
+    border-color: @topic-border;
+    border-collapse: collapse;
+    border-style: solid none none none;
+    border-width: 1px;
 
-		td.blank {
-			width:				8px;
-			background-color:	@topic-back;
-		}
+    td.blank {
+      width: 8px;
+      background-color: @topic-back;
+    }
 
-		td.icon {
-			width:			40px;
-			vertical-align:	middle;
+    td.icon {
+      width: 40px;
+      vertical-align: middle;
 
-			div {
-				width:		16px;
-				height:		16px;
-				margin:		auto;
-				background:	transparent url('../../../../image/unknown.png') no-repeat;
-			}
-		}
+      div {
+        width: 16px;
+        height: 16px;
+        margin: auto;
+        background: transparent url("../../../../image/unknown.png") no-repeat;
+      }
+    }
 
-		td.icon,
-		td.info {
-			border-color:	@topic-border;
-			border-style:	none solid none solid;
-			border-width:	1px;
-			text-align:		center;
-		}
+    td.icon,
+    td.info {
+      border-color: @topic-border;
+      border-style: none solid none solid;
+      border-width: 1px;
+      text-align: center;
+    }
 
-		td.info {
-			width:	120px;
-		}
+    td.info {
+      width: 120px;
+    }
 
-		td.info,
-		td.last {
-			@media screen and (max-width: 800px) {
-				display:	none;
-			}
-		}
+    td.info,
+    td.last {
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
+    }
 
-		td.last {
-			width:				216px;
-			padding:			8px;
-			background-color:	@topic-back;
-			color:				@topic-text;
-		}
+    td.last {
+      width: 216px;
+      padding: 8px;
+      background-color: @topic-back;
+      color: @topic-text;
+    }
 
-		td.link {
-			padding:			8px;
-			background-color:	@topic-back;
-			color:				@topic-text;
+    td.link {
+      padding: 8px;
+      background-color: @topic-back;
+      color: @topic-text;
 
-			a {
-				font-weight:	normal;
+      a {
+        font-weight: normal;
 
-				&.name {
-					font-size:	110%;
-				}
+        &.name {
+          font-size: 110%;
+        }
 
-				&.weight {
-					background:	transparent url('../../glyph/16/sticky.png') no-repeat 0 50%;
-					padding:	0 0 0 20px;
-				}
-			}
-		}
+        &.weight {
+          background: transparent url("../../glyph/16/sticky.png") no-repeat 0
+            50%;
+          padding: 0 0 0 20px;
+        }
+      }
+    }
 
-		tr:hover {
-			td.blank,
-			td.last,
-			td.link {
-				background-color:	darken(@topic-back, 5%);
-			}
-		}
+    tr:hover {
+      td.blank,
+      td.last,
+      td.link {
+        background-color: darken(@topic-back, 5%);
+      }
+    }
 
-		tr.close td.icon div {
-			background-image:	url('../../glyph/16/lock.png');
-		}
+    tr.close td.icon div {
+      background-image: url("../../glyph/16/lock.png");
+    }
 
-		tr.new td.icon div {
-			background-image:	url('../../glyph/16/book-open-arrow.png');
-		}
+    tr.new td.icon div {
+      background-image: url("../../glyph/16/book-open-arrow.png");
+    }
 
-		tr.stale td.link a.name {
-			color:	@topic-stale-text;
-		}
+    tr.stale td.link a.name {
+      color: @topic-stale-text;
+    }
 
-		tr.track.fresh td.icon div {
-			background-image:	url('../../glyph/16/book-open.png');
-		}
+    tr.track.fresh td.icon div {
+      background-image: url("../../glyph/16/book-open.png");
+    }
 
-		tr.track.stale td.icon div {
-			background-image:	url('../../glyph/16/book-close.png');
-		}
+    tr.track.stale td.icon div {
+      background-image: url("../../glyph/16/book-close.png");
+    }
 
-		tr.watch.fresh td.icon div {
-			background-image:	url('../../glyph/16/book-open-bookmark.png');
-		}
+    tr.watch.fresh td.icon div {
+      background-image: url("../../glyph/16/book-open-bookmark.png");
+    }
 
-		tr.watch.stale td.icon div {
-			background-image:	url('../../glyph/16/book-close-bookmark.png');
-		}
-	}
+    tr.watch.stale td.icon div {
+      background-image: url("../../glyph/16/book-close-bookmark.png");
+    }
+  }
 
-	.author {
-		font-weight:	bold;
-	}
+  .author {
+    font-weight: bold;
+  }
 }

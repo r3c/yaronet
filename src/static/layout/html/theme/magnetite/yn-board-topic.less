@@ -1,81 +1,80 @@
+@import "../../yn-board-topic.inc.less";
+@import "color.inc.less";
 
-@import '../../yn-board-topic.inc.less';
-@import 'color.inc.less';
+@post-avatar-width1: 50px;
+@post-avatar-width2: 40px;
+@post-avatar-width3: 30px;
 
-@post-avatar-width1:	50px;
-@post-avatar-width2:	40px;
-@post-avatar-width3:	30px;
-
-@post-content-width1:	120px;
-@post-content-width2:	80px;
-@post-content-width3:	40px;
+@post-content-width1: 120px;
+@post-content-width2: 80px;
+@post-content-width3: 40px;
 
 .posts .post {
-	margin-bottom:	0;
-	border-style:	none solid;
+  margin-bottom: 0;
+  border-style: none solid;
 
-	.body {
-		position:			relative;
-		padding-left:		0;
-		padding-right:		0;
-		background-image:	none;
+  .body {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    background-image: none;
 
-		.action,
-		.bottom,
-		.field,
-		.text {
-			padding-right:	6px;
-			margin-left:	@post-content-width1;
+    .action,
+    .bottom,
+    .field,
+    .text {
+      padding-right: 6px;
+      margin-left: @post-content-width1;
 
-			@media screen and (max-width: 600px) {
-				margin-left:	@post-content-width2;
-			}
+      @media screen and (max-width: 600px) {
+        margin-left: @post-content-width2;
+      }
 
-			@media screen and (max-width: 400px) {
-				margin-left:	@post-content-width3;
-			}
-		}
+      @media screen and (max-width: 400px) {
+        margin-left: @post-content-width3;
+      }
+    }
 
-		.bottom {
-			border-style:	none;
+    .bottom {
+      border-style: none;
 
-			.avatar {
-				position:	absolute;
-				top:		32px;
-				left:		(@post-content-width1 - @post-avatar-width1) / 2;
-				width:		@post-avatar-width1;
+      .avatar {
+        position: absolute;
+        top: 32px;
+        left: (@post-content-width1 - @post-avatar-width1) / 2;
+        width: @post-avatar-width1;
 
-				@media screen and (max-width: 600px) {
-					left:	(@post-content-width2 - @post-avatar-width2) / 2;
-					width:	@post-avatar-width2;
-				}
+        @media screen and (max-width: 600px) {
+          left: (@post-content-width2 - @post-avatar-width2) / 2;
+          width: @post-avatar-width2;
+        }
 
-				@media screen and (max-width: 400px) {
-					left:	(@post-content-width3 - @post-avatar-width3) / 2;
-					width:	@post-avatar-width3;
-				}
-			}
-		}
+        @media screen and (max-width: 400px) {
+          left: (@post-content-width3 - @post-avatar-width3) / 2;
+          width: @post-avatar-width3;
+        }
+      }
+    }
 
-		.origin {
-			padding-left:		4px;
-			padding-right:		4px;
-			background-color:	@frame-back;
+    .origin {
+      padding-left: 4px;
+      padding-right: 4px;
+      background-color: @frame-back;
 
-			.login {
-				display:	block;
-				float:		left;
-				min-width:	@post-content-width1 - 8px;
-				text-align:	center;
+      .login {
+        display: block;
+        float: left;
+        min-width: @post-content-width1 - 8px;
+        text-align: center;
 
-				@media screen and (max-width: 600px) {
-					min-width:	@post-content-width2 - 8px;
-				}
+        @media screen and (max-width: 600px) {
+          min-width: @post-content-width2 - 8px;
+        }
 
-				@media screen and (max-width: 400px) {
-					min-width:	@post-content-width3 - 8px;
-				}
-			}
-		}
-	}
+        @media screen and (max-width: 400px) {
+          min-width: @post-content-width3 - 8px;
+        }
+      }
+    }
+  }
 }

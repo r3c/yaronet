@@ -1,499 +1,505 @@
+@peek-back: @input-back;
+@peek-border: @input-border;
 
-@peek-back:				@input-back;
-@peek-border:			@input-border;
+@markup-box-back: spin(@markup-back, 225%);
+@markup-box-border: spin(@markup-border, 225%);
+@markup-box-text: spin(@markup-text, 225%);
 
-@markup-box-back:		spin(@markup-back, 225%);
-@markup-box-border:		spin(@markup-border, 225%);
-@markup-box-text:		spin(@markup-text, 225%);
+@markup-cmd-back: spin(@markup-back, 270%);
+@markup-cmd-border: spin(@markup-border, 270%);
+@markup-cmd-text: spin(@markup-text, 270%);
 
-@markup-cmd-back:		spin(@markup-back, 270%);
-@markup-cmd-border:		spin(@markup-border, 270%);
-@markup-cmd-text:		spin(@markup-text, 270%);
+@markup-code-back: spin(@markup-back, 90%);
+@markup-code-border: spin(@markup-border, 90%);
+@markup-code-text: spin(@markup-text, 90%);
 
-@markup-code-back:		spin(@markup-back, 90%);
-@markup-code-border:	spin(@markup-border, 90%);
-@markup-code-text:		spin(@markup-text, 90%);
+@markup-embed-back: spin(@markup-back, 315%);
+@markup-embed-border: spin(@markup-border, 315%);
+@markup-embed-text: spin(@markup-text, 315%);
 
-@markup-embed-back:		spin(@markup-back, 315%);
-@markup-embed-border:	spin(@markup-border, 315%);
-@markup-embed-text:		spin(@markup-text, 315%);
+@markup-nsfw-back: spin(@markup-back, 180%);
+@markup-nsfw-border: spin(@markup-border, 180%);
+@markup-nsfw-text: spin(@markup-text, 180%);
 
-@markup-nsfw-back:		spin(@markup-back, 180%);
-@markup-nsfw-border:	spin(@markup-border, 180%);
-@markup-nsfw-text:		spin(@markup-text, 180%);
+@markup-poll-back: spin(@markup-back, 45%);
+@markup-poll-border: spin(@markup-border, 45%);
+@markup-poll-text: spin(@markup-text, 45%);
 
-@markup-poll-back:		spin(@markup-back, 45%);
-@markup-poll-border:	spin(@markup-border, 45%);
-@markup-poll-text:		spin(@markup-text, 45%);
+@markup-pre-back: @frame-back;
+@markup-pre-border: @frame-border;
+@markup-pre-text: @frame-text;
 
-@markup-pre-back:		@frame-back;
-@markup-pre-border:		@frame-border;
-@markup-pre-text:		@frame-text;
+@markup-quote-back: spin(@markup-back, 0%);
+@markup-quote-border: spin(@markup-border, 0%);
+@markup-quote-text: spin(@markup-text, 0%);
 
-@markup-quote-back:		spin(@markup-back, 0%);
-@markup-quote-border:	spin(@markup-border, 0%);
-@markup-quote-text:		spin(@markup-text, 0%);
+@markup-spoil-back: @input-back;
+@markup-spoil-border: @input-border;
+@markup-spoil-text: @input-text;
 
-@markup-spoil-back:		@input-back;
-@markup-spoil-border:	@input-border;
-@markup-spoil-text:		@input-text;
-
-@markup-table-back:		spin(@markup-back, 45%);
-@markup-table-border:	spin(@markup-border, 45%);
+@markup-table-back: spin(@markup-back, 45%);
+@markup-table-border: spin(@markup-border, 45%);
 
 .markup-clear () {
-	&::after {
-		content:	'';
-		display:	block;
-		clear:		both;
-	}
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }
 
 .markup-block (@back, @border, @text) {
-	padding:		4px 8px;
-	margin:			8px 24px;
-	background:		@back;
-	border-color:	@border @border @border mix(@border, @text, 60%);
-	border-radius:	0 6px 6px 0;
-	border-style:	solid;
-	border-width:	1px 1px 1px 3px;
+  padding: 4px 8px;
+  margin: 8px 24px;
+  background: @back;
+  border-color: @border @border @border mix(@border, @text, 60%);
+  border-radius: 0 6px 6px 0;
+  border-style: solid;
+  border-width: 1px 1px 1px 3px;
 
-	@media screen and (max-width: 800px) {
-		margin:	8px 16px;
-	}
+  @media screen and (max-width: 800px) {
+    margin: 8px 16px;
+  }
 
-	@media screen and (max-width: 600px) {
-		margin:	8px 8px;
-	}
+  @media screen and (max-width: 600px) {
+    margin: 8px 8px;
+  }
 
-	@media screen and (max-width: 400px) {
-		margin:	8px 0px;
-	}
+  @media screen and (max-width: 400px) {
+    margin: 8px 0px;
+  }
 }
 
 .markup-box (@back, @border) {
-	padding:			3px;
-	margin:				8px 24px;
-	background-color:	@back;
-	border-color:		@border;
-	border-radius:		6px;
-	border-style:		solid;
-	border-width:		1px;
+  padding: 3px;
+  margin: 8px 24px;
+  background-color: @back;
+  border-color: @border;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .markup-box-body () {
-	padding:	4px 4px 2px 4px;
-	display:	none;
+  padding: 4px 4px 2px 4px;
+  display: none;
 }
 
 .markup-box-head (@back, @border, @text) {
-	padding:				3px 3px 3px 25px;
-	margin:					0;
-	background-color:		mix(@back, @border, 40%);
-	background-position:	5px 5px;
-	background-repeat:		no-repeat;
-	border-radius:			3px;
-	color:					@text;
-	font-weight:			bold;
-	cursor:					pointer;
+  padding: 3px 3px 3px 25px;
+  margin: 0;
+  background-color: mix(@back, @border, 40%);
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  color: @text;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .glyph10 {
-	.peek-close {
-		background-image:	url('../../glyph/10/back.png');
-	}
+  .peek-close {
+    background-image: url("../../glyph/10/back.png");
+  }
 
-	.peek-next {
-		background-image:	url('../../glyph/10/arrow-down.png');
-	}
+  .peek-next {
+    background-image: url("../../glyph/10/arrow-down.png");
+  }
 
-	.peek-previous {
-		background-image:	url('../../glyph/10/arrow-up.png');
-	}
+  .peek-previous {
+    background-image: url("../../glyph/10/arrow-up.png");
+  }
 }
 
 .peek {
-	padding:			0 8px 4px 8px;
-	margin:				8px;
-	border-radius:		8px;
-	border-style:		solid;
-	border-width:		1px;
-	background-color:	@peek-back;
-	border-color:		@peek-border;
-	box-shadow:			0 0 8px 0 @peek-border;
+  padding: 0 8px 4px 8px;
+  margin: 8px;
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: @peek-back;
+  border-color: @peek-border;
+  box-shadow: 0 0 8px 0 @peek-border;
 
-	&.peek-emphasized {
-		background-color:	@accent-back;
-	}
+  &.peek-emphasized {
+    background-color: @accent-back;
+  }
 
-	&.peek-hidden {
-		background-color:	@fail-back;
-	}
+  &.peek-hidden {
+    background-color: @fail-back;
+  }
 
-	&.peek-ignored {
-		background-color:	@info-back;
-	}
+  &.peek-ignored {
+    background-color: @info-back;
+  }
 
-	.peek-action {
-		padding:	8px 0 0 0;
-		text-align:	right;
-	}
+  .peek-action {
+    padding: 8px 0 0 0;
+    text-align: right;
+  }
 
-	.peek-control {
-		padding:				4px 0;
-		border-bottom-style:	solid;
-		border-bottom-width:	1px;
-		border-color:			@peek-border;
-		text-align:				center;
-	}
+  .peek-control {
+    padding: 4px 0;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: @peek-border;
+    text-align: center;
+  }
 
-	.peek-next {
-		float:	right;
-	}
+  .peek-next {
+    float: right;
+  }
 
-	.peek-origin {
-		.markup-clear ();
+  .peek-origin {
+    .markup-clear ();
 
-		padding:	4px 0;
-	}
+    padding: 4px 0;
+  }
 
-	.peek-previous {
-		float:	left;
-	}
+  .peek-previous {
+    float: left;
+  }
 
-	.peek-text {
-		font-size:	110%;
-	}
+  .peek-text {
+    font-size: 110%;
+  }
 
-	.peek-time {
-		float:	right;
-	}
+  .peek-time {
+    float: right;
+  }
 }
 
 .markup {
-	counter-reset:	markup-h1 markup-h2 markup-h3 markup-h4;
-	word-wrap:		break-word;
-
-	a {
-		text-decoration:	underline;
-	}
-
-	blockquote {
-		.markup-block (@markup-quote-back, @markup-quote-border, @markup-quote-text);
-	}
-
-	blockquote blockquote {
-		border-left-color:	mix(@markup-quote-border, @markup-quote-text, 65%);
-	}
-
-	blockquote blockquote blockquote {
-		border-left-color:	mix(@markup-quote-border, @markup-quote-text, 70%);
-	}
-
-	blockquote blockquote blockquote blockquote {
-		border-left-color:	mix(@markup-quote-border, @markup-quote-text, 75%);
-	}
-
-	blockquote blockquote blockquote blockquote blockquote {
-		border-left-color:	mix(@markup-quote-border, @markup-quote-text, 80%);
-	}
-
-	blockquote blockquote blockquote blockquote blockquote blockquote {
-		border-left-color:	mix(@markup-quote-border, @markup-quote-text, 85%);
-	}
-
-	code {
-		.markup-block (@markup-code-back, @markup-code-border, @markup-code-text);
-
-		display:		block;
-		white-space:	pre-wrap;
-	}
-
-	iframe,
-	object,
-	video {
-		max-width:	100%;
-	}
-
-	img {
-		max-width:	100%;
-		height:		auto;
-	}
-
-	img.custom,
-	img.emoji {
-		vertical-align:	middle;
-	}
-
-	ol.list,
-	ul.list {
-		padding:	0 0 0 24px;
-		margin:		8px 0;
-
-		ol.list,
-		ul.list {
-			margin:		0 0;
-		}
-	}
-
-	ol.list {
-		list-style:	decimal outside none;
-
-		ol.list {
-			list-style-type:	lower-alpha;
-
-			ol.list {
-				list-style-type:	lower-roman;
-			}
-		}
-	}
-
-	ul.list {
-		list-style:	disc outside none;
-
-		ul.list {
-			list-style-type:	circle;
-
-			ul.list {
-				list-style-type:	square;
-			}
-		}
-	}
-
-	.box {
-		.markup-box (@markup-box-back, @markup-box-border);
-
-		.box-body {
-			.markup-box-body ();
-		}
-
-		.box-head {
-			.markup-box-head (@markup-box-back, @markup-box-border, @markup-box-text);
-
-			background-image:	url('../../glyph/16/box.png');
-		}
-	}
-
-	.center {
-		margin:		auto;
-		text-align:	center;
-	}
-
-	.cmd {
-		padding:				6px 4px 6px 28px;
-		margin:					4px 24px;
-		background-color:		@markup-cmd-back;
-		background-image:		url('../../glyph/16/user.png');
-		background-position:	7px 7px;
-		background-repeat:		no-repeat;
-		border-color:			@markup-cmd-border;
-		border-radius:			6px;
-		border-style:			solid;
-		border-width:			1px;
-		color:					@markup-cmd-text;
-		font-weight:			bold;
-	}
-
-	.h1 {
-		counter-increment:	markup-h1;
-		counter-reset:		markup-h2;
-		margin:				12px 0;
-		font-size:			150%;
-		font-weight:		bold;
-
-		&::before {
-			content:	counter(markup-h1) ". ";
-		}
-
-		&:first-child {
-			margin:	0 0 12px 0;
-		}
-	}
-
-	.h2 {
-		counter-increment:	markup-h2;
-		counter-reset:		markup-h3;
-		margin:				8px 0;
-		font-size:			130%;
-		font-weight:		bold;
-
-		&::before {
-			content:	counter(markup-h1) "." counter(markup-h2) ". ";
-		}
-
-		&:first-child {
-			margin:	0 0 8px 0;
-		}
-	}
-
-	.h3 {
-		counter-increment:	markup-h3;
-		counter-reset:		markup-h4;
-		margin:				4px 0;
-		font-size:			110%;
-		font-weight:		bold;
-
-		&::before {
-			content:	counter(markup-h1) "." counter(markup-h2) "." counter(markup-h3) ". ";
-		}
-
-		&:first-child {
-			margin:	0 0 4px 0;
-		}
-	}
-
-	.h4 {
-		counter-increment:	markup-h4;
-		margin:				2px 0;
-		font-size:			100%;
-		font-weight:		bold;
-
-		&::before {
-			content:	counter(markup-h1) "." counter(markup-h2) "." counter(markup-h3) "." counter(markup-h4) ". ";
-		}
-
-		&:first-child {
-			margin:	0 0 2px 0;
-		}
-	}
-
-	.nsfw {
-		.markup-box (@markup-nsfw-back, @markup-nsfw-border);
-
-		.nsfw-body {
-			.markup-box-body ();
-		}
-
-		.nsfw-head {
-			.markup-box-head (@markup-nsfw-back, @markup-nsfw-border, @markup-nsfw-text);
-
-			background-image:	url('../../glyph/16/warning.png');
-		}
-	}
-
-	.opengraph {
-		.markup-block (@markup-embed-back, @markup-embed-border, @markup-embed-text);
-
-		display:		flex;
-		align-items:	center;
-
-		div {
-			display:		flex;
-			flex-direction:	column;
-
-			.description {
-				margin-top:	8px;
-			}
-
-			.source {
-				font-size:	90%;
-				font-style:	italic;
-			}
-		}
-
-		img {
-			margin-right:	8px;
-			max-width:		128px;
-			border-color:	@markup-embed-border;
-			border-style:	solid;
-			border-width:	1px;
-
-			@media screen and (max-width: 800px) {
-				max-width:	64px;
-			}
-		
-			@media screen and (max-width: 600px) {
-				max-width:	48px;
-			}
-		
-			@media screen and (max-width: 400px) {
-				max-width:	32px;
-			}
-		}
-	}
-
-	.poll {
-		.markup-block (@markup-poll-back, @markup-poll-border, @markup-poll-text);
-
-		.choice {
-			margin:			0 0 4px 0;
-			padding:		2px 6px;
-			background: 	@markup-poll-back linear-gradient(to right, @markup-poll-back, @markup-poll-border) no-repeat;
-		}
-
-		.question {
-			font-weight:	bold;
-		}
-	}
-
-	.pre {
-		color:			@markup-pre-text;
-		font-family:	monospace;
-		white-space:	pre-wrap;
-	}
-
-	pre.pre {
-		.markup-block (@markup-pre-back, @markup-pre-border, @markup-pre-text);
-	}
-
-	span.pre {
-		background-color:	@markup-pre-back;
-		padding:			0 3px;
-		border-color:		@markup-pre-border;
-		border-radius:		3px;
-		border-style:		solid;
-		border-width:		1px;
-	}
-
-	.s {
-		text-decoration:	line-through;
-	}
-
-	.spoil {
-		padding:			0 3px;
-		background-color:	@markup-spoil-back;
-		border-color:		@markup-spoil-border;
-		border-radius:		4px;
-		border-style:		dotted;
-		border-width:		1px;
-		color:				@markup-spoil-back;
-
-		&:hover,
-		&.hover {
-			color:	@markup-spoil-text;
-		}
-
-		&:hover *,
-		&.hover * {
-			visibility:	visible;
-		}
-
-		* {
-			visibility:	hidden;
-		}
-	}
-
-	.u {
-		text-decoration:	underline;
-	}
-
-	.table {
-		border-collapse:	collapse;
-
-		td {
-			padding:			6px 8px;
-			background-color:	@markup-table-back;
-			border-color:		@markup-table-border;
-			border-style:		solid;
-			border-width:		1px 0 1px 0;
-		}
-
-		th {
-			padding:			6px 8px;
-			background-color:	mix(@markup-table-back, @markup-table-border, 60%);
-			border-color:		@markup-table-border;
-			border-style:		solid;
-			border-width:		4px 0 1px 0;
-		}
-	}
+  counter-reset: markup-h1 markup-h2 markup-h3 markup-h4;
+  word-wrap: break-word;
+
+  a {
+    text-decoration: underline;
+  }
+
+  blockquote {
+    .markup-block
+      (@markup-quote-back, @markup-quote-border, @markup-quote-text);
+  }
+
+  blockquote blockquote {
+    border-left-color: mix(@markup-quote-border, @markup-quote-text, 65%);
+  }
+
+  blockquote blockquote blockquote {
+    border-left-color: mix(@markup-quote-border, @markup-quote-text, 70%);
+  }
+
+  blockquote blockquote blockquote blockquote {
+    border-left-color: mix(@markup-quote-border, @markup-quote-text, 75%);
+  }
+
+  blockquote blockquote blockquote blockquote blockquote {
+    border-left-color: mix(@markup-quote-border, @markup-quote-text, 80%);
+  }
+
+  blockquote blockquote blockquote blockquote blockquote blockquote {
+    border-left-color: mix(@markup-quote-border, @markup-quote-text, 85%);
+  }
+
+  code {
+    .markup-block (@markup-code-back, @markup-code-border, @markup-code-text);
+
+    display: block;
+    white-space: pre-wrap;
+  }
+
+  iframe,
+  object,
+  video {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  img.custom,
+  img.emoji {
+    vertical-align: middle;
+  }
+
+  ol.list,
+  ul.list {
+    padding: 0 0 0 24px;
+    margin: 8px 0;
+
+    ol.list,
+    ul.list {
+      margin: 0 0;
+    }
+  }
+
+  ol.list {
+    list-style: decimal outside none;
+
+    ol.list {
+      list-style-type: lower-alpha;
+
+      ol.list {
+        list-style-type: lower-roman;
+      }
+    }
+  }
+
+  ul.list {
+    list-style: disc outside none;
+
+    ul.list {
+      list-style-type: circle;
+
+      ul.list {
+        list-style-type: square;
+      }
+    }
+  }
+
+  .box {
+    .markup-box (@markup-box-back, @markup-box-border);
+
+    .box-body {
+      .markup-box-body ();
+    }
+
+    .box-head {
+      .markup-box-head (@markup-box-back, @markup-box-border, @markup-box-text);
+
+      background-image: url("../../glyph/16/box.png");
+    }
+  }
+
+  .center {
+    margin: auto;
+    text-align: center;
+  }
+
+  .cmd {
+    padding: 6px 4px 6px 28px;
+    margin: 4px 24px;
+    background-color: @markup-cmd-back;
+    background-image: url("../../glyph/16/user.png");
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+    border-color: @markup-cmd-border;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    color: @markup-cmd-text;
+    font-weight: bold;
+  }
+
+  .h1 {
+    counter-increment: markup-h1;
+    counter-reset: markup-h2;
+    margin: 12px 0;
+    font-size: 150%;
+    font-weight: bold;
+
+    &::before {
+      content: counter(markup-h1) ". ";
+    }
+
+    &:first-child {
+      margin: 0 0 12px 0;
+    }
+  }
+
+  .h2 {
+    counter-increment: markup-h2;
+    counter-reset: markup-h3;
+    margin: 8px 0;
+    font-size: 130%;
+    font-weight: bold;
+
+    &::before {
+      content: counter(markup-h1) "." counter(markup-h2) ". ";
+    }
+
+    &:first-child {
+      margin: 0 0 8px 0;
+    }
+  }
+
+  .h3 {
+    counter-increment: markup-h3;
+    counter-reset: markup-h4;
+    margin: 4px 0;
+    font-size: 110%;
+    font-weight: bold;
+
+    &::before {
+      content: counter(markup-h1) "." counter(markup-h2) "." counter(markup-h3)
+        ". ";
+    }
+
+    &:first-child {
+      margin: 0 0 4px 0;
+    }
+  }
+
+  .h4 {
+    counter-increment: markup-h4;
+    margin: 2px 0;
+    font-size: 100%;
+    font-weight: bold;
+
+    &::before {
+      content: counter(markup-h1) "." counter(markup-h2) "." counter(markup-h3)
+        "." counter(markup-h4) ". ";
+    }
+
+    &:first-child {
+      margin: 0 0 2px 0;
+    }
+  }
+
+  .nsfw {
+    .markup-box (@markup-nsfw-back, @markup-nsfw-border);
+
+    .nsfw-body {
+      .markup-box-body ();
+    }
+
+    .nsfw-head {
+      .markup-box-head
+        (@markup-nsfw-back, @markup-nsfw-border, @markup-nsfw-text);
+
+      background-image: url("../../glyph/16/warning.png");
+    }
+  }
+
+  .opengraph {
+    .markup-block
+      (@markup-embed-back, @markup-embed-border, @markup-embed-text);
+
+    display: flex;
+    align-items: center;
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      .description {
+        margin-top: 8px;
+      }
+
+      .source {
+        font-size: 90%;
+        font-style: italic;
+      }
+    }
+
+    img {
+      margin-right: 8px;
+      max-width: 128px;
+      border-color: @markup-embed-border;
+      border-style: solid;
+      border-width: 1px;
+
+      @media screen and (max-width: 800px) {
+        max-width: 64px;
+      }
+
+      @media screen and (max-width: 600px) {
+        max-width: 48px;
+      }
+
+      @media screen and (max-width: 400px) {
+        max-width: 32px;
+      }
+    }
+  }
+
+  .poll {
+    .markup-block (@markup-poll-back, @markup-poll-border, @markup-poll-text);
+
+    .choice {
+      margin: 0 0 4px 0;
+      padding: 2px 6px;
+      background: @markup-poll-back
+        linear-gradient(to right, @markup-poll-back, @markup-poll-border)
+        no-repeat;
+    }
+
+    .question {
+      font-weight: bold;
+    }
+  }
+
+  .pre {
+    color: @markup-pre-text;
+    font-family: monospace;
+    white-space: pre-wrap;
+  }
+
+  pre.pre {
+    .markup-block (@markup-pre-back, @markup-pre-border, @markup-pre-text);
+  }
+
+  span.pre {
+    background-color: @markup-pre-back;
+    padding: 0 3px;
+    border-color: @markup-pre-border;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  .s {
+    text-decoration: line-through;
+  }
+
+  .spoil {
+    padding: 0 3px;
+    background-color: @markup-spoil-back;
+    border-color: @markup-spoil-border;
+    border-radius: 4px;
+    border-style: dotted;
+    border-width: 1px;
+    color: @markup-spoil-back;
+
+    &:hover,
+    &.hover {
+      color: @markup-spoil-text;
+    }
+
+    &:hover *,
+    &.hover * {
+      visibility: visible;
+    }
+
+    * {
+      visibility: hidden;
+    }
+  }
+
+  .u {
+    text-decoration: underline;
+  }
+
+  .table {
+    border-collapse: collapse;
+
+    td {
+      padding: 6px 8px;
+      background-color: @markup-table-back;
+      border-color: @markup-table-border;
+      border-style: solid;
+      border-width: 1px 0 1px 0;
+    }
+
+    th {
+      padding: 6px 8px;
+      background-color: mix(@markup-table-back, @markup-table-border, 60%);
+      border-color: @markup-table-border;
+      border-style: solid;
+      border-width: 4px 0 1px 0;
+    }
+  }
 }

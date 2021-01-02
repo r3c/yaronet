@@ -1,44 +1,43 @@
+@accent-back: mix(@primary, @accent-text, 80%);
+@accent-border: mix(@accent-back, @accent-text, 60%);
+@accent-text: @accent;
 
-@accent-back:	mix(@primary, @accent-text, 80%);
-@accent-border:	mix(@accent-back, @accent-text, 60%);
-@accent-text:	@accent;
+@fail-back: @status-fail;
+@fail-border: mix(@fail-back, @fail-text, 80%);
+@fail-text: mix(@paragraph, @fail-back, 80%);
 
-@fail-back:		@status-fail;
-@fail-border:	mix(@fail-back, @fail-text, 80%);
-@fail-text:		mix(@paragraph, @fail-back, 80%);
+@frame-back: @overlay;
+@frame-border: mix(@frame-back, @frame-text, 60%);
+@frame-text: @paragraph;
 
-@frame-back:	@overlay;
-@frame-border:	mix(@frame-back, @frame-text, 60%);
-@frame-text:	@paragraph;
+@hint-back: mix(@highlight, @overlay, 60%);
+@hint-border: mix(@hint-back, @hint-text, 80%);
+@hint-text: @paragraph;
 
-@hint-back:		mix(@highlight, @overlay, 60%);
-@hint-border:	mix(@hint-back, @hint-text, 80%);
-@hint-text:     @paragraph;
+@info-back: @status-info;
+@info-border: mix(@info-back, @info-text, 80%);
+@info-text: mix(@paragraph, @info-back, 80%);
 
-@info-back:		@status-info;
-@info-border:	mix(@info-back, @info-text, 80%);
-@info-text:		mix(@paragraph, @info-back, 80%);
+@input-back: @input;
+@input-border: mix(@input-back, @input-text, 80%);
+@input-text: @paragraph;
 
-@input-back:	@input;
-@input-border:	mix(@input-back, @input-text, 80%);
-@input-text:	@paragraph;
-
-@link-back:		@highlight;
+@link-back: @highlight;
 /* link-border */
-@link-text:		@reference;
+@link-text: @reference;
 
-@logo-back:		@secondary;
-@logo-border:	mix(@logo-back, @logo-text, 80%);
-@logo-text:		@title;
+@logo-back: @secondary;
+@logo-border: mix(@logo-back, @logo-text, 80%);
+@logo-text: @title;
 
-@markup-back:	@input;
-@markup-border:	mix(@markup-back, @markup-text, 60%);
-@markup-text:	mix(@secondary, @paragraph, 60%);
+@markup-back: @input;
+@markup-border: mix(@markup-back, @markup-text, 60%);
+@markup-text: mix(@secondary, @paragraph, 60%);
 
-@main-back: 	@primary;
+@main-back: @primary;
 /* main-border */
-@main-text:		@paragraph;
+@main-text: @paragraph;
 
-@ok-back:		@status-ok;
-@ok-border:		mix(@ok-back, @ok-text, 80%);
-@ok-text:		mix(@paragraph, @ok-back, 80%);
+@ok-back: @status-ok;
+@ok-border: mix(@ok-back, @ok-text, 80%);
+@ok-text: mix(@paragraph, @ok-back, 80%);

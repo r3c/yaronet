@@ -1,64 +1,72 @@
+@import "../../page.inc.less";
+@import "color.inc.less";
 
-@import '../../page.inc.less';
-@import 'color.inc.less';
-
-@header-back-begin:		white;
-@header-back-end:		white;
+@header-back-begin: white;
+@header-back-end: white;
 
 .page-block {
-	margin:	16px 0;
+  margin: 16px 0;
 }
 
 .page-footer {
-	border-style:	solid;
+  border-style: solid;
 }
 
 .page-header {
-	min-height:				30px;
-	background-color:		white;
-	background-image:		url('background/header.png');
-	background-position:	left center;
-	background-repeat:		repeat-x;
-	border-style:			none solid solid solid;
-	border-width:			0 1px 3px 1px;
+  min-height: 30px;
+  background-color: white;
+  background-image: url("background/header.png");
+  background-position: left center;
+  background-repeat: repeat-x;
+  border-style: none solid solid solid;
+  border-width: 0 1px 3px 1px;
 
-	div.logo a.default {
-		background-image:	url('glyph/logo.png');
-	}
+  div.logo a.default {
+    background-image: url("glyph/logo.png");
+  }
 
-	div.partners a {
-		background-image:	url('glyph/infomaniak.png');
-	}
+  div.partners a {
+    background-image: url("glyph/infomaniak.png");
+  }
 }
 
 .page-menu {
-	border-style:	none solid solid solid;
+  border-style: none solid solid solid;
 
-	@media screen and (max-width: 600px) {
-		right:			40px;
-		border-style:	none;
-	}
+  @media screen and (max-width: 600px) {
+    right: 40px;
+    border-style: none;
+  }
 }
 
 .panel {
-	&.panel-decorate {
-		.panel-body {
-			background-image:	url('background/panel.png');
-			background-size:	auto auto;
-		}
-	}
+  &.panel-decorate {
+    .panel-body {
+      background-image: url("background/panel.png");
+      background-size: auto auto;
+    }
+  }
 
-	h2 {
-		background-image:	linear-gradient(darken(@panel-header-back, 0%), darken(@panel-header-back, 20%));
-	}
+  h2 {
+    background-image: linear-gradient(
+      darken(@panel-header-back, 0%),
+      darken(@panel-header-back, 20%)
+    );
+  }
 }
 
 .panel-hl h2 {
-	background-image:	linear-gradient(darken(@panel-header-hl-back, 0%), darken(@panel-header-hl-back, 20%));
+  background-image: linear-gradient(
+    darken(@panel-header-hl-back, 0%),
+    darken(@panel-header-hl-back, 20%)
+  );
 }
 
 .window {
-	.window-header {
-		background-image:	linear-gradient(darken(@panel-header-back, 0%), darken(@panel-header-back, 20%));
-	}
+  .window-header {
+    background-image: linear-gradient(
+      darken(@panel-header-back, 0%),
+      darken(@panel-header-back, 20%)
+    );
+  }
 }

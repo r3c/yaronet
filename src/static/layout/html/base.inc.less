@@ -1,354 +1,356 @@
+@notice-fail-back: @fail-back;
+@notice-fail-border: @fail-border;
+@notice-fail-text: @fail-text;
 
-@notice-fail-back:		@fail-back;
-@notice-fail-border:	@fail-border;
-@notice-fail-text:		@fail-text;
+@notice-info-back: @info-back;
+@notice-info-border: @info-border;
+@notice-info-text: @info-text;
 
-@notice-info-back:		@info-back;
-@notice-info-border:	@info-border;
-@notice-info-text:		@info-text;
-
-@notice-ok-back:		@ok-back;
-@notice-ok-border:		@ok-border;
-@notice-ok-text:		@ok-text;
+@notice-ok-back: @ok-back;
+@notice-ok-border: @ok-border;
+@notice-ok-text: @ok-text;
 
 .input-button-invert (@text, @back, @border) {
-	background-color:	@back;
-	border-color:		mix(@border, @text, 80%) @border @border mix(@border, @text, 80%);
-	box-shadow:			1px 1px 3px @border;
-	color:				@text;
+  background-color: @back;
+  border-color: mix(@border, @text, 80%) @border @border
+    mix(@border, @text, 80%);
+  box-shadow: 1px 1px 3px @border;
+  color: @text;
 }
 
 .input-button-normal (@text, @back, @border) {
-	background-color:	@back;
-	border-color:		@border mix(@border, @text, 80%) mix(@border, @text, 80%) @border;
-	box-shadow:			1px 1px 3px @border;
-	color:				@text;
+  background-color: @back;
+  border-color: @border mix(@border, @text, 80%) mix(@border, @text, 80%)
+    @border;
+  box-shadow: 1px 1px 3px @border;
+  color: @text;
 }
 
 .input-button (@text, @back, @border) {
-	.input-button-normal (@text, @back, @border);
+  .input-button-normal (@text, @back, @border);
 
-	&:focus,
-	&:hover {
-		.input-button-normal (@text, darken(@back, 5%), darken(@border, 5%));
-	}
+  &:focus,
+  &:hover {
+    .input-button-normal (@text, darken(@back, 5%), darken(@border, 5%));;
+  }
 
-	&:active {
-		.input-button-invert (@text, darken(@back, 10%), darken(@border, 10%));
-	}
+  &:active {
+    .input-button-invert (@text, darken(@back, 10%), darken(@border, 10%));;
+  }
 
-	&:disabled {
-		.input-button-invert (fade(@text, 0%), darken(@back, 15%), darken(@border, 15%));
-	}
+  &:disabled {
+    .input-button-invert (fade(@text, 0%), darken(@back, 15%), darken(@border, 15%));;
+  }
 }
 
 .input-field (@text, @back, @border) {
-	background-color:	@back;
-	border-color:		mix(@border, @text, 80%) @border @border mix(@border, @text, 80%);
-	box-shadow:			1px 1px 3px @border;
-	color:				@text;
+  background-color: @back;
+  border-color: mix(@border, @text, 80%) @border @border
+    mix(@border, @text, 80%);
+  box-shadow: 1px 1px 3px @border;
+  color: @text;
 }
 
 .notice (@text, @back, @border) {
-	background-color:	@back;
-	border-color:		@border;
+  background-color: @back;
+  border-color: @border;
 
-	&,
-	a {
-		color:	@text;
-	}
+  &,
+  a {
+    color: @text;
+  }
 }
 
 .glyph10 {
-	.gly-button {
-		padding-left:			20px;
-		padding-right:			10px;
-		background-position:	6px 50%;
-		background-repeat:		no-repeat;
-	}
+  .gly-button {
+    padding-left: 20px;
+    padding-right: 10px;
+    background-position: 6px 50%;
+    background-repeat: no-repeat;
+  }
 
-	.gly-icon {
-		padding-left:			10px;
-		padding-right:			0;
-		background-position:	0 50%;
-		background-repeat:		no-repeat;
-	}
+  .gly-icon {
+    padding-left: 10px;
+    padding-right: 0;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
 
-	.gly-left {
-		padding-left:			14px;
-		padding-right:			0;
-		background-position:	0 50%;
-		background-repeat:		no-repeat;
-	}
+  .gly-left {
+    padding-left: 14px;
+    padding-right: 0;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
 
-	.gly-right {
-		padding-left:			0;
-		padding-right:			14px;
-		background-position:	right 0 top 50%;
-		background-repeat:		no-repeat;
-	}
+  .gly-right {
+    padding-left: 0;
+    padding-right: 14px;
+    background-position: right 0 top 50%;
+    background-repeat: no-repeat;
+  }
 
-	.loading {
-		background-image:	url('../../glyph/10/spin.gif') !important;
-	}
+  .loading {
+    background-image: url("../../glyph/10/spin.gif") !important;
+  }
 }
 
 .glyph16 {
-	.gly-icon {
-		padding-left:			16px;
-		padding-right:			0;
-		margin:					0 2px;
-		background-position:	0 50%;
-		background-repeat:		no-repeat;
-	}
+  .gly-icon {
+    padding-left: 16px;
+    padding-right: 0;
+    margin: 0 2px;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
 
-	.gly-left {
-		padding-left:			20px;
-		padding-right:			0;
-		background-repeat:		no-repeat;
-		background-position:	0 50%;
-	}
+  .gly-left {
+    padding-left: 20px;
+    padding-right: 0;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+  }
 
-	.gly-right {
-		padding-left:			0;
-		padding-right:			20px;
-		background-position:	right 0 top 50%;
-		background-repeat:		no-repeat;
-	}
+  .gly-right {
+    padding-left: 0;
+    padding-right: 20px;
+    background-position: right 0 top 50%;
+    background-repeat: no-repeat;
+  }
 }
 
 .form-link {
-	display:	inline;
+  display: inline;
 
-	input {
-		padding:			0;
-		margin:				0;
-		border:				none;
-		background-color:	transparent;
-		font-weight:		bold;
-		color:				@link-text;
-		cursor:				pointer;
+  input {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    color: @link-text;
+    cursor: pointer;
 
-		&:focus,
-		&:hover {
-			text-decoration:	underline;
-			color:				@accent-text;
-		}
-	}
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+      color: @accent-text;
+    }
+  }
 }
 
 .form-thick,
 .ui-autocomplete {
-	.input-button,
-	.ui-menu-item,
-	input,
-	select,
-	textarea {
-		.input-field (@input-text, @input-back, @input-border);
+  .input-button,
+  .ui-menu-item,
+  input,
+  select,
+  textarea {
+    .input-field (@input-text, @input-back, @input-border);
 
-		padding:		5px 7px;
-		outline:		0;
-		border-radius:	4px;
-		border-style:	solid;
-		border-width:	1px;
-		line-height:	140%;
+    padding: 5px 7px;
+    outline: 0;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    line-height: 140%;
 
-		&:focus {
-			background-color:	darken(@input-back, 5%);
-			animation:			input-glow 250ms ease 0s 1;
-		}
-	}
+    &:focus {
+      background-color: darken(@input-back, 5%);
+      animation: input-glow 250ms ease 0s 1;
+    }
+  }
 
-	.input-button,
-	input[type=button],
-	input[type=submit] {
-		.input-button (@input-text, @input-back, @input-border);
+  .input-button,
+  input[type="button"],
+  input[type="submit"] {
+    .input-button (@input-text, @input-back, @input-border);
 
-		cursor:	pointer;
+    cursor: pointer;
 
-		&.loading {
-			background-image:		url('../../glyph/16/spin.gif');
-			background-position:	50% 50%;
-			cursor:					default;
-			animation:				input-load 500ms ease 0s 1;
-		}
-	}
+    &.loading {
+      background-image: url("../../glyph/16/spin.gif");
+      background-position: 50% 50%;
+      cursor: default;
+      animation: input-load 500ms ease 0s 1;
+    }
+  }
 
-	.input-focus {
-		.input-button-invert (@input-text, darken(@input-back, 10%), darken(@input-border, 10%));
-	}
+  .input-focus {
+    .input-button-invert (@input-text, darken(@input-back, 10%), darken(@input-border, 10%));;
+  }
 
-	.ui-state-active {
-		.input-button-normal (@input-text, darken(@input-back, 5%), darken(@input-border, 5%));
-	}
+  .ui-state-active {
+    .input-button-normal (@input-text, darken(@input-back, 5%), darken(@input-border, 5%));;
+  }
 }
 
 .form-thin {
-	input,
-	select,
-	textarea {
-		.input-field (@input-text, @input-back, @input-border);
+  input,
+  select,
+  textarea {
+    .input-field (@input-text, @input-back, @input-border);
 
-		padding:		4px 6px;
-		outline:		0;
-		border-radius:	4px;
-		border-style:	solid;
-		border-width:	1px;
-		line-height:	120%;
+    padding: 4px 6px;
+    outline: 0;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    line-height: 120%;
 
-		&:focus {
-			background-color:	darken(@input-back, 5%);
-			animation:			input-glow 250ms ease 0s 1;
-		}
-	}
+    &:focus {
+      background-color: darken(@input-back, 5%);
+      animation: input-glow 250ms ease 0s 1;
+    }
+  }
 
-	input[type=button],
-	input[type=submit] {
-		.input-button (@input-text, @input-back, @input-border);
+  input[type="button"],
+  input[type="submit"] {
+    .input-button (@input-text, @input-back, @input-border);
 
-		cursor:	pointer;
+    cursor: pointer;
 
-		&.loading {
-			background-image:		url('../../glyph/16/spin.gif');
-			background-position:	50% 50%;
-			cursor:					default;
-			animation:				input-load 500ms ease 0s 1;
-		}
-	}
+    &.loading {
+      background-image: url("../../glyph/16/spin.gif");
+      background-position: 50% 50%;
+      cursor: default;
+      animation: input-load 500ms ease 0s 1;
+    }
+  }
 }
 
 .light {
-	body,
-	input,
-	select,
-	table,
-	textarea {
-		font:	normal normal normal 12px Verdana, Helvetica, sans-serif;
-	}
+  body,
+  input,
+  select,
+  table,
+  textarea {
+    font: normal normal normal 12px Verdana, Helvetica, sans-serif;
+  }
 }
 
 .notice {
-	position:		absolute;
-	padding:		8px;
-	margin:			8px 0;
-	border-radius:	4px;
-	border-style:	solid;
-	border-width:	1px;
+  position: absolute;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
 
-	ul {
-		padding:	0 0 0 16px;
-		margin:		0;
-	}
+  ul {
+    padding: 0 0 0 16px;
+    margin: 0;
+  }
 }
 
 .notice-fail {
-	.notice (@notice-fail-text, @notice-fail-back, @notice-fail-border);
+  .notice (@notice-fail-text, @notice-fail-back, @notice-fail-border);
 }
 
 .notice-info {
-	.notice (@notice-info-text, @notice-info-back, @notice-info-border);
+  .notice (@notice-info-text, @notice-info-back, @notice-info-border);
 }
 
 .notice-ok {
-	.notice (@notice-ok-text, @notice-ok-back, @notice-ok-border);
+  .notice (@notice-ok-text, @notice-ok-back, @notice-ok-border);
 }
 
 .symbol {
-	.sym-follow {
-		&::before {
-			content:	' - ';
-		}
+  .sym-follow {
+    &::before {
+      content: " - ";
+    }
 
-		&:first-child::before {
-			content:	none;
-		}
-	}
+    &:first-child::before {
+      content: none;
+    }
+  }
 
-	.sym-more {
-		&::before {
-			content:	'(+';
-		}
+  .sym-more {
+    &::before {
+      content: "(+";
+    }
 
-		&::after {
-			content:	')';
-		}
-	}
+    &::after {
+      content: ")";
+    }
+  }
 
-	.sym-parent {
-		&::after {
-			content:	' » ';
-		}
+  .sym-parent {
+    &::after {
+      content: " » ";
+    }
 
-		&:last-child::after {
-			content:	none;
-		}
-	}
+    &:last-child::after {
+      content: none;
+    }
+  }
 
-	.sym-position::before {
-		content:	'./';
-	}
+  .sym-position::before {
+    content: "./";
+  }
 }
 
 .ux-control {
-	@media (pointer: coarse) {
-		line-height:	200%;
+  @media (pointer: coarse) {
+    line-height: 200%;
 
-		& > * {
-			margin:	0 16px 0 0;
-		}
+    & > * {
+      margin: 0 16px 0 0;
+    }
 
-		& > *:last-child {
-			margin:	0;
-		}
-	}
+    & > *:last-child {
+      margin: 0;
+    }
+  }
 
-	@media (pointer: fine) {
-		& > * {
-			margin:	0 8px 0 0;
-		}
+  @media (pointer: fine) {
+    & > * {
+      margin: 0 8px 0 0;
+    }
 
-		& > *:last-child {
-			margin:	0;
-		}
-	}
+    & > *:last-child {
+      margin: 0;
+    }
+  }
 }
 
 .ux-goto {
-	@media (pointer: coarse) {
-		line-height:	200%;
+  @media (pointer: coarse) {
+    line-height: 200%;
 
-		& > * {
-			margin:	0 4px 0 0;
-		}
-	}
+    & > * {
+      margin: 0 4px 0 0;
+    }
+  }
 }
 
 a {
-	font-weight:		bold;
-	text-decoration:	none;
-	color:				@link-text;
+  font-weight: bold;
+  text-decoration: none;
+  color: @link-text;
 
-	&.hl {
-		color:	@accent-text;
-	}
+  &.hl {
+    color: @accent-text;
+  }
 
-	&[href]:hover {
-		text-decoration:	underline;
-		color:				@accent-text;
-	}
+  &[href]:hover {
+    text-decoration: underline;
+    color: @accent-text;
+  }
 
-	img {
-		border:	0;
-	}
+  img {
+    border: 0;
+  }
 }
 
 body {
-	padding:			0;
-	margin:				0;
-	background-color:	@main-back;
-	color:				@main-text;
-	overflow-wrap:		break-word;
-	word-wrap:			break-word; // IE / Edge
+  padding: 0;
+  margin: 0;
+  background-color: @main-back;
+  color: @main-text;
+  overflow-wrap: break-word;
+  word-wrap: break-word; // IE / Edge
 }
 
 body,
@@ -356,88 +358,102 @@ input,
 select,
 table,
 textarea {
-	font:	normal normal normal 12px open-sans, Verdana, Helvetica, sans-serif;
+  font: normal normal normal 12px open-sans, Verdana, Helvetica, sans-serif;
 }
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-	padding:	0;
-	margin:		0;
-	border:		0 none;
+  padding: 0;
+  margin: 0;
+  border: 0 none;
 }
 
 form {
-	padding:	0;
-	margin:		0;
+  padding: 0;
+  margin: 0;
 }
 
 html {
-	height:	100%;
+  height: 100%;
 }
 
 @font-face {
-    font-family:	open-sans;
-    src:			url('../../font/opensans_regular/OpenSans-Regular-webfont.eot');
-    src:			url('../../font/opensans_regular/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-					url('../../font/opensans_regular/OpenSans-Regular-webfont.woff') format('woff'),
-					url('../../font/opensans_regular/OpenSans-Regular-webfont.ttf') format('truetype'),
-					url('../../font/opensans_regular/OpenSans-Regular-webfont.svg#open-sans') format('svg');
-    font-weight:	normal;
-    font-style:		normal;
+  font-family: open-sans;
+  src: url("../../font/opensans_regular/OpenSans-Regular-webfont.eot");
+  src: url("../../font/opensans_regular/OpenSans-Regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../font/opensans_regular/OpenSans-Regular-webfont.woff")
+      format("woff"),
+    url("../../font/opensans_regular/OpenSans-Regular-webfont.ttf")
+      format("truetype"),
+    url("../../font/opensans_regular/OpenSans-Regular-webfont.svg#open-sans")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family:	open-sans;
-    src:			url('../../font/opensans_bold/OpenSans-Bold-webfont.eot');
-    src:			url('../../font/opensans_bold/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-					url('../../font/opensans_bold/OpenSans-Bold-webfont.woff') format('woff'),
-					url('../../font/opensans_bold/OpenSans-Bold-webfont.ttf') format('truetype'),
-					url('../../font/opensans_bold/OpenSans-Bold-webfont.svg#open-sans') format('svg');
-    font-weight:	bold;
-    font-style:		normal;
+  font-family: open-sans;
+  src: url("../../font/opensans_bold/OpenSans-Bold-webfont.eot");
+  src: url("../../font/opensans_bold/OpenSans-Bold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../font/opensans_bold/OpenSans-Bold-webfont.woff") format("woff"),
+    url("../../font/opensans_bold/OpenSans-Bold-webfont.ttf") format("truetype"),
+    url("../../font/opensans_bold/OpenSans-Bold-webfont.svg#open-sans")
+      format("svg");
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family:	open-sans;
-    src:			url('../../font/opensans_italic/OpenSans-Italic-webfont.eot');
-    src:			url('../../font/opensans_italic/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-					url('../../font/opensans_italic/OpenSans-Italic-webfont.woff') format('woff'),
-					url('../../font/opensans_italic/OpenSans-Italic-webfont.ttf') format('truetype'),
-					url('../../font/opensans_italic/OpenSans-Italic-webfont.svg#open-sans') format('svg');
-    font-weight:	normal;
-    font-style:		italic;
+  font-family: open-sans;
+  src: url("../../font/opensans_italic/OpenSans-Italic-webfont.eot");
+  src: url("../../font/opensans_italic/OpenSans-Italic-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../font/opensans_italic/OpenSans-Italic-webfont.woff")
+      format("woff"),
+    url("../../font/opensans_italic/OpenSans-Italic-webfont.ttf")
+      format("truetype"),
+    url("../../font/opensans_italic/OpenSans-Italic-webfont.svg#open-sans")
+      format("svg");
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
-    font-family:	open-sans;
-    src:			url('../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.eot');
-    src:			url('../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
-					url('../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.woff') format('woff'),
-					url('../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.ttf') format('truetype'),
-					url('../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.svg#open-sans') format('svg');
-    font-weight:	bold;
-    font-style:		italic;
+  font-family: open-sans;
+  src: url("../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.eot");
+  src: url("../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.woff")
+      format("woff"),
+    url("../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.ttf")
+      format("truetype"),
+    url("../../font/opensans_bolditalic/OpenSans-BoldItalic-webfont.svg#open-sans")
+      format("svg");
+  font-weight: bold;
+  font-style: italic;
 }
 
 @keyframes input-glow {
-    from {
-		background-color:	@input-back;
-	}
-	50% {
-		background-color:	darken(@input-back, 10%);
-	}
-	to {
-		background-color:	darken(@input-back, 5%);
-	}
+  from {
+    background-color: @input-back;
+  }
+  50% {
+    background-color: darken(@input-back, 10%);
+  }
+  to {
+    background-color: darken(@input-back, 5%);
+  }
 }
 
 @keyframes input-load {
-    from {
-		background-position:	-16px 50%;
-		color:					@input-text;
-	}
-	to {
-		background-position:	50% 50%;
-		color:					fade(@input-text, 0%);
-	}
+  from {
+    background-position: -16px 50%;
+    color: @input-text;
+  }
+  to {
+    background-position: 50% 50%;
+    color: fade(@input-text, 0%);
+  }
 }

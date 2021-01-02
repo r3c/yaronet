@@ -1,193 +1,192 @@
-
-@section-back:		@input-back;
-@section-border:	@input-border;
-@section-text:		mix(@main-text, @section-back, 60%);
+@section-back: @input-back;
+@section-border: @input-border;
+@section-text: mix(@main-text, @section-back, 60%);
 
 .glyph10 {
-	.active,
-	.active-first {
-		background-image:	url('../../glyph/10/bull-navy.png');
-	}
+  .active,
+  .active-first {
+    background-image: url("../../glyph/10/bull-navy.png");
+  }
 
-	.active-other,
-	.active-self {
-		background-image:	url('../../glyph/10/bull-blue.png');
-	}
+  .active-other,
+  .active-self {
+    background-image: url("../../glyph/10/bull-blue.png");
+  }
 
-	.ban {
-		background-image:	url('../../glyph/10/block.png');
-	}
+  .ban {
+    background-image: url("../../glyph/10/block.png");
+  }
 
-	.directory {
-		background-image:	url('../../glyph/10/user.png');
-	}
+  .directory {
+    background-image: url("../../glyph/10/user.png");
+  }
 
-	.log {
-		background-image:	url('../../glyph/10/calendar.png');
-	}
+  .log {
+    background-image: url("../../glyph/10/calendar.png");
+  }
 
-	.new-first {
-		background-image:	url('../../glyph/10/bull-green.png');
-	}
+  .new-first {
+    background-image: url("../../glyph/10/bull-green.png");
+  }
 
-	.new-other,
-	.new-self {
-		background-image:	url('../../glyph/10/bull-lime.png');
-	}
+  .new-other,
+  .new-self {
+    background-image: url("../../glyph/10/bull-lime.png");
+  }
 
-	.organize {
-		background-image:	url('../../glyph/10/suitcase.png');
-	}
+  .organize {
+    background-image: url("../../glyph/10/suitcase.png");
+  }
 
-	.permission {
-		background-image:	url('../../glyph/10/shield.png');
-	}
+  .permission {
+    background-image: url("../../glyph/10/shield.png");
+  }
 
-	.subscription {
-		background-image:	url('../../glyph/10/star.png');
-	}
+  .subscription {
+    background-image: url("../../glyph/10/star.png");
+  }
 }
 
 div.forum {
-	h3 {
-		margin-top:	0;
-	}
+  h3 {
+    margin-top: 0;
+  }
 
-	table.blocks {
-		width:				100%;
-		border-color:		@section-border;
-		border-collapse:	collapse;
-		border-style:		solid none none none;
-		border-width:		1px;
+  table.blocks {
+    width: 100%;
+    border-color: @section-border;
+    border-collapse: collapse;
+    border-style: solid none none none;
+    border-width: 1px;
 
-		div.control {
-			text-align:	right;
-		}
+    div.control {
+      text-align: right;
+    }
 
-		td.blank {
-			width:				8px;
-			background-color:	@section-back;
-		}
+    td.blank {
+      width: 8px;
+      background-color: @section-back;
+    }
 
-		td.info {
-			width:	120px;
-		}
+    td.info {
+      width: 120px;
+    }
 
-		td.info,
-		td.last {
-			@media screen and (max-width: 800px) {
-				display:	none;
-			}
-		}
+    td.info,
+    td.last {
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
+    }
 
-		td.info,
-		td.status {
-			border-color:	@section-border;
-			border-style:	none solid none solid;
-			border-width:	1px;
-			text-align:		center;
-		}
+    td.info,
+    td.status {
+      border-color: @section-border;
+      border-style: none solid none solid;
+      border-width: 1px;
+      text-align: center;
+    }
 
-		td.last {
-			width:				216px;
-			padding:			8px;
-			background-color:	@section-back;
-			color:				@section-text;
-		}
+    td.last {
+      width: 216px;
+      padding: 8px;
+      background-color: @section-back;
+      color: @section-text;
+    }
 
-		td.link {
-			padding:			8px;
-			background-color:	@section-back;
+    td.link {
+      padding: 8px;
+      background-color: @section-back;
 
-			a.name {
-				font-size:	110%;
-			}
-		}
+      a.name {
+        font-size: 110%;
+      }
+    }
 
-		td.split {
-			padding:		8px;
-			border-color:	@section-border;
-			border-style:	solid none solid none;
-			border-width:	1px;
-		}
+    td.split {
+      padding: 8px;
+      border-color: @section-border;
+      border-style: solid none solid none;
+      border-width: 1px;
+    }
 
-		td.status {
-			width:			40px;
-			vertical-align:	middle;
+    td.status {
+      width: 40px;
+      vertical-align: middle;
 
-			div {
-				width:		16px;
-				height:		16px;
-				margin:		auto;
-				background:	transparent url('../../../../image/unknown.png') no-repeat;
+      div {
+        width: 16px;
+        height: 16px;
+        margin: auto;
+        background: transparent url("../../../../image/unknown.png") no-repeat;
 
-				&.fresh {
-					background-image:	url('../../glyph/16/tag-pink.png');
-				}
+        &.fresh {
+          background-image: url("../../glyph/16/tag-pink.png");
+        }
 
-				&.stale {
-					background-image:	url('../../glyph/16/tag-grey.png');
-				}
+        &.stale {
+          background-image: url("../../glyph/16/tag-grey.png");
+        }
 
-				&.private {
-					background-image:	url('../../glyph/16/lock.png');
-				}
-			}
-		}
+        &.private {
+          background-image: url("../../glyph/16/lock.png");
+        }
+      }
+    }
 
-		tr:hover {
-			td.blank,
-			td.last,
-			td.link {
-				background-color:	darken(@section-back, 5%);
-			}
-		}
-	}
+    tr:hover {
+      td.blank,
+      td.last,
+      td.link {
+        background-color: darken(@section-back, 5%);
+      }
+    }
+  }
 
-	.author {
-		font-weight:	bold;
-	}
+  .author {
+    font-weight: bold;
+  }
 }
 
 div.last {
-	div.sources {
-		display:		table;
-		table-layout:	fixed;
-		width:			100%;
+  div.sources {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
 
-		div.source {
-			display:	table-cell;
+    div.source {
+      display: table-cell;
 
-			@media screen and (max-width: 600px) {
-				display:	block !important;
-				min-width:	100%;
-			}
+      @media screen and (max-width: 600px) {
+        display: block !important;
+        min-width: 100%;
+      }
 
-			div.topic {
-				line-height:	180%;
-			}
+      div.topic {
+        line-height: 180%;
+      }
 
-			ul.topics {
-				padding:	0 4px;
-				margin:		8px 0;
-				list-style:	none;
+      ul.topics {
+        padding: 0 4px;
+        margin: 8px 0;
+        list-style: none;
 
-				div.ellipsis {
-					@media screen and (min-width: 600px) {
-						overflow:		hidden;
-						white-space:	nowrap;
-						padding-right:	4px;
+        div.ellipsis {
+          @media screen and (min-width: 600px) {
+            overflow: hidden;
+            white-space: nowrap;
+            padding-right: 4px;
 
-						a.label {
-							display:				inline-block;
-							overflow:				hidden;
-							text-overflow:			ellipsis;
-							vertical-align:			top;
-							transition-duration:	100ms;
-						}
-					}
-				}
-			}
-		}
-	}
+            a.label {
+              display: inline-block;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              transition-duration: 100ms;
+            }
+          }
+        }
+      }
+    }
+  }
 }
