@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `board_post_index` (
   `create_profile` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`post`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `board_profile` (
   `user` int(10) UNSIGNED NOT NULL,
