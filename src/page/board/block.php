@@ -116,7 +116,7 @@ function block_edit($request, $logger, $sql, $display, $input, $user)
 
         // Text
         elseif ($input->get_string('text', $text)) {
-            $block->convert_text(trim($text) ?: null, $router, $logger);
+            $block->convert_text(trim($text) ?: null, $request->router, $logger);
             $block->section_id = null;
         }
 
