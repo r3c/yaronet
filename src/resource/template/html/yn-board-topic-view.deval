@@ -104,9 +104,8 @@
 										{{ include ../fragment/control-form.deval }}
 									{{ end }}
 									<input name="posts" type="hidden" value="{{ $ default (request.posts, topic.posts) }}" />
-									<div class="control glyph10">
+									<div class="control glyph10 ux-control">
 										<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.topic.view.form.submit") }}" />
-										{{ $ " " }}
 										<span class="bind-cross-disclaimer">{{ $ tra ("yn.board.topic.view.form.disclaimer") }}</span>
 										<span class="bind-cross-warning cross markup" style="display: none;">
 											{{ $ tra ("yn.board.topic.view.cross") }}
