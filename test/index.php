@@ -31,7 +31,7 @@ function account_message_create($user, $recipient)
     // Create
     HTTP::assert('messages')
         ->is_success()
-        ->matches_html('.control .rss', '//');
+        ->matches_html('.message-control .rss', '//');
 
     HTTP::assert('messages/new')
         ->is_success()
@@ -50,7 +50,7 @@ function account_message_read($user, $message)
 
     HTTP::assert('messages')
         ->is_success()
-        ->matches_html('.message .origin .from .login', _match($message['sender']))
+        ->matches_html('.message .origin .login', _match($message['sender']))
         ->matches_html('.message .text', _match($message['text']));
 }
 
@@ -100,7 +100,7 @@ function account_user_create($forum_id = null)
     $user['id'] = SQL::value('SELECT id FROM account_user WHERE login = ?', array($user['login']));
 
     $recover_time = SQL::value('SELECT recover_time FROM account_user WHERE id = ?', array($user['id']));
-    $recover = substr(hash_hmac('crc32b', $recover_time, $user['id']), 0, 8);
+    $recover = substr(hash_hmac('sha256', $recover_time, $user['id']), 0, 8);
 
     HTTP::assert('users/' . $user['id'] . '/active')
         ->is_success()
@@ -421,7 +421,7 @@ function board_forum_create($user)
         ->is_success()
         ->matches_html('.page-header .logo', _match($forum['header']))
         ->matches_html('.path h1', _match($forum['name']))
-        ->matches_html('.forum .panel-body', _match($forum['preface']))
+        ->matches_html('.forum .panel-header', _match($forum['preface']))
         ->matches_html('.forum .link', '//');
 
     board_forum_assert($user, $forum);
@@ -458,7 +458,7 @@ function board_post_assert($user, $forum, $topic, $post, $check_user)
             ->matches_html($scope . ' .body .edit', '@posts/' . $topic['id'] . '-([0-9]+)/edit@')
             ->matches_html($scope . ' .body .bottom', _match($user['signature']))
             ->matches_html($scope . ' .body .bottom img.avatar', '/www\\.gravatar\\.com/')
-            ->matches_html($scope . ' .body .from .login', _match($user['login']));
+            ->matches_html($scope . ' .body .origin .login', _match($user['login']));
     }
 
     HTTP::assert('posts/' . $forum['id'] . '-' . $topic['id'] . '-' . $post['position'] . '.frame')
@@ -529,7 +529,7 @@ function board_post_report_check($user, $report)
 
     HTTP::assert('messages')
         ->is_success()
-        ->matches_html('.message .origin .from', _match($report['sender']))
+        ->matches_html('.message .origin .login', _match($report['sender']))
         ->matches_html('.message .text', _match($report['reason']))
         ->matches_html('.message .text a[href*=topics]', _match($report['topic']));
 }
@@ -568,7 +568,7 @@ function board_section_assert($user, $section)
     HTTP::assert('sections/' . $section['id'], array(), false, true)
         ->is_success()
         ->matches_html('.section .markup', _match($section['header']))
-        ->matches_html('.section .panel-body h3', _match($section['name']));
+        ->matches_html('.section .panel-header h3', _match($section['name']));
 
     // Check search
     HTTP::assert('sections.json?query=' . rawurlencode($section['name']))
