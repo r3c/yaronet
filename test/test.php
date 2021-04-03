@@ -30,10 +30,10 @@ function test_start()
     $_test_metrics = array();
 
     assert_options(ASSERT_BAIL, true);
-    assert_options(ASSERT_CALLBACK, function () {
+    assert_options(ASSERT_CALLBACK, function ($file, $line, $assertion, $description) {
         global $_test_verbose;
 
-        test_step('Failed');
+        test_step('Failed: ' . $description);
 
         if (isset($_test_verbose)) {
             echo "\n$_test_verbose";
