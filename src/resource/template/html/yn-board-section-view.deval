@@ -106,7 +106,7 @@
 								{{ end }}
 								<div class="control glyph10 ux-control">
 									<input class="gly-button send" type="submit" value="{{ $ tra ("yn.board.section.view.form.submit") }}" />
-									{{ $ tra ("yn.board.section.view.form.disclaimer") }}
+									<span>{{ $ tra ("yn.board.section.view.form.disclaimer") }}</span>
 								</div>
 							</form>
 						</div>
