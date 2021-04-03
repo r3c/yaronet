@@ -1,0 +1,68 @@
+name: Automated tests
+
+on:
+  - push
+
+jobs:
+  test:
+    name: Run E2E tests (PHP ${{ matrix.version.php }}, MySQL ${{ matrix.version.mysql }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        version:
+          - mysql: "5.7"
+            php: "5.6"
+          - mysql: "8.0"
+            php: "7.4"
+
+    services:
+      mysql:
+        image: mysql:${{ matrix.version.mysql }}
+        ports:
+          - '3306:3306'
+        env:
+            MYSQL_DATABASE: yaronet
+            MYSQL_ROOT_PASSWORD: yaronet
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Install PPA repository
+        run: sudo add-apt-repository ppa:ondrej/php
+      - name: Update package sources
+        run: sudo apt-get update
+      - name: Install packages
+        run: >-
+          sudo apt-get install
+          apache2
+          libapache2-mod-php${{ matrix.version.php }}
+          php${{ matrix.version.php }}-curl
+          php${{ matrix.version.php }}-gd
+          php${{ matrix.version.php }}-mbstring
+          php${{ matrix.version.php }}-mcrypt
+          php${{ matrix.version.php }}-mysql
+          php${{ matrix.version.php }}-xml
+      - name: Enable Apache rewrite module
+        run: sudo a2enmod -q rewrite
+      - name: Copy Apache configuration file
+        run: sudo cp -f setup/ci/apache.conf /etc/apache2/sites-available/000-default.conf
+      - name: Update Apache configuration
+        run: sudo sed -e "s?%CI_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default.conf
+      - name: Update PHP configuration
+        run: sudo sed -ri 's/^(zend\.assertions)[[:blank:]]*=.*/\1 = 1/' '/etc/php/${{ matrix.version.php }}/apache2/php.ini'
+      - name: Start Apache
+        run: sudo service apache2 restart
+      - name: Initialize MySQL database
+        run: sudo mysql --host=127.0.0.1 --user=root --password=yaronet yaronet < setup/database/schema.sql
+      - name: Setup environment
+        run: sh setup/configure.sh
+      - name: Enable write access on src directory
+        run: sudo chown -R www-data:www-data .
+      - name: Initialize yAronet
+        run: curl -f -s -d 'meta_admin_login=test&meta_admin_password=test&engine_network_http_insecure=1&engine_network_sql_connection=mysqli%3A%2F%2Froot%3Ayaronet%40127.0.0.1%2Fyaronet%3Fcharset%3Dutf8mb4&engine_network_route_page=%2Fsrc&engine_system_encoding_charset=utf-8&version=1' -o /dev/null http://127.0.0.1/src/install.php
+      - name: Check configuration file
+        run: test -f src/config.php
+      - name: Run test suite
+        run: curl -s http://127.0.0.1/test/ | tee /tmp/run.log | grep -Fq 'test suite stop.' || ( cat /tmp/run.log && false )

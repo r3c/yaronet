@@ -901,7 +901,7 @@ board_block_rank($account_user_2, $board_forum_3, array(array(&$board_block_3_1,
 list($board_topic_3_1_1, $board_post_3_1_1_1) = board_topic_create($account_user_2, $board_forum_3, $board_section_3_1);
 
 // Ban user 1 from forum 2
-board_ban_set($account_user_2, $board_forum_3, array('127.0.0.1'));
+board_ban_set($account_user_2, $board_forum_3, array('127.0.0.1', '::1'));
 
 // Send message to user 1
 $account_message_1 = account_message_create($account_user_2, $account_user_1);

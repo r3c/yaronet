@@ -1,7 +1,7 @@
 yAronet: yet another PHP bulletin board
 =======================================
 
-[![Build Status](https://travis-ci.org/r3c/yaronet.svg?branch=master)](https://travis-ci.org/r3c/yaronet)
+[![Build Status](https://img.shields.io/github/workflow/status/r3c/yaronet/Automated%20tests/master)](https://github.com/r3c/yaronet/actions)
 [![license](https://img.shields.io/github/license/r3c/yaronet.svg)](https://opensource.org/licenses/AGPL-3.0)
 
 Overview
