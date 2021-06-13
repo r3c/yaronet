@@ -89,7 +89,7 @@ if [ -n "$opt_token" ]; then
 
 	rm -f "$token"
 
-	code="$(curl -c "$token" -d expire=8640000 -d login="$login" --data-urlencode "password=$password" -o /dev/null -s -w '%{http_code}' "$url/users/signin")"
+	code="$(curl -c "$token" -d expire=86400000 -d login="$login" --data-urlencode "password=$password" -o /dev/null -s -w '%{http_code}' "$url/users/signin")"
 
 	if [ "$code" -eq 302 -a -r "$token" ]; then
 		log_info 'Authentication OK, token created.'
