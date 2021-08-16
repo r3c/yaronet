@@ -318,7 +318,7 @@ Widget::$url_matchers = array(
         }
     ),
     'embed.twitter' => array(
-        'twitter\\.com/[0-9A-Z_a-z]{1,64}/status/([0-9]{1,64})',
+        '(?:mobile\\.)?twitter\\.com/[0-9A-Z_a-z]{1,64}/status/([0-9]{1,64})',
         function ($logger, $match, $query) {
             \Glay\using('yN\\Engine\\Service\\TwitterAPI', './engine/service/twitter.php');
 
