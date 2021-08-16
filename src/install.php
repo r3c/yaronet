@@ -11,16 +11,14 @@ function make_block_form($submit, $sections)
 {
     return
         '<blockquote>' .
-            '<form action="" method="POST">' .
-                implode('', $sections) .
-                (
-                    $submit ?
-                    '<div class="section">' .
-                        '<input type="submit" value="Submit" />' .
-                    '</div>' :
-                    ''
-                ) .
-            '</form>' .
+        '<form action="" method="POST">' .
+        implode('', $sections) .
+        ($submit ?
+            '<div class="section">' .
+            '<input type="submit" value="Submit" />' .
+            '</div>' :
+            '') .
+        '</form>' .
         '</blockquote>';
 }
 
@@ -33,13 +31,13 @@ function make_section_config($title, $body, $templates)
 {
     return
         '<div class="section">' .
-            '<h2>' . $title . '</h2>' .
-            '<p>' . $body . '</p>' .
-            implode('', array_map(function ($name, $contents) {
-                return
-                    '<p>Save following contents as `' . make_literal($name) . '`:</p>' .
-                    '<textarea rows="8">' . make_literal($contents) . '</textarea>';
-            }, array_keys($templates), $templates)) .
+        '<h2>' . $title . '</h2>' .
+        '<p>' . $body . '</p>' .
+        implode('', array_map(function ($name, $contents) {
+            return
+                '<p>Save following contents as `' . make_literal($name) . '`:</p>' .
+                '<textarea rows="8">' . make_literal($contents) . '</textarea>';
+        }, array_keys($templates), $templates)) .
         '</div>';
 }
 
@@ -47,38 +45,38 @@ function make_section_form($title, $fields)
 {
     return
         '<div class="section">' .
-            '<h2>' . $title . '</h2>' .
-            implode('', array_map(function ($field) {
-                $name = $field['name'];
+        '<h2>' . $title . '</h2>' .
+        implode('', array_map(function ($field) {
+            $name = $field['name'];
 
-                if (!isset($field['caption'])) {
-                    return '<input name="' . make_literal($name) . '" type="hidden" value="' . make_literal($field['text']) . '" />';
-                } elseif (isset($field['options'])) {
-                    $current = isset($_POST[$name]) ? (string)$_POST[$name] : '';
-                    $input = '<select class="input" name="' . make_literal($name) . '">';
+            if (!isset($field['caption'])) {
+                return '<input name="' . make_literal($name) . '" type="hidden" value="' . make_literal($field['text']) . '" />';
+            } elseif (isset($field['options'])) {
+                $current = isset($_POST[$name]) ? (string)$_POST[$name] : '';
+                $input = '<select class="input" name="' . make_literal($name) . '">';
 
-                    foreach ($field['options'] as $value => $caption) {
-                        $input .= '<option value="' . make_literal($value) . '"' . ($current === (string)$value ? ' selected' : '') . '>' . make_literal($caption) . '</option>';
-                    }
-
-                    $input .= '</select>';
-                } elseif (isset($field['password'])) {
-                    $value = isset($_POST[$name]) ? $_POST[$name] : $field['password'];
-                    $input = '<input class="input" name="' . make_literal($name) . '" type="password" value="' . make_literal($value) . '" />';
-                } elseif (isset($field['text'])) {
-                    $value = isset($_POST[$name]) ? $_POST[$name] : $field['text'];
-                    $input = '<input class="input" name="' . make_literal($name) . '" type="text" value="' . make_literal($value) . '" />';
-                } else {
-                    $input = '';
+                foreach ($field['options'] as $value => $caption) {
+                    $input .= '<option value="' . make_literal($value) . '"' . ($current === (string)$value ? ' selected' : '') . '>' . make_literal($caption) . '</option>';
                 }
 
-                return
-                    '<div class="field">' .
-                        '<span class="caption">' . $field['caption'] . '</span>' .
-                        $input .
-                        '<span class="help">' . $field['help'] . '</span>' .
-                    '</div>';
-            }, $fields)) .
+                $input .= '</select>';
+            } elseif (isset($field['password'])) {
+                $value = isset($_POST[$name]) ? $_POST[$name] : $field['password'];
+                $input = '<input class="input" name="' . make_literal($name) . '" type="password" value="' . make_literal($value) . '" />';
+            } elseif (isset($field['text'])) {
+                $value = isset($_POST[$name]) ? $_POST[$name] : $field['text'];
+                $input = '<input class="input" name="' . make_literal($name) . '" type="text" value="' . make_literal($value) . '" />';
+            } else {
+                $input = '';
+            }
+
+            return
+                '<div class="field">' .
+                '<span class="caption">' . $field['caption'] . '</span>' .
+                $input .
+                '<span class="help">' . $field['help'] . '</span>' .
+                '</div>';
+        }, $fields)) .
         '</div>';
 }
 
@@ -86,10 +84,10 @@ function make_section_text($title, $sections)
 {
     return
         '<div class="section">' .
-            '<h2>' . $title . '</h2>' .
-            implode('', array_map(function ($section) {
-                return '<p>' . $section . '</p>';
-            }, $sections)) .
+        '<h2>' . $title . '</h2>' .
+        implode('', array_map(function ($section) {
+            return '<p>' . $section . '</p>';
+        }, $sections)) .
         '</div>';
 }
 
@@ -200,7 +198,7 @@ if (@include './config.php') {
         'For security reasons, install script can only be used when website is not configured. Please rename or delete this file if you want to use install script.'
     )))));
 
-// Otherwise enter configuration mode
+    // Otherwise enter configuration mode
 } else {
     $templates = array(
         'static/.htaccess' => @file_get_contents(dirname(__FILE__) . '/static/.htaccess.dist'),
@@ -217,7 +215,7 @@ if (@include './config.php') {
             'Please make sure both files exist in same folder than install script (`install.php`) and can be read by current user account.'
         )))));
 
-    // Validate input values if form was just submitted
+        // Validate input values if form was just submitted
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = null;
 
@@ -241,12 +239,12 @@ if (@include './config.php') {
 
                     break;
 
-				case 'engine_network_route_static':
-					if (substr($value, 0, 1) !== '/') {
-						$error = 'Invalid base path for static URLs, it must begin with a "/" character.';
-					}
+                case 'engine_network_route_static':
+                    if (substr($value, 0, 1) !== '/') {
+                        $error = 'Invalid base path for static URLs, it must begin with a "/" character.';
+                    }
 
-					break;
+                    break;
 
                 case 'engine_network_sql_connection':
                     require './library/redmap/redmap.php';
@@ -328,6 +326,8 @@ if (@include './config.php') {
 
                 case 'engine_service_recaptcha_site-key':
                 case 'engine_service_recaptcha_site-secret':
+                case 'engine_service_soundcloud_client-id':
+                case 'engine_service_soundcloud_client-secret':
                 case 'engine_service_twitter_consumer-key':
                 case 'engine_service_twitter_consumer-secret':
                 case 'engine_service_twitter_token-key':
@@ -420,10 +420,10 @@ if (@include './config.php') {
 
             $blocks = array(make_block_status('success', array($section)));
 
-        // Otherwise display configuration input form
+            // Otherwise display configuration input form
         } else {
             $route_page = '/' . ltrim(preg_match('@^(.*)/install\\.php([?#]|$)@', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $match) ? $match[1] : '', '/');
-			$route_static = rtrim($route_page, '/') . '/static';
+            $route_static = rtrim($route_page, '/') . '/static';
 
             $blocks = array(
                 $error !== null ? make_block_status('failure', array(make_section_text('Configuration error', array($error)))) : '',
@@ -494,7 +494,7 @@ if (@include './config.php') {
                         array(
                             'name' => 'engine_service_recaptcha_site-key',
                             'caption' => 'reCaptcha site key:',
-                            'help' => 'Site key for reCaptcha service, used for user registration. You can register a new reCaptcha account <a href="https://www.google.com/recaptcha">here</a> if needed or leave this option empty to disable reCaptcha.',
+                            'help' => 'Site key for reCaptcha service, used for user registration. Register at <a href="https://www.google.com/recaptcha">reCaptcha</a> or leave this option empty to disable reCaptcha.',
                             'text' => ''
                         ),
                         array(
@@ -504,9 +504,21 @@ if (@include './config.php') {
                             'text' => ''
                         ),
                         array(
+                            'name' => 'engine_service_soundcloud_client-id',
+                            'caption' => 'SoundCloud API client ID:',
+                            'help' => 'Client ID for SoundCloud API, used for embedding track URLs in messages. Register at <a href="https://developers.soundcloud.com/">SoundCloud for Developers</a> or leave this option empty to disable SoundCloud integration.',
+                            'text' => ''
+                        ),
+                        array(
+                            'name' => 'engine_service_soundcloud_client-secret',
+                            'caption' => 'SoundCloud API secret:',
+                            'help' => 'Client secret for SoundCloud API, leave this option empty to disable SoundCloud integration.',
+                            'text' => ''
+                        ),
+                        array(
                             'name' => 'engine_service_twitter_consumer-key',
                             'caption' => 'Twitter API key:',
-                            'help' => 'Twitter API key, used for embedding tweets in messages using Twitter API. You can register a new Twitter application <a href="https://developer.twitter.com/">here</a> if needed or leave this option empty to disable Twitter integration.',
+                            'help' => 'Twitter API key, used for embedding tweets in messages. Register a new <a href="https://developer.twitter.com/">Twitter application</a> or leave this option empty to disable Twitter integration.',
                             'text' => ''
                         ),
                         array(
@@ -564,10 +576,10 @@ if (@include './config.php') {
                 array(
                     'You are about to configure yAronet. This script will help you generate a valid configuration that must be saved to files on your server.',
                     'Please use one of the buttons below to begin configuration using a preset suitable for target environnement:' .
-                    '<ul>' .
+                        '<ul>' .
                         '<li>Preset &quot;development&quot; requires less configuration but is missing mandatory parameters for your website performace and safety ;</li>' .
                         '<li>Preset &quot;production&quot; implies you follow extra deployment steps described in `INSTALL.md` document.</li>' .
-                    '</ul>',
+                        '</ul>',
                     'Once you are done with this step your website should be working with minimal setup and this script won\'t be available anymore. You will always be able to either manually edit file `config.php` to update your configuration or delete the file and run this script again to reset all settings.'
                 )
             ))),
@@ -585,8 +597,7 @@ if (@include './config.php') {
                     'text' => '1'
                 )
             )))),
-            make_block_form(true, array(make_section_form('Setup for production', array(
-            ))))
+            make_block_form(true, array(make_section_form('Setup for production', array())))
         );
     }
 }

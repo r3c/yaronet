@@ -304,7 +304,7 @@ Widget::$url_matchers = array(
 
             \Glay\using('yN\\Engine\\Service\\SoundCloudAPI', './engine/service/soundcloud.php');
 
-            $soundcloud = new \yN\Engine\Service\SoundCloudAPI($logger, '90a48efd048eff2bc77d7fa9a958abf6', '6c45c7ece98bee6ea4aa366cb1f9bcfa');
+            $soundcloud = new \yN\Engine\Service\SoundCloudAPI($logger);
             $url = $soundcloud->resolve('https://soundcloud.com/' . $match[1]);
 
             if ($url !== null && preg_match('@/tracks/([0-9]{1,64})@', $url, $track)) {
