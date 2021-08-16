@@ -6,43 +6,55 @@ defined('YARONET') or die;
 
 class SoundCloudAPI
 {
-    public function __construct($logger, $client_id, $client_secret)
+    public function __construct($logger)
     {
-        $this->client_id = $client_id;
-        $this->client_secret = $client_secret;
+        $this->client_id = config('engine.service.soundcloud.client-id', null);
+        $this->client_secret = config('engine.service.soundcloud.client-secret', null);
         $this->logger = $logger;
     }
 
     public function resolve($url)
     {
-        $json = $this->call('resolve', array('url' => $url));
+        if ($this->client_id === null || $this->client_secret === null) {
+            return null;
+        }
 
-        if ($json === null || !isset($json['location'])) {
+        $token = $this->call(
+            'oauth2/token',
+            array('Content-Type' => 'application/x-www-form-urlencoded'),
+            'client_id=' . rawurlencode($this->client_id) . '&client_secret=' . rawurlencode($this->client_secret) . '&grant_type=client_credentials'
+        );
+
+        if ($token === null || !isset($token['access_token'])) {
+            $this->logger->log(\yN\Engine\Diagnostic\Logger::LEVEL_MEDIUM, 'system', 'SoundCloudAPI', 'Could not get OAuth access token:'.var_export($token, true));
+
+            return null;
+        }
+
+        $resolved = $this->call(
+            'resolve?url=' . rawurlencode($url),
+            array('Authorization' => 'OAuth ' . $token['access_token']),
+            null
+        );
+
+        if ($resolved === null || !isset($resolved['location'])) {
             $this->logger->log(\yN\Engine\Diagnostic\Logger::LEVEL_NOTICE, 'system', 'SoundCloudAPI', 'Could not resolve URL "' . $url . '" into track');
 
             return null;
         }
 
-        return $json['location'];
+        return $resolved['location'];
     }
 
-    private function call($method, $params = array())
+    private function call($endpoint, $headers, $body)
     {
-        $params['client_id'] = $this->client_id;
-        $query = '';
+        $http = new \Glay\Network\HTTP();
 
-        foreach ($params as $key => $value) {
-            if ($query !== '') {
-                $query .= '&';
-            } else {
-                $query .= '?';
-            }
-
-            $query .= rawurlencode($key) . '=' . rawurlencode($value);
+        foreach ($headers as $key => $value) {
+            $http->header($key, $value);
         }
 
-        $http = new \Glay\Network\HTTP();
-        $response = $http->query('GET', 'http://api.soundcloud.com/' . $method . '.json' . $query);
+        $response = $http->query('POST', 'https://api.soundcloud.com/' . $endpoint, $body);
 
         return json_decode($response->data, true);
     }

@@ -58,6 +58,12 @@ $config = array(
     // Secret key for ReCaptcha web service or "null" to disable ReCaptcha integration
     //'engine.service.recaptcha.site-secret' => null,
 
+    // Client ID for SoundCloud API or "null" to disable SoundCloud integration
+    //'engine.service.soundcloud.client-id' => null,
+
+    // Client secret for SoundCloud API or "null" to disable SoundCloud integration
+    //'engine.service.soundcloud.client-secret' => null,
+
     // Consumer API key for Twitter web service or "null" to disable Twitter integration
     //'engine.service.twitter.consumer-key' => null,
 
