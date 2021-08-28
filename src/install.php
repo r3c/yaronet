@@ -257,7 +257,7 @@ if (@include './config.php') {
                             $time = time();
                             $unique = uniqid();
 
-                            $sql->client->execute('REPLACE INTO `account_user` (`id`, `login`, `email`, `mechanism`, `secret`, `create_time`, `pulse_time`, `recover_time`, `language`, `template`, `is_active`, `is_admin`, `is_disabled`, `is_favorite`, `is_uniform`, `options`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array(
+                            $failure = $sql->client->execute('REPLACE INTO `account_user` (`id`, `login`, `email`, `mechanism`, `secret`, `create_time`, `pulse_time`, `recover_time`, `language`, `template`, `is_active`, `is_admin`, `is_disabled`, `is_favorite`, `is_uniform`, `options`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array(
                                 1,
                                 isset($_POST['meta_admin_login']) ? $_POST['meta_admin_login'] : 'admin',
                                 'admin@' . $_SERVER['SERVER_NAME'],
@@ -274,16 +274,16 @@ if (@include './config.php') {
                                 1,
                                 0,
                                 ''
-                            ));
+                            )) === null;
 
-                            $sql->client->execute('REPLACE INTO `board_profile` (`user`, `forum`, `gender`, `signature`, `avatar`, `avatar_tag`) VALUES (?, ?, ?, ?, ?, ?)', array(
+                            $failure = $failure || $sql->client->execute('REPLACE INTO `board_profile` (`user`, `forum`, `gender`, `signature`, `avatar`, `avatar_tag`) VALUES (?, ?, ?, ?, ?, ?)', array(
                                 1,
                                 null,
                                 2,
                                 '!|',
                                 0,
                                 0
-                            ));
+                            )) === null;
 
                             $pages = array(
                                 array(
@@ -307,7 +307,11 @@ if (@include './config.php') {
                             );
 
                             foreach ($pages as $page) {
-                                $sql->client->execute('INSERT IGNORE INTO `help_page` (`label`, `language`, `name`, `text`) VALUES (?, ?, ?, ?)', $page);
+                                $failure = $failure || $sql->client->execute('INSERT IGNORE INTO `help_page` (`label`, `language`, `name`, `text`) VALUES (?, ?, ?, ?)', $page) === null;
+                            }
+
+                            if ($failure) {
+                                $error = 'Could not find table `account_user` in database, please make sure you imported SQL schema before running this script.';
                             }
                         } else {
                             $error = 'Cannot connect to database, please make sure your SQL connection string is valid.';
@@ -479,7 +483,7 @@ if (@include './config.php') {
                             'name' => 'engine_system_locale_name',
                             'caption' => 'System locale:',
                             'help' => 'Text locale used by PHP for text processing. You must select a locale using an encoding compatible with the one you selected for display, otherwise some characters may get corrupted.',
-                            'text' => 'en_US.utf8'
+                            'text' => strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' ? 'en_US.utf8' : '' // See: https://stackoverflow.com/questions/738823/possible-values-for-php-os
                         )
                     )),
                     make_section_form('Visual configuration', array(
