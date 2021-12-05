@@ -1,4 +1,4 @@
-{{ let id = php ("uniqid") () }}
+{{ let id = ((-)(php ("uniqid"))) () }}
 	<div class="container" id="{{ $ id }}">
 		{{ if length (_alerts) > 0 }}
 			<div class="notice notice-fail">
