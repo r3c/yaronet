@@ -133,12 +133,10 @@ $(function () {
 	});
 
 	$('.bind-post').on('click keydown', '.bind-show', function () {
-		var container = $('<div>')
-			.css('position', 'absolute')
-			.offset($(this).offset())
-			.appendTo($('body'));
+		var parent = $(this).closest('.bind-post');
+		var peek = yn.container(parent, 'bind-peek').css('position', 'absolute').offset($(this).offset());
 
-		return yn.markup_peek($(this), container, undefined, {});
+		return yn.markup_peek($(this), peek, undefined, {});
 	});
 
 	$('.bind-post').on('mouseup', '.bind-text', function () {
