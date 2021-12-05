@@ -2,6 +2,22 @@
 yn = window.yn || {};
 
 /*
+** Create a blank container with given class name or reuse existing one if found.
+** parent:		parent element
+** className:	CSS class name used for detection
+** return:		container element
+*/
+yn.container = function (parent, className) {
+	var container = parent.find('.' + className);
+
+	if (container.length < 1) {
+		container = $('<div>').hide().addClass(className).appendTo(parent);
+	}
+
+	return container;
+};
+
+/*
 ** Wrap a callback to defer execution and prevent multiple triggering.
 ** delay:		delay before executing action in milliseconds
 ** callback:	original callback

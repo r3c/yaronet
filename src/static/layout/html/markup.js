@@ -54,12 +54,10 @@ yn.markup = function (frame) {
 
 	// Enable post popup on ref tags
 	frame.find('.markup .ref').on('click keydown', function () {
-		var container = $('<div>')
-			.css('position', 'absolute')
-			.offset($(this).offset())
-			.appendTo($('body'));
+		var parent = $(this).closest('.markup');
+		var peek = yn.container(parent, 'markup-ref-peek').css('position', 'absolute').offset($(this).offset());
 
-		return yn.markup_peek($(this), container, undefined, {});
+		return yn.markup_peek($(this), peek, undefined, {});
 	});
 
 	// Switch spoiler visibility on click
@@ -68,11 +66,7 @@ yn.markup = function (frame) {
 	});
 };
 
-yn.markup_peek = function (handle, container, refresh, strings) {
-	var hide = function () {
-		container.remove();
-	};
-
+yn.markup_peek = function (handle, element, refresh, strings) {
 	var invoke = function (url, handle, callback) {
 		yn.load($.get(url), handle)
 			.done(callback)
@@ -81,29 +75,33 @@ yn.markup_peek = function (handle, container, refresh, strings) {
 		return false;
 	};
 
+	var remove = function () {
+		element.remove();
+	};
+
 	var show = function (url, handle) {
-		yn.load_html($.get(url), handle, container, function (container) {
+		yn.load_html($.get(url), handle, element, function (container) {
 			yn.markup(container.slideDown(250));
 
 			var form = container.find('form');
 			var input = form.find('[data-draft]');
 
 			container.find('a.peek-close').on('click', function () {
-				container.slideUp(250, hide);
+				container.slideUp(250, remove);
 
 				return false;
 			});
 
 			container.find('a.peek-drop').on('click', function () {
 				return confirm(strings.drop) && invoke($(this).attr('href'), $(this), function () {
-					hide();
+					remove();
 					refresh();
 				});
 			});
 
 			container.find('a.peek-mark, a.peek-read').on('click', function () {
 				return invoke($(this).attr('href'), $(this), function () {
-					hide();
+					remove();
 					refresh();
 				});
 			});
@@ -113,7 +111,7 @@ yn.markup_peek = function (handle, container, refresh, strings) {
 			});
 
 			container.find('a.peek-quote').on('click', function () {
-				invoke($(this).attr('href'), $(this), function (html) {
+				return invoke($(this).attr('href'), $(this), function (html) {
 					var text = input.val();
 
 					input.val((text !== '' ? text + "\n" : '') + $('<textarea>').html(html).val().trim() + "\n");
@@ -122,8 +120,6 @@ yn.markup_peek = function (handle, container, refresh, strings) {
 						input.focus();
 					});
 				});
-
-				return false;
 			});
 
 			container.find('a.peek-reply').on('click', function () {
@@ -145,8 +141,6 @@ yn.markup_peek = function (handle, container, refresh, strings) {
 
 		return false;
 	};
-
-	container.hide();
 
 	return show(handle.data('url-peek'), handle);
 };

@@ -19,10 +19,10 @@ $(function () {
 
 		sources.find('.bind-show').on('click', function () {
 			var parent = $(this).closest('.bind-topic');
-			var container = $('<div>').appendTo(parent);
 			var handle = parent.find('.bind-name');
+			var peek = yn.container(parent, 'bind-peek');
 
-			return yn.markup_peek(handle, container, refresh, yn.boardBookmarkStrings);
+			return yn.markup_peek(handle, peek, refresh, yn.boardBookmarkStrings);
 		});
 
 		links.find('a.update').on('click', function () {
