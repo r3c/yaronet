@@ -8,7 +8,7 @@
 		{
 			"pattern": "\\.inc\\.less$",
 			"filter": "",
-			"link": "find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true"
+			"link": "find . -name '*.less' | xargs grep -Fl \"$(basename {})\" || true"
 		},
 		{
 			"pattern": "\\.min\\.css$",
@@ -16,7 +16,7 @@
 		},
 		{
 			"pattern": "\\.css$",
-			"modify": "lessc --clean-css '{}'",
+			"modify": "lessc --clean-css {}",
 			"chmod": "644"
 		},
 		{
@@ -25,13 +25,13 @@
 		},
 		{
 			"pattern": "\\.js$",
-			"modify": "uglifyjs --compress --mangle -- '{}'",
+			"modify": "uglifyjs --compress --mangle -- {}",
 			"chmod": "644"
 		},
 		{
 			"pattern": "(.*)\\.less$",
-			"modify": "lessc --clean-css '{}'",
-			"link": "find . -name '*.less' | xargs grep -Fl \"$(basename '{}')\" || true",
+			"modify": "lessc --clean-css {}",
+			"link": "find . -name '*.less' | xargs grep -Fl \"$(basename {})\" || true",
 			"rename": "\\1.css",
 			"chmod": "644"
 		},
