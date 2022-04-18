@@ -20,7 +20,11 @@ $(function () {
 		sources.find('.bind-show').on('click', function () {
 			var parent = $(this).closest('.bind-topic');
 			var handle = parent.find('.bind-name');
-			var peek = yn.container(parent, 'bind-peek');
+			var peek = parent.find('.bind-peek');
+
+			if (peek.length < 1) {
+				peek = $('<div>').hide().addClass('bind-peek').appendTo(parent);
+			}
 
 			return yn.markup_peek(handle, peek, refresh, yn.boardBookmarkStrings);
 		});

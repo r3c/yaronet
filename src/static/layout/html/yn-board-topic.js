@@ -133,8 +133,7 @@ $(function () {
 	});
 
 	$('.bind-post').on('click keydown', '.bind-show', function () {
-		var parent = $(this).closest('.bind-post');
-		var peek = yn.container(parent, 'bind-peek').css('position', 'absolute').offset($(this).offset());
+		var peek = $('<div>').hide().css('position', 'absolute').offset($(this).offset()).appendTo(document.body);
 
 		return yn.markup_peek($(this), peek, undefined, {});
 	});

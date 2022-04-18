@@ -54,8 +54,7 @@ yn.markup = function (frame) {
 
 	// Enable post popup on ref tags
 	frame.find('.markup .ref').on('click keydown', function () {
-		var parent = $(this).closest('.markup');
-		var peek = yn.container(parent, 'markup-ref-peek').css('position', 'absolute').offset($(this).offset());
+		var peek = $('<div>').hide().css('position', 'absolute').offset($(this).offset()).appendTo(document.body);
 
 		return yn.markup_peek($(this), peek, undefined, {});
 	});
