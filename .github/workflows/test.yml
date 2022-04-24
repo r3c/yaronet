@@ -9,6 +9,24 @@ on:
       - master
 
 jobs:
+  format:
+    name: Check code format
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install PPA repository
+        run: sudo add-apt-repository ppa:ondrej/php
+      - name: Update package sources
+        run: sudo apt-get update
+      - name: Install packages
+        run: >-
+          sudo apt-get install
+          php8.1
+          php-codesniffer
+      - name: Check style
+        run: phpcs --standard=PSR1 src
+
   test:
     name: Run E2E tests (PHP ${{ matrix.version.php }}, MySQL ${{ matrix.version.mysql }})
     runs-on: ubuntu-latest
@@ -20,15 +38,17 @@ jobs:
             php: "5.6"
           - mysql: "8.0"
             php: "7.4"
+          - mysql: "8.0"
+            php: "8.1"
 
     services:
       mysql:
         image: mysql:${{ matrix.version.mysql }}
         ports:
-          - '3306:3306'
+          - "3306:3306"
         env:
-            MYSQL_DATABASE: yaronet
-            MYSQL_ROOT_PASSWORD: yaronet
+          MYSQL_DATABASE: yaronet
+          MYSQL_ROOT_PASSWORD: yaronet
 
     steps:
       - uses: actions/checkout@v2
