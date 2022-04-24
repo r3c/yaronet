@@ -344,8 +344,8 @@ Widget::$url_matchers = array(
             $start = 0;          
             if (isset($query['t'])) {
                 $t_param = $query['t'];
-                if (strpos($t_param,"s")==strlen($t_param)-1){
-                    $t_param = substr($t_param,0,strlen($t_param)-1); 
+                if (substr($t_param, -1) === 's') {
+                    $t_param = substr($t_param, 0, -1); 
                 }
                 $start = is_numeric($t_param)? $t_param : 0;
             }
