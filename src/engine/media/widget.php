@@ -341,7 +341,14 @@ Widget::$url_matchers = array(
     'embed.youtube' => array(
         '(?:www\\.youtube\\.com/watch\\?|youtu\\.be/([-0-9A-Za-z_]{1,64}))',
         function ($logger, $match, $query) {
-            $start = isset($query['t']) && is_numeric($query['t']) ? (int)$query['t'] : 0;
+            $start = 0;          
+            if (isset($query['t'])) {
+                $t_param = $query['t'];
+                if (strpos($t_param,"s")==strlen($t_param)-1){
+                    $t_param = substr($t_param,0,strlen($t_param)-1); 
+                }
+                $start = is_numeric($t_param)? $t_param : 0;
+            }
             $video = isset($query['v']) ? (string)substr($query['v'], 0, 64) : (isset($match[1]) ? $match[1] : null);
 
             return array($video !== null, $video . ($start > 0 ? ':' . $start : ''));
