@@ -3,11 +3,12 @@
 
 Vagrant.configure("2") do |config|
 	httpd_port = 8080
-	php_version = "7.0"
+	php_version = "8.1"
 	phpmyadmin_path = "/opt/phpmyadmin"
+	phpmyadmin_version = "5.1.3"
 	yaronet_path = "/opt/yaronet"
 
-	config.vm.box = "ubuntu/xenial64"
+	config.vm.box = "ubuntu/impish64"
 
 	# Configure guest environment
 	config.vm.network :forwarded_port, host: httpd_port, guest: 80
@@ -30,8 +31,8 @@ Vagrant.configure("2") do |config|
 		for package in \
 			'apache2' \
 			'libapache2-mod-php#{php_version}' \
-			'mariadb-server-10.0' \
-			'nodejs-legacy' \
+			'mariadb-server' \
+			'nodejs' \
 			'npm' \
 			'php#{php_version}-curl' \
 			'php#{php_version}-gd' \
@@ -52,7 +53,7 @@ Vagrant.configure("2") do |config|
 
 		# Install phpMyAdmin
 		mkdir -p '#{phpmyadmin_path}'
-		curl -s https://files.phpmyadmin.net/phpMyAdmin/4.7.4/phpMyAdmin-4.7.4-all-languages.tar.gz |
+		curl -s 'https://files.phpmyadmin.net/phpMyAdmin/#{phpmyadmin_version}/phpMyAdmin-#{phpmyadmin_version}-all-languages.tar.gz' |
 		tar xz -C '#{phpmyadmin_path}' --strip-components=1
 
 		sed -r "
