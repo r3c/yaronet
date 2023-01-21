@@ -25,10 +25,10 @@ jobs:
       mysql:
         image: mysql:${{ matrix.version.mysql }}
         ports:
-          - '3306:3306'
+          - "3306:3306"
         env:
-            MYSQL_DATABASE: yaronet
-            MYSQL_ROOT_PASSWORD: yaronet
+          MYSQL_DATABASE: yaronet
+          MYSQL_ROOT_PASSWORD: yaronet
 
     steps:
       - uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
       - name: Update package sources
         run: sudo apt-get update
       - name: Install packages
-        run: >-
+        run: >
           sudo apt-get install
           apache2
           libapache2-mod-php${{ matrix.version.php }}
@@ -57,6 +57,13 @@ jobs:
         run: sudo sed -e "s?%CI_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default.conf
       - name: Update PHP configuration
         run: sudo sed -ri 's/^(zend\.assertions)[[:blank:]]*=.*/\1 = 1/' '/etc/php/${{ matrix.version.php }}/apache2/php.ini'
+      - name: Allow traversing to current directory
+        run: |
+          directory="$(pwd)"
+          while [[ "$directory" != / ]]; do
+            sudo chmod +x "$directory"
+            directory="$(dirname "$directory")"
+          done
       - name: Start Apache
         run: sudo service apache2 restart
       - name: Initialize MySQL database
