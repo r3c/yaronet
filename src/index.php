@@ -67,8 +67,12 @@ register_shutdown_function(function () use ($logger) {
 });
 
 set_error_handler(function ($errno, $errstr, $errfile, $errline) use ($logger) {
-    // Log error if not silenced
-    if (error_reporting() !== 0) {
+    // See: https://stackoverflow.com/a/74324388/806555
+    $error = error_reporting();
+    $error_suppressed = E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE;
+
+    // Log error if not suppressed
+    if ($error !== 0 && $error !== $error_suppressed) {
         if (($errno & ~(E_DEPRECATED | E_NOTICE | E_USER_NOTICE | E_STRICT)) === 0) {
             $level = yN\Engine\Diagnostic\Logger::LEVEL_NOTICE;
         } elseif (($errno & ~(E_WARNING | E_USER_WARNING)) === 0) {

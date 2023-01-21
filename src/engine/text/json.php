@@ -9,8 +9,7 @@ class JSON
     public static function convert($data)
     {
         if (is_array($data)) {
-            array_walk($data, function (&$key, &$value) {
-                $key = JSON::convert($key);
+            array_walk($data, function (&$value) {
                 $value = JSON::convert($value);
             });
 
