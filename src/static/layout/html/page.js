@@ -463,6 +463,8 @@ $(function () {
 				.on('click keydown', function () {
 					return edit_load($(this));
 				});
+
+			yn.markup(container);
 		};
 
 		var view_load = function (handle) {
