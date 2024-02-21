@@ -1,4 +1,4 @@
-name: Automated tests
+name: Verify
 
 on:
   pull_request:
