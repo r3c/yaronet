@@ -191,7 +191,7 @@ class Display
 
         // Initialize renderer
         $setup = new \Deval\Setup();
-        $setup->style = 'deindent,collapse';
+        $setup->plain_text_processor = 'deindent,collapse';
 
         $renderer_cache = self::cache_directory();
         $renderer = $renderer_cache !== null ? new \Deval\CacheRenderer($path, $renderer_cache, $setup) : new \Deval\FileRenderer($path, $setup);
