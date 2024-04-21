@@ -78,8 +78,10 @@
 					<h2>{{ $ tra ("yn.home.chat") }}</h2>
 					<div class="panel-body">
 						<ul class="groups">
-							{{ let by_date = (s) => tra("yn.home.chat.date", ["time": s.time]) }}
-								{{ for day, daily_shouts in group(shouts, by_date, (s) => [s], (a, b) => cat(a, b)) }}
+							{{ let
+								by_date = (s) => tra("yn.home.chat.date", ["time": s.time]),
+								append = (daily_shouts, shout) => cat(daily_shouts, [shout]) }}
+								{{ for day, daily_shouts in group(shouts, by_date, append, []) }}
 									{{ for shout in daily_shouts }}
 										<li class="item">
 											<em class="time">{{ $ tra ("yn.home.chat.time", ["time": shout.time]) }}</em>
