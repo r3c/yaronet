@@ -4,6 +4,7 @@
 		<string key="edit">Search posts</string>
 		<section prefix="edit.">
 			<string key="form.alert" alias="base.alert" />
+			<string key="form.alert.cost" alias="base.alert.cost" />
 			<string key="form.alert.login-unknown" alias="yn.board.log.list.form.alert.login-unknown" />
 			<string key="form.alert.query-length">Please input 4 characters or more for your search.</string>
 			<string key="form.alert.sql" alias="base.alert.sql" />
