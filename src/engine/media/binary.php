@@ -15,7 +15,7 @@ class Binary
 
     public static function escape($pattern)
     {
-        return str_replace(array('*', '?', '[', ']'), array('\\*', '\\?', '\\[', '\\]'), $pattern);
+        return str_replace(array('*', '?', '[', ']', "\0"), array('\\*', '\\?', '\\[', '\\]', ''), $pattern);
     }
 
     public static function browse($pattern)
