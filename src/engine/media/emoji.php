@@ -361,7 +361,7 @@ class Emoji
         $emojis = array();
         $length = mb_strlen(self::CUSTOM_NAME_PREFIX);
 
-        foreach (Binary::browse(self::CUSTOM_NAME_PREFIX . Binary::escape($search) . '*') as $name) {
+        foreach (Binary::browse(self::CUSTOM_NAME_PREFIX . '*' . Binary::escape($search) . '*') as $name) {
             $emojis[self::get_custom_tag(mb_substr($name, $length))] = self::url_custom($router, mb_substr($name, $length));
         }
 
