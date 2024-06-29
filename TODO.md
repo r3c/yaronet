@@ -25,7 +25,6 @@ TODO
 
 ### Post references
 
-- [ ] find a way to prevent inconsistent references [dangling]
 - [ ] find a clean way of preventing empty topics [empty-topic]
 
 ### Topic permissions
@@ -227,3 +226,4 @@ DONE
 - [x] use a single "wrap" statement and local "unwrap" blocks when supported by Deval
 - [x] move search table to main database [sql-database-alt]
 - [x] do not reference MessageBox entity outside from entity/account/message.php
+- [x] find a way to prevent inconsistent references [dangling]

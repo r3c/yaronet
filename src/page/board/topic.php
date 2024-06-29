@@ -43,23 +43,8 @@ function topic_delete($request, $logger, $sql, $display, $input, $user)
     if ($request->method === 'POST') {
         $alerts = array();
 
-        if ($topic->section_id !== 10) {
-            $old_section = $topic->section_id;
-
-            $topic->last_time = $time;
-            $topic->section_id = 10;
-            $topic->weight = 0;
-
-            if (!$topic->save($sql, $alert)) {
-                $alerts[] = $alert;
-            } else {
-                yN\Entity\Board\Bookmark::delete_by_topic($sql, $topic->id);
-                yN\Entity\Board\Section::invalidate($sql, $old_section);
-            }
-        } else {
-            if (!$topic->delete($sql, $alert)) {
-                $alerts[] = $alert;
-            }
+        if (!$topic->delete($sql, $alert)) {
+            $alerts[] = $alert;
         }
 
         if (count($alerts) === 0) {
