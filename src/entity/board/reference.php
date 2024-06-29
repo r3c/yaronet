@@ -18,16 +18,27 @@ class Reference extends \yN\Entity\Model
 
     public static function delete_by_post($sql, $post_id)
     {
-        // FIXME: can create holes in topics [dangling]
+        $id = (int)$post_id;
 
-        return $sql->delete(self::$schema, array('post' => (int)$post_id)) !== null;
+        // Delete topics that will become empty after deleting given references
+        // Note: invalidation of parent sections is missing
+        // FIXME: replace with RedMap equivalent [sql-hardcode]
+        if ($sql->client->execute('DELETE t FROM `board_topic` t JOIN `board_reference` r1 ON r1.`topic` = `t`.`id` AND r1.`post` = ? WHERE NOT EXISTS (SELECT 1 FROM `board_reference` r2 WHERE r2.`topic` = t.`id` AND r2.`post` <> ?)', array($id, $id)) !== null)
+            return false;
+
+        return $sql->delete(self::$schema, array('post' => $id)) !== null;
     }
 
     public static function delete_by_topic($sql, $topic_id)
     {
-        // FIXME: can create dangling posts [dangling]
+        $id = (int)$topic_id;
 
-        return $sql->delete(self::$schema, array('topic' => (int)$topic_id)) !== null;
+        // Delete posts that will become empty after deleting given references
+        // FIXME: replace with RedMap equivalent [sql-hardcode]
+        if ($sql->client->execute('DELETE p FROM `board_post` p JOIN `board_reference` r1 ON r1.`post` = `p`.`id` AND r1.`topic` = ? WHERE NOT EXISTS (SELECT 1 FROM `board_reference` r2 WHERE r2.`post` = p.`id` AND r2.`topic` <> ?)', array($id, $id)) !== null)
+            return false;
+
+        return $sql->delete(self::$schema, array('topic' => $id)) !== null;
     }
 
     public static function get_by_position($sql, $topic_id, $position, $profile_id)
