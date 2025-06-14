@@ -34,7 +34,8 @@ class Email
             return true;
         }
 
-        $this->logger->log(\yN\Engine\Diagnostic\Logger::LEVEL_MEDIUM, 'system', 'Email', 'Can\'t send email to: ' . implode(', ', array_keys($recipients)));
+        // Disabled as Infomaniak host isn't configured for sending e-mails
+        //$this->logger->log(\yN\Engine\Diagnostic\Logger::LEVEL_MEDIUM, 'system', 'Email', 'Can\'t send email to: ' . implode(', ', array_keys($recipients)));
 
         return false;
     }
