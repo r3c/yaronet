@@ -82,3 +82,13 @@ jobs:
         run: test -f src/config.php
       - name: Run test suite
         run: curl -s http://127.0.0.1/test/ | tee /tmp/run.log | grep -Fq 'test suite stop.' || ( cat /tmp/run.log && false )
+
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+
+    needs:
+      - test
+
+    steps:
+      - run: true
