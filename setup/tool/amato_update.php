@@ -217,7 +217,7 @@ if (!isset($_GET['e'])) {
 }
 
 /* Processing */
-$sql = RedMap\open($config['engine.network.sql.connection'], function ($error, $query) {
+$sql = RedMap\Connection::open($config['engine.network.sql.connection'], function ($error, $query) {
     die($error);
 });
 
