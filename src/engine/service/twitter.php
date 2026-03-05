@@ -6,6 +6,12 @@ defined('YARONET') or die;
 
 class TwitterAPI
 {
+    private $consumer_key;
+    private $consumer_secret;
+    private $logger;
+    private $token_key;
+    private $token_secret;
+
     public function __construct($logger)
     {
         $this->consumer_key = config('engine.service.twitter.consumer-key', null);

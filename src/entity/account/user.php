@@ -110,6 +110,23 @@ class User extends \yN\Entity\Model
         return self::entry_get_one($sql, array('login' => trim($login)));
     }
 
+    public $create_time;
+    public $email;
+    public $id;
+    public $is_active;
+    public $is_admin;
+    public $is_disabled;
+    public $is_favorite;
+    public $is_uniform;
+    public $language;
+    public $login;
+    public $mechanism;
+    public $options;
+    public $pulse_time;
+    public $recover_time;
+    public $secret;
+    public $template;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;

@@ -108,10 +108,14 @@ class Reference extends \yN\Entity\Model
         );
     }
 
+    public $position;
+    public $post;
+    public $post_id;
+    public $topic;
+    public $topic_id;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
-        global $time;
-
         if ($row !== null) {
             $this->position = (int)$row[$ns . 'position'];
             $this->post = isset($row[$ns . 'post__id']) ? new Post($sql, $row, $ns . 'post__') : null;

@@ -47,6 +47,19 @@ class Post extends \yN\Entity\Model
         return $sql->update(self::$schema, array('state' => $state), array('create_profile' => (int)$profile_id)) !== null;
     }
 
+    public $caution;
+    public $create_profile;
+    public $create_profile_id;
+    public $create_time;
+    public $edit_profile;
+    public $edit_profile_id;
+    public $edit_time;
+    public $id;
+    public $ignore;
+    public $reference;
+    public $state;
+    public $text;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;

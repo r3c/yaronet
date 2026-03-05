@@ -13,6 +13,11 @@ class Logger
     const LEVEL_MEDIUM = 2;
     const LEVEL_SEVERE = 3;
 
+    private $context;
+    private $format;
+    private $level;
+    private $path;
+
     public function __construct($path, $format, $level)
     {
         $this->context = '';

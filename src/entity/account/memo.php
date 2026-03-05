@@ -20,6 +20,10 @@ class Memo extends \yN\Entity\Model
         return self::entry_get_one($sql, array('user' => (int)$user_id));
     }
 
+    public $text;
+    public $user;
+    public $user_id;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         if ($row !== null) {

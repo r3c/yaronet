@@ -6,6 +6,9 @@ defined('YARONET') or die;
 
 class ReCaptchaAPI
 {
+    private $site_key;
+    private $site_secret;
+
     public function __construct()
     {
         $this->site_key = config('engine.service.recaptcha.site-key', null);
