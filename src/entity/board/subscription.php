@@ -60,6 +60,11 @@ class Subscription extends \yN\Entity\Model
         }
     }
 
+    public $profile;
+    public $profile_id;
+    public $section;
+    public $section_id;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         if ($row !== null) {

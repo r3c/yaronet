@@ -133,6 +133,22 @@ class Section extends \yN\Entity\Model
         return \yN\Engine\Network\URL::sanitize_path($name) ?: null;
     }
 
+    public $access;
+    public $description;
+    public $forum;
+    public $forum_id;
+    public $header;
+    public $hint;
+    public $id;
+    public $is_delegated;
+    public $last_topic;
+    public $name;
+    public $permission;
+    public $reach;
+    public $read;
+    public $subscription;
+    public $topics;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         if ($row !== null) {
@@ -210,9 +226,11 @@ class Section extends \yN\Entity\Model
 
     public function merge($sql, $into_id, &$alert)
     {
-        if ($sql->update(Topic::$schema, array('section' => $into_id), array('section' => $this->id)) === null ||
+        if (
+            $sql->update(Topic::$schema, array('section' => $into_id), array('section' => $this->id)) === null ||
             $sql->delete(Block::$schema, array('section' => $this->id)) === null ||
-            $sql->delete(Permission::$schema_section, array('section' => $this->id)) === null) {
+            $sql->delete(Permission::$schema_section, array('section' => $this->id)) === null
+        ) {
             $alert = 'sql';
 
             return false;
@@ -307,6 +325,11 @@ class SectionRead extends \yN\Entity\Model
 
     public static $schema;
     public static $schema_cache = null;
+
+    public $profile;
+    public $profile_id;
+    public $section;
+    public $section_id;
 
     public function __construct($sql = null, $row = null, $ns = '')
     {

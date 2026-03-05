@@ -119,8 +119,6 @@ class Activity extends \yN\Entity\Model
 
         $sql->insert(self::$schema, $self->export(), \RedMap\Engine::INSERT_REPLACE);
 
-        $elapsed = $time - $self->create_time;
-
         return array($activities, $self->location);
     }
 
@@ -138,6 +136,15 @@ class Activity extends \yN\Entity\Model
 
         return '';
     }
+
+    public $address;
+    public $create_time;
+    public $expire_time;
+    public $group;
+    public $location;
+    public $pulse_time;
+    public $user;
+    public $user_id;
 
     public function __construct($sql = null, $row = null, $ns = '')
     {

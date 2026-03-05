@@ -77,11 +77,11 @@ class Message extends \yN\Entity\Model
         // FIXME: replace with RedMap equivalent [sql-hardcode]
         if ($other_id !== null) {
             $filter = 'SELECT DISTINCT message FROM ' .
-            '(' .
+                '(' .
                 'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND state < ? ' .
                 'UNION ALL ' .
                 'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND state < ? ' .
-            ') AS i GROUP BY i.message HAVING COUNT(*) = 2 ORDER BY message DESC LIMIT ?';
+                ') AS i GROUP BY i.message HAVING COUNT(*) = 2 ORDER BY message DESC LIMIT ?';
             $params = array($from, $from, $user_id, self::STATE_HIDDEN, $from, $from, $other_id, self::STATE_HIDDEN, $count);
         } else {
             $filter = 'SELECT DISTINCT message FROM account_message_copy WHERE (? IS NULL OR message < ?) AND recipient = ? AND state < ? ORDER BY message DESC LIMIT ?';
@@ -94,12 +94,12 @@ class Message extends \yN\Entity\Model
                 'm.id message__id, m.sender message__sender, m.time message__time, m.text message__text, ' .
                 's.create_time message__sender__create_time, s.email message__sender__email, s.recover_time message__sender__recover_time, s.id message__sender__id, s.is_admin message__sender__is_admin, s.is_active message__sender__is_active, s.is_disabled message__sender__is_disabled, s.is_favorite message__sender__is_favorite, s.is_uniform message__sender__is_uniform, s.language message__sender__language, s.login message__sender__login, s.mechanism message__sender__mechanism, s.pulse_time message__sender__pulse_time, s.secret message__sender__secret, s.template message__sender__template, s.options message__sender__options, ' .
                 'r.create_time recipient__create_time, r.email recipient__email, r.recover_time recipient__recover_time, r.id recipient__id, r.is_admin recipient__is_admin, r.is_active recipient__is_active, r.is_disabled recipient__is_disabled, r.is_favorite recipient__is_favorite, r.is_uniform recipient__is_uniform, r.language recipient__language, r.login recipient__login, r.mechanism recipient__mechanism, r.pulse_time recipient__pulse_time, r.secret recipient__secret, r.template recipient__template, r.options recipient__options ' .
-            'FROM account_message_copy c ' .
-            'JOIN (' . $filter . ') f ON f.message = c.message ' .
-            'JOIN account_message m ON m.id = c.message ' .
-            'JOIN account_user s ON s.id = m.sender ' .
-            'JOIN account_user r ON r.id = c.recipient ' .
-            'ORDER BY ' .
+                'FROM account_message_copy c ' .
+                'JOIN (' . $filter . ') f ON f.message = c.message ' .
+                'JOIN account_message m ON m.id = c.message ' .
+                'JOIN account_user s ON s.id = m.sender ' .
+                'JOIN account_user r ON r.id = c.recipient ' .
+                'ORDER BY ' .
                 'c.message DESC, r.login ASC',
             $params
         );
@@ -161,6 +161,13 @@ class Message extends \yN\Entity\Model
     {
         return MessageCopy::state_by_recipient($sql, $user_id, Message::STATE_READ);
     }
+
+    public $box;
+    public $id;
+    public $sender;
+    public $sender_id;
+    public $text;
+    public $time;
 
     public function __construct($sql = null, $row = null, $ns = '')
     {
@@ -262,6 +269,12 @@ class MessageCopy extends \yN\Entity\Model
     {
         return $sql->update(self::$schema, array('state' => $state), array('recipient' => (int)$user_id)) !== null;
     }
+
+    public $message;
+    public $message_id;
+    public $recipient;
+    public $recipient_id;
+    public $state;
 
     public function __construct($sql = null, $row = null, $ns = '')
     {

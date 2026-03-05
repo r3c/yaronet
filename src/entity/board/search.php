@@ -95,6 +95,14 @@ class Search extends \yN\Entity\Model
         return $query;
     }
 
+    public $id;
+    public $forum;
+    public $forum_id;
+    public $profile;
+    public $profile_id;
+    public $query;
+    public $time;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;
@@ -220,6 +228,13 @@ class SearchResult extends \yN\Entity\Model
             $from
         );
     }
+
+    public $position;
+    public $reference;
+    public $search;
+    public $search_id;
+    public $topic;
+    public $topic_id;
 
     public function __construct($sql = null, $row = null, $ns = '')
     {

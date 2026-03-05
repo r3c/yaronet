@@ -127,10 +127,19 @@ class Profile extends \yN\Entity\Model
         return self::cache_delete($sql, array('user' => (int)$user_id));
     }
 
+    public $avatar;
+    public $avatar_tag;
+    public $forum;
+    public $forum_id;
+    public $gender;
+    public $posts;
+    public $signature;
+    public $signature_render;
+    public $user;
+    public $user_id;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
-        global $time;
-
         if ($row !== null) {
             if ($sql !== null) {
                 self::cache_check($sql, $row, $ns, array('user'));

@@ -45,6 +45,17 @@ class Forum extends \yN\Entity\Model
         return self::entry_get_all($sql, array('is_hidden' => 0), array('$random' => true), (int)$count);
     }
 
+    public $alias;
+    public $description;
+    public $header;
+    public $icon_tag;
+    public $id;
+    public $is_hidden;
+    public $is_illustrated;
+    public $name;
+    public $preface;
+    public $template;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         if ($row !== null) {
