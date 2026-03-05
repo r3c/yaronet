@@ -20,18 +20,24 @@ class SoundCloudAPI
         }
 
         $token = $this->call(
-            'oauth2/token',
-            array('Content-Type' => 'application/x-www-form-urlencoded'),
-            'client_id=' . rawurlencode($this->client_id) . '&client_secret=' . rawurlencode($this->client_secret) . '&grant_type=client_credentials'
+            'secure.soundcloud.com',
+            'oauth/token',
+            array(
+                'Accept' => 'application/json; charset=utf-8',
+                'Authorization' => 'Basic ' . base64_encode($this->client_id . ':' . $this->client_secret),
+                'Content-Type' => 'application/x-www-form-urlencoded'
+            ),
+            'grant_type=client_credentials'
         );
 
         if ($token === null || !isset($token['access_token'])) {
-            $this->logger->log(\yN\Engine\Diagnostic\Logger::LEVEL_MEDIUM, 'system', 'SoundCloudAPI', 'Could not get OAuth access token:'.var_export($token, true));
+            $this->logger->log(\yN\Engine\Diagnostic\Logger::LEVEL_MEDIUM, 'system', 'SoundCloudAPI', 'Could not get OAuth access token:' . var_export($token, true));
 
             return null;
         }
 
         $resolved = $this->call(
+            'api.soundcloud.com',
             'resolve?url=' . rawurlencode($url),
             array('Authorization' => 'OAuth ' . $token['access_token']),
             null
@@ -46,7 +52,7 @@ class SoundCloudAPI
         return $resolved['location'];
     }
 
-    private function call($endpoint, $headers, $body)
+    private function call($domain, $endpoint, $headers, $body)
     {
         $http = new \Glay\Network\HTTP();
 
@@ -54,7 +60,7 @@ class SoundCloudAPI
             $http->header($key, $value);
         }
 
-        $response = $http->query('POST', 'https://api.soundcloud.com/' . $endpoint, $body);
+        $response = $http->query('POST', 'https://' . $domain . '/' . $endpoint, $body);
 
         return json_decode($response->data, true);
     }
