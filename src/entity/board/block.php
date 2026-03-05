@@ -55,10 +55,15 @@ class Block extends \yN\Entity\Model
         ));
     }
 
+    public $forum;
+    public $forum_id;
+    public $rank;
+    public $section;
+    public $section_id;
+    public $text;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
-        global $time;
-
         if ($row !== null) {
             $this->forum = isset($row[$ns . 'forum__id']) ? new Forum($sql, $row, $ns . 'forum__') : null;
             $this->forum_id = (int)$row[$ns . 'forum'];
@@ -172,9 +177,7 @@ class Block extends \yN\Entity\Model
         return false;
     }
 
-    public function set_primary($key)
-    {
-    }
+    public function set_primary($key) {}
 
     protected function export()
     {

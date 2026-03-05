@@ -23,6 +23,11 @@ class Ignore extends \yN\Entity\Model
         return $sql->insert(self::$schema, array('profile' => (int)$profile_id, 'target' => (int)$target_id), \RedMap\Engine::INSERT_REPLACE) !== null;
     }
 
+    public $profile;
+    public $profile_id;
+    public $target;
+    public $target_id;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;

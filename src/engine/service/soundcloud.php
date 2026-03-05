@@ -6,6 +6,10 @@ defined('YARONET') or die;
 
 class SoundCloudAPI
 {
+    private $client_id;
+    private $client_secret;
+    private $logger;
+
     public function __construct($logger)
     {
         $this->client_id = config('engine.service.soundcloud.client-id', null);

@@ -90,6 +90,15 @@ class Bookmark extends \yN\Entity\Model
         ), \RedMap\Engine::INSERT_UPSERT) !== null;
     }
 
+    public $fresh;
+    public $position;
+    public $profile;
+    public $profile_id;
+    public $time;
+    public $topic;
+    public $topic_id;
+    public $watch;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;

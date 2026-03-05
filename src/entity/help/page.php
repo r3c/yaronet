@@ -19,6 +19,11 @@ class Page extends \yN\Entity\Model
         return self::entry_get_one($sql, array('label' => trim($label), 'language' => trim($language)));
     }
 
+    public $label;
+    public $language;
+    public $name;
+    public $text;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         if ($row !== null) {

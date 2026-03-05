@@ -81,6 +81,11 @@ class Cost extends \yN\Entity\Model
             $sql->client->execute('ALTER TABLE `' . self::$schema->table . '` ENGINE=MEMORY') !== null;
     }
 
+    public $active_amount;
+    public $active_expire;
+    public $address;
+    public $decay_amount;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;

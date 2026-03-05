@@ -56,7 +56,7 @@ class Display
 
     public static function _html($string)
     {
-        return htmlspecialchars($string, ENT_COMPAT, mb_internal_encoding());
+        return htmlspecialchars($string ?? '', ENT_COMPAT, mb_internal_encoding());
     }
 
     public static function _json($data)
@@ -68,7 +68,7 @@ class Display
 
     public static function _jstr($string)
     {
-        return str_replace(array('\\', '\'', '"'), array('\\\\', '\\\'', '\\"'), $string);
+        return str_replace(array('\\', '\'', '"'), array('\\\\', '\\\'', '\\"'), $string ?? '');
     }
 
     public static function _tra($key, $params = array())
@@ -133,7 +133,6 @@ class Display
     private $logger;
     private $router;
     private $sql;
-    private $suffix;
     private $template;
     private $user;
 
@@ -196,7 +195,7 @@ class Display
         $renderer_cache = self::cache_directory();
         $renderer = $renderer_cache !== null ? new \Deval\CacheRenderer($path, $renderer_cache, $setup) : new \Deval\FileRenderer($path, $setup);
 
-        $self = get_class();
+        $self = get_class($this);
         $static = \yN\Engine\Network\URL::to_static();
 
         $renderer->inject(\Deval\Builtin::deval());

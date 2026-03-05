@@ -19,6 +19,13 @@ class Application extends \yN\Entity\Model
         return self::entry_get_one($sql, array('id' => (int)$application_id));
     }
 
+    public $key;
+    public $id;
+    public $name;
+    public $url;
+    public $user;
+    public $user_id;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         if ($row !== null) {

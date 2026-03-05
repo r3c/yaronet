@@ -179,6 +179,19 @@ class Permission
         return $permissions;
     }
 
+    public $can_change;
+    public $can_read;
+    public $can_write;
+    public $forum;
+    public $forum_id;
+    public $expire;
+    public $profile;
+    public $profile_id;
+    public $section;
+    public $section_id;
+    public $topic;
+    public $topic_id;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         if ($row !== null) {
@@ -260,6 +273,13 @@ class Permission
 
 class PermissionAccess
 {
+    public $can_change;
+    public $can_change_last;
+    public $can_read;
+    public $can_read_last;
+    public $can_write;
+    public $can_write_last;
+
     public function __construct($default)
     {
         $this->can_change = $default;
@@ -295,6 +315,8 @@ class PermissionAccess
 
 class GlobalPermissionAccess extends PermissionAccess
 {
+    public $user;
+
     public function __construct($user)
     {
         parent::__construct($user->is_admin);

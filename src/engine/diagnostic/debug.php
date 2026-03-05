@@ -24,6 +24,9 @@ class Debug
         $now = microtime(true);
 
         if (!isset($labels)) {
+            $labels = array();
+            $last = $microtime;
+
             register_shutdown_function(function () use (&$labels) {
                 echo '
 <ul style="padding: 4px 24px; margin: 8px; background: #C0C0F0; border: 3px solid #A0A0F0; border-radius: 8px; font: normal normal normal 12px tahoma;">';
@@ -36,9 +39,6 @@ class Debug
                 echo '
 </ul>';
             });
-
-            $labels = array();
-            $last = $microtime;
         }
 
         $labels[] = array($label, $now - $microtime, $now - $last);

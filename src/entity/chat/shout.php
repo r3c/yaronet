@@ -31,6 +31,12 @@ class Shout extends \yN\Entity\Model
         return self::entry_get_all($sql, array(), array('id' => false), (int)$limit);
     }
 
+    public $id;
+    public $is_guest;
+    public $nick;
+    public $text;
+    public $time;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;
