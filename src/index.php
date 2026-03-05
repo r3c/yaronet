@@ -102,7 +102,7 @@ $request = $router->match($_SERVER['REQUEST_METHOD'], $path, $_GET);
 try {
     // Establish SQL connection
     $sql_connection = config('engine.network.sql.connection', 'mysqli://yaronet@localhost/yaronet?charset=utf8mb4');
-    $sql = RedMap\open($sql_connection, function ($error, $query) use ($logger) {
+    $sql = RedMap\Connection::open($sql_connection, function ($error, $query) use ($logger) {
         $logger->log(yN\Engine\Diagnostic\Logger::LEVEL_SEVERE, 'system', $error, $query);
     });
 

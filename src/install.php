@@ -250,7 +250,7 @@ if (@include './config.php') {
                     require './library/redmap/redmap.php';
 
                     try {
-                        $sql = RedMap\open($value);
+                        $sql = RedMap\Connection::open($value);
 
                         if ($sql->connect()) {
                             $language = isset($_POST['engine_text_i18n_language']) ? $_POST['engine_text_i18n_language'] : 'en';

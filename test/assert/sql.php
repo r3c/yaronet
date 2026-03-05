@@ -10,7 +10,7 @@ class SQL
         static $sql;
 
         if (!isset($sql)) {
-            $sql = RedMap\open($config['engine.network.sql.connection']);
+            $sql = RedMap\Connection::open($config['engine.network.sql.connection']);
 
             assert($sql->connect(), 'sql connection must succeed');
         }
