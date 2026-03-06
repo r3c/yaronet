@@ -201,9 +201,9 @@ if (@include './config.php') {
     // Otherwise enter configuration mode
 } else {
     $templates = array(
-        'static/.htaccess' => @file_get_contents(dirname(__FILE__) . '/static/.htaccess.dist'),
-        '.htaccess' => @file_get_contents(dirname(__FILE__) . '/.htaccess.dist'),
-        'config.php' => @file_get_contents(dirname(__FILE__) . '/config.php.dist')
+        'static/.htaccess' => file_get_contents(dirname(__FILE__) . '/static/.htaccess.dist'),
+        '.htaccess' => file_get_contents(dirname(__FILE__) . '/.htaccess.dist'),
+        'config.php' => file_get_contents(dirname(__FILE__) . '/config.php.dist')
     );
 
     // Fail if some configuration template file is missing
@@ -379,7 +379,7 @@ if (@include './config.php') {
                     break;
             }
 
-            if ($error === null) {
+            if ($error === null && $value !== null) {
                 // PHP replaces dots by underscores in POST variable names, so this
                 // script uses dashes instead and replaces them back to dots when
                 // modifying configuration file.

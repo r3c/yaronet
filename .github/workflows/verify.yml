@@ -77,7 +77,7 @@ jobs:
       - name: Enable write access on src directory
         run: sudo chown -R www-data:www-data .
       - name: Initialize yAronet
-        run: curl -f -s -d 'meta_admin_login=test&meta_admin_password=test&engine_network_http_insecure=1&engine_network_sql_connection=mysqli%3A%2F%2Froot%3Ayaronet%40127.0.0.1%2Fyaronet%3Fcharset%3Dutf8mb4&engine_network_route_page=%2Fsrc&engine_system_encoding_charset=utf-8&version=1' -o /dev/null http://127.0.0.1/src/install.php
+        run: curl -f -s -d 'meta_admin_login=test&meta_admin_password=test&engine_network_http_insecure=1&engine_network_sql_connection=mysqli%3A%2F%2Froot%3Ayaronet%40127.0.0.1%2Fyaronet%3Fcharset%3Dutf8mb4&engine_network_route_page=%2Fsrc&engine_system_encoding_charset=utf-8&version=1' -v http://127.0.0.1/src/install.php
       - name: Check configuration file
         run: test -f src/config.php
       - name: Run test suite
