@@ -32,10 +32,14 @@ class Favorite extends \yN\Entity\Model
         return self::entry_get_all($sql, array('profile' => (int)$profile_id, '+' => array('forum' => null)), array('rank' => true));
     }
 
+    public $forum;
+    public $forum_id;
+    public $profile;
+    public $profile_id;
+    public $rank;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
-        global $time;
-
         if ($row !== null) {
             $this->forum = isset($row[$ns . 'forum__id']) ? new Forum($sql, $row, $ns . 'forum__') : null;
             $this->forum_id = (int)$row[$ns . 'forum'];

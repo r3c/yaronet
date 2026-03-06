@@ -61,6 +61,16 @@ class Log extends \yN\Entity\Model
         return $log->save($sql, $alert);
     }
 
+    public $address;
+    public $data;
+    public $forum;
+    public $forum_id;
+    public $id;
+    public $profile;
+    public $profile_id;
+    public $time;
+    public $type;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $address;

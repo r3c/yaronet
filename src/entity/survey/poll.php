@@ -88,10 +88,15 @@ class Poll extends \yN\Entity\Model
         return $success;
     }
 
+    public $choices;
+    public $id;
+    public $question;
+    public $type;
+    public $vote;
+    public $votes;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
-        global $time;
-
         if ($row !== null) {
             $this->id = (int)$row[$ns . 'id'];
             $this->question = $row[$ns . 'question'];
@@ -156,6 +161,12 @@ class PollChoice extends \yN\Entity\Model
     public static $schema;
     public static $schema_cache = null;
 
+    public $poll;
+    public $poll_id;
+    public $rank;
+    public $score;
+    public $text;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;
@@ -218,6 +229,11 @@ class PollChoice extends \yN\Entity\Model
 class PollVote
 {
     public static $schema;
+
+    public $poll;
+    public $poll_id;
+    public $user;
+    public $user_id;
 
     public function __construct($sql = null, $row = null, $ns = '')
     {

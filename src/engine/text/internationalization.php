@@ -57,12 +57,12 @@ class Internationalization
         });
 
         $this->language = $language;
-        $this->losp = $locale;
+        $this->locale = $locale;
     }
 
     public function format($key, $params = array())
     {
-        return $this->losp->format($key, $params);
+        return $this->locale->format($key, $params);
     }
 
     public function get_language()

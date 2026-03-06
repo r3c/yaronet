@@ -75,6 +75,10 @@ class Widget
         return '<a href="' . self::html_escape($url) . '" rel="nofollow">' . self::html_escape($url) . '</a>';
     }
 
+    private $code;
+    private $type;
+    private $url;
+
     public function __construct($url, $type, $code)
     {
         $this->code = $code;
@@ -108,7 +112,7 @@ Widget::$mime_matchers = array(
 
             return
                 '<audio onerror="$(this).replaceWith($(this).children());" src="' . $src . '" preload="none" controls>' .
-                    $link .
+                $link .
                 '</audio>';
         }
     ),
@@ -123,11 +127,11 @@ Widget::$mime_matchers = array(
 
             return
                 '<audio onerror="$(this).replaceWith($(this).children());" src="' . $src . '" preload="none" controls>' .
-                    '<object type="application/x-shockwave-flash" data="' . $player . '" width="240" height="20">' .
-                        '<param name="movie" value="' . $player . '" />' .
-                        '<param name="flashvars" value="mp3=' . Widget::html_escape(rawurlencode($url)) . '" />' .
-                        Widget::html_link($url) .
-                    '</object>' .
+                '<object type="application/x-shockwave-flash" data="' . $player . '" width="240" height="20">' .
+                '<param name="movie" value="' . $player . '" />' .
+                '<param name="flashvars" value="mp3=' . Widget::html_escape(rawurlencode($url)) . '" />' .
+                Widget::html_link($url) .
+                '</object>' .
                 '</audio>';
         }
     ),
@@ -182,12 +186,12 @@ Widget::$mime_matchers = array(
 
             return
                 '<div class="opengraph">' .
-                    (isset($properties['image']) ? '<img src="' . Widget::html_escape($base->combine($properties['image'])) . '" />' : '') .
-                    '<div>' .
-                        '<a href="' . $url . '" rel="nofollow">' . Widget::html_escape(isset($properties['title']) ? $properties['title'] : $url) . '</a>' .
-                        '<span class="source">' . Widget::html_escape(isset($properties['site_name']) ? $properties['site_name'] : $base->host) . '</span>' .
-                        (isset($properties['description']) ? '<span class="description">' . Widget::html_escape($properties['description']) . '</span>' : '') .
-                    '</div>' .
+                (isset($properties['image']) ? '<img src="' . Widget::html_escape($base->combine($properties['image'])) . '" />' : '') .
+                '<div>' .
+                '<a href="' . $url . '" rel="nofollow">' . Widget::html_escape(isset($properties['title']) ? $properties['title'] : $url) . '</a>' .
+                '<span class="source">' . Widget::html_escape(isset($properties['site_name']) ? $properties['site_name'] : $base->host) . '</span>' .
+                (isset($properties['description']) ? '<span class="description">' . Widget::html_escape($properties['description']) . '</span>' : '') .
+                '</div>' .
                 '</div>';
         }
     ),
@@ -247,7 +251,7 @@ Widget::$mime_matchers = array(
         function ($url) {
             return
                 '<video onerror="$(this).replaceWith($(this).children());" src="' . Widget::html_escape($url) . '" controls>' .
-                    Widget::html_link($url) .
+                Widget::html_link($url) .
                 '</video>';
         }
     ),
@@ -261,9 +265,9 @@ Widget::$mime_matchers = array(
 
             return
                 '<object type="application/x-shockwave-flash" data="' . $player . '" width="640" height="385">' .
-                    '<param name="movie" value="' . $player . '" />' .
-                    '<param name="flashvars" value="flv=' . Widget::html_escape(rawurlencode($url)) . '" />' .
-                    Widget::html_link($url) .
+                '<param name="movie" value="' . $player . '" />' .
+                '<param name="flashvars" value="flv=' . Widget::html_escape(rawurlencode($url)) . '" />' .
+                Widget::html_link($url) .
                 '</object>';
         }
     )
@@ -341,13 +345,13 @@ Widget::$url_matchers = array(
     'embed.youtube' => array(
         '(?:www\\.youtube\\.com/watch\\?|youtu\\.be/([-0-9A-Za-z_]{1,64}))',
         function ($logger, $match, $query) {
-            $start = 0;          
+            $start = 0;
             if (isset($query['t'])) {
                 $t_param = $query['t'];
                 if (substr($t_param, -1) === 's') {
-                    $t_param = substr($t_param, 0, -1); 
+                    $t_param = substr($t_param, 0, -1);
                 }
-                $start = is_numeric($t_param)? $t_param : 0;
+                $start = is_numeric($t_param) ? $t_param : 0;
             }
             $video = isset($query['v']) ? (string)substr($query['v'], 0, 64) : (isset($match[1]) ? $match[1] : null);
 

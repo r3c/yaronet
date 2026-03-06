@@ -6,6 +6,10 @@ defined('YARONET') or die;
 
 abstract class Model
 {
+    public static $schema;
+    public static $schema_cache;
+    public static $schema_load;
+
     protected static function cache_check($sql, &$row, $ns, $keys)
     {
         foreach ($keys as $key) {
@@ -59,7 +63,7 @@ abstract class Model
         $rows = $sql->select(static::$schema, $filters, $orders, $count, $offset);
 
         foreach ($rows as $row) {
-            $entities[] = new static ($sql, $row);
+            $entities[] = new static($sql, $row);
         }
 
         return $entities;
@@ -73,12 +77,10 @@ abstract class Model
             return null;
         }
 
-        return new static ($sql, $rows[0]);
+        return new static($sql, $rows[0]);
     }
 
-    protected static function on_cache(&$cache)
-    {
-    }
+    protected static function on_cache(&$cache) {}
 
     public function delete($sql, &$alert)
     {
@@ -146,7 +148,5 @@ abstract class Model
 
     abstract protected function export();
 
-    protected function on_touch($sql, $exists)
-    {
-    }
+    protected function on_touch($sql, $exists) {}
 }

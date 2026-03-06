@@ -180,6 +180,21 @@ class Topic extends \yN\Entity\Model
         return \yN\Engine\Network\URL::sanitize_path(\yN\Engine\Text\Markup::render('text', $name, \yN\Engine\Text\Markup::context())) ?: null;
     }
 
+    public $bookmark;
+    public $create_profile;
+    public $create_time;
+    public $hint;
+    public $id;
+    public $is_closed;
+    public $last_profile;
+    public $last_time;
+    public $name;
+    public $permission;
+    public $posts;
+    public $section;
+    public $section_id;
+    public $weight;
+
     public function __construct($sql = null, $row = null, $ns = '')
     {
         global $time;
