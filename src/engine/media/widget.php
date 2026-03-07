@@ -75,9 +75,9 @@ class Widget
         return '<a href="' . self::html_escape($url) . '" rel="nofollow">' . self::html_escape($url) . '</a>';
     }
 
-    private $code;
-    private $type;
-    private $url;
+    public $code;
+    public $type;
+    public $url;
 
     public function __construct($url, $type, $code)
     {
