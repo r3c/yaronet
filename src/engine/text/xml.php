@@ -9,9 +9,9 @@ class XML
     public static function encode($name, $data)
     {
         $document = new \DOMDocument();
- 
+
         self::append($document, $document, $name, $data);
- 
+
         return $document->saveXML();
     }
 
@@ -33,7 +33,7 @@ class XML
         }
 
         // Append repeated node
-        elseif (array_reduce(array_keys($data), function (&$result, $item) {
+        elseif (array_reduce(array_keys($data), function ($result, $item) {
             return $result === $item ? $item + 1 : null;
         }, 0) === count($data)) {
             foreach ($data as $item) {
