@@ -8,7 +8,7 @@ defined('YARONET') or die;
 
 class User extends \yN\Entity\Model
 {
-    const COOKIE_DOMAIN = null;
+    const COOKIE_DOMAIN = '';
     const COOKIE_NAME = 'token';
 
     const MODEL_COST = 1;
