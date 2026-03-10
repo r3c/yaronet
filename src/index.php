@@ -96,7 +96,7 @@ require('./entity/account/message.php');
 $router = yN\Engine\Network\Router::create();
 
 // Resolve route
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$path = (string)parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $request = $router->match($_SERVER['REQUEST_METHOD'], $path, $_GET);
 
 try {
