@@ -44,6 +44,12 @@ class Image
         return self::create_from_binary($response->data);
     }
 
+    public $data;
+    public $x;
+    public $y;
+
+    private $handle;
+
     private function __construct($data, $handle, $x, $y)
     {
         $this->data = $data;
@@ -69,7 +75,6 @@ class Image
 
         imagealphablending($handle, false);
         imagecopyresampled($handle, $this->handle, 0, 0, 0, 0, $x, $y, $this->x, $this->y);
-        imagedestroy($this->handle);
 
         $this->handle = $handle;
         $this->x = $x;
@@ -91,19 +96,5 @@ class Image
         imagepng($this->handle);
 
         return ob_get_clean();
-    }
-
-    /*
-    ** Free allocated resources.
-    */
-    public function free()
-    {
-        if ($this->handle === null) {
-            return;
-        }
-
-        imagedestroy($this->handle);
-
-        $this->handle = null;
     }
 }

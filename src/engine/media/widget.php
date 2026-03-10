@@ -164,10 +164,6 @@ Widget::$mime_matchers = array(
                 unset($properties['image']);
             }
 
-            if ($image !== null) {
-                $image->free();
-            }
-
             // Remove empty or too long properties
             $properties = array_filter($properties, function ($value) {
                 return strlen($value) > 0 && strlen($value) < 1024;
@@ -206,8 +202,6 @@ Widget::$mime_matchers = array(
             if ($image === null || $image->x > 4096 || $image->y > 4096) {
                 return array(false, null);
             }
-
-            $image->free();
 
             return array(true, (int)$image->x . ':' . (int)$image->y);
         },
