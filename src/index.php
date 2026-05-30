@@ -166,9 +166,6 @@ try {
             'code' => $reply->code
         ), null, true));
     }
-
-    // Send request reply to standard output
-    $reply->send();
 } catch (Exception $exception) {
     // Rethrow exception if no "website is down" page is configured
     $failure = config('engine.system.failure.source', './resource/failure.html');
@@ -180,9 +177,9 @@ try {
     $logger->log(yN\Engine\Diagnostic\Logger::LEVEL_SEVERE, 'system', 'exception', (string)$exception);
 
     // Send error reply to standard output
-    $error = Glay\Network\HTTP::code(500, file_get_contents($failure));
-    $error->send();
+    $reply = Glay\Network\HTTP::code(500, file_get_contents($failure));
 }
 
-// Log request
+// Send request reply to standard output & log
+$reply->send();
 $logger->log(yN\Engine\Diagnostic\Logger::LEVEL_SYSTEM, 'hit', 'time', (microtime(true) - $microtime) . ' s');
