@@ -11,6 +11,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `account_activity` (
   `address` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `agent` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `user` int(10) UNSIGNED DEFAULT NULL,
   `group` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_time` int(10) UNSIGNED NOT NULL,

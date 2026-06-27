@@ -91,11 +91,13 @@ class Activity extends \yN\Entity\Model
 
         // Initialize current user if not found in activities
         if ($self === null) {
-            $group = isset($_SERVER['HTTP_USER_AGENT']) ? self::get_group($_SERVER['HTTP_USER_AGENT']) : '';
+            $agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+            $group = self::get_group($agent);
             $prepend = true;
 
             $self = new Activity();
             $self->address = $address;
+            $self->agent = $agent;
             $self->create_time = $time;
             $self->group = $group;
             $self->location = $location ?: '';
@@ -122,14 +124,14 @@ class Activity extends \yN\Entity\Model
         return array($activities, $self->location);
     }
 
-    private static function get_group($user_agent)
+    private static function get_group($agent)
     {
         $groups = array(
             '#compatible; (bingbot|Googlebot|OrangeBot|Yandex)#' => 'bot'
         );
 
         foreach ($groups as $pattern => $group) {
-            if (preg_match($pattern, $user_agent)) {
+            if (preg_match($pattern, $agent)) {
                 return $group;
             }
         }
@@ -138,6 +140,7 @@ class Activity extends \yN\Entity\Model
     }
 
     public $address;
+    public $agent;
     public $create_time;
     public $expire_time;
     public $group;
@@ -150,6 +153,7 @@ class Activity extends \yN\Entity\Model
     {
         if ($row !== null) {
             $this->address = $row[$ns . 'address'];
+            $this->agent = $row[$ns . 'agent'];
             $this->create_time = (int)$row[$ns . 'create_time'];
             $this->expire_time = (int)$row[$ns . 'expire_time'];
             $this->group = $row[$ns . 'group'];
@@ -159,6 +163,7 @@ class Activity extends \yN\Entity\Model
             $this->user_id = $row['user'] !== null ? (int)$row['user'] : null;
         } else {
             $this->address = '';
+            $this->agent = '';
             $this->create_time = 0;
             $this->expire_time = 0;
             $this->group = '';
@@ -183,6 +188,7 @@ class Activity extends \yN\Entity\Model
     {
         return array(
             'address' => $this->address,
+            'agent' => $this->agent,
             'create_time' => $this->create_time,
             'expire_time' => $this->expire_time,
             'group' => $this->group,
@@ -197,6 +203,7 @@ Activity::$schema = new \RedMap\Schema(
     'account_activity',
     array(
         'address' => null,
+        'agent' => null,
         'create_time' => null,
         'expire_time' => null,
         'group' => null,
