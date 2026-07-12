@@ -127,7 +127,7 @@ class Activity extends \yN\Entity\Model
     private static function get_group($agent)
     {
         $groups = array(
-            '#compatible; (bingbot|Googlebot|OrangeBot|Yandex)#' => 'bot'
+            '#compatible; (AhrefsBot|Amazonbot|Baiduspider|bingbot|Googlebot|OrangeBot|Qwantbot|SemrushBot|YandexBot)#' => 'bot'
         );
 
         foreach ($groups as $pattern => $group) {
