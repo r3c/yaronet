@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `account_activity` (
   `location` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`address`),
   KEY `expire` (`expire_time`)
-) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `account_application` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
