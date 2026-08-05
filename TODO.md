@@ -13,7 +13,6 @@ TODO
 
 - [ ] replace hard-coded SQL queries [sql-hardcode]
 - [ ] remove hard-coded bbcode [markup-bbcode]
-- [ ] remove hard-coded memory reclaim queries [sql-memory]
 - [ ] fix missing SQL transactions [sql-transaction]
 - [ ] split "edit" and "quote" features when creating new post
 - [ ] inject only instance variables or constants in Deval templates [deval-inject]
@@ -37,6 +36,7 @@ DONE
 
 ### Open source
 
+- [x] remove hard-coded memory reclaim queries [sql-memory]
 - [x] refactor old search table [legacy-search]
 - [x] remove SQL queries from pages [sql-page]
 - [x] rename sp to emoji

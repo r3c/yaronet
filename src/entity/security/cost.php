@@ -76,9 +76,7 @@ class Cost extends \yN\Entity\Model
 
         return
             $sql->delete(self::$schema, array('active_expire|lt' => $time - self::TIME_WINDOW)) !== null &&
-            // FIXME: [sql-memory] reclaim memory
-            // $sql->wash (self::$schema) !== null
-            $sql->client->execute('ALTER TABLE `' . self::$schema->table . '` ENGINE=MEMORY') !== null;
+            $sql->wash(self::$schema);
     }
 
     public $active_amount;

@@ -35,9 +35,7 @@ class Activity extends \yN\Entity\Model
 
         return
             $sql->delete(self::$schema, array('expire_time|le' => $time)) !== null &&
-            // FIXME: [sql-memory] reclaim memory
-            // $sql->wash (self::$schema) !== null;
-            $sql->client->execute('ALTER TABLE `' . self::$schema->table . '` ENGINE=MEMORY') !== null;
+            $sql->wash(self::$schema);
     }
 
     public static function leave($sql, $address)

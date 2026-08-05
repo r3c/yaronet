@@ -19,10 +19,9 @@ class Log extends \yN\Entity\Model
     {
         global $time;
 
-        // FIXME: [sql-memory] reclaim memory
         return
             $sql->delete(self::$schema, array('time|le' => $time - self::EXPIRE_DURATION)) !== null &&
-            $sql->client->execute('OPTIMIZE TABLE `' . self::$schema->table . '`') !== null;
+            $sql->wash(self::$schema);
     }
 
     public static function get_by_forum__time__profile__address($sql, $forum_id, $time_from, $time_to, $profile, $address)
