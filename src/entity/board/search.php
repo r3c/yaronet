@@ -30,11 +30,10 @@ class Search extends \yN\Entity\Model
         global $time;
 
         // FIXME: replace with RedMap equivalent [sql-hardcode]
-        // FIXME: reclaim memory [sql-memory]
         return
             $sql->client->execute('DELETE s, sr FROM `' . self::$schema->table . '` s JOIN `' . SearchResult::$schema->table . '` sr ON s.id = sr.search WHERE s.time < ?', array($time - self::EXPIRE_DURATION)) !== null &&
-            $sql->client->execute('OPTIMIZE TABLE `' . self::$schema->table . '`') !== null &&
-            $sql->client->execute('OPTIMIZE TABLE `' . SearchResult::$schema->table . '`') !== null;
+            $sql->wash(self::$schema) &&
+            $sql->wash(SearchResult::$schema);
     }
 
     public static function execute($sql, $query, $profile_id, $forum_id, $filter_profile_id, &$search, &$alert)

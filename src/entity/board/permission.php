@@ -78,9 +78,7 @@ class Permission
 
         foreach ($schemas as $schema) {
             $success = $sql->delete($schema, array('expire|le' => $time)) !== null && $success;
-            // FIXME: [sql-memory] reclaim memory
-            //$success = $sql->wash ($schema) && $success;
-            $success = $sql->client->execute('OPTIMIZE TABLE `' . $schema->table . '`') !== null && $success;
+            $success = $sql->wash($schema) && $success;
         }
 
         return $success;
