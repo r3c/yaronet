@@ -33,8 +33,6 @@ function emoji_edit($request, $logger, $sql, $display, $input, $user)
 
                 $input->ensure('insert', yN\Engine\Media\Emoji::get_custom_tag($name));
             }
-
-            $image->free();
         }
     } else {
         $alerts = null;
