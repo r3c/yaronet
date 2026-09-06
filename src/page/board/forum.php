@@ -98,8 +98,6 @@ function forum_edit($request, $logger, $sql, $display, $input, $user)
 
                 $icon = $image->create_png() ?: $image->data;
 
-                $image->free();
-
                 $forum->icon_tag = (int)sprintf('%u', crc32($icon));
                 $forum->is_illustrated = true;
             }

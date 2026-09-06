@@ -133,8 +133,6 @@ function profile_edit($request, $logger, $sql, $display, $input, $user)
 
                 $avatar = $image->create_png() ?: $image->data;
 
-                $image->free();
-
                 $profile->avatar = yN\Entity\Board\Profile::AVATAR_IMAGE;
                 $profile->avatar_tag = (int)sprintf('%u', crc32($avatar));
             }
