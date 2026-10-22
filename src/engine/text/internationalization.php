@@ -29,7 +29,7 @@ class Internationalization
             $languages = array_flip(self::$languages);
         }
 
-        return isset($languages[$language]);
+        return $language !== null && isset($languages[$language]);
     }
 
     public function __construct($language)

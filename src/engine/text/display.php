@@ -111,10 +111,10 @@ class Display
             $internals = array_flip(self::$internals);
         }
 
-        return isset($internals[$template]);
+        return $template !== null && isset($internals[$template]);
     }
 
-    public static function is_option($template)
+    public static function is_option($option)
     {
         static $options;
 
@@ -122,7 +122,7 @@ class Display
             $options = array_flip(self::$options);
         }
 
-        return isset($options[$template]);
+        return $option !== null && isset($options[$option]);
     }
 
     // FIXME: state variables used by injected constants [deval-inject]

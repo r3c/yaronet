@@ -73,7 +73,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) use ($logger) {
 
     // Log error if not suppressed
     if ($error !== 0 && $error !== $error_suppressed) {
-        if (($errno & ~(E_DEPRECATED | E_NOTICE | E_USER_NOTICE | E_STRICT)) === 0) {
+        if (($errno & ~(E_DEPRECATED | E_NOTICE | E_USER_NOTICE)) === 0) {
             $level = yN\Engine\Diagnostic\Logger::LEVEL_NOTICE;
         } elseif (($errno & ~(E_WARNING | E_USER_WARNING)) === 0) {
             $level = yN\Engine\Diagnostic\Logger::LEVEL_MEDIUM;
