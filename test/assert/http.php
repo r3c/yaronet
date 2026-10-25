@@ -57,8 +57,6 @@ class HTTP
 
         test_metric('http.time', microtime(true) - $origin);
 
-        curl_close($handle);
-
         test_step('HTTP ' . $code);
 
         if ($output !== false) {
