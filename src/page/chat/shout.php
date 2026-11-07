@@ -45,16 +45,8 @@ function shout_edit($request, $logger, $sql, $display, $input, $user)
         $alerts = array();
 
         // Captcha validation
-        if ($user->id === null) {
-            Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
-
-            $captcha = new yN\Engine\Service\ReCaptchaAPI();
-
-            $input->get_string('g-recaptcha-response', $captcha_response);
-
-            if (!$captcha->check($captcha_response)) {
-                $alerts[] = 'captcha-invalid';
-            }
+        if ($user->id === null && !yN\Engine\Text\Display::captcha_check($input)) {
+            $alerts[] = 'captcha-invalid';
         }
 
         // Nick

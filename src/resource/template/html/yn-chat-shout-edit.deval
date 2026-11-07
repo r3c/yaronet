@@ -4,7 +4,7 @@
 		_meta = null,
 		_path = [url ("home"): tra ("yn.home")],
 		_redirect = length (alerts) == 0 && url ("home") || null,
-		_static = captcha.js () && [captcha.js ()] || [],
+		_static = captcha.enable () && [captcha.js ()] || [],
 		_title = tra ("yn.chat.shout.edit", ["shout": shout])
 	}}
 		{{ extend page.deval }}
@@ -17,7 +17,7 @@
 							_alerts = alerts,
 							_fields = [
 								"nick":		["text", false, ["length": 50, "visible": user.id == null]],
-								"captcha":	["captcha", null, ["visible": feature.captcha () && user.id == null]],
+								"captcha":	["captcha", null, ["visible": captcha.enable () && user.id == null]],
 								"text":		["text", null, ["length": 200, "placeholder": true]]
 							],
 							_prefix = "yn.chat.shout.edit.form."

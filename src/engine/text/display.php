@@ -2,6 +2,8 @@
 
 namespace yN\Engine\Text;
 
+use Exception;
+
 defined('YARONET') or die;
 
 \Glay\using('yN\\Engine\\Network\\URL', './engine/network/url.php');
@@ -29,29 +31,26 @@ class Display
 
     public static function _captcha_enable()
     {
-        \Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
-
-        $captcha = new \yN\Engine\Service\ReCaptchaAPI();
-
-        return $captcha->enable();
+        return self::captcha_create() !== null;
     }
 
     public static function _captcha_input()
     {
-        \Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
+        $captcha = self::captcha_create();
 
-        $captcha = new \yN\Engine\Service\ReCaptchaAPI();
-
-        return $captcha->input();
+        return $captcha !== null ? $captcha->input() : null;
     }
 
     public static function _captcha_js()
     {
-        \Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
+        $captcha = self::captcha_create();
 
-        $captcha = new \yN\Engine\Service\ReCaptchaAPI();
+        return $captcha !== null ? $captcha->js() : null;
+    }
 
-        return $captcha->js();
+    public static function _fatal($message)
+    {
+        throw new Exception($message);
     }
 
     public static function _html($string)
@@ -96,6 +95,13 @@ class Display
     public static function cache_directory()
     {
         return config('engine.text.display.cache', './storage/cache/template');
+    }
+
+    public static function captcha_check($input)
+    {
+        $captcha = self::captcha_create();
+
+        return $captcha === null || $captcha->check($input);
     }
 
     public static function default_template()
@@ -201,10 +207,12 @@ class Display
         $renderer->inject(\Deval\Builtin::deval());
         $renderer->inject(array(
             'captcha' => array(
+                'enable' => array($self, '_captcha_enable'),
                 'input' => array($self, '_captcha_input'),
                 'js' => array($self, '_captcha_js')
             ),
             'encoding' => mb_internal_encoding(),
+            'fatal' => array($self, '_fatal'),
             'html' => array($self, '_html'),
             'json' => array($self, '_json'),
             'jstr' => array($self, '_jstr'),
@@ -225,9 +233,6 @@ class Display
 
         $defaults = array(
             'activities' => $activities,
-            'feature' => array(
-                'captcha' => array($self, '_captcha_enable')
-            ),
             'get_message' => function () {
                 return $this->user->id !== null ? \yN\Entity\Account\Message::check($this->sql, $this->user->id) : null;
             },
@@ -244,5 +249,24 @@ class Display
         );
 
         return $renderer->render($defaults + $variables);
+    }
+
+    private static function captcha_create()
+    {
+        \Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
+        \Glay\using('yN\\Engine\\Service\\TurnstileAPI', './engine/service/turnstile.php');
+
+        $captchas = array(
+            new \yN\Engine\Service\ReCaptchaAPI(),
+            new \yN\Engine\Service\TurnstileAPI()
+        );
+
+        foreach ($captchas as $captcha) {
+            if ($captcha->enable()) {
+                return $captcha;
+            }
+        }
+
+        return null;
     }
 }

@@ -7,7 +7,7 @@
 			url ("board.profile.list"): tra ("yn.board.profile.list")
 		],
 		_redirect = null,
-		_static = captcha.js () && [captcha.js ()] || [],
+		_static = captcha.enable () && [captcha.js ()] || [],
 		_title = tra ("yn.account.user.recover")
 	}}
 		{{ extend page.deval }}
@@ -21,7 +21,7 @@
 							_fields = [
 								"recover":	["group", true],
 								"email":	["text", true, ["focus": true]],
-								"captcha":	["captcha", true, ["visible": feature.captcha ()]]
+								"captcha":	["captcha", true, ["visible": captcha.enable ()]]
 							],
 							_prefix = "yn.account.user.recover.form."
 						}}

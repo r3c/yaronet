@@ -15,19 +15,16 @@ class ReCaptchaAPI
         $this->site_secret = config('engine.service.recaptcha.site-secret', null);
     }
 
-    public function check($code)
+    public function check($input)
     {
         global $address;
 
-        if (!$this->enable()) {
-            return true;
-        }
-
         $http = new \Glay\Network\HTTP();
+        $input->get_string('g-recaptcha-response', $token);
 
         $response = $http->query('POST', 'https://www.google.com/recaptcha/api/siteverify', array(
             'remoteip' => $address->string,
-            'response' => $code,
+            'response' => $token,
             'secret' => $this->site_secret
         ));
 
@@ -45,19 +42,11 @@ class ReCaptchaAPI
 
     public function input()
     {
-        if ($this->site_key === null || $this->site_secret === null) {
-            return null;
-        }
-
         return '<div class="g-recaptcha" data-sitekey="' . $this->site_key . '"></div>';
     }
 
     public function js()
     {
-        if ($this->site_key === null || $this->site_secret === null) {
-            return null;
-        }
-
         return 'https://www.google.com/recaptcha/api.js';
     }
 }
