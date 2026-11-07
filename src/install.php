@@ -402,7 +402,7 @@ if (@include './config.php') {
             $saved = true;
 
             foreach ($templates as $name => $contents) {
-                $saved = @file_put_contents(dirname(__FILE__) . '/' . $name, $contents) !== false && $saved;
+                $saved = file_put_contents(dirname(__FILE__) . '/' . $name, $contents) !== false && $saved;
             }
 
             if ($saved) {
