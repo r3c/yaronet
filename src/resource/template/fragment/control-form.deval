@@ -41,8 +41,10 @@
 
 							<div class="value">
 								{{ if type == "captcha" }}
-									{{ unwrap }}
-										{{ $ captcha.input () }}
+									{{ if captcha.enable () }}
+										{{ unwrap }}
+											{{ $ captcha.input () }}
+										{{ end }}
 									{{ end }}
 								{{ elseif type == "complete" }}
 									<input name="{{ $ name }}" type="text" value="{{ $ value }}" data-complete="1"{{ include control-form-extra.deval }} />

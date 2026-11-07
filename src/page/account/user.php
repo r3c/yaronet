@@ -132,16 +132,8 @@ function user_edit($request, $logger, $sql, $display, $input, $user)
         $change_password = false;
 
         // Captcha validation
-        if ($new) {
-            Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
-
-            $captcha = new yN\Engine\Service\ReCaptchaAPI();
-
-            $input->get_string('g-recaptcha-response', $captcha_response);
-
-            if (!$captcha->check($captcha_response)) {
-                $alerts[] = 'captcha-invalid';
-            }
+        if ($new && !yN\Engine\Text\Display::captcha_check($input)) {
+            $alerts[] = 'captcha-invalid';
         }
 
         // Login update
@@ -386,13 +378,7 @@ function user_recover($request, $logger, $sql, $display, $input, $user)
         $alerts = array();
 
         // Captcha validation
-        Glay\using('yN\\Engine\\Service\\ReCaptchaAPI', './engine/service/recaptcha.php');
-
-        $captcha = new yN\Engine\Service\ReCaptchaAPI();
-
-        $input->get_string('g-recaptcha-response', $captcha_response);
-
-        if (!$captcha->check($captcha_response)) {
+        if (!yN\Engine\Text\Display::captcha_check($input)) {
             $alerts[] = 'captcha-invalid';
         }
 

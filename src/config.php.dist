@@ -64,6 +64,12 @@ $config = array(
     // Client secret for SoundCloud API or "null" to disable SoundCloud integration
     //'engine.service.soundcloud.client-secret' => null,
 
+    // Site key for Turnstile web service or "null" to disable Turnstile integration
+    //'engine.service.turnstile.site-key' => null,
+
+    // Secret key for Turnstile web service or "null" to disable Turnstile integration
+    //'engine.service.turnstile.site-secret' => null,
+
     // Consumer API key for Twitter web service or "null" to disable Twitter integration
     //'engine.service.twitter.consumer-key' => null,
 

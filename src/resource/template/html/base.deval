@@ -33,14 +33,14 @@
 					{{ let type = php ("pathinfo") (path, 4) }}
 						{{ if type == "css" }}
 							<link rel="stylesheet" type="text/css" href="{{ $ path }}" />
+						{{ elseif type == "js" }}
+							<script type="text/javascript" src="{{ $ path }}" defer></script>
 						{{ elseif type == "less" && !use_less }}
 							<link rel="stylesheet" type="text/css" href="{{ $ php ("preg_replace") ("/\\.less(\\?|$)/", ".css$1", path) }}" />
 						{{ elseif type == "less" }}
 							<link rel="stylesheet/less" type="text/css" href="{{ $ path }}" />
-						{{ elseif type == "js" }}
-							<script type="text/javascript" src="{{ $ path }}" defer></script>
 						{{ else }}
-							{{ $ crash }}
+							{{ $ (+) fatal (cat ("path '", path, "' has unsupported '", type, "' file extension")) }}
 						{{ end }}
 					{{ end }}
 				{{ end }}

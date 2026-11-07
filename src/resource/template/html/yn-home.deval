@@ -5,7 +5,7 @@
 		_path = [],
 		_redirect = null,
 		_static = cat (
-			captcha.js () && [captcha.js ()] || [], [
+			captcha.enable () && [captcha.js ()] || [], [
 			cat (static.layout, "yn-home.js"),
 			cat (static.theme, "yn-home.less")
 		]),
@@ -109,7 +109,7 @@
 								_alerts = null,
 								_fields = [
 									"nick":		["text", false, ["length": 50, "visible": user.id == null]],
-									"captcha":	["captcha", null, ["visible": feature.captcha () && user.id == null]],
+									"captcha":	["captcha", null, ["visible": captcha.enable () && user.id == null]],
 									"text":		["text", null, ["length": 200, "placeholder": true]]
 								],
 								_prefix = "yn.home.chat.form."
